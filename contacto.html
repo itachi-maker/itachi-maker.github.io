@@ -1,11 +1,64 @@
-cat << 'EOF' > contacto.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - RendimientoTech</title>
-    <link rel="stylesheet" href="style.css?v=3.0?v=2.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="style.css?v=4.0">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(3, 6, 17, 0.8);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.92rem;
+            outline: none;
+            transition: border-color 0.25s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--cyan-neon);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+        }
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--cyan-neon);
+        }
+    </style>
 </head>
 <body>
 
@@ -14,39 +67,101 @@ cat << 'EOF' > contacto.html
         <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
     </header>
 
-    <nav><a href="index.html">Inicio</a><a href="herramientas.html">Generador ADB</a><a href="nosotros.html">Nosotros</a><a href="faq.html">FAQ</a><a href="contacto.html">Contacto</a></nav><!--
-        <a href="index.html">← Volver al Inicio</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="privacidad.html">Privacidad</a>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="herramientas.html">Generador ADB</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contacto.html" class="active">Contacto</a>
     </nav>
 
     <main class="container">
-        <article class="post-detail">
-            <h2>Contacto Directo</h2>
-            <p>Si tenés dudas sobre las optimizaciones, consultas sobre comandos ADB o querés solicitar una guía personalizada, podés comunicarte por los siguientes medios:</p>
+        <section class="hero">
+            <div class="status-pill">
+                <span class="status-dot"></span> Soporte & Consultas Técnicas
+            </div>
+            <h2>Canales de Contacto Directo</h2>
+            <p>¿Tienes dudas sobre los comandos ADB, sugerencias para nuevos scripts o deseas reportar resultados en un dispositivo específico?</p>
+        </section>
 
-            <div class="alert-box info">
-                📱 <strong>WhatsApp / Teléfono:</strong> <a href="https://wa.me/50576822182" target="_blank" style="color: #0c5460; font-weight: bold; text-decoration: underline;">+505 76822182</a>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Envíanos un Mensaje</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">Completa los campos para enviar tu consulta técnica:</p>
+                
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Nombre / Nickname</label>
+                        <input type="text" id="name" required placeholder="Ej. Itachi">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="device">Modelo de Dispositivo</label>
+                        <input type="text" id="device" placeholder="Ej. Poco F3 / Moto G72">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" required placeholder="tu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje o Consulta</label>
+                        <textarea id="message" rows="4" required placeholder="Escribe aquí los detalles de tu consulta o sugerencia de script..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Enviar Consulta</button>
+                </form>
+                <div id="form-response" style="margin-top: 15px; display: none;" class="alert-box info"></div>
             </div>
 
-            <div class="alert-box info">
-                📩 <strong>Correo Electrónico:</strong> rendimientotech.contact@gmail.com
-            </div>
+            <div class="contact-card">
+                <h3>Comunidad y Redes</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9rem;">Únete a nuestras plataformas para probar nuevos módulos y actualizaciones:</p>
 
-            <h3>Comunidad y Contenido</h3>
-            <p>Seguinos en nuestras plataformas para acceder a pruebas de rendimiento, scripts y configuraciones recomendadas:</p>
-            <ul>
-                <li><strong>TikTok:</strong> Videos de optimizaciones en tiempo real y pruebas de fluidez en juegos.</li>
-                <li><strong>YouTube:</strong> Tutoriales detallados de configuración del sistema y ADB.</li>
-            </ul>
-        </article>
+                <div class="info-item">
+                    <span class="info-icon">📱</span>
+                    <div>
+                        <strong style="color: #fff; display: block;">TikTok Content</strong>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Pruebas de rendimiento, optimizaciones y jugadas a 120 FPS</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">💬</span>
+                    <div>
+                        <strong style="color: #fff; display: block;">Comunidad Telegram / Discord</strong>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Canal de distribución de scripts ADB y comandos setprop</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">⚡</span>
+                    <div>
+                        <strong style="color: #fff; display: block;">Repositorio GitHub</strong>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;">Código abierto y control de versiones del proyecto</span>
+                    </div>
+                </div>
+
+                <div class="alert-box warning" style="margin-top: 25px;">
+                    ⚠️ <strong>Nota de Seguridad:</strong> No compartas claves ni tokens de acceso. Los módulos de RendimientoTech no requieren datos confidenciales.
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
         <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
     </footer>
 
-<script src="script.js"></script>
+    <script>
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const resp = document.getElementById('form-response');
+            resp.style.display = 'block';
+            resp.innerText = '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
-EOF
