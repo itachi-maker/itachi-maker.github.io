@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renderizado GPU y Liberación de CPU - RendimientoTech</title>
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <title>Comandos setprop Aceleración GPU - RendimientoTech</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body>
 
@@ -14,91 +15,46 @@
     </header>
 
     <nav>
-        <a href="index.html">← Volver al Inicio</a>
+        <a href="index.html">Inicio</a>
+        <a href="herramientas.html">Generador ADB</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="faq.html">FAQ</a>
         <a href="contacto.html">Contacto</a>
         <a href="privacidad.html">Privacidad</a>
+        <a href="terminos.html">Términos</a>
     </nav>
 
     <main class="container">
         <article class="post-detail">
-            <div class="tags">
-                <span class="badge badge-cpu">Aceleración HW</span>
-                <span class="badge badge-adb">ADB / Shell</span>
-                <span class="badge badge-fps">120 FPS Target</span>
-            </div>
+            <h2>Comandos setprop para Forzar Aceleración por GPU</h2>
+            <p class="meta">Publicado por RendimientoTech Core • Especialidad: GPU Offloading & Vulkan API</p>
 
-            <h2>Comandos setprop para Forzar Aceleración GPU y Liberar CPU</h2>
-            <p class="meta">Publicado por RendimientoTech | Optimización de Renderizado Gráfico</p>
+            <p>Muchos procesadores móviles sufren sobrecalentamiento debido a que el sistema operativo utiliza la CPU para renderizar elementos 2D y la interfaz de usuario. Forzar la composición gráfica directamente en la GPU descarga ciclos de trabajo del procesador central.</p>
 
-            <div class="alert-box warning">
-                ⚠️ <strong>Nota:</strong> En juegos pesados dependientes del procesador (CPU-bound), delegar las tareas de renderizado 2D/3D a la GPU reduce la carga de procesamiento y evita tirones de micro-stuttering.
-            </div>
-
-            <h3>1. Forzar procesamiento gráfico por Hardware (HW composition)</h3>
-            <p>Desactiva el renderizado por software en la CPU y delega la composición de capas al chip gráfico de forma permanente durante la sesión:</p>
+            <h3>1. Activación de Skia Vulkan Engine</h3>
+            <p>Skia Vulkan es el motor de renderizado gráfico de baja sobrecarga introducido en versiones modernas de Android. Al activarlo, las tareas de composición visual pasan a la GPU de manera eficiente:</p>
 
             <div class="code-block">
                 <div class="code-header">
-                    <span>Terminal / ADB Shell</span>
+                    <span>ADB Hardware Acceleration</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
                 </div>
-                <pre><code># Forzar aceleracion por hardware y renderizado de la UI
-setprop debug.sf.hw 1
+                <pre><code>setprop debug.sf.hw 1
 setprop debug.egl.hw 1
-setprop persist.sys.ui.hw true
-setprop video.accelerate.hw 1</code></pre>
+setprop debug.renderengine.backend skiavk
+setprop persist.sys.composition.type gpu</code></pre>
             </div>
 
-            <h3>2. Reducción de profundidad de color en texturas livianas</h3>
-            <p>Reduce el ancho de banda del canal alfa para acelerar la tasa de cuadros por segundo sin perder calidad de juego visible:</p>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span>Terminal / ADB Shell</span>
-                </div>
-                <pre><code># Desactivar tramado innecesario y usar renderizado de 16-bit
-setprop persist.sys.use_16bpp_alpha 1
-setprop persist.sys.use_dithering 0</code></pre>
-            </div>
-
-            <h3>3. Resumen de parámetros de aceleración GPU</h3>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Propiedad (setprop)</th>
-                            <th>Valor</th>
-                            <th>Función Principal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>debug.sf.hw</code></td>
-                            <td><code>1</code></td>
-                            <td>Aceleración por hardware forzada mediante SurfaceFlinger</td>
-                        </tr>
-                        <tr>
-                            <td><code>video.accelerate.hw</code></td>
-                            <td><code>1</code></td>
-                            <td>Renderizado acelerado por motor GPU de video</td>
-                        </tr>
-                        <tr>
-                            <td><code>persist.sys.use_16bpp_alpha</code></td>
-                            <td><code>1</code></td>
-                            <td>Optimización de memoria VRAM e hilos de procesamiento</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="alert-box info">
-                💡 <strong>Consejo técnico:</strong> Estos parámetros reducen el consumo de uso del procesador principal entre un 15% y un 25%, permitiendo que las frecuencias de los núcleos de rendimiento se mantengan estables.
-            </div>
-
+            <h3>2. Beneficios Directos en Tasa de Cuadros (FPS)</h3>
+            <ul>
+                <li><strong>Menor Temperatura de la CPU:</strong> Evita caídas abruptas de frecuencia durante partidas prolongadas.</li>
+                <li><strong>Fluidez Uniforme:</strong> Elimina micro-tirones al abrir o cerrar ventanas flotantes de chat o grabación de pantalla.</li>
+            </ul>
         </article>
     </main>
 
     <footer>
-        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados. | <a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos de Uso</a></p>
     </footer>
 
     <script src="script.js"></script>

@@ -93,7 +93,7 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.88rem;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 8px;
     border: 1px solid transparent;
     transition: all 0.25s ease;
@@ -263,6 +263,7 @@ nav a:hover, nav a.active {
     box-shadow: 0 4px 15px var(--primary-glow);
     transition: all 0.25s ease;
     border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -298,33 +299,13 @@ nav a:hover, nav a.active {
     color: #fff;
 }
 
-.post-detail p, .post-detail ul {
+.post-detail p, .post-detail ul, .post-detail ol {
     color: var(--text-muted);
     font-size: 0.98rem;
     margin-bottom: 16px;
 }
 
-.post-detail ul { padding-left: 22px; }
-
-/* FAQ Accordion Elements */
-.faq-item {
-    background: rgba(10, 15, 30, 0.6);
-    border: 1px solid var(--border-glass);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-}
-
-.faq-item h3 {
-    margin: 0 0 10px 0;
-    color: var(--cyan-neon);
-    font-size: 1.15rem;
-}
-
-.faq-item p {
-    margin-bottom: 0;
-    color: var(--text-muted);
-}
+.post-detail ul, .post-detail ol { padding-left: 22px; }
 
 .alert-box {
     padding: 18px;
@@ -443,6 +424,64 @@ td code {
     font-size: 0.85rem;
 }
 
+/* Banner de Cookies CookieConsent */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(5, 8, 17, 0.96);
+    border-top: 1px solid var(--cyan-neon);
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    z-index: 9999;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    flex-wrap: wrap;
+}
+
+.cookie-banner p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0;
+    flex: 1;
+}
+
+.cookie-banner p a {
+    color: var(--cyan-neon);
+    text-decoration: underline;
+}
+
+.cookie-btns {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.btn-cookie-accept {
+    background: var(--cyan-neon);
+    color: #050811;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-cookie-decline {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-glass);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
 footer {
     text-align: center;
     padding: 30px;
@@ -451,4 +490,9 @@ footer {
     color: var(--text-muted);
     font-size: 0.85rem;
     margin-top: 60px;
+}
+
+footer a {
+    color: var(--cyan-neon);
+    text-decoration: none;
 }
