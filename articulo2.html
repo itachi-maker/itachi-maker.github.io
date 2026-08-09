@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reducción de Input Lag y Respuesta Táctil en Android - RendimientoTech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>RendimientoTech</h1>
+        <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
+    </header>
+
+    <nav>
+        <a href="index.html">← Volver al Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Privacidad</a>
+    </nav>
+
+    <main class="container">
+        <article class="post-detail">
+            <div class="tags">
+                <span class="badge badge-adb">ADB / Touch</span>
+                <span class="badge badge-fps">120 FPS Target</span>
+            </div>
+
+            <h2>Guía Avanzada: Reducción de Input Lag y Sensibilidad Táctil al Máximo</h2>
+            <p class="meta">Publicado por RendimientoTech | Optimización de Pantalla y Touch</p>
+
+            <div class="alert-box warning">
+                ⚠️ <strong>Requisito:</strong> Ejecutar estos parámetros mediante consola ADB en PC o apps de terminal local (Termux / Shizuku / LADB).
+            </div>
+
+            <h3>1. Calibración de latencia del digitalizador táctil</h3>
+            <p>Los siguientes parámetros reducen el buffer de procesamiento de toques en pantalla para lograr una respuesta inmediata en juegos que exigen precisión:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Ajustar escala de presión y respuesta al toque
+setprop touch.pressure.scale 0.001
+setprop touch.size.calibration geometric
+setprop touch.size.scale 1
+setprop touch.pressure.calibration amplitude</code></pre>
+            </div>
+
+            <h3>2. Prioridad de hilos de entrada (Input Event Dispatching)</h3>
+            <p>Fuerza al sistema operativo a darle prioridad máxima en la CPU al registro de toques en pantalla sobre tareas secundarias:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Optimización de eventos de entrada y rendimiento
+setprop debug.performance.tuning 1
+setprop windowsmgr.max_events_per_sec 300
+setprop view.touch_slop 2</code></pre>
+            </div>
+
+            <h3>3. Resumen de parámetros de optimización táctil</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Comando / Propiedad</th>
+                            <th>Valor</th>
+                            <th>Beneficio en Juego</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>touch.pressure.scale</code></td>
+                            <td><code>0.001</code></td>
+                            <td>Mayor sensibilidad al toque leve</td>
+                        </tr>
+                        <tr>
+                            <td><code>windowsmgr.max_events_per_sec</code></td>
+                            <td><code>300</code></td>
+                            <td>Aumenta el límite de eventos registrados por segundo</td>
+                        </tr>
+                        <tr>
+                            <td><code>view.touch_slop</code></td>
+                            <td><code>2</code></td>
+                            <td>Reduce el desplazamiento requerido para registrar un toque</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box info">
+                💡 <strong>Consejo de precisión:</strong> Remové las aplicaciones de superposición (overlays de miras o contadores de FPS de terceros) ya que añaden latencia entre el panel táctil y la renderización en pantalla.
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
