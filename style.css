@@ -320,3 +320,27 @@ footer {
     font-size: 0.85rem;
     margin-top: 50px;
 }
+
+/* Botón interactivo de copiar en consolas */
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.copy-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.copy-btn.copied {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border-color: #10b981;
+}

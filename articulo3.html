@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renderizado GPU y Liberación de CPU - RendimientoTech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>RendimientoTech</h1>
+        <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
+    </header>
+
+    <nav>
+        <a href="index.html">← Volver al Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Privacidad</a>
+    </nav>
+
+    <main class="container">
+        <article class="post-detail">
+            <div class="tags">
+                <span class="badge badge-cpu">Aceleración HW</span>
+                <span class="badge badge-adb">ADB / Shell</span>
+                <span class="badge badge-fps">120 FPS Target</span>
+            </div>
+
+            <h2>Comandos setprop para Forzar Aceleración GPU y Liberar CPU</h2>
+            <p class="meta">Publicado por RendimientoTech | Optimización de Renderizado Gráfico</p>
+
+            <div class="alert-box warning">
+                ⚠️ <strong>Nota:</strong> En juegos pesados dependientes del procesador (CPU-bound), delegar las tareas de renderizado 2D/3D a la GPU reduce la carga de procesamiento y evita tirones de micro-stuttering.
+            </div>
+
+            <h3>1. Forzar procesamiento gráfico por Hardware (HW composition)</h3>
+            <p>Desactiva el renderizado por software en la CPU y delega la composición de capas al chip gráfico de forma permanente durante la sesión:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Forzar aceleracion por hardware y renderizado de la UI
+setprop debug.sf.hw 1
+setprop debug.egl.hw 1
+setprop persist.sys.ui.hw true
+setprop video.accelerate.hw 1</code></pre>
+            </div>
+
+            <h3>2. Reducción de profundidad de color en texturas livianas</h3>
+            <p>Reduce el ancho de banda del canal alfa para acelerar la tasa de cuadros por segundo sin perder calidad de juego visible:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Desactivar tramado innecesario y usar renderizado de 16-bit
+setprop persist.sys.use_16bpp_alpha 1
+setprop persist.sys.use_dithering 0</code></pre>
+            </div>
+
+            <h3>3. Resumen de parámetros de aceleración GPU</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Propiedad (setprop)</th>
+                            <th>Valor</th>
+                            <th>Función Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>debug.sf.hw</code></td>
+                            <td><code>1</code></td>
+                            <td>Aceleración por hardware forzada mediante SurfaceFlinger</td>
+                        </tr>
+                        <tr>
+                            <td><code>video.accelerate.hw</code></td>
+                            <td><code>1</code></td>
+                            <td>Renderizado acelerado por motor GPU de video</td>
+                        </tr>
+                        <tr>
+                            <td><code>persist.sys.use_16bpp_alpha</code></td>
+                            <td><code>1</code></td>
+                            <td>Optimización de memoria VRAM e hilos de procesamiento</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box info">
+                💡 <strong>Consejo técnico:</strong> Estos parámetros reducen el consumo de uso del procesador principal entre un 15% y un 25%, permitiendo que las frecuencias de los núcleos de rendimiento se mantengan estables.
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

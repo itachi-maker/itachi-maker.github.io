@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estabilidad de FPS y Control Térmico - RendimientoTech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>RendimientoTech</h1>
+        <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
+    </header>
+
+    <nav>
+        <a href="index.html">← Volver al Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Privacidad</a>
+    </nav>
+
+    <main class="container">
+        <article class="post-detail">
+            <div class="tags">
+                <span class="badge badge-cpu">CPU Stability</span>
+                <span class="badge badge-fps">120 FPS Target</span>
+            </div>
+
+            <h2>Mantenimiento de FPS Estables y Mitigación de Thermal Throttling</h2>
+            <p class="meta">Publicado por RendimientoTech | Rendimiento Extremo en Gaming</p>
+
+            <div class="alert-box warning">
+                ⚠️ <strong>Diagnóstico:</strong> El estrangulamiento térmico ocurre cuando el sistema reduce la frecuencia de los núcleos del procesador al detectar alta temperatura en caídas de zona con alta densidad de jugadores.
+            </div>
+
+            <h3>1. Priorización de rendimiento sobre ahorro de batería</h3>
+            <p>Desactiva los modos de ahorro del kernel e impone máxima frecuencia de reloj en los hilos de juego activos:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Ajustar modo de rendimiento de energia y tuning de CPU
+setprop debug.performance.tuning 1
+setprop persist.sys.nv.power.mode 2
+setprop ro.config.sdk_light_control true</code></pre>
+            </div>
+
+            <h3>2. Control de procesos en segundo plano y doze mode</h3>
+            <p>Evita que aplicaciones secundarias consuman ciclos de reloj en la CPU mientras se ejecuta una partida competitiva:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Restringir actividades secundarias en memoria RAM
+cmd appops set com.google.android.gms RUN_IN_BACKGROUND ignore
+dumpsys deviceidle whitelist +com.dts.freefireth</code></pre>
+            </div>
+
+            <h3>3. Matriz de estabilidad de cuadros (FPS Drops)</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Causa del Tirón (Lag)</th>
+                            <th>Parámetro / Solución</th>
+                            <th>Resultado Esperado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Caída de frecuencia CPU por temperatura</td>
+                            <td><code>debug.performance.tuning 1</code></td>
+                            <td>Frecuencias de reloj más consistentes</td>
+                        </tr>
+                        <tr>
+                            <td>Interrupción por servicios de fondo</td>
+                            <td><code>appops / deviceidle</code></td>
+                            <td>Cero interrupciones de hilos en la CPU</td>
+                        </tr>
+                        <tr>
+                            <td>Acumulación de buffer en pantalla</td>
+                            <td><code>setprop debug.sf.hw 1</code></td>
+                            <td>Flujo constante de 90 a 120 FPS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box info">
+                💡 <strong>Recomendación gamer:</strong> Mantener la pantalla limpia y sin fundas protectoras térmicas ayuda a disipar el calor generado por el SOC sin necesidad de forzar coolers externos.
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
