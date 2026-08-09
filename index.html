@@ -1,9 +1,10 @@
+cat << 'EOF' > index.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RendimientoTech - Guías de Optimización</title>
+    <title>RendimientoTech - Optimización de Android y Gaming</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,20 +20,50 @@
         <a href="privacidad.html">Privacidad</a>
     </nav>
 
-    <main class="contenedor">
-        <section class="articulos">
-            <article class="tarjeta-articulo">
-                <h2>Cómo optimizar la memoria RAM en Android para juegos</h2>
-                <p>Descubre los mejores ajustes del sistema para liberar recursos del procesador y evitar tirones en tus partidas.</p>
-                <a href="articulo1.html" class="boton-leer">Leer guía completa</a>
-            </article>
+    <main class="container">
+        <section class="hero">
+            <h2>Guías y Modificaciones de Alto Rendimiento</h2>
+            <p>Configuraciones ADB, comandos Shell, tweaks de CPU/RAM y optimizaciones para lograr máxima fluidez en juegos.</p>
+        </section>
+
+        <section class="posts-grid">
+            <!-- Tarjeta 1: Artículo Principal -->
+            <div class="card">
+                <div class="tags">
+                    <span class="badge badge-cpu">CPU & RAM</span>
+                    <span class="badge badge-fps">120 FPS</span>
+                </div>
+                <h3>Cómo optimizar la memoria RAM y CPU en Android para juegos</h3>
+                <p>Descubre los mejores ajustes del sistema, parametros setprop y control del LMK para liberar recursos del procesador y evitar tirones en tus partidas.</p>
+                <a href="articulo1.html" class="btn">Leer guía completa</a>
+            </div>
+
+            <!-- Tarjeta 2: Próxima guía -->
+            <div class="card">
+                <div class="tags">
+                    <span class="badge badge-adb">ADB / Touch</span>
+                </div>
+                <h3>Reducción del Input Lag y respuesta táctil al máximo</h3>
+                <p>Ajustes de sensibilidad, escala de presión y tasa de respuesta táctil para mejorar la precisión en juegos competitivos.</p>
+                <a href="#" class="btn btn-secondary">Próximamente</a>
+            </div>
+
+            <!-- Tarjeta 3: Próxima guía -->
+            <div class="card">
+                <div class="tags">
+                    <span class="badge badge-cpu">Aceleración HW</span>
+                </div>
+                <h3>Comandos setprop para forzar renderizado por GPU</h3>
+                <p>Aprende a delegar la carga gráfica directamente al procesador para liberar la CPU en dispositivos de gama media y baja.</p>
+                <a href="#" class="btn btn-secondary">Próximamente</a>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 RendimientoTech. Todos los derechos reservados.</p>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
     </footer>
 
 </body>
 </html>
-
+EOF

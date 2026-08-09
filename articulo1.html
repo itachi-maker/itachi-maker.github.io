@@ -1,9 +1,10 @@
+cat << 'EOF' > articulo1.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cómo optimizar la memoria RAM en Android - RendimientoTech</title>
+    <title>Optimización de RAM y CPU en Android - RendimientoTech</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,30 +15,93 @@
     </header>
 
     <nav>
-        <a href="index.html">Inicio</a>
+        <a href="index.html">← Volver al Inicio</a>
         <a href="contacto.html">Contacto</a>
         <a href="privacidad.html">Privacidad</a>
     </nav>
 
-    <main class="contenedor">
-        <article class="tarjeta-articulo">
-            <h2>Cómo optimizar la memoria RAM en Android para juegos</h2>
-            <p>El rendimiento en dispositivos móviles depende directamente de la gestión de memoria RAM y los procesos en segundo plano. Cuando ejecutas un videojuego exigente, el sistema operativo compite por los recursos de la CPU y la memoria con las aplicaciones abiertas previamente.</p>
-            
-            <h3>1. Cerrar procesos en segundo plano y limitar la ejecución</h3>
-            <p>Para garantizar que el juego obtenga la mayor prioridad de procesamiento, es fundamental cerrar aplicaciones pesadas como redes sociales antes de iniciar la sesión de juego. Android asigna prioridades de uso, pero limitar la actividad en segundo plano libera megabytes de RAM indispensables.</p>
+    <main class="container">
+        <article class="post-detail">
+            <div class="tags">
+                <span class="badge badge-cpu">CPU & RAM</span>
+                <span class="badge badge-adb">ADB / Shell</span>
+                <span class="badge badge-fps">120 FPS Target</span>
+            </div>
 
-            <h3>2. Desactivar animaciones del sistema</h3>
-            <p>Desde las Opciones de Desarrollador, reducir o desactivar la escala de animación de ventana, transición y duración del animador ayuda a que la interfaz responda más rápido al toque sin consumir ciclos innecesarios del procesador.</p>
+            <h2>Guía Completa: Optimización de RAM y Procesador para Juegos</h2>
+            <p class="meta">Publicado por RendimientoTech | Actualizado para Android 10+</p>
 
-            <h3>3. Limpieza de memoria caché sin aplicaciones externas</h3>
-            <p>Evita usar herramientas de terceros que prometen "acelerar el teléfono", ya que suelen consumir recursos adicionales. La mejor alternativa es borrar manualmente la caché de aplicaciones pesadas desde los ajustes de almacenamiento del sistema.</p>
+            <div class="alert-box warning">
+                ⚠️ <strong>Nota previa:</strong> Algunos de estos parámetros requieren permisos mediante ADB en PC o aplicaciones de terminal local (como Termux/Shizuku).
+            </div>
+
+            <h3>1. Liberación de memoria y ajuste del LMK (Low Memory Killer)</h3>
+            <p>Para evitar cierres repentinos en segundo plano y mantener los hilos del juego estables en la CPU, ajustamos los límites de memoria virtual:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Desactivar compresión agresiva de ZRAM y forzar renderizado HW
+setprop debug.sf.hw 1
+setprop debug.egl.hw 1
+setprop persist.sys.ui.hw true</code></pre>
+            </div>
+
+            <h3>2. Optimización de latencia en la respuesta táctil</h3>
+            <p>Reduce el retraso de entrada (input lag) para lograr una respuesta inmediata en pantalla:</p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span>Terminal / ADB Shell</span>
+                </div>
+                <pre><code># Reducción de latencia en la tasa de muestreo táctil
+setprop touch.pressure.scale 0.001
+setprop pointer_location 0
+setprop debug.performance.tuning 1</code></pre>
+            </div>
+
+            <h3>3. Tabla de parámetros de rendimiento recomendados</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Propiedad (setprop)</th>
+                            <th>Valor Recomendado</th>
+                            <th>Efecto Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>debug.sf.hw</code></td>
+                            <td><code>1</code></td>
+                            <td>Aceleración por hardware forzada</td>
+                        </tr>
+                        <tr>
+                            <td><code>persist.sys.use_16bpp_alpha</code></td>
+                            <td><code>1</code></td>
+                            <td>Reduce la carga en la memoria gráfica</td>
+                        </tr>
+                        <tr>
+                            <td><code>video.accelerate.hw</code></td>
+                            <td><code>1</code></td>
+                            <td>Mayor fluidez de renderizado por GPU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box info">
+                💡 <strong>Consejo de rendimiento:</strong> Para mantener los FPS estables, asegurate de cerrar aplicaciones que utilicen superposiciones de pantalla (overlays) durante las partidas.
+            </div>
+
         </article>
     </main>
 
     <footer>
-        <p>&copy; 2026 RendimientoTech. Todos los derechos reservados.</p>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
     </footer>
 
 </body>
 </html>
+EOF

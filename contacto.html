@@ -1,3 +1,4 @@
+cat << 'EOF' > contacto.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,22 +15,37 @@
     </header>
 
     <nav>
-        <a href="index.html">Inicio</a>
+        <a href="index.html">← Volver al Inicio</a>
         <a href="contacto.html">Contacto</a>
         <a href="privacidad.html">Privacidad</a>
     </nav>
 
-    <main class="contenedor">
-        <section class="tarjeta-articulo">
-            <h2>Contacto</h2>
-            <p>¿Tenés preguntas, sugerencias o consultas sobre nuestras guías de optimización? Ponete en contacto con nosotros.</p>
-            <p><strong>Correo electrónico:</strong> contacto@rendimientotech.com</p>
-        </section>
+    <main class="container">
+        <article class="post-detail">
+            <h2>Contacto Directo</h2>
+            <p>Si tenés dudas sobre las optimizaciones, consultas sobre comandos ADB o querés solicitar una guía personalizada, podés comunicarte por los siguientes medios:</p>
+
+            <div class="alert-box info">
+                📱 <strong>WhatsApp / Teléfono:</strong> <a href="https://wa.me/50576822182" target="_blank" style="color: #0c5460; font-weight: bold; text-decoration: underline;">+505 76822182</a>
+            </div>
+
+            <div class="alert-box info">
+                📩 <strong>Correo Electrónico:</strong> rendimientotech.contact@gmail.com
+            </div>
+
+            <h3>Comunidad y Contenido</h3>
+            <p>Seguinos en nuestras plataformas para acceder a pruebas de rendimiento, scripts y configuraciones recomendadas:</p>
+            <ul>
+                <li><strong>TikTok:</strong> Videos de optimizaciones en tiempo real y pruebas de fluidez en juegos.</li>
+                <li><strong>YouTube:</strong> Tutoriales detallados de configuración del sistema y ADB.</li>
+            </ul>
+        </article>
     </main>
 
     <footer>
-        <p>&copy; 2026 RendimientoTech. Todos los derechos reservados.</p>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
     </footer>
 
 </body>
 </html>
+EOF
