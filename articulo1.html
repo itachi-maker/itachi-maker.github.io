@@ -1,11 +1,11 @@
-cat << 'EOF' > articulo1.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimización de RAM y CPU en Android - RendimientoTech</title>
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <title>Optimización de RAM y Procesador (CPU) - RendimientoTech</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
@@ -15,86 +15,61 @@ cat << 'EOF' > articulo1.html
     </header>
 
     <nav>
-        <a href="index.html">← Volver al Inicio</a>
+        <a href="index.html">Inicio</a>
+        <a href="herramientas.html">Generador ADB</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="faq.html">FAQ</a>
         <a href="contacto.html">Contacto</a>
-        <a href="privacidad.html">Privacidad</a>
     </nav>
 
     <main class="container">
         <article class="post-detail">
-            <div class="tags">
-                <span class="badge badge-cpu">CPU & RAM</span>
-                <span class="badge badge-adb">ADB / Shell</span>
-                <span class="badge badge-fps">120 FPS Target</span>
-            </div>
+            <h2>Optimización de Memoria RAM y Procesador para Juegos</h2>
+            <p class="meta">Publicado por RendimientoTech Core • Especialidad: Eficiencia de CPU Móvil</p>
 
-            <h2>Guía Completa: Optimización de RAM y Procesador para Juegos</h2>
-            <p class="meta">Publicado por RendimientoTech | Actualizado para Android 10+</p>
+            <p>En dispositivos donde el juego depende masivamente de los ciclos de reloj del procesador (CPU Bound), la acumulación de servicios en segundo plano y los cuellos de botella en la memoria provocan micro-tirones (stuttering). En esta guía configuramos el sistema para priorizar los hilos del juego.</p>
 
-            <div class="alert-box warning">
-                ⚠️ <strong>Nota previa:</strong> Algunos de estos parámetros requieren permisos mediante ADB en PC o aplicaciones de terminal local (como Termux/Shizuku).
-            </div>
-
-            <h3>1. Liberación de memoria y ajuste del LMK (Low Memory Killer)</h3>
-            <p>Para evitar cierres repentinos en segundo plano y mantener los hilos del juego estables en la CPU, ajustamos los límites de memoria virtual:</p>
+            <h3>1. Priorización de Hilos UI en CPU</h3>
+            <p>Ejecutá los siguientes parámetros mediante ADB Shell para asignar prioridad en el planificador de tareas (Scheduler) a la interfaz de usuario y al renderizado del juego:</p>
 
             <div class="code-block">
                 <div class="code-header">
-                    <span>Terminal / ADB Shell</span>
+                    <span>Shell Script (CPU Priority)</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
                 </div>
-                <pre><code># Desactivar compresión agresiva de ZRAM y forzar renderizado HW
-setprop debug.sf.hw 1
-setprop debug.egl.hw 1
-setprop persist.sys.ui.hw true</code></pre>
+                <pre><code>setprop sys.use_fifo_ui 1
+setprop debug.renderengine.backend skiavk
+setprop persist.sys.purgeable_assets 1</code></pre>
             </div>
 
-            <h3>2. Optimización de latencia en la respuesta táctil</h3>
-            <p>Reduce el retraso de entrada (input lag) para lograr una respuesta inmediata en pantalla:</p>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span>Terminal / ADB Shell</span>
-                </div>
-                <pre><code># Reducción de latencia en la tasa de muestreo táctil
-setprop touch.pressure.scale 0.001
-setprop pointer_location 0
-setprop debug.performance.tuning 1</code></pre>
-            </div>
-
-            <h3>3. Tabla de parámetros de rendimiento recomendados</h3>
+            <h3>2. Tabla de Configuración de Parámetros</h3>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>Propiedad (setprop)</th>
-                            <th>Valor Recomendado</th>
-                            <th>Efecto Principal</th>
+                            <th>Propiedad setprop</th>
+                            <th>Valor Recom.</th>
+                            <th>Efecto en el Procesador</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><code>debug.sf.hw</code></td>
+                            <td><code>sys.use_fifo_ui</code></td>
                             <td><code>1</code></td>
-                            <td>Aceleración por hardware forzada</td>
+                            <td>Fuerza el uso de colas First-In-First-Out para evitar retrasos en hilos críticos.</td>
                         </tr>
                         <tr>
-                            <td><code>persist.sys.use_16bpp_alpha</code></td>
-                            <td><code>1</code></td>
-                            <td>Reduce la carga en la memoria gráfica</td>
-                        </tr>
-                        <tr>
-                            <td><code>video.accelerate.hw</code></td>
-                            <td><code>1</code></td>
-                            <td>Mayor fluidez de renderizado por GPU</td>
+                            <td><code>debug.renderengine.backend</code></td>
+                            <td><code>skiavk</code></td>
+                            <td>Utiliza la API Vulkan para renderizar componentes gráficos liberando la CPU.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="alert-box info">
-                💡 <strong>Consejo de rendimiento:</strong> Para mantener los FPS estables, asegurate de cerrar aplicaciones que utilicen superposiciones de pantalla (overlays) durante las partidas.
+                📌 <strong>Nota Técnica:</strong> Para automatizar estas variables en cada reinicio, podés compilar tu paquete personalizado desde la pestaña de <a href="herramientas.html" style="color:var(--cyan-neon);">Generador ADB</a>.
             </div>
-
         </article>
     </main>
 
@@ -102,7 +77,6 @@ setprop debug.performance.tuning 1</code></pre>
         <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
     </footer>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-EOF

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Scripts ADB & Shell - RendimientoTech</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="style.css?v=4.0">
+    <style>
+        .generator-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+        }
+        .option-group {
+            margin-bottom: 20px;
+        }
+        .option-group label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            transition: background 0.2s;
+        }
+        .option-group label:hover {
+            background: rgba(0, 240, 255, 0.08);
+        }
+        .option-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--cyan-neon);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>RendimientoTech</h1>
+        <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="herramientas.html" class="active">Generador ADB</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <div class="status-pill">
+                <span class="status-dot"></span> Script Builder v1.0
+            </div>
+            <h2>Generador Personalizado de Modificaciones ADB</h2>
+            <p>Selecciona los parámetros de optimización que deseas aplicar a tu dispositivo para construir un script ejecutarle en Termux, LADB o PC.</p>
+        </section>
+
+        <div class="generator-card">
+            <h3>1. Configura tus Módulos de Rendimiento</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Marca las casillas según el enfoque de optimización que requieras:</p>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="opt-touch" checked>
+                    <span><strong>Respuesta Táctil Extrema:</strong> Reduce el tiempo de filtrado táctil y ajusta el sensor para máxima precisión en la mira.</span>
+                </label>
+            </div>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="opt-cpu" checked>
+                    <span><strong>Delegación HW & Liberación de CPU:</strong> Fuerza la aceleración Skia por GPU para restar carga al procesador.</span>
+                </label>
+            </div>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="opt-ram">
+                    <span><strong>Gestión Agresiva de RAM:</strong> Fuerza el purgado de assets inactivos y activa subrutinas de hilos UI prioritarios.</span>
+                </label>
+            </div>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="opt-fps">
+                    <span><strong>Estabilización 120 FPS Target:</strong> Desactiva la composición por software y fija el búfer de renderizado rápido.</span>
+                </label>
+            </div>
+
+            <button class="btn" style="margin-top: 15px;" onclick="generateScript()">Generar Script Personalizado</button>
+
+            <div style="margin-top: 30px;">
+                <h3>2. Código Resultante</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>ADB / Termux Shell Output</span>
+                        <button class="copy-btn" onclick="copyGeneratedCode()">Copiar Código</button>
+                    </div>
+                    <pre><code id="script-output"># Selecciona tus opciones arriba y presiona "Generar Script Personalizado"</code></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function generateScript() {
+            let output = "#!/system/bin/sh\n# Script Generado por RendimientoTech Core\n# Ejecutar vía ADB Shell, Termux o LADB\n\n";
+            
+            if(document.getElementById('opt-touch').checked) {
+                output += "# === OPTIMIZACIÓN TÁCTIL & INPUT LAG ===\n";
+                output += "setprop touch.pressure.scale 0.001\n";
+                output += "setprop touch.size.calibration geometric\n";
+                output += "setprop touch.pressure.calibration amplitude\n";
+                output += "settings put secure long_press_timeout 250\n\n";
+            }
+
+            if(document.getElementById('opt-cpu').checked) {
+                output += "# === DESCARGA DE TRABAJO EN CPU & ACELERACIÓN GPU ===\n";
+                output += "setprop debug.sf.hw 1\n";
+                output += "setprop debug.egl.hw 1\n";
+                output += "setprop debug.renderengine.backend skiavk\n";
+                output += "setprop sys.use_fifo_ui 1\n\n";
+            }
+
+            if(document.getElementById('opt-ram').checked) {
+                output += "# === GESTIÓN DE MEMORIA Y RAM ===\n";
+                output += "setprop persist.sys.purgeable_assets 1\n";
+                output += "setprop dalvik.vm.dex2oat-flags filter=speed\n\n";
+            }
+
+            if(document.getElementById('opt-fps').checked) {
+                output += "# === ESTABILIDAD DE FPS ===\n";
+                output += "setprop persist.sys.composition.type gpu\n";
+                output += "setprop debug.performance.tuning 1\n";
+            }
+
+            output += "\necho '[RendimientoTech] ¡Optimizaciones aplicadas exitosamente!'";
+            document.getElementById('script-output').innerText = output;
+        }
+
+        function copyGeneratedCode() {
+            const code = document.getElementById('script-output').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = "¡Copiado!";
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = "Copiar Código";
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
