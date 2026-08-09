@@ -496,3 +496,25 @@ footer a {
     color: var(--cyan-neon);
     text-decoration: none;
 }
+
+/* Ajuste responsivo del banner de cookies para móviles */
+@media (max-width: 600px) {
+    .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px 18px;
+        gap: 14px;
+    }
+    .cookie-banner p {
+        font-size: 0.82rem;
+        line-height: 1.4;
+    }
+    .cookie-btns {
+        width: 100%;
+        justify-content: center;
+    }
+    .btn-cookie-accept, .btn-cookie-decline {
+        flex: 1;
+        padding: 10px 12px;
+    }
+}
