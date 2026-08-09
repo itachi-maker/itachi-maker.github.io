@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes (FAQ) - RendimientoTech</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="style.css?v=3.0">
+</head>
+<body>
+
+    <header>
+        <h1>RendimientoTech</h1>
+        <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="faq.html" class="active">FAQ</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Privacidad</a>
+    </nav>
+
+    <main class="container">
+        <article class="post-detail">
+            <h2>Preguntas Frecuentes (FAQ)</h2>
+            <p class="meta">Respuestas directas sobre la ejecución de comandos ADB y optimizaciones</p>
+
+            <div class="faq-item">
+                <h3>1. ¿Es necesario ser usuario Root para aplicar estas optimizaciones?</h3>
+                <p>No. Todas las guías y parámetros <code>setprop</code> publicados en RendimientoTech se ejecutan mediante la depuración ADB (usando PC, LADB, Shizuku o Termux) sin necesidad de modificar el bootloader o hacer root al dispositivo.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>2. ¿Existe riesgo de baneo en juegos competitivos como Free Fire?</h3>
+                <p>Absolutamente no. Las modificaciones no alteran los archivos ni el código de los juegos. Son comandos oficiales del sistema Android para gestionar el hardware y la sensibilidad táctil.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>3. ¿Se pierde la garantía del teléfono al usar ADB Shell?</h3>
+                <p>No. Los comandos ADB modifican propiedades temporales o persistentes del sistema operativo permitidas por el fabricante. Al reiniciar el teléfono o restablecerlo de fábrica, el dispositivo vuelve a su estado original.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>4. ¿Cómo revierto los cambios si no me gusta una configuración?</h3>
+                <p>Basta con reiniciar el dispositivo (la mayoría de variables `setprop` no persistentes se eliminan automáticamente) o ejecutar el comando inverso asignando el valor original por defecto (usualmente 0 o false).</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
