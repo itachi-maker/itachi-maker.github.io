@@ -67,39 +67,21 @@
 
             <!-- TARJETAS DE SELECCIÓN GAMER: ESTILO DE SENSIBILIDAD -->
             <div class="form-group">
-                <label>⚡ Estilo de Juego / Sensibilidad:</label>
-                <div class="option-grid" id="sensiGrid">
-                    <div class="option-card active" data-val="alta" onclick="selectCard('sensiGrid', this)">
-                        <span>🔥 ALTA</span>
-                        <small>Capa Roja / Rápida</small>
-                    </div>
-                    <div class="option-card" data-val="media" onclick="selectCard('sensiGrid', this)">
-                        <span>⚡ MEDIA</span>
-                        <small>Precisión + Control</small>
-                    </div>
-                    <div class="option-card" data-val="baja" onclick="selectCard('sensiGrid', this)">
-                        <span>🎯 BAJA</span>
-                        <small>Control / Sniper</small>
-                    </div>
-                </div>
-            </div>
+                <label for="estiloJuego" style="display:block; margin-top:12px; font-weight:bold;">⚡ Estilo de Juego / Sensibilidad:</label>
+<select id="estiloJuego">
+    <option value="alta">🔥 ALTA - Capa Roja / Rápida</option>
+    <option value="media" selected>⚡ MEDIA - Precisión + Control</option>
+    <option value="baja">🎯 BAJA - Control / Sniper</option>
+</select>
 
-            <!-- TARJETAS DE SELECCIÓN GAMER: MODO DPI -->
-            <div class="form-group">
-                <label>📐 Ajuste de DPI:</label>
-                <div class="option-grid two-col" id="dpiGrid">
-                    <div class="option-card active" data-val="con_dpi" onclick="selectCard('dpiGrid', this)">
-                        <span>📐 CON DPI</span>
-                        <small>Respuesta Máxima</small>
-                    </div>
-                    <div class="option-card" data-val="sin_dpi" onclick="selectCard('dpiGrid', this)">
-                        <span>📱 SIN DPI</span>
-                        <small>Fábrica Original</small>
-                    </div>
-                </div>
-            </div>
+<label for="ajusteDpi" style="display:block; margin-top:12px; font-weight:bold;">📐 Ajuste de DPI:</label>
+<select id="ajusteDpi">
+    <option value="con_dpi">📐 CON DPI - Respuesta Máxima</option>
+    <option value="sin_dpi" selected>📱 SIN DPI - Fábrica Original</option>
+</select>
 
-            <button class="btn-generate" onclick="generateSensi()">🚀 CALCULAR CONFIGURACIÓN PRO</button>
+
+<button class="btn-generate" onclick="generateSensi()">🚀 CALCULAR CONFIGURACIÓN PRO</button>
 
             <!-- RESULTADO -->
             <div id="sensiResult" class="sensi-result">
