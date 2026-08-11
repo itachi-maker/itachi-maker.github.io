@@ -83,7 +83,16 @@
 
 <button class="btn-generate" onclick="generateSensi()">🚀 CALCULAR CONFIGURACIÓN PRO</button>
 
-            <!-- RESULTADO -->
+            <!-- LOADER PRO ESTILO IA/VIP -->
+<div id="sensiLoader" style="display:none; text-align:center; padding:20px 15px; background:rgba(0, 242, 254, 0.05); border:1px solid rgba(0, 242, 254, 0.3); border-radius:14px; margin-top:20px; box-shadow:0 0 15px rgba(0,242,254,0.1);">
+    <div style="font-size:1.6em; margin-bottom:6px;">⚡</div>
+    <div id="loaderStatus" style="font-weight:900; font-size:0.82em; color:#00f2fe; text-transform:uppercase; letter-spacing:1px;">Iniciando Engine VIP...</div>
+    <div style="width:100%; background:#070d19; height:6px; border-radius:10px; margin-top:12px; overflow:hidden; border:1px solid #1e3050;">
+        <div id="loaderBar" style="width:0%; height:100%; background:linear-gradient(90deg, #00f2fe, #ff0055); transition:width 0.3s ease;"></div>
+    </div>
+</div>
+
+<!-- RESULTADO -->
             <div id="sensiResult" class="sensi-result">
                 <h3 style="margin:0; color:#fff; text-align:center; font-size:1.05em; letter-spacing:0.5px;">🔥 CONFIGURACIÓN CALCULADA</h3>
                 
@@ -351,48 +360,92 @@
         }
 
         function generateSensi() {
-            const brand = document.getElementById("deviceBrand").value;
-            const modelIndex = document.getElementById("deviceModel").value;
-            const sensiType = getSelectedVal("sensiGrid");
-            const dpiMode = getSelectedVal("dpiGrid");
+    const resultBox = document.getElementById("sensiResult");
+    const loaderBox = document.getElementById("sensiLoader");
+    const statusText = document.getElementById("loaderStatus");
+    const bar = document.getElementById("loaderBar");
 
-            const selectedDev = deviceData[brand][modelIndex];
-            let factor = selectedDev.factor;
+    if (loaderBox) {
+        resultBox.style.display = "none";
+        loaderBox.style.display = "block";
+        bar.style.width = "15%";
+        statusText.innerText = "⚡ Analizando Muestreo Táctil (Hz)...";
 
-            if (sensiType === "alta") factor *= 1.08;
-            if (sensiType === "media") factor *= 1.00;
-            if (sensiType === "baja") factor *= 0.90;
+        setTimeout(() => {
+            bar.style.width = "50%";
+            statusText.innerText = "🧠 Procesando Algoritmo IA 2026...";
+        }, 350);
 
-            let gen = Math.min(200, Math.round(188 * factor));
-            let red = Math.min(200, Math.round(182 * factor));
-            let m2x = Math.min(200, Math.round(186 * factor));
-            let m4x = Math.min(200, Math.round(180 * factor));
-            let awm = Math.min(200, Math.round(105 * (factor * 0.9)));
-            let cam = Math.min(200, Math.round(165 * factor));
+        setTimeout(() => {
+            bar.style.width = "85%";
+            statusText.innerText = "🔥 Calibrando Sensibilidad Capa Roja...";
+        }, 750);
 
-            let btn = "42%";
-            if (sensiType === "alta") btn = "38%";
-            if (sensiType === "media") btn = "44%";
-            if (sensiType === "baja") btn = "48%";
+        setTimeout(() => {
+            bar.style.width = "100%";
+            statusText.innerText = "✅ Perfil VIP Listo";
+            
+            calculateValues();
+            loaderBox.style.display = "none";
+            resultBox.style.display = "block";
+        }, 1200);
+    } else {
+        calculateValues();
+        resultBox.style.display = "block";
+    }
+}
 
-            let dpiText = "Original de Fábrica";
-            if (dpiMode === "con_dpi") {
-                dpiText = brand === "apple" ? "No requiere DPI en iOS" : selectedDev.baseDpi + " DPI";
-            }
+function calculateValues() {
+    const brand = document.getElementById("deviceBrand").value;
+    const modelIndex = document.getElementById("deviceModel").value;
+    
+    let sensiType = "media";
+    const estiloSelect = document.getElementById("estiloJuego");
+    if (estiloSelect) {
+        sensiType = estiloSelect.value;
+    }
 
-            document.getElementById("valGen").innerText = gen;
-            document.getElementById("valRed").innerText = red;
-            document.getElementById("val2x").innerText = m2x;
-            document.getElementById("val4x").innerText = m4x;
-            document.getElementById("valAwm").innerText = awm;
-            document.getElementById("valCam").innerText = cam;
+    let dpiMode = "sin_dpi";
+    const dpiSelect = document.getElementById("ajusteDpi");
+    if (dpiSelect) {
+        dpiMode = dpiSelect.value;
+    }
 
-            document.getElementById("valButton").innerText = btn;
-            document.getElementById("valDpi").innerText = dpiText;
-            document.getElementById("valHz").innerText = selectedDev.touchHz;
+    const selectedDev = deviceData[brand][modelIndex];
+    let factor = selectedDev.factor;
 
-            document.getElementById("sensiResult").style.display = "block";
-        }
+    if (sensiType === "alta") factor *= 1.08;
+    if (sensiType === "media") factor *= 1.00;
+    if (sensiType === "baja") factor *= 0.90;
+
+    let gen = Math.min(200, Math.round(188 * factor));
+    let red = Math.min(200, Math.round(182 * factor));
+    let m2x = Math.min(200, Math.round(186 * factor));
+    let m4x = Math.min(200, Math.round(180 * factor));
+    let awm = Math.min(200, Math.round(105 * (factor * 0.9)));
+    let cam = Math.min(200, Math.round(165 * factor));
+
+    let btn = "42%";
+    if (sensiType === "alta") btn = "38%";
+    if (sensiType === "media") btn = "44%";
+    if (sensiType === "baja") btn = "48%";
+
+    let dpiText = "Original de Fábrica";
+    if (dpiMode === "con_dpi") {
+        dpiText = brand === "apple" ? "No requiere DPI en iOS" : selectedDev.baseDpi + " DPI";
+    }
+
+    document.getElementById("valGen").innerText = gen;
+    document.getElementById("valRed").innerText = red;
+    document.getElementById("val2x").innerText = m2x;
+    document.getElementById("val4x").innerText = m4x;
+    document.getElementById("valAwm").innerText = awm;
+    document.getElementById("valCam").innerText = cam;
+
+    document.getElementById("valButton").innerText = btn;
+    document.getElementById("valDpi").innerText = dpiText;
+    document.getElementById("valHz").innerText = selectedDev.touchHz;
+}
 
         function copyFullSensi(btn) {
             const brandText = document.getElementById("deviceBrand").options[document.getElementById("deviceBrand").selectedIndex].text;
