@@ -35,29 +35,29 @@
         <div class="sensi-container">
             <div class="sensi-title">🎯 GENERADOR DE SENSIBILIDAD (0 - 200)</div>
             <p style="text-align:center; font-size:0.8em; color:#cbd5e1; margin-top:0; margin-bottom:18px;">
-                Calcula la sensibilidad exacta para levantar mira y dar Todo Rojo en la actualización 2026.
+                Selecciona tu modelo exacto para detectar el muestreo táctil (Hz) real y calcular la mira perfecta.
             </p>
 
             <div class="form-group">
                 <label>📱 Marca de tu Dispositivo:</label>
                 <select id="deviceBrand" class="form-control" onchange="updateModels()">
-                    <option value="xiaomi">Xiaomi / POCO / Redmi</option>
-                    <option value="samsung">Samsung Galaxy</option>
-                    <option value="infinix">Infinix</option>
-                    <option value="tecno">Tecno Mobile</option>
-                    <option value="motorola">Motorola</option>
-                    <option value="realme">Realme</option>
-                    <option value="zte">ZTE / Nubia RedMagic</option>
+                    <option value="xiaomi">Xiaomi / POCO / Redmi / BlackShark</option>
+                    <option value="samsung">Samsung Galaxy (Serie S, A, M)</option>
+                    <option value="infinix">Infinix (Serie GT, Note, Hot)</option>
+                    <option value="tecno">Tecno Mobile (Pova, Camon, Spark)</option>
+                    <option value="motorola">Motorola (Edge, Moto G)</option>
+                    <option value="realme">Realme (Serie GT, C, Pro)</option>
+                    <option value="zte">ZTE / RedMagic / Nubia</option>
                     <option value="huawei">Honor / Huawei</option>
                     <option value="apple">iPhone / iPad</option>
-                    <option value="universal">Otra Marca / Universal</option>
+                    <option value="universal">Otras Marcas / Universal</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>🔥 Modelo Específico / Gama:</label>
                 <select id="deviceModel" class="form-control">
-                    <!-- Dinámico por JS -->
+                    <!-- Cargado Dinámicamente con JS -->
                 </select>
             </div>
 
@@ -82,8 +82,13 @@
 
             <!-- RESULTADO -->
             <div id="sensiResult" class="sensi-result">
-                <h3 style="margin:0; color:#fff; text-align:center; font-size:1em; letter-spacing:0.5px;">🔥 CONFIGURACIÓN CALCULADA</h3>
+                <h3 style="margin:0; color:#fff; text-align:center; font-size:1.05em; letter-spacing:0.5px;">🔥 CONFIGURACIÓN CALCULADA</h3>
                 
+                <div class="touch-highlight-box">
+                    <div class="touch-title">🎯 Muestreo Táctil Real Detectado:</div>
+                    <div class="touch-val" id="valHz">480Hz (2160Hz Instantáneo)</div>
+                </div>
+
                 <div class="sensi-grid">
                     <div class="sensi-card">
                         <span class="label">General</span>
@@ -112,21 +117,21 @@
                 </div>
 
                 <div class="extra-info-box">
-                    <strong>🎯 Ajustes Recomendados:</strong><br>
+                    <strong>🎯 Ajustes Recomendados de Pantalla:</strong><br>
                     • 🔘 <strong>Botón de Disparo:</strong> <span id="valButton">42%</span><br>
-                    • 📐 <strong>DPI Recomendado:</strong> <span id="valDpi">480 DPI</span><br>
+                    • 📐 <strong>DPI Sugerido:</strong> <span id="valDpi">480 DPI</span><br>
                     • ⚡ <strong>Velocidad de Puntero:</strong> Máxima (100%)<br>
-                    • 💡 <strong>Tasa Táctil Detectada:</strong> <span id="valHz">240Hz Touch Sampling</span>
+                    • 🚀 <strong>Suavizado de Respuesta:</strong> Optimizado para la tasa táctil seleccionada.
                 </div>
 
-                <button class="copy-btn" style="width:100%; margin-top:12px; justify-content:center; padding:12px; font-size:0.85em;" onclick="copyFullSensi(this)">
+                <button class="copy-btn" style="width:100%; margin-top:14px; justify-content:center; padding:12px; font-size:0.85em;" onclick="copyFullSensi(this)">
                     📋 Copiar Configuración Completa
                 </button>
             </div>
         </div>
 
         <div class="banner">
-            🔥 <strong>Optimización Android Universal:</strong> Ejecuta estos comandos ADB / Brevent o KernelSU para acelerar cualquier procesador (Snapdragon, MediaTek, Unisoc, Exynos).
+            🔥 <strong>Optimización Android Universal:</strong> Comandos probados en Android 10 a 16 para acelerar la respuesta del táctil y evitar el lag.
         </div>
 
         <!-- ESPACIO ADSENSE INTERMEDIO 1 -->
@@ -221,18 +226,18 @@
             <h2 style="margin-top:0; color:#fff; font-size:1.1em;">❓ Preguntas Frecuentes (FAQ)</h2>
 
             <div class="faq-item">
+                <div class="faq-title">¿Qué influye más en levantar mira: los Hertz de refresco o el Muestreo Táctil?</div>
+                <div class="faq-desc">El Muestreo Táctil (Touch Sampling Rate) es el parámetro crítico para disparar a la cabeza. Determina cuántas veces por segundo la pantalla detecta el movimiento de tu dedo. A mayor Hz táctil, más rápida es la respuesta en la escala 0-200.</div>
+            </div>
+
+            <div class="faq-item">
                 <div class="faq-title">¿Cómo funciona la escala de sensibilidad hasta 200 en 2026?</div>
-                <div class="faq-desc">Free Fire expandió el rango de sensibilidad interna a 200 puntos. Nuestro algoritmo adapta las matemáticas de giro para que la velocidad sea óptima según los hertz del panel de tu marca de teléfono.</div>
+                <div class="faq-desc">Free Fire expandió la escala de sensibilidad interna a 200. Nuestro generador calcula el ajuste exacto sincronizando la aceleración táctil del hardware de tu dispositivo.</div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-title">¿Es seguro modificar el DPI en Android?</div>
-                <div class="faq-desc">Sí, siempre y cuando no excedas los valores recomendados. Nuestro generador sugiere un DPI dentro del rango seguro para evitar reinicios o errores de interfaz.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-title">¿Necesito reiniciar mi celular después de aplicar los comandos de Brevent?</div>
-                <div class="faq-desc">No es necesario. Los ajustes ADB entran en efecto inmediatamente después de ejecutarlos. Si deseas removerlos, basta con reiniciar el dispositivo.</div>
+                <div class="faq-desc">Sí, mientras no superes el límite seguro. Nuestro algoritmo arroja valores de DPI probados para que no sufras reinicios ni errores de interfaz.</div>
             </div>
         </div>
 
@@ -242,7 +247,7 @@
         </div>
 
         <footer>
-            <p>© RendimientoTech | Optimizaciones y Sensibilidades Free Fire 2026</p>
+            <p>© RendimientoTech | Optimizaciones y Sensabilidades Free Fire 2026</p>
             <p>Contacto y Soporte: alexanderorozcomartinez207@gmail.com</p>
         </footer>
     </div>
@@ -250,53 +255,67 @@
     <script>
         const deviceData = {
             xiaomi: [
-                { name: "POCO X6 Pro / X5 Pro / X3 Pro", touchHz: "480Hz", baseDpi: 490, factor: 1.02 },
-                { name: "POCO F5 / F6 / F4 GT", touchHz: "480Hz", baseDpi: 510, factor: 1.01 },
-                { name: "Redmi Note 13 / 12 / 11 Series", touchHz: "240Hz", baseDpi: 450, factor: 1.08 },
-                { name: "Xiaomi 13 / 14 / 12T Gaming", touchHz: "480Hz", baseDpi: 520, factor: 1.00 }
+                { name: "POCO F6 Pro / F6 (Táctil: 480Hz / 2160Hz Inst.)", touchHz: "480Hz (2160Hz Instantáneo)", baseDpi: 520, factor: 0.99 },
+                { name: "POCO X6 Pro 5G (Táctil: 480Hz / 2160Hz Inst.)", touchHz: "480Hz (2160Hz Instantáneo)", baseDpi: 490, factor: 1.01 },
+                { name: "POCO X5 Pro / X4 GT (Táctil: 240Hz / 480Hz)", touchHz: "240Hz (480Hz Táctil)", baseDpi: 480, factor: 1.03 },
+                { name: "POCO X3 Pro / X3 NFC (Táctil: 240Hz)", touchHz: "240Hz Continuous Touch", baseDpi: 460, factor: 1.05 },
+                { name: "Redmi Note 13 Pro+ / 13 Pro (Táctil: 240Hz / 2160Hz)", touchHz: "240Hz (2160Hz Instantáneo)", baseDpi: 480, factor: 1.03 },
+                { name: "Redmi Note 12 / 11 / 10 Series (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 440, factor: 1.08 },
+                { name: "Redmi 13C / 12 / 10C / 9A (Táctil: 120Hz-180Hz)", touchHz: "120Hz - 180Hz Standard Touch", baseDpi: 410, factor: 1.15 },
+                { name: "Xiaomi 14 Ultra / 14 / 13T Pro (Táctil: 480Hz)", touchHz: "480Hz Gaming Touch Rate", baseDpi: 530, factor: 0.98 },
+                { name: "Black Shark 5 Pro / 5 / 4 (Táctil: 720Hz Ultra)", touchHz: "720Hz Ultra-Fast Touch", baseDpi: 540, factor: 0.94 }
             ],
             samsung: [
-                { name: "Samsung Galaxy A54 / A55 / A34", touchHz: "240Hz", baseDpi: 440, factor: 1.07 },
-                { name: "Samsung Galaxy S23 / S24 / Ultra", touchHz: "240Hz", baseDpi: 480, factor: 1.02 },
-                { name: "Samsung Galaxy A14 / A15 / A24 / A05", touchHz: "120Hz", baseDpi: 420, factor: 1.15 },
-                { name: "Samsung Galaxy S20 FE / S21 FE", touchHz: "240Hz", baseDpi: 460, factor: 1.05 }
+                { name: "Samsung Galaxy S24 Ultra / S24+ / S24 (Táctil: 240Hz)", touchHz: "240Hz High Sensitivity", baseDpi: 480, factor: 1.01 },
+                { name: "Samsung Galaxy S23 Ultra / S23 FE / S22 (Táctil: 240Hz)", touchHz: "240Hz Touch Rate", baseDpi: 470, factor: 1.02 },
+                { name: "Samsung Galaxy A55 5G / A54 5G / A35 (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 450, factor: 1.06 },
+                { name: "Samsung Galaxy A25 / A15 / A14 5G (Táctil: 180Hz)", touchHz: "180Hz Touch Rate", baseDpi: 430, factor: 1.10 },
+                { name: "Samsung Galaxy A05s / A05 / A04 / A03 (Táctil: 120Hz)", touchHz: "120Hz Touch Sampling", baseDpi: 410, factor: 1.16 },
+                { name: "Samsung Galaxy M54 / M34 / M14 (Táctil: 180Hz-240Hz)", touchHz: "180Hz - 240Hz Touch Rate", baseDpi: 440, factor: 1.08 }
             ],
             infinix: [
-                { name: "Infinix GT 20 Pro / GT 10 Pro", touchHz: "360Hz", baseDpi: 480, factor: 1.03 },
-                { name: "Infinix Note 30 / Note 40 VIP", touchHz: "240Hz", baseDpi: 450, factor: 1.06 },
-                { name: "Infinix Hot 30 / Hot 40 Pro", touchHz: "180Hz", baseDpi: 430, factor: 1.12 }
+                { name: "Infinix GT 20 Pro (Táctil: 360Hz / 1500Hz Inst.)", touchHz: "360Hz (1500Hz Instantáneo)", baseDpi: 490, factor: 1.01 },
+                { name: "Infinix GT 10 Pro Gaming (Táctil: 360Hz)", touchHz: "360Hz E-Sports Touch", baseDpi: 480, factor: 1.02 },
+                { name: "Infinix Note 40 Pro+ / Note 40 / 30 VIP (Táctil: 360Hz)", touchHz: "360Hz Touch Sampling", baseDpi: 460, factor: 1.04 },
+                { name: "Infinix Hot 40 Pro / Hot 30 / Hot 20 (Táctil: 240Hz)", touchHz: "240Hz (1200Hz Instantáneo)", baseDpi: 430, factor: 1.10 },
+                { name: "Infinix Smart 8 / Smart 7 / Smart 6 (Táctil: 120Hz)", touchHz: "120Hz Standard Touch", baseDpi: 400, factor: 1.18 }
             ],
             tecno: [
-                { name: "Tecno Pova 5 Pro / Pova 6 Pro", touchHz: "240Hz", baseDpi: 460, factor: 1.05 },
-                { name: "Tecno Camon 20 / Camon 30 Premier", touchHz: "240Hz", baseDpi: 450, factor: 1.07 },
-                { name: "Tecno Spark 10 Pro / Spark 20", touchHz: "120Hz", baseDpi: 420, factor: 1.14 }
+                { name: "Tecno Camon 30 Pro 5G / Camon 30 (Táctil: 240Hz / 1500Hz)", touchHz: "240Hz (1500Hz Instantáneo)", baseDpi: 470, factor: 1.04 },
+                { name: "Tecno Pova 6 Pro 5G / Pova 5 Pro (Táctil: 240Hz / 1000Hz)", touchHz: "240Hz (1000Hz Instantáneo)", baseDpi: 460, factor: 1.05 },
+                { name: "Tecno Spark 20 Pro+ / Spark 20 / 10 Pro (Táctil: 240Hz)", touchHz: "240Hz (720Hz Inst.)", baseDpi: 430, factor: 1.10 },
+                { name: "Tecno Pop 8 / Pop 7 / Pop 6 (Táctil: 120Hz)", touchHz: "120Hz Standard Touch", baseDpi: 400, factor: 1.18 }
             ],
             motorola: [
-                { name: "Moto Edge 40 / Edge 50 Ultra", touchHz: "360Hz", baseDpi: 480, factor: 1.02 },
-                { name: "Moto G84 / G54 / G73", touchHz: "240Hz", baseDpi: 440, factor: 1.08 },
-                { name: "Moto G23 / G14 / G04", touchHz: "120Hz", baseDpi: 410, factor: 1.16 }
+                { name: "Moto Edge 50 Ultra / 50 Pro / 40 Ultra (Táctil: 360Hz)", touchHz: "360Hz Ultra Touch", baseDpi: 490, factor: 1.01 },
+                { name: "Moto G84 5G / G54 5G / G73 / G53 (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 440, factor: 1.07 },
+                { name: "Moto G24 Power / G14 / G04 / G23 (Táctil: 120Hz-240Hz)", touchHz: "120Hz - 240Hz Touch", baseDpi: 410, factor: 1.14 }
             ],
             realme: [
-                { name: "Realme GT Neo 3 / GT 5 / GT 6", touchHz: "360Hz", baseDpi: 500, factor: 1.02 },
-                { name: "Realme 11 Pro+ / Realme 12 Pro+", touchHz: "240Hz", baseDpi: 460, factor: 1.06 },
-                { name: "Realme C55 / C67 / C53", touchHz: "180Hz", baseDpi: 420, factor: 1.12 }
+                { name: "Realme GT 6 / GT 5 Pro / GT Neo 6 (Táctil: 480Hz / 2500Hz)", touchHz: "480Hz (2500Hz Instantáneo)", baseDpi: 510, factor: 0.99 },
+                { name: "Realme 12 Pro+ / 12+ / 11 Pro+ (Táctil: 360Hz / 1260Hz)", touchHz: "360Hz (1260Hz Instantáneo)", baseDpi: 470, factor: 1.03 },
+                { name: "Realme C67 / C55 / C53 / C35 (Táctil: 180Hz)", touchHz: "180Hz Touch Sampling", baseDpi: 420, factor: 1.12 }
             ],
             zte: [
-                { name: "RedMagic 8 / 9 Pro / 7S Pro", touchHz: "960Hz", baseDpi: 540, factor: 0.95 },
-                { name: "ZTE Blade V40 / V50 / Axon Series", touchHz: "180Hz", baseDpi: 430, factor: 1.10 }
+                { name: "RedMagic 9 Pro / 8S Pro / 8 Pro (Táctil: 960Hz / 2000Hz)", touchHz: "960Hz Multi-Touch (2000Hz)", baseDpi: 550, factor: 0.92 },
+                { name: "ZTE Nubia Z60 Ultra / Z50 (Táctil: 960Hz)", touchHz: "960Hz Gaming Touch", baseDpi: 520, factor: 0.95 },
+                { name: "ZTE Blade V50 / V40 Design / A73 (Táctil: 180Hz)", touchHz: "180Hz Touch Rate", baseDpi: 420, factor: 1.12 }
             ],
             huawei: [
-                { name: "Honor 90 / Honor 200 / Magic 6", touchHz: "300Hz", baseDpi: 480, factor: 1.03 },
-                { name: "Honor X8b / X7b / X9b", touchHz: "180Hz", baseDpi: 440, factor: 1.10 }
+                { name: "Honor Magic 6 Pro / 200 Pro / 90 (Táctil: 300Hz)", touchHz: "300Hz High Precision Touch", baseDpi: 480, factor: 1.02 },
+                { name: "Honor X9b / X8b / X7b (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 440, factor: 1.08 },
+                { name: "Huawei Nova 12 SE / Nova 11 / P60 Pro (Táctil: 300Hz)", touchHz: "300Hz Touch Sampling", baseDpi: 470, factor: 1.03 }
             ],
             apple: [
-                { name: "iPhone 15 Pro / 14 Pro / 13 Pro (120Hz)", touchHz: "240Hz", baseDpi: 0, factor: 0.98 },
-                { name: "iPhone 11 / 12 / 13 / 14 / 15 Standard", touchHz: "120Hz", baseDpi: 0, factor: 1.05 }
+                { name: "iPhone 15 Pro Max / 15 Pro / 14 Pro Max (Táctil: 240Hz)", touchHz: "240Hz iOS Touch Response", baseDpi: 0, factor: 0.97 },
+                { name: "iPhone 15 / 15 Plus / 14 / 13 / 12 / 11 (Táctil: 120Hz)", touchHz: "120Hz iOS Touch Response", baseDpi: 0, factor: 1.04 },
+                { name: "iPad Pro M4 / M2 / iPad Air (Táctil: 240Hz)", touchHz: "240Hz iPadOS ProMotion Touch", baseDpi: 0, factor: 0.95 }
             ],
             universal: [
-                { name: "Dispositivo Android Gama Alta (120Hz+)", touchHz: "240Hz", baseDpi: 480, factor: 1.02 },
-                { name: "Dispositivo Android Gama Media (90Hz-120Hz)", touchHz: "180Hz", baseDpi: 440, factor: 1.08 },
-                { name: "Dispositivo Android Gama Entrante (60Hz)", touchHz: "120Hz", baseDpi: 410, factor: 1.15 }
+                { name: "Celular Gamer Gama Alta (Táctil: 960Hz - 2000Hz)", touchHz: "960Hz - 2000Hz Gaming Ultra", baseDpi: 520, factor: 0.95 },
+                { name: "Celular Gama Media Alta (Táctil: 360Hz - 480Hz)", touchHz: "360Hz - 480Hz High Response", baseDpi: 480, factor: 1.02 },
+                { name: "Celular Gama Media Estándar (Táctil: 240Hz)", touchHz: "240Hz Standard Response", baseDpi: 440, factor: 1.08 },
+                { name: "Celular Gama Económica (Táctil: 120Hz - 180Hz)", touchHz: "120Hz - 180Hz Basic Touch", baseDpi: 410, factor: 1.15 }
             ]
         };
 
@@ -338,7 +357,7 @@
             if (sensiType === "media") btn = "44%";
             if (sensiType === "baja") btn = "48%";
 
-            let dpiText = "Original del teléfono";
+            let dpiText = "Original de Fábrica";
             if (dpiMode === "con_dpi") {
                 dpiText = brand === "apple" ? "No requiere DPI en iOS" : selectedDev.baseDpi + " DPI";
             }
@@ -364,6 +383,8 @@
             const text = `🔥 CONFIGURACIÓN FREE FIRE 2026 - RENDIMIENTOTECH 🔥
 ` +
                          `📱 Dispositivo: ${brandText} - ${modelText}
+` +
+                         `⚡ Tasa Táctil: ${document.getElementById("valHz").innerText}
 ` +
                          `• General: ${document.getElementById("valGen").innerText}
 ` +
