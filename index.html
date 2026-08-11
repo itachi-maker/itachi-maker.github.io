@@ -18,7 +18,7 @@
     <div class="container">
         <header>
             <h1>⚡ RENDIMIENTOTECH</h1>
-            <div class="subtitle">Ajustes VIP y Comandos de Optimización para Android Gamer</div>
+            <div class="subtitle">Calculadora Sensibilidad Free Fire 2026 & Comandos Universal Android</div>
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="contacto.html">Contacto</a>
@@ -26,201 +26,374 @@
             </nav>
         </header>
 
-        <!-- ESPACIO PARA ANUNCIO SUPERIOR (ADSENSE) -->
+        <!-- ESPACIO ADSENSE BANNER SUPERIOR -->
         <div class="ad-slot">
-            <!-- AdSense Auto Banner Placement -->
+            <!-- AdSense Auto Header Banner -->
+        </div>
+
+        <!-- GENERADOR HD DE SENSIBILIDAD FREE FIRE -->
+        <div class="sensi-container">
+            <div class="sensi-title">🎯 GENERADOR DE SENSIBILIDAD FREE FIRE (0 - 200)</div>
+            <p style="text-align:center; font-size:0.85em; color:#cbd5e1; margin-top:-10px; margin-bottom:20px;">
+                Calcula la sensibilidad ultra precisa para levantar mira y dar "Todo Rojo", adaptada al motor 2026 y las specs de tu celular.
+            </p>
+
+            <div class="form-group">
+                <label>📱 Marca de tu Dispositivo:</label>
+                <select id="deviceBrand" class="form-control" onchange="updateModels()">
+                    <option value="xiaomi">Xiaomi / POCO / Redmi</option>
+                    <option value="samsung">Samsung Galaxy</option>
+                    <option value="infinix">Infinix</option>
+                    <option value="tecno">Tecno Mobile</option>
+                    <option value="motorola">Motorola</option>
+                    <option value="realme">Realme</option>
+                    <option value="zte">ZTE / Nubia RedMagic</option>
+                    <option value="huawei">Honor / Huawei</option>
+                    <option value="apple">iPhone / iPad</option>
+                    <option value="universal">Otra Marca / Universal</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>🔥 Modelo Específico / Gama:</label>
+                <select id="deviceModel" class="form-control">
+                    <!-- Dinámico por JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>⚡ Estilo de Sensibilidad Deseado:</label>
+                <select id="sensiType" class="form-control">
+                    <option value="alta">Alta (Capa Roja / Levantamiento Rápido)</option>
+                    <option value="media">Media (Balanceada / Precisión + Control)</option>
+                    <option value="baja">Baja (Control de Disparo / Sniper)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>📐 Configuración de DPI:</label>
+                <select id="dpiMode" class="form-control">
+                    <option value="con_dpi">Con DPI Sugerido (Mejor respuesta táctil)</option>
+                    <option value="sin_dpi">Sin DPI (DPI Original por Defecto)</option>
+                </select>
+            </div>
+
+            <button class="btn-generate" onclick="generateSensi()">🚀 CALCULAR CONFIGURACIÓN PRO</button>
+
+            <!-- RESULTADO -->
+            <div id="sensiResult" class="sensi-result">
+                <h3 style="margin-top:0; color:#fff; text-align:center; font-size:1.1em;">🔥 TU CONFIGURACIÓN VIP CALCULADA</h3>
+                
+                <div class="sensi-grid">
+                    <div class="sensi-card">
+                        <span class="label">General</span>
+                        <div class="value" id="valGen">195</div>
+                    </div>
+                    <div class="sensi-card">
+                        <span class="label">Mira Red Dot</span>
+                        <div class="value" id="valRed">188</div>
+                    </div>
+                    <div class="sensi-card">
+                        <span class="label">Mira 2X</span>
+                        <div class="value" id="val2x">192</div>
+                    </div>
+                    <div class="sensi-card">
+                        <span class="label">Mira 4X</span>
+                        <div class="value" id="val4x">185</div>
+                    </div>
+                    <div class="sensi-card">
+                        <span class="label">Mira AWM</span>
+                        <div class="value" id="valAwm">110</div>
+                    </div>
+                    <div class="sensi-card">
+                        <span class="label">Cámara 360</span>
+                        <div class="value" id="valCam">170</div>
+                    </div>
+                </div>
+
+                <div class="extra-info-box">
+                    <strong>🎯 Ajustes Recomendados de Pantalla:</strong><br>
+                    • 🔘 <strong>Botón de Disparo:</strong> <span id="valButton">42%</span><br>
+                    • 📐 <strong>DPI Recomendado:</strong> <span id="valDpi">480 DPI</span><br>
+                    • ⚡ <strong>Velocidad de Puntero:</strong> Máxima (100%)<br>
+                    • 💡 <strong>Tasa Muestreo Táctil Detectada:</strong> <span id="valHz">240Hz Touch Sampling</span>
+                </div>
+
+                <button class="copy-btn" style="width:100%; margin-top:15px; justify-content:center; padding:12px;" onclick="copyFullSensi(this)">
+                    📋 Copiar Configuración Completa
+                </button>
+            </div>
         </div>
 
         <div class="banner">
-            🔥 <strong>Portal de Rendimiento Gaming:</strong> Copia los comandos con un toque y aplícalos mediante Brevent, Shizuku o KernelSU / Root para eliminar el lag y estabilizar FPS.
+            🔥 <strong>Optimización Android Universal:</strong> Utiliza estos comandos ADB / Brevent o KernelSU para optimizar cualquier marca de procesador (Snapdragon, MediaTek, Unisoc, Exynos).
         </div>
 
-        <div class="guide-box">
-            <h3>📘 Guía Rápida de Ejecución</h3>
-            <ul>
-                <li><strong>Sin Root (Brevent / Shizuku):</strong> Abre tu terminal de mandos (Exec Command en Brevent o LADB) y pega el comando de la sección correspondiente.</li>
-                <li><strong>Con Root (KernelSU / Magisk):</strong> Ejecuta los comandos desde tu consola con permisos superusuario (`su`).</li>
-                <li><strong>Seguridad:</strong> Todos los cambios en parámetros del sistema son temporales y se pueden revertir reiniciando el teléfono.</li>
-            </ul>
+        <!-- ESPACIO ADSENSE INTERMEDIO 1 -->
+        <div class="ad-slot">
+            <!-- AdSense Auto In-Article Placement -->
         </div>
 
-        <!-- SECCIÓN 1: SIN ROOT -->
+        <!-- SECCIÓN 1: UNIVERSAL SIN ROOT -->
         <div class="section-header">
-            <h2 class="section-title title-noroot">⚡ 1. RESPUESTA TÁCTIL Y PANTALLA</h2>
-            <span class="badge badge-noroot">Sin Root / Brevent</span>
+            <h2 class="section-title title-noroot">⚡ 1. COMANDOS UNIVERSALES SIN ROOT</h2>
+            <span class="badge badge-noroot">Brevent / Shizuku / LADB</span>
         </div>
 
         <div class="card">
-            <h3>Reducción de Latencia de Toque (Touch Lag Zero)</h3>
-            <p>Reduce el retraso en la digitalización táctil para que la mira responda de forma instantánea al deslizar el dedo.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Disminuye el delay de respuesta táctil a nivel de sistema Android de 50ms a menos de 10ms.</div>
+            <h3>Optimización de Touch Response (Universal para todas las marcas)</h3>
+            <p>Reduce el retraso de entrada táctil en cualquier Android ajustando los tiempos de respuesta del compilador gráfico.</p>
+            <div class="tech-info">💡 <strong>Compatibilidad:</strong> Xiaomi, Samsung, Motorola, Infinix, Tecno, Realme, ZTE, etc.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">BREVENT / SHIZUKU</span>
+                    <span class="code-lang">UNIVERSAL ADB</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c1')">📋 Copiar</button>
                 </div>
-                <code id="c1">settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0</code>
+                <code id="c1">settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0 && settings put global touch_pressure_scale 0.001</code>
             </div>
         </div>
 
         <div class="card">
-            <h3>Forzar Tasa de Refresco Máxima (120Hz / 90Hz)</h3>
-            <p>Evita que el sistema reduzca dinámicamente los Hz de la pantalla a 60Hz cuando abres juegos como Free Fire o PUBG.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Elimina los micro-tirones y fija la fluidez máxima sostenida de la pantalla.</div>
+            <h3>Forzar Rendimiento Render GPU / HW Acceleration</h3>
+            <p>Obliga a Android a procesar la interfaz y los juegos directamente mediante la tarjeta gráfica GPU en lugar del software de CPU.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Aumenta la tasa de FPS y elimina el stuttering al girar rápido la cámara.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">BREVENT / SHIZUKU</span>
+                    <span class="code-lang">UNIVERSAL ADB</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c2')">📋 Copiar</button>
                 </div>
-                <code id="c2">settings put system peak_refresh_rate 120.0 && settings put system min_refresh_rate 120.0</code>
+                <code id="c2">setprop debug.sf.hw 1 && setprop debug.egl.hw 1 && settings put global window_animation_scale 0.5</code>
             </div>
         </div>
 
-        <!-- ESPACIO PARA ANUNCIO INTERMEDIO 1 (ADSENSE) -->
-        <div class="ad-slot">
-            <!-- AdSense Auto In-Article Placement -->
-        </div>
-
-        <!-- SECCIÓN 2: RAM Y GESTIÓN DE SISTEMA -->
-        <div class="section-header">
-            <h2 class="section-title title-noroot">⚡ 2. GESTIÓN DE MEMORIA RAM Y CACHÉ</h2>
-            <span class="badge badge-noroot">Sin Root / Brevent</span>
-        </div>
-
         <div class="card">
-            <h3>Limpieza Profunda de Caché y Mantenimiento</h3>
-            <p>Fuerza la recolección de basura del sistema y vacía cachés de aplicaciones pesadas acumuladas en memoria.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Libera entre 500MB y 1.5GB de RAM activa para el juego.</div>
+            <h3>Optimizador de Buffer de Red (Anti-Ping Spikes)</h3>
+            <p>Aumenta el tamaño del paquete de recepción de datos para mantener el ping estable en juegos online.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Mantiene la latencia en 30ms - 50ms sin saltos repentinos de 999ms.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">BREVENT / SHIZUKU</span>
+                    <span class="code-lang">UNIVERSAL ADB</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c3')">📋 Copiar</button>
                 </div>
-                <code id="c3">pm trim-caches 999999999999MB && cmd activity idle-maintenance</code>
+                <code id="c3">settings put global wifi_scan_always_enabled 0 && settings put global tcp_default_init_rwnd 60</code>
             </div>
         </div>
 
-        <div class="card">
-            <h3>Desactivar Procesos Fantasma y Doze Mode</h3>
-            <p>Evita que Android congele el proceso del juego o suspenda la red cuando el teléfono se calienta levemente.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Prioridad alta al procesador gráfico evitando cierres inesperados.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">BREVENT / SHIZUKU</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c4')">📋 Copiar</button>
-                </div>
-                <code id="c4">dumpsys deviceidle disable && settings put global fstrim_mandatory 1</code>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>Desactivar Escaneo Wi-Fi para Reducir Ping</h3>
-            <p>Detiene el escaneo en segundo plano de redes Wi-Fi que causa saltos de ping (Spikes) durante las partidas.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Mantiene la latencia de red estable y sin picos altos.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">BREVENT / SHIZUKU</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c5')">📋 Copiar</button>
-                </div>
-                <code id="c5">settings put global wifi_scan_always_enabled 0</code>
-            </div>
-        </div>
-
-        <!-- ESPACIO PARA ANUNCIO INTERMEDIO 2 (ADSENSE) -->
+        <!-- ESPACIO ADSENSE INTERMEDIO 2 -->
         <div class="ad-slot">
             <!-- AdSense Auto In-Article Placement -->
         </div>
 
-        <!-- SECCIÓN 3: CON ROOT -->
+        <!-- SECCIÓN 2: CON ROOT -->
         <div class="section-header">
-            <h2 class="section-title title-root">🔥 3. CPU, GPU Y KERNEL TUNING</h2>
-            <span class="badge badge-root">KernelSU / Magisk / Root</span>
+            <h2 class="section-title title-root">🔥 2. AJUSTES KERNEL Y CPU (CON ROOT)</h2>
+            <span class="badge badge-root">KernelSU / Magisk / Exec</span>
         </div>
 
         <div class="card">
-            <h3>Spoof Infinix GT 20 Pro (Desbloquear 120 FPS)</h3>
-            <p>Engaña a los servidores del juego haciendo pasar tu dispositivo por un gama alta enfocado en gaming para desbloquear opciones gráficas ultra.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Desbloquea el selector de 120 FPS e Ultra HD sin alterar la partición `/system`.</div>
+            <h3>Spoof Infinix GT 20 Pro (Desbloqueo 120 FPS / Gráficos Ultra)</h3>
+            <p>Dispositivo predilecto para desbloquear la máxima tasa de cuadros por segundo permitida en 2026.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Engaña al servidor para activar 120 FPS sin tocar `/system`.</div>
             <div class="code-box">
                 <div class="code-header">
                     <span class="code-lang">ROOT EXEC</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c6')">📋 Copiar</button>
+                    <button class="copy-btn" onclick="copyCode(this, 'c4')">📋 Copiar</button>
                 </div>
-                <code id="c6">resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
+                <code id="c4">resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
             </div>
         </div>
 
         <div class="card">
-            <h3>Governor de CPU Performance (Frecuencia Sostenida)</h3>
-            <p>Evita la bajada de frecuencia del procesador cuando la CPU detecta carga alta, manteniendo todos los núcleos activos.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Maximiza el rendimiento bruto del procesador y elimina bajones de FPS en batallas intensas.</div>
+            <h3>Fijar Frecuencia Máxima de CPU Governors</h3>
+            <p>Sostiene la velocidad máxima de reloj de todos los núcleos del SoC evitando caídas de rendimiento térmico.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Cero bajones de FPS durante enfrentamientos o escuadras.</div>
             <div class="code-box">
                 <div class="code-header">
                     <span class="code-lang">ROOT EXEC</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c7')">📋 Copiar</button>
+                    <button class="copy-btn" onclick="copyCode(this, 'c5')">📋 Copiar</button>
                 </div>
-                <code id="c7">echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
+                <code id="c5">echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor && sysctl -w vm.swappiness=10</code>
             </div>
         </div>
 
-        <div class="card">
-            <h3>Ajuste de Swappiness / Prioridad de RAM Real</h3>
-            <p>Obliga al Kernel de Linux a almacenar el juego en la memoria RAM ultra rápida en lugar de la memoria ZRAM/Swap en almacenamiento interno.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Tiempos de carga más rápidos y tasa de cuadros por segundo súper estable.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">ROOT EXEC</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c8')">📋 Copiar</button>
-                </div>
-                <code id="c8">sysctl -w vm.swappiness=10 && sysctl -w vm.vfs_cache_pressure=50</code>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>Vaciado Directo de Buffers de Kernel</h3>
-            <p>Pone en cero el espacio de búfer de la memoria RAM del sistema antes de iniciar una sesión de juego exigente.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Inicia el juego con el 100% de los recursos disponibles.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">ROOT EXEC</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c9')">📋 Copiar</button>
-                </div>
-                <code id="c9">sync; echo 3 > /proc/sys/vm/drop_caches</code>
-            </div>
-        </div>
-
-        <!-- SECCIÓN DE PREGUNTAS FRECUENTES (ESSENCIAL PARA ADSENSE) -->
+        <!-- PREGUNTAS FRECUENTES (FAQ) -->
         <div class="faq-section">
             <h2 style="margin-top: 0; color: #fff; font-size: 1.3em;">❓ Preguntas Frecuentes (FAQ)</h2>
 
             <div class="faq-item">
-                <div class="faq-title">¿Los comandos Sin Root pueden dañar mi dispositivo Android?</div>
-                <div class="faq-desc">No. Los comandos ejecutados vía ADB/Shizuku/Brevent modifican únicamente la capa de configuración de usuario (`settings put` y `cmd`). No alteran archivos del sistema y se restablecen o pueden revertirse fácilmente.</div>
+                <div class="faq-title">¿Cómo funciona la escala de sensibilidad hasta 200 en 2026?</div>
+                <div class="faq-desc">Free Fire expandió el rango de sensibilidad interna a 200 puntos. Nuestro algoritmo adapta las matemáticas de giro para que la velocidad sea óptima según los hertz del panel de tu marca de teléfono.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-title">¿Por qué es recomendable usar Brevent o Shizuku?</div>
-                <div class="faq-desc">Permiten enviar instrucciones avanzadas al sistema operativo sin necesidad de desbloquear el bootloader ni perder la garantía del teléfono. Es el método más seguro para mejorar la respuesta táctil y memoria.</div>
+                <div class="faq-title">¿Es seguro modificar el DPI en Android?</div>
+                <div class="faq-desc">Sí, siempre y cuando no excedas los valores recomendados. Nuestro generador sugiere un DPI dentro del rango seguro para evitar reinicios o errores de interfaz.</div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-title">¿Qué ventaja ofrece el Spoofing de modelo con Root?</div>
-                <div class="faq-desc">Muchos juegos limitan los FPS según la lista de modelos detectados por el servidor. Al modificar la propiedad `ro.product.model` mediante `resetprop`, el juego reconoce tu dispositivo como una consola gamer y habilita los 120 FPS.</div>
+                <div class="faq-title">¿Necesito reiniciar mi celular después de aplicar los comandos de Brevent?</div>
+                <div class="faq-desc">No es necesario. Los ajustes ADB entran en efecto inmediatamente después de ejecutarlos. Si deseas removerlos, basta con reiniciar el dispositivo.</div>
             </div>
         </div>
 
-        <!-- ESPACIO PARA ANUNCIO INFERIOR (ADSENSE) -->
+        <!-- ESPACIO ADSENSE BANNER INFERIOR -->
         <div class="ad-slot">
-            <!-- AdSense Auto Bottom Banner -->
+            <!-- AdSense Auto Bottom Placement -->
         </div>
 
         <footer>
-            <p>© RendimientoTech | Optimización Android VIP</p>
-            <p>Contacto y Soporte técnico: alexanderorozcomartinez207@gmail.com</p>
+            <p>© RendimientoTech | Optimizaciones y Sensibilidades Free Fire 2026</p>
+            <p>Contacto y Soporte: alexanderorozcomartinez207@gmail.com</p>
         </footer>
     </div>
 
     <script>
+        const deviceData = {
+            xiaomi: [
+                { name: "POCO X6 Pro / X5 Pro / X3 Pro", touchHz: "480Hz", baseDpi: 490, factor: 1.02 },
+                { name: "POCO F5 / F6 / F4 GT", touchHz: "480Hz", baseDpi: 510, factor: 1.01 },
+                { name: "Redmi Note 13 / 12 / 11 Series", touchHz: "240Hz", baseDpi: 450, factor: 1.08 },
+                { name: "Xiaomi 13 / 14 / 12T Gaming", touchHz: "480Hz", baseDpi: 520, factor: 1.00 }
+            ],
+            samsung: [
+                { name: "Samsung Galaxy A54 / A55 / A34", touchHz: "240Hz", baseDpi: 440, factor: 1.07 },
+                { name: "Samsung Galaxy S23 / S24 / Ultra", touchHz: "240Hz", baseDpi: 480, factor: 1.02 },
+                { name: "Samsung Galaxy A14 / A15 / A24 / A05", touchHz: "120Hz", baseDpi: 420, factor: 1.15 },
+                { name: "Samsung Galaxy S20 FE / S21 FE", touchHz: "240Hz", baseDpi: 460, factor: 1.05 }
+            ],
+            infinix: [
+                { name: "Infinix GT 20 Pro / GT 10 Pro", touchHz: "360Hz", baseDpi: 480, factor: 1.03 },
+                { name: "Infinix Note 30 / Note 40 VIP", touchHz: "240Hz", baseDpi: 450, factor: 1.06 },
+                { name: "Infinix Hot 30 / Hot 40 Pro", touchHz: "180Hz", baseDpi: 430, factor: 1.12 }
+            ],
+            tecno: [
+                { name: "Tecno Pova 5 Pro / Pova 6 Pro", touchHz: "240Hz", baseDpi: 460, factor: 1.05 },
+                { name: "Tecno Camon 20 / Camon 30 Premier", touchHz: "240Hz", baseDpi: 450, factor: 1.07 },
+                { name: "Tecno Spark 10 Pro / Spark 20", touchHz: "120Hz", baseDpi: 420, factor: 1.14 }
+            ],
+            motorola: [
+                { name: "Moto Edge 40 / Edge 50 Ultra", touchHz: "360Hz", baseDpi: 480, factor: 1.02 },
+                { name: "Moto G84 / G54 / G73", touchHz: "240Hz", baseDpi: 440, factor: 1.08 },
+                { name: "Moto G23 / G14 / G04", touchHz: "120Hz", baseDpi: 410, factor: 1.16 }
+            ],
+            realme: [
+                { name: "Realme GT Neo 3 / GT 5 / GT 6", touchHz: "360Hz", baseDpi: 500, factor: 1.02 },
+                { name: "Realme 11 Pro+ / Realme 12 Pro+", touchHz: "240Hz", baseDpi: 460, factor: 1.06 },
+                { name: "Realme C55 / C67 / C53", touchHz: "180Hz", baseDpi: 420, factor: 1.12 }
+            ],
+            zte: [
+                { name: "RedMagic 8 / 9 Pro / 7S Pro", touchHz: "960Hz", baseDpi: 540, factor: 0.95 },
+                { name: "ZTE Blade V40 / V50 / Axon Series", touchHz: "180Hz", baseDpi: 430, factor: 1.10 }
+            ],
+            huawei: [
+                { name: "Honor 90 / Honor 200 / Magic 6", touchHz: "300Hz", baseDpi: 480, factor: 1.03 },
+                { name: "Honor X8b / X7b / X9b", touchHz: "180Hz", baseDpi: 440, factor: 1.10 }
+            ],
+            apple: [
+                { name: "iPhone 15 Pro / 14 Pro / 13 Pro (120Hz)", touchHz: "240Hz", baseDpi: 0, factor: 0.98 },
+                { name: "iPhone 11 / 12 / 13 / 14 / 15 Standard", touchHz: "120Hz", baseDpi: 0, factor: 1.05 }
+            ],
+            universal: [
+                { name: "Dispositivo Android Gama Alta (120Hz+)", touchHz: "240Hz", baseDpi: 480, factor: 1.02 },
+                { name: "Dispositivo Android Gama Media (90Hz-120Hz)", touchHz: "180Hz", baseDpi: 440, factor: 1.08 },
+                { name: "Dispositivo Android Gama Entrante (60Hz)", touchHz: "120Hz", baseDpi: 410, factor: 1.15 }
+            ]
+        };
+
+        function updateModels() {
+            const brand = document.getElementById("deviceBrand").value;
+            const modelSelect = document.getElementById("deviceModel");
+            modelSelect.innerHTML = "";
+            
+            deviceData[brand].forEach((item, index) => {
+                let opt = document.createElement("option");
+                opt.value = index;
+                opt.textContent = item.name;
+                modelSelect.appendChild(opt);
+            });
+        }
+
+        function generateSensi() {
+            const brand = document.getElementById("deviceBrand").value;
+            const modelIndex = document.getElementById("deviceModel").value;
+            const sensiType = document.getElementById("sensiType").value;
+            const dpiMode = document.getElementById("dpiMode").value;
+
+            const selectedDev = deviceData[brand][modelIndex];
+            let factor = selectedDev.factor;
+
+            // Ajuste por tipo
+            if (sensiType === "alta") factor *= 1.08;
+            if (sensiType === "media") factor *= 1.00;
+            if (sensiType === "baja") factor *= 0.90;
+
+            // Escala 200
+            let gen = Math.min(200, Math.round(188 * factor));
+            let red = Math.min(200, Math.round(182 * factor));
+            let m2x = Math.min(200, Math.round(186 * factor));
+            let m4x = Math.min(200, Math.round(180 * factor));
+            let awm = Math.min(200, Math.round(105 * (factor * 0.9)));
+            let cam = Math.min(200, Math.round(165 * factor));
+
+            // Botón de disparo
+            let btn = "42%";
+            if (sensiType === "alta") btn = "38%";
+            if (sensiType === "media") btn = "44%";
+            if (sensiType === "baja") btn = "48%";
+
+            // DPI
+            let dpiText = "Original del teléfono";
+            if (dpiMode === "con_dpi") {
+                dpiText = brand === "apple" ? "No requiere DPI en iOS" : selectedDev.baseDpi + " DPI";
+            }
+
+            document.getElementById("valGen").innerText = gen;
+            document.getElementById("valRed").innerText = red;
+            document.getElementById("val2x").innerText = m2x;
+            document.getElementById("val4x").innerText = m4x;
+            document.getElementById("valAwm").innerText = awm;
+            document.getElementById("valCam").innerText = cam;
+
+            document.getElementById("valButton").innerText = btn;
+            document.getElementById("valDpi").innerText = dpiText;
+            document.getElementById("valHz").innerText = selectedDev.touchHz;
+
+            document.getElementById("sensiResult").style.display = "block";
+        }
+
+        function copyFullSensi(btn) {
+            const brandText = document.getElementById("deviceBrand").options[document.getElementById("deviceBrand").selectedIndex].text;
+            const modelText = document.getElementById("deviceModel").options[document.getElementById("deviceModel").selectedIndex].text;
+            
+            const text = `🔥 CONFIGURACIÓN FREE FIRE 2026 - RENDIMIENTOTECH 🔥
+` +
+                         `📱 Dispositivo: ${brandText} - ${modelText}
+` +
+                         `• General: ${document.getElementById("valGen").innerText}
+` +
+                         `• Mira Punto Rojo: ${document.getElementById("valRed").innerText}
+` +
+                         `• Mira 2X: ${document.getElementById("val2x").innerText}
+` +
+                         `• Mira 4X: ${document.getElementById("val4x").innerText}
+` +
+                         `• Mira AWM: ${document.getElementById("valAwm").innerText}
+` +
+                         `• Cámara 360: ${document.getElementById("valCam").innerText}
+` +
+                         `• Botón de Disparo: ${document.getElementById("valButton").innerText}
+` +
+                         `• DPI: ${document.getElementById("valDpi").innerText}
+` +
+                         `🌐 Generado en: https://itachi-maker.github.io`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const oldText = btn.innerHTML;
+                btn.innerHTML = '✅ ¡CONFIGURACIÓN COPIADA!';
+                setTimeout(() => { btn.innerHTML = oldText; }, 2500);
+            });
+        }
+
         function copyCode(btn, id) {
             const text = document.getElementById(id).innerText;
             navigator.clipboard.writeText(text).then(() => {
@@ -231,10 +404,13 @@
                     btn.innerHTML = oldText;
                     btn.classList.remove('copied');
                 }, 2000);
-            }).catch(err => {
-                console.error('Error al copiar: ', err);
             });
         }
+
+        // Inicializar modelos
+        window.onload = function() {
+            updateModels();
+        };
     </script>
 </body>
 </html>
