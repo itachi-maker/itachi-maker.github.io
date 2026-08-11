@@ -15,84 +15,79 @@
   <meta name="google-adsense-account" content="ca-pub-8848206499958996">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>🚀 RendimientoTech</h1>
+            <nav>
+                <a href="index.html">Inicio</a> | 
+                <a href="contacto.html">Contacto</a> | 
+                <a href="privacidad.html">Privacidad</a>
+            </nav>
+        </header>
 
-    <header>
-        <h1>RendimientoTech</h1>
-        <p>Aumenta el rendimiento y la velocidad de tus dispositivos</p>
-    </header>
+        <div class="banner">
+            <strong>📌 Guía de Optimización Android:</strong> Lista de comandos probados para reducir lag, mejorar la latencia del touch y mantener FPS estables en Free Fire y otros juegos.
+        </div>
 
-    <nav>
-        <a href="index.html" class="active">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="privacidad.html">Privacidad</a>
-    </nav>
+        <!-- SECCIÓN SIN ROOT -->
+        <h2 class="section-noroot">⚡ COMANDOS SIN ROOT <span class="badge-noroot">ADB / Brevent / Shizuku</span></h2>
+        <p style="font-size:0.9em; color:#8b949e;">Ajustes seguros que puedes aplicar mediante Brevent, ADB Shell o Shizuku sin modificar el sistema.</p>
 
-    <main class="container">
-        <section class="hero">
-            <div class="status-pill">
-                <span class="status-dot"></span> Comandos ADB & Shell Verificados 2026
-            </div>
-            <h2>Guías y Modificaciones de Alto Rendimiento</h2>
-            <p>Configuraciones de sistema, parámetros setprop, optimizaciones de CPU/RAM y respuesta táctil para lograr máxima fluidez a 120 FPS.</p>
-        </section>
+        <div class="card">
+            <h3>1. Eliminar Animaciones (Reducir Input Lag)</h3>
+            <p>Acelera la respuesta visual de la interfaz al abrir aplicaciones y juegos.</p>
+            <code>adb shell settings put global window_animation_scale 0 && adb shell settings put global transition_animation_scale 0 && adb shell settings put global animator_duration_scale 0</code>
+        </div>
 
-        <section class="posts-grid">
-            <div class="card">
-                <div>
-                    <div class="tags">
-                        <span class="badge badge-cpu">CPU & RAM</span>
-                        <span class="badge badge-fps">120 FPS Target</span>
-                    </div>
-                    <h3>Optimización de Memoria RAM y Procesador para Juegos</h3>
-                    <p>Ajustes del sistema, parámetros setprop y control del LMK para liberar recursos de la CPU y eliminar tirones en la partida.</p>
-                </div>
-                <a href="articulo1.html" class="btn">Leer guía completa</a>
-            </div>
+        <div class="card">
+            <h3>2. Limpieza Profunda de Caché</h3>
+            <p>Libera memoria RAM ocupada por datos temporales del sistema.</p>
+            <code>adb shell pm trim-caches 999999999999MB</code>
+        </div>
 
-            <div class="card">
-                <div>
-                    <div class="tags">
-                        <span class="badge badge-adb">ADB / Touch</span>
-                        <span class="badge badge-fps">120 FPS Target</span>
-                    </div>
-                    <h3>Reducción del Input Lag y Respuesta Táctil al Máximo</h3>
-                    <p>Ajustes de sensibilidad, escala de presión y tasa de muestreo para lograr respuesta inmediata en juegos competitivos.</p>
-                </div>
-                <a href="articulo2.html" class="btn">Leer guía completa</a>
-            </div>
+        <div class="card">
+            <h3>3. Forzar Máxima Tasa de Refresco</h3>
+            <p>Mantiene la pantalla en los hercios máximos para mayor fluidez en juegos.</p>
+            <code>adb shell settings put system peak_refresh_rate 120.0 && adb shell settings put system min_refresh_rate 120.0</code>
+        </div>
 
-            <div class="card">
-                <div>
-                    <div class="tags">
-                        <span class="badge badge-cpu">Aceleración HW</span>
-                        <span class="badge badge-adb">ADB / Shell</span>
-                    </div>
-                    <h3>Comandos setprop para Forzar Aceleración por GPU</h3>
-                    <p>Delega la carga gráfica directamente al procesador gráfico para liberar ciclos de reloj de la CPU en juegos demandantes.</p>
-                </div>
-                <a href="articulo3.html" class="btn">Leer guía completa</a>
-            </div>
+        <div class="card">
+            <h3>4. Desactivar Doze Mode en Sesión de Juego</h3>
+            <p>Evita que el sistema ponga los procesos en reposo reduciendo el rendimiento.</p>
+            <code>adb shell dumpsys deviceidle disable</code>
+        </div>
 
-            <div class="card">
-                <div>
-                    <div class="tags">
-                        <span class="badge badge-cpu">CPU Stability</span>
-                        <span class="badge badge-fps">120 FPS Target</span>
-                    </div>
-                    <h3>Estabilidad de FPS y Control Térmico en Partidas</h3>
-                    <p>Evita el Thermal Throttling y mantiene frecuencias estables durante caídas en zonas con alta densidad de jugadores.</p>
-                </div>
-                <a href="articulo4.html" class="btn">Leer guía completa</a>
-            </div>
-        </section>
-    </main>
+        <!-- SECCIÓN CON ROOT -->
+        <h2 class="section-root">🔥 COMANDOS CON ROOT <span class="badge-root">KernelSU / Magisk / Exec</span></h2>
+        <p style="font-size:0.9em; color:#8b949e;">Optimizaciones avanzadas para ejecutar directamente con permisos de superusuario (Root).</p>
 
-    <footer>
-        <p>© 2026 RendimientoTech. Todos los derechos reservados.</p>
-    </footer>
+        <div class="card">
+            <h3>1. Governor de CPU en Modo Performance</h3>
+            <p>Fija las frecuencias del procesador al máximo nivel para evitar bajones de FPS.</p>
+            <code>su -c "echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"</code>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="card">
+            <h3>2. Optimización de Memoria ZRAM / Swap</h3>
+            <p>Ajusta el intercambio de memoria para priorizar el juego en primer plano.</p>
+            <code>su -c "sysctl -w vm.swappiness=60"</code>
+        </div>
+
+        <div class="card">
+            <h3>3. Forzar Renderizado por GPU</h3>
+            <p>Obliga al sistema a procesar los gráficos por la tarjeta de video reduciendo carga en el procesador.</p>
+            <code>su -c "setprop debug.hwui.renderer opengl"</code>
+        </div>
+
+        <div class="card">
+            <h3>4. Vaciar Caché de Kernels (RAM Instantánea)</h3>
+            <p>Libera el buffer de memoria del Kernel inmediatamente.</p>
+            <code>su -c "sync; echo 3 > /proc/sys/vm/drop_caches"</code>
+        </div>
+
+        <footer>
+            <p>© RendimientoTech - Soporte: alexanderorozcomartinez207@gmail.com</p>
+        </footer>
+    </div>
 </body>
 </html>
