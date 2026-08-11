@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>⚡ RendimientoTech</h1>
+            <h1>⚡ RENDIMIENTOTECH</h1>
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="contacto.html">Contacto</a>
@@ -26,72 +26,137 @@
         </header>
 
         <div class="banner">
-            <strong>🔥 Módulo de Optimización Android:</strong> Comandos optimizados para ejecutar directamente desde Brevent, Shizuku o Terminal Root.
+            🔥 <strong>Módulo de Optimización Android:</strong> Copia los comandos con un solo toque y ejecútalos en Brevent, Shizuku o KernelSU / Root.
         </div>
 
         <!-- SECCIÓN SIN ROOT -->
-        <div class="section-title title-noroot">
-            <span>⚡ COMANDOS SIN ROOT</span>
+        <div class="section-header">
+            <h2 class="section-title title-noroot">⚡ COMANDOS SIN ROOT</h2>
             <span class="badge badge-noroot">Brevent / Shizuku / Terminal</span>
         </div>
 
         <div class="card">
             <h3>1. Respuesta Táctil Instantánea (Reducir Touch Lag)</h3>
-            <p>Aumenta la velocidad de respuesta al tocar la pantalla para una mira más precisa.</p>
-            <code>settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0</code>
+            <p>Disminuye el retraso de respuesta al tocar la pantalla para apuntar mejor en juegos.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c1')">📋 Copiar</button>
+                </div>
+                <code id="c1">settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0</code>
+            </div>
         </div>
 
         <div class="card">
             <h3>2. Ultra Refresco de Pantalla y FPS Estables</h3>
-            <p>Forza a la pantalla a mantenerse locked en la tasa máxima sin caídas bruscas.</p>
-            <code>settings put system peak_refresh_rate 120.0 && settings put system min_refresh_rate 120.0</code>
+            <p>Forza a la pantalla a mantenerse locked en la tasa máxima de hercios sin caídas.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c2')">📋 Copiar</button>
+                </div>
+                <code id="c2">settings put system peak_refresh_rate 120.0 && settings put system min_refresh_rate 120.0</code>
+            </div>
         </div>
 
         <div class="card">
             <h3>3. Limpieza de Caché y Mantenimiento de RAM</h3>
-            <p>Libera memoria acumulada y fuerza la recolección de basura del sistema.</p>
-            <code>pm trim-caches 999999999999MB && cmd activity idle-maintenance</code>
+            <p>Libera la memoria acumulada por aplicaciones y ejecuta el mantenimiento del sistema.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c3')">📋 Copiar</button>
+                </div>
+                <code id="c3">pm trim-caches 999999999999MB && cmd activity idle-maintenance</code>
+            </div>
         </div>
 
         <div class="card">
-            <h3>4. Modo Juego Real (Desactivar Restricciones de Sistema)</h3>
-            <p>Evita el estrangulamiento de energía y congelación de aplicaciones en segundo plano.</p>
-            <code>dumpsys deviceidle disable && settings put global fstrim_mandatory 1</code>
+            <h3>4. Modo Juego Real (Sin Restricciones)</h3>
+            <p>Evita que el sistema congele procesos o reduzca el rendimiento de fondo al jugar.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c4')">📋 Copiar</button>
+                </div>
+                <code id="c4">dumpsys deviceidle disable && settings put global fstrim_mandatory 1</code>
+            </div>
         </div>
 
         <!-- SECCIÓN CON ROOT -->
-        <div class="section-title title-root">
-            <span>🔥 COMANDOS CON ROOT</span>
+        <div class="section-header">
+            <h2 class="section-title title-root">🔥 COMANDOS CON ROOT</h2>
             <span class="badge badge-root">KernelSU / Magisk / Exec</span>
         </div>
 
         <div class="card">
-            <h3>1. Spoof Infinix GT 20 Pro (Desbloquear 120 FPS / Ultra)</h3>
-            <p>Modifica el modelo en la RAM para habilitar soporte completo de 120 FPS sin tocar /system.</p>
-            <code>resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
+            <h3>1. Spoof Infinix GT 20 Pro (120 FPS / Ultra)</h3>
+            <p>Modifica el modelo del celular en la RAM para desbloquear gráficos ultra y 120 FPS.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">ROOT COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c5')">📋 Copiar</button>
+                </div>
+                <code id="c5">resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
+            </div>
         </div>
 
         <div class="card">
-            <h3>2. CPU Performance Governor (Evitar Bajones de FPS)</h3>
-            <p>Fija los núcleos del procesador a su máxima frecuencia sostenida.</p>
-            <code>echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
+            <h3>2. CPU Performance Governor (FPS Máximos)</h3>
+            <p>Fija los núcleos del procesador al rendimiento máximo para evitar tirones.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">ROOT COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c6')">📋 Copiar</button>
+                </div>
+                <code id="c6">echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
+            </div>
         </div>
 
         <div class="card">
-            <h3>3. Ajuste de Swappiness / Prioridad de Juegos en RAM</h3>
-            <p>Fuerza al Kernel a mantener los juegos prioritarios en la RAM real en lugar de usar ZRAM lenta.</p>
-            <code>sysctl -w vm.swappiness=10 && sysctl -w vm.vfs_cache_pressure=50</code>
+            <h3>3. Prioridad de Juegos en Memoria RAM Real</h3>
+            <p>Obliga al Kernel a mantener los juegos en la memoria principal y no en ZRAM.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">ROOT COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c7')">📋 Copiar</button>
+                </div>
+                <code id="c7">sysctl -w vm.swappiness=10 && sysctl -w vm.vfs_cache_pressure=50</code>
+            </div>
         </div>
 
         <div class="card">
-            <h3>4. Limpieza Profunda de RAM y Buffers del Kernel</h3>
-            <p>Vacía el buffer del sistema instantáneamente antes de entrar a jugar.</p>
-            <code>sync; echo 3 > /proc/sys/vm/drop_caches</code>
+            <h3>4. Vaciar Caché de Buffers del Kernel</h3>
+            <p>Libera la memoria buffer retenida por el sistema de forma inmediata.</p>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">ROOT COMMAND</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c8')">📋 Copiar</button>
+                </div>
+                <code id="c8">sync; echo 3 > /proc/sys/vm/drop_caches</code>
+            </div>
         </div>
 
         <footer>
             <p>© RendimientoTech | Soporte: alexanderorozcomartinez207@gmail.com</p>
         </footer>
     </div>
+
+    <script>
+        function copyCode(btn, id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const oldText = btn.innerHTML;
+                btn.innerHTML = '✅ ¡Copiado!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = oldText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
 </body>
 </html>
