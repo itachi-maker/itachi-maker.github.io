@@ -35,47 +35,68 @@
         <div class="sensi-container">
             <div class="sensi-title">🎯 GENERADOR DE SENSIBILIDAD (0 - 200)</div>
             <p style="text-align:center; font-size:0.8em; color:#cbd5e1; margin-top:0; margin-bottom:18px;">
-                Selecciona tu modelo exacto para detectar el muestreo táctil (Hz) real y calcular la mira perfecta.
+                Calcula la mira ajustada al Muestreo Táctil (Hz) real de tu celular.
             </p>
 
             <div class="form-group">
                 <label>📱 Marca de tu Dispositivo:</label>
-                <select id="deviceBrand" class="form-control" onchange="updateModels()">
-                    <option value="xiaomi">Xiaomi / POCO / Redmi / BlackShark</option>
-                    <option value="samsung">Samsung Galaxy (Serie S, A, M)</option>
-                    <option value="infinix">Infinix (Serie GT, Note, Hot)</option>
-                    <option value="tecno">Tecno Mobile (Pova, Camon, Spark)</option>
-                    <option value="motorola">Motorola (Edge, Moto G)</option>
-                    <option value="realme">Realme (Serie GT, C, Pro)</option>
-                    <option value="zte">ZTE / RedMagic / Nubia</option>
-                    <option value="huawei">Honor / Huawei</option>
-                    <option value="apple">iPhone / iPad</option>
-                    <option value="universal">Otras Marcas / Universal</option>
-                </select>
+                <div class="select-wrapper">
+                    <select id="deviceBrand" class="form-control" onchange="updateModels()">
+                        <option value="xiaomi">Xiaomi / POCO / Redmi / BlackShark</option>
+                        <option value="samsung">Samsung Galaxy (Serie S, A, M)</option>
+                        <option value="infinix">Infinix (Serie GT, Note, Hot)</option>
+                        <option value="tecno">Tecno Mobile (Pova, Camon, Spark)</option>
+                        <option value="motorola">Motorola (Edge, Moto G)</option>
+                        <option value="realme">Realme (Serie GT, C, Pro)</option>
+                        <option value="zte">ZTE / RedMagic / Nubia</option>
+                        <option value="huawei">Honor / Huawei</option>
+                        <option value="apple">iPhone / iPad</option>
+                        <option value="universal">Otras Marcas / Universal</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
-                <label>🔥 Modelo Específico / Gama:</label>
-                <select id="deviceModel" class="form-control">
-                    <!-- Cargado Dinámicamente con JS -->
-                </select>
+                <label>🔥 Modelo Específico / Tasa Hz:</label>
+                <div class="select-wrapper">
+                    <select id="deviceModel" class="form-control">
+                        <!-- Cargado Dinámicamente -->
+                    </select>
+                </div>
             </div>
 
+            <!-- TARJETAS DE SELECCIÓN GAMER: ESTILO DE SENSIBILIDAD -->
             <div class="form-group">
-                <label>⚡ Estilo de Sensibilidad:</label>
-                <select id="sensiType" class="form-control">
-                    <option value="alta">Alta (Capa Roja / Levantamiento Rápido)</option>
-                    <option value="media">Media (Balanceada / Precisión + Control)</option>
-                    <option value="baja">Baja (Control de Disparo / Sniper)</option>
-                </select>
+                <label>⚡ Estilo de Juego / Sensibilidad:</label>
+                <div class="option-grid" id="sensiGrid">
+                    <div class="option-card active" data-val="alta" onclick="selectCard('sensiGrid', this)">
+                        <span>🔥 ALTA</span>
+                        <small>Capa Roja / Rápida</small>
+                    </div>
+                    <div class="option-card" data-val="media" onclick="selectCard('sensiGrid', this)">
+                        <span>⚡ MEDIA</span>
+                        <small>Precisión + Control</small>
+                    </div>
+                    <div class="option-card" data-val="baja" onclick="selectCard('sensiGrid', this)">
+                        <span>🎯 BAJA</span>
+                        <small>Control / Sniper</small>
+                    </div>
+                </div>
             </div>
 
+            <!-- TARJETAS DE SELECCIÓN GAMER: MODO DPI -->
             <div class="form-group">
-                <label>📐 Configuración de DPI:</label>
-                <select id="dpiMode" class="form-control">
-                    <option value="con_dpi">Con DPI Sugerido (Respuesta Máxima)</option>
-                    <option value="sin_dpi">Sin DPI (DPI Original de Fábrica)</option>
-                </select>
+                <label>📐 Ajuste de DPI:</label>
+                <div class="option-grid two-col" id="dpiGrid">
+                    <div class="option-card active" data-val="con_dpi" onclick="selectCard('dpiGrid', this)">
+                        <span>📐 CON DPI</span>
+                        <small>Respuesta Máxima</small>
+                    </div>
+                    <div class="option-card" data-val="sin_dpi" onclick="selectCard('dpiGrid', this)">
+                        <span>📱 SIN DPI</span>
+                        <small>Fábrica Original</small>
+                    </div>
+                </div>
             </div>
 
             <button class="btn-generate" onclick="generateSensi()">🚀 CALCULAR CONFIGURACIÓN PRO</button>
@@ -247,7 +268,7 @@
         </div>
 
         <footer>
-            <p>© RendimientoTech | Optimizaciones y Sensabilidades Free Fire 2026</p>
+            <p>© RendimientoTech | Optimizaciones y Sensibilidades Free Fire 2026</p>
             <p>Contacto y Soporte: alexanderorozcomartinez207@gmail.com</p>
         </footer>
     </div>
@@ -319,6 +340,21 @@
             ]
         };
 
+        function selectCard(gridId, element) {
+            const container = document.getElementById(gridId);
+            const cards = container.getElementsByClassName("option-card");
+            for (let card of cards) {
+                card.classList.remove("active");
+            }
+            element.classList.add("active");
+        }
+
+        function getSelectedVal(gridId) {
+            const container = document.getElementById(gridId);
+            const activeCard = container.querySelector(".option-card.active");
+            return activeCard ? activeCard.getAttribute("data-val") : "";
+        }
+
         function updateModels() {
             const brand = document.getElementById("deviceBrand").value;
             const modelSelect = document.getElementById("deviceModel");
@@ -335,8 +371,8 @@
         function generateSensi() {
             const brand = document.getElementById("deviceBrand").value;
             const modelIndex = document.getElementById("deviceModel").value;
-            const sensiType = document.getElementById("sensiType").value;
-            const dpiMode = document.getElementById("dpiMode").value;
+            const sensiType = getSelectedVal("sensiGrid");
+            const dpiMode = getSelectedVal("dpiGrid");
 
             const selectedDev = deviceData[brand][modelIndex];
             let factor = selectedDev.factor;
