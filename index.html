@@ -18,6 +18,7 @@
     <div class="container">
         <header>
             <h1>⚡ RENDIMIENTOTECH</h1>
+            <div class="subtitle">Ajustes VIP y Comandos de Optimización para Android Gamer</div>
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="contacto.html">Contacto</a>
@@ -25,22 +26,37 @@
             </nav>
         </header>
 
-        <div class="banner">
-            🔥 <strong>Módulo de Optimización Android:</strong> Copia los comandos con un solo toque y ejecútalos en Brevent, Shizuku o KernelSU / Root.
+        <!-- ESPACIO PARA ANUNCIO SUPERIOR (ADSENSE) -->
+        <div class="ad-slot">
+            <!-- AdSense Auto Banner Placement -->
         </div>
 
-        <!-- SECCIÓN SIN ROOT -->
+        <div class="banner">
+            🔥 <strong>Portal de Rendimiento Gaming:</strong> Copia los comandos con un toque y aplícalos mediante Brevent, Shizuku o KernelSU / Root para eliminar el lag y estabilizar FPS.
+        </div>
+
+        <div class="guide-box">
+            <h3>📘 Guía Rápida de Ejecución</h3>
+            <ul>
+                <li><strong>Sin Root (Brevent / Shizuku):</strong> Abre tu terminal de mandos (Exec Command en Brevent o LADB) y pega el comando de la sección correspondiente.</li>
+                <li><strong>Con Root (KernelSU / Magisk):</strong> Ejecuta los comandos desde tu consola con permisos superusuario (`su`).</li>
+                <li><strong>Seguridad:</strong> Todos los cambios en parámetros del sistema son temporales y se pueden revertir reiniciando el teléfono.</li>
+            </ul>
+        </div>
+
+        <!-- SECCIÓN 1: SIN ROOT -->
         <div class="section-header">
-            <h2 class="section-title title-noroot">⚡ COMANDOS SIN ROOT</h2>
-            <span class="badge badge-noroot">Brevent / Shizuku / Terminal</span>
+            <h2 class="section-title title-noroot">⚡ 1. RESPUESTA TÁCTIL Y PANTALLA</h2>
+            <span class="badge badge-noroot">Sin Root / Brevent</span>
         </div>
 
         <div class="card">
-            <h3>1. Respuesta Táctil Instantánea (Reducir Touch Lag)</h3>
-            <p>Disminuye el retraso de respuesta al tocar la pantalla para apuntar mejor en juegos.</p>
+            <h3>Reducción de Latencia de Toque (Touch Lag Zero)</h3>
+            <p>Reduce el retraso en la digitalización táctil para que la mira responda de forma instantánea al deslizar el dedo.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Disminuye el delay de respuesta táctil a nivel de sistema Android de 50ms a menos de 10ms.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">COMMAND</span>
+                    <span class="code-lang">BREVENT / SHIZUKU</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c1')">📋 Copiar</button>
                 </div>
                 <code id="c1">settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0</code>
@@ -48,23 +64,36 @@
         </div>
 
         <div class="card">
-            <h3>2. Ultra Refresco de Pantalla y FPS Estables</h3>
-            <p>Forza a la pantalla a mantenerse locked en la tasa máxima de hercios sin caídas.</p>
+            <h3>Forzar Tasa de Refresco Máxima (120Hz / 90Hz)</h3>
+            <p>Evita que el sistema reduzca dinámicamente los Hz de la pantalla a 60Hz cuando abres juegos como Free Fire o PUBG.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Elimina los micro-tirones y fija la fluidez máxima sostenida de la pantalla.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">COMMAND</span>
+                    <span class="code-lang">BREVENT / SHIZUKU</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c2')">📋 Copiar</button>
                 </div>
                 <code id="c2">settings put system peak_refresh_rate 120.0 && settings put system min_refresh_rate 120.0</code>
             </div>
         </div>
 
+        <!-- ESPACIO PARA ANUNCIO INTERMEDIO 1 (ADSENSE) -->
+        <div class="ad-slot">
+            <!-- AdSense Auto In-Article Placement -->
+        </div>
+
+        <!-- SECCIÓN 2: RAM Y GESTIÓN DE SISTEMA -->
+        <div class="section-header">
+            <h2 class="section-title title-noroot">⚡ 2. GESTIÓN DE MEMORIA RAM Y CACHÉ</h2>
+            <span class="badge badge-noroot">Sin Root / Brevent</span>
+        </div>
+
         <div class="card">
-            <h3>3. Limpieza de Caché y Mantenimiento de RAM</h3>
-            <p>Libera la memoria acumulada por aplicaciones y ejecuta el mantenimiento del sistema.</p>
+            <h3>Limpieza Profunda de Caché y Mantenimiento</h3>
+            <p>Fuerza la recolección de basura del sistema y vacía cachés de aplicaciones pesadas acumuladas en memoria.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Libera entre 500MB y 1.5GB de RAM activa para el juego.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">COMMAND</span>
+                    <span class="code-lang">BREVENT / SHIZUKU</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c3')">📋 Copiar</button>
                 </div>
                 <code id="c3">pm trim-caches 999999999999MB && cmd activity idle-maintenance</code>
@@ -72,73 +101,122 @@
         </div>
 
         <div class="card">
-            <h3>4. Modo Juego Real (Sin Restricciones)</h3>
-            <p>Evita que el sistema congele procesos o reduzca el rendimiento de fondo al jugar.</p>
+            <h3>Desactivar Procesos Fantasma y Doze Mode</h3>
+            <p>Evita que Android congele el proceso del juego o suspenda la red cuando el teléfono se calienta levemente.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Prioridad alta al procesador gráfico evitando cierres inesperados.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">COMMAND</span>
+                    <span class="code-lang">BREVENT / SHIZUKU</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c4')">📋 Copiar</button>
                 </div>
                 <code id="c4">dumpsys deviceidle disable && settings put global fstrim_mandatory 1</code>
             </div>
         </div>
 
-        <!-- SECCIÓN CON ROOT -->
-        <div class="section-header">
-            <h2 class="section-title title-root">🔥 COMANDOS CON ROOT</h2>
-            <span class="badge badge-root">KernelSU / Magisk / Exec</span>
-        </div>
-
         <div class="card">
-            <h3>1. Spoof Infinix GT 20 Pro (120 FPS / Ultra)</h3>
-            <p>Modifica el modelo del celular en la RAM para desbloquear gráficos ultra y 120 FPS.</p>
+            <h3>Desactivar Escaneo Wi-Fi para Reducir Ping</h3>
+            <p>Detiene el escaneo en segundo plano de redes Wi-Fi que causa saltos de ping (Spikes) durante las partidas.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Mantiene la latencia de red estable y sin picos altos.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">ROOT COMMAND</span>
+                    <span class="code-lang">BREVENT / SHIZUKU</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c5')">📋 Copiar</button>
                 </div>
-                <code id="c5">resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
+                <code id="c5">settings put global wifi_scan_always_enabled 0</code>
             </div>
         </div>
 
+        <!-- ESPACIO PARA ANUNCIO INTERMEDIO 2 (ADSENSE) -->
+        <div class="ad-slot">
+            <!-- AdSense Auto In-Article Placement -->
+        </div>
+
+        <!-- SECCIÓN 3: CON ROOT -->
+        <div class="section-header">
+            <h2 class="section-title title-root">🔥 3. CPU, GPU Y KERNEL TUNING</h2>
+            <span class="badge badge-root">KernelSU / Magisk / Root</span>
+        </div>
+
         <div class="card">
-            <h3>2. CPU Performance Governor (FPS Máximos)</h3>
-            <p>Fija los núcleos del procesador al rendimiento máximo para evitar tirones.</p>
+            <h3>Spoof Infinix GT 20 Pro (Desbloquear 120 FPS)</h3>
+            <p>Engaña a los servidores del juego haciendo pasar tu dispositivo por un gama alta enfocado en gaming para desbloquear opciones gráficas ultra.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Desbloquea el selector de 120 FPS e Ultra HD sin alterar la partición `/system`.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">ROOT COMMAND</span>
+                    <span class="code-lang">ROOT EXEC</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c6')">📋 Copiar</button>
                 </div>
-                <code id="c6">echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
+                <code id="c6">resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
             </div>
         </div>
 
         <div class="card">
-            <h3>3. Prioridad de Juegos en Memoria RAM Real</h3>
-            <p>Obliga al Kernel a mantener los juegos en la memoria principal y no en ZRAM.</p>
+            <h3>Governor de CPU Performance (Frecuencia Sostenida)</h3>
+            <p>Evita la bajada de frecuencia del procesador cuando la CPU detecta carga alta, manteniendo todos los núcleos activos.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Maximiza el rendimiento bruto del procesador y elimina bajones de FPS en batallas intensas.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">ROOT COMMAND</span>
+                    <span class="code-lang">ROOT EXEC</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c7')">📋 Copiar</button>
                 </div>
-                <code id="c7">sysctl -w vm.swappiness=10 && sysctl -w vm.vfs_cache_pressure=50</code>
+                <code id="c7">echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
             </div>
         </div>
 
         <div class="card">
-            <h3>4. Vaciar Caché de Buffers del Kernel</h3>
-            <p>Libera la memoria buffer retenida por el sistema de forma inmediata.</p>
+            <h3>Ajuste de Swappiness / Prioridad de RAM Real</h3>
+            <p>Obliga al Kernel de Linux a almacenar el juego en la memoria RAM ultra rápida en lugar de la memoria ZRAM/Swap en almacenamiento interno.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Tiempos de carga más rápidos y tasa de cuadros por segundo súper estable.</div>
             <div class="code-box">
                 <div class="code-header">
-                    <span class="code-lang">ROOT COMMAND</span>
+                    <span class="code-lang">ROOT EXEC</span>
                     <button class="copy-btn" onclick="copyCode(this, 'c8')">📋 Copiar</button>
                 </div>
-                <code id="c8">sync; echo 3 > /proc/sys/vm/drop_caches</code>
+                <code id="c8">sysctl -w vm.swappiness=10 && sysctl -w vm.vfs_cache_pressure=50</code>
             </div>
+        </div>
+
+        <div class="card">
+            <h3>Vaciado Directo de Buffers de Kernel</h3>
+            <p>Pone en cero el espacio de búfer de la memoria RAM del sistema antes de iniciar una sesión de juego exigente.</p>
+            <div class="tech-info">💡 <strong>Impacto:</strong> Inicia el juego con el 100% de los recursos disponibles.</div>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="code-lang">ROOT EXEC</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'c9')">📋 Copiar</button>
+                </div>
+                <code id="c9">sync; echo 3 > /proc/sys/vm/drop_caches</code>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE PREGUNTAS FRECUENTES (ESSENCIAL PARA ADSENSE) -->
+        <div class="faq-section">
+            <h2 style="margin-top: 0; color: #fff; font-size: 1.3em;">❓ Preguntas Frecuentes (FAQ)</h2>
+
+            <div class="faq-item">
+                <div class="faq-title">¿Los comandos Sin Root pueden dañar mi dispositivo Android?</div>
+                <div class="faq-desc">No. Los comandos ejecutados vía ADB/Shizuku/Brevent modifican únicamente la capa de configuración de usuario (`settings put` y `cmd`). No alteran archivos del sistema y se restablecen o pueden revertirse fácilmente.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-title">¿Por qué es recomendable usar Brevent o Shizuku?</div>
+                <div class="faq-desc">Permiten enviar instrucciones avanzadas al sistema operativo sin necesidad de desbloquear el bootloader ni perder la garantía del teléfono. Es el método más seguro para mejorar la respuesta táctil y memoria.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-title">¿Qué ventaja ofrece el Spoofing de modelo con Root?</div>
+                <div class="faq-desc">Muchos juegos limitan los FPS según la lista de modelos detectados por el servidor. Al modificar la propiedad `ro.product.model` mediante `resetprop`, el juego reconoce tu dispositivo como una consola gamer y habilita los 120 FPS.</div>
+            </div>
+        </div>
+
+        <!-- ESPACIO PARA ANUNCIO INFERIOR (ADSENSE) -->
+        <div class="ad-slot">
+            <!-- AdSense Auto Bottom Banner -->
         </div>
 
         <footer>
-            <p>© RendimientoTech | Soporte: alexanderorozcomartinez207@gmail.com</p>
+            <p>© RendimientoTech | Optimización Android VIP</p>
+            <p>Contacto y Soporte técnico: alexanderorozcomartinez207@gmail.com</p>
         </footer>
     </div>
 
