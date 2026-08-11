@@ -17,76 +17,80 @@
 <body>
     <div class="container">
         <header>
-            <h1>🚀 RendimientoTech</h1>
+            <h1>⚡ RendimientoTech</h1>
             <nav>
-                <a href="index.html">Inicio</a> | 
-                <a href="contacto.html">Contacto</a> | 
+                <a href="index.html">Inicio</a>
+                <a href="contacto.html">Contacto</a>
                 <a href="privacidad.html">Privacidad</a>
             </nav>
         </header>
 
         <div class="banner">
-            <strong>📌 Guía de Optimización Android:</strong> Lista de comandos probados para reducir lag, mejorar la latencia del touch y mantener FPS estables en Free Fire y otros juegos.
+            <strong>🔥 Módulo de Optimización Android:</strong> Comandos optimizados para ejecutar directamente desde Brevent, Shizuku o Terminal Root.
         </div>
 
         <!-- SECCIÓN SIN ROOT -->
-        <h2 class="section-noroot">⚡ COMANDOS SIN ROOT <span class="badge-noroot">ADB / Brevent / Shizuku</span></h2>
-        <p style="font-size:0.9em; color:#8b949e;">Ajustes seguros que puedes aplicar mediante Brevent, ADB Shell o Shizuku sin modificar el sistema.</p>
-
-        <div class="card">
-            <h3>1. Eliminar Animaciones (Reducir Input Lag)</h3>
-            <p>Acelera la respuesta visual de la interfaz al abrir aplicaciones y juegos.</p>
-            <code>adb shell settings put global window_animation_scale 0 && adb shell settings put global transition_animation_scale 0 && adb shell settings put global animator_duration_scale 0</code>
+        <div class="section-title title-noroot">
+            <span>⚡ COMANDOS SIN ROOT</span>
+            <span class="badge badge-noroot">Brevent / Shizuku / Terminal</span>
         </div>
 
         <div class="card">
-            <h3>2. Limpieza Profunda de Caché</h3>
-            <p>Libera memoria RAM ocupada por datos temporales del sistema.</p>
-            <code>adb shell pm trim-caches 999999999999MB</code>
+            <h3>1. Respuesta Táctil Instantánea (Reducir Touch Lag)</h3>
+            <p>Aumenta la velocidad de respuesta al tocar la pantalla para una mira más precisa.</p>
+            <code>settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0</code>
         </div>
 
         <div class="card">
-            <h3>3. Forzar Máxima Tasa de Refresco</h3>
-            <p>Mantiene la pantalla en los hercios máximos para mayor fluidez en juegos.</p>
-            <code>adb shell settings put system peak_refresh_rate 120.0 && adb shell settings put system min_refresh_rate 120.0</code>
+            <h3>2. Ultra Refresco de Pantalla y FPS Estables</h3>
+            <p>Forza a la pantalla a mantenerse locked en la tasa máxima sin caídas bruscas.</p>
+            <code>settings put system peak_refresh_rate 120.0 && settings put system min_refresh_rate 120.0</code>
         </div>
 
         <div class="card">
-            <h3>4. Desactivar Doze Mode en Sesión de Juego</h3>
-            <p>Evita que el sistema ponga los procesos en reposo reduciendo el rendimiento.</p>
-            <code>adb shell dumpsys deviceidle disable</code>
+            <h3>3. Limpieza de Caché y Mantenimiento de RAM</h3>
+            <p>Libera memoria acumulada y fuerza la recolección de basura del sistema.</p>
+            <code>pm trim-caches 999999999999MB && cmd activity idle-maintenance</code>
+        </div>
+
+        <div class="card">
+            <h3>4. Modo Juego Real (Desactivar Restricciones de Sistema)</h3>
+            <p>Evita el estrangulamiento de energía y congelación de aplicaciones en segundo plano.</p>
+            <code>dumpsys deviceidle disable && settings put global fstrim_mandatory 1</code>
         </div>
 
         <!-- SECCIÓN CON ROOT -->
-        <h2 class="section-root">🔥 COMANDOS CON ROOT <span class="badge-root">KernelSU / Magisk / Exec</span></h2>
-        <p style="font-size:0.9em; color:#8b949e;">Optimizaciones avanzadas para ejecutar directamente con permisos de superusuario (Root).</p>
-
-        <div class="card">
-            <h3>1. Governor de CPU en Modo Performance</h3>
-            <p>Fija las frecuencias del procesador al máximo nivel para evitar bajones de FPS.</p>
-            <code>su -c "echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"</code>
+        <div class="section-title title-root">
+            <span>🔥 COMANDOS CON ROOT</span>
+            <span class="badge badge-root">KernelSU / Magisk / Exec</span>
         </div>
 
         <div class="card">
-            <h3>2. Optimización de Memoria ZRAM / Swap</h3>
-            <p>Ajusta el intercambio de memoria para priorizar el juego en primer plano.</p>
-            <code>su -c "sysctl -w vm.swappiness=60"</code>
+            <h3>1. Spoof Infinix GT 20 Pro (Desbloquear 120 FPS / Ultra)</h3>
+            <p>Modifica el modelo en la RAM para habilitar soporte completo de 120 FPS sin tocar /system.</p>
+            <code>resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
         </div>
 
         <div class="card">
-            <h3>3. Forzar Renderizado por GPU</h3>
-            <p>Obliga al sistema a procesar los gráficos por la tarjeta de video reduciendo carga en el procesador.</p>
-            <code>su -c "setprop debug.hwui.renderer opengl"</code>
+            <h3>2. CPU Performance Governor (Evitar Bajones de FPS)</h3>
+            <p>Fija los núcleos del procesador a su máxima frecuencia sostenida.</p>
+            <code>echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
         </div>
 
         <div class="card">
-            <h3>4. Vaciar Caché de Kernels (RAM Instantánea)</h3>
-            <p>Libera el buffer de memoria del Kernel inmediatamente.</p>
-            <code>su -c "sync; echo 3 > /proc/sys/vm/drop_caches"</code>
+            <h3>3. Ajuste de Swappiness / Prioridad de Juegos en RAM</h3>
+            <p>Fuerza al Kernel a mantener los juegos prioritarios en la RAM real en lugar de usar ZRAM lenta.</p>
+            <code>sysctl -w vm.swappiness=10 && sysctl -w vm.vfs_cache_pressure=50</code>
+        </div>
+
+        <div class="card">
+            <h3>4. Limpieza Profunda de RAM y Buffers del Kernel</h3>
+            <p>Vacía el buffer del sistema instantáneamente antes de entrar a jugar.</p>
+            <code>sync; echo 3 > /proc/sys/vm/drop_caches</code>
         </div>
 
         <footer>
-            <p>© RendimientoTech - Soporte: alexanderorozcomartinez207@gmail.com</p>
+            <p>© RendimientoTech | Soporte: alexanderorozcomartinez207@gmail.com</p>
         </footer>
     </div>
 </body>
