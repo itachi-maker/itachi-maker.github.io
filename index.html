@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Panel Pro Free Fire</title>
-  <meta name="description" content="Centro de control de sensibilidad por hardware y optimizador Brevent para Free Fire.">
+  <title>RendimientoTech - Sistema Pro Free Fire</title>
+  <meta name="description" content="Laboratorio de sensibilidad táctica estilo System Wood y optimizador Brevent para Free Fire.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="inicio">
@@ -16,88 +16,102 @@
         <span class="nav-logo-text">Rendimiento<strong>Tech</strong></span>
       </div>
       <ul class="nav-links">
-        <li><a href="#dashboard">Panel Pro</a></li>
-        <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">Contacto</a></li>
+        <li><a href="#sensi-lab">Sensi Wood</a></li>
+        <li><a href="#optimizador">Optimizador</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero-header">
-    <div class="hero-badge">CENTRO DE RENDIMIENTO ELITE</div>
+    <div class="hero-badge">SYSTEM WOOD V2.5 // TACTICAL ENGINE</div>
     <h1>RendimientoTech OS</h1>
-    <p>Ingeniería de sensibilidad por hardware y comandos de sistema para Free Fire</p>
+    <p>Calibración balística de alta precisión y comandos de optimización por hardware</p>
   </header>
 
-  <main class="dashboard-container" id="dashboard">
+  <main class="dashboard-container">
 
-    <!-- MÓDULO 1: LABORATORIO DE SENSIBILIDAD -->
-    <section class="panel-card">
+    <!-- MÓDULO 1: LABORATORIO SENSI ESTILO SYSTEM WOOD -->
+    <section class="panel-card" id="sensi-lab">
       <div class="card-header">
         <div class="header-icon">🎯</div>
         <div>
-          <h2>Laboratorio Balístico de Sensibilidad</h2>
-          <p>Cálculo basado en resolución de pantalla, escala DPI y tasa de muestreo táctil real.</p>
+          <h2>Laboratorio Balístico (Estilo System Wood)</h2>
+          <p>Ajuste milimétrico de sensibilidad táctil con sliders de respuesta ultra rápida.</p>
         </div>
       </div>
 
       <div class="form-grid-unified">
         <div class="campo-control">
-          <label>Modelo de Dispositivo</label>
-          <input type="text" id="inputModelo" placeholder="Ej: Poco X3 Pro, Redmi Note">
-        </div>
-        <div class="campo-control">
-          <label>Resolución de Pantalla</label>
-          <select id="selectResolucion">
-            <option value="1080x2400" selected>FHD+ (1080 × 2400 px)</option>
-            <option value="1080x2340">FHD+ Estrecho (1080 × 2340 px)</option>
-            <option value="720x1600">HD+ Estándar (720 × 1600 px)</option>
-            <option value="1440x3200">QHD+ Gaming (1440 × 3200 px)</option>
-          </select>
+          <label>Modelo del Dispositivo</label>
+          <input type="text" id="inputModelo" value="Android Gaming Pro" placeholder="Ej: Poco X3, Redmi">
         </div>
         <div class="campo-control">
           <label>DPI del Sistema</label>
-          <input type="number" id="inputDpiReal" value="580" placeholder="Ej: 580, 640">
-        </div>
-        <div class="campo-control">
-          <label>Touch Sampling Rate</label>
-          <select id="selectSamplingRate">
-            <option value="120">120 Hz (Estándar)</option>
-            <option value="180">180 Hz (Equilibrado)</option>
-            <option value="240" selected>240 Hz (Competitivo)</option>
-            <option value="360">360 Hz (Alta Respuesta)</option>
-            <option value="480">480 Hz+ (Esports Pro)</option>
-          </select>
+          <input type="number" id="inputDpiReal" value="580" oninput="actualizarSensiWood()">
         </div>
       </div>
 
-      <button onclick="calcularSensibilidadHardwareReal()" class="btn-accion primary-glow">⚡ Calcular Configuración Maestra</button>
-
-      <div class="resultados-display">
-        <div class="res-grid">
-          <div class="res-item"><span>General</span><strong id="resGen">188</strong></div>
-          <div class="res-item"><span>Punto Rojo</span><strong id="resRed">182</strong></div>
-          <div class="res-item"><span>Mira 2X</span><strong id="res2x">176</strong></div>
-          <div class="res-item"><span>Mira 4X</span><strong id="res4x">170</strong></div>
-          <div class="res-item"><span>Mira AWM</span><strong id="resAwm">75</strong></div>
-          <div class="res-item"><span>Cámara</span><strong id="resCam">85</strong></div>
+      <!-- SLIDERS ESTILO SYSTEM WOOD -->
+      <div class="wood-sliders-container">
+        <div class="wood-slider-group">
+          <div class="slider-info">
+            <span>GENERAL (Cámara / Movimiento)</span>
+            <strong id="valGen" class="wood-value">185</strong>
+          </div>
+          <input type="range" id="rangeGen" min="100" max="200" value="185" class="wood-range" oninput="sincronizarSlider('Gen')">
         </div>
-        <button onclick="copiarConfiguracionHardware()" class="btn-accion secondary-action">📋 Copiar Configuración Completa</button>
+
+        <div class="wood-slider-group">
+          <div class="slider-info">
+            <span>MIRA PUNTO ROJO</span>
+            <strong id="valRed" class="wood-value">180</strong>
+          </div>
+          <input type="range" id="rangeRed" min="100" max="200" value="180" class="wood-range" oninput="sincronizarSlider('Red')">
+        </div>
+
+        <div class="wood-slider-group">
+          <div class="slider-info">
+            <span>MIRA 2X</span>
+            <strong id="val2x" class="wood-value">175</strong>
+          </div>
+          <input type="range" id="range2x" min="80" max="200" value="175" class="wood-range" oninput="sincronizarSlider('2x')">
+        </div>
+
+        <div class="wood-slider-group">
+          <div class="slider-info">
+            <span>MIRA 4X</span>
+            <strong id="val4x" class="wood-value">170</strong>
+          </div>
+          <input type="range" id="range4x" min="80" max="200" value="170" class="wood-range" oninput="sincronizarSlider('4x')">
+        </div>
+
+        <div class="wood-slider-group">
+          <div class="slider-info">
+            <span>MIRA AWM (Francotirador)</span>
+            <strong id="valAwm" class="wood-value">75</strong>
+          </div>
+          <input type="range" id="rangeAwm" min="30" max="150" value="75" class="wood-range" oninput="sincronizarSlider('Awm')">
+        </div>
       </div>
+
+      <button onclick="copiarConfiguracionWood()" class="btn-accion primary-glow">📋 Copiar Configuración System Wood</button>
     </section>
 
     <!-- MÓDULO 2: GENERADOR BREVENT & SHIZUKU -->
-    <section class="panel-card">
+    <section class="panel-card" id="optimizador">
       <div class="card-header">
         <div class="header-icon">📦</div>
         <div>
           <h2>Optimizador Brevent & Shizuku</h2>
-          <p>Selecciona los parámetros de sistema para eliminar el input lag y estabilizar los FPS.</p>
+          <p>Selecciona los parámetros del sistema para eliminar el input lag.</p>
         </div>
       </div>
 
       <div class="mode-selector-unified">
         <label class="radio-tab"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 Modo No-Root (Brevent)</label>
-        <label class="radio-tab"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Modo Root Seguro</label>
+        <label class="radio-tab"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Modo Root / Shizuku</label>
       </div>
 
       <div class="presets-toolbar">
@@ -117,20 +131,58 @@
       </div>
     </section>
 
+    <!-- MÓDULO 3: PREGUNTAS FRECUENTES (FAQ) -->
+    <section class="panel-card" id="faq">
+      <div class="card-header">
+        <div class="header-icon">❓</div>
+        <div>
+          <h2>Preguntas Frecuentes (FAQ)</h2>
+          <p>Resolución de dudas sobre los comandos y la sensibilidad.</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>¿Los comandos de Brevent dañan mi teléfono?</summary>
+          <p>No. Son comandos nativos de ADB y Android que ajustan animaciones, red y prioridades de memoria sin modificar particiones del sistema.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Cómo funciona la sensibilidad estilo System Wood?</summary>
+          <p>Combina la relación de aspecto de tu pantalla con tu DPI actual mediante barras deslizantes táctiles para obtener una velocidad de giro limpia sin aceleración forzada.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Necesito Root obligatoriamente?</summary>
+          <p>No, el 90% de las funciones están diseñadas para ejecutarse mediante Brevent y comandos ADB sin necesidad de abrir bootloader.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- MÓDULO 4: SOBRE NOSOTROS -->
+    <section class="panel-card" id="nosotros">
+      <div class="card-header">
+        <div class="header-icon">👥</div>
+        <div>
+          <h2>Sobre Nosotros</h2>
+          <p>Conoce la misión detrás de RendimientoTech.</p>
+        </div>
+      </div>
+      <div class="nosotros-content">
+        <p><strong>RendimientoTech</strong> nace con el objetivo de ofrecer herramientas de optimización limpias, sin publicidad molesta y de código abierto para creadores y jugadores competitivos de Free Fire en toda Latinoamérica.</p>
+        <p class="footer-email">Contacto directo: alexanderorozcomartinez207@gmail.com</p>
+      </div>
+    </section>
+
   </main>
+
+  <!-- AVISO DE COOKIES -->
+  <div id="cookieBanner" class="cookie-banner">
+    <p>🍪 Usamos almacenamiento local para guardar tus preferencias de optimización. Al navegar aceptas su uso.</p>
+    <button onclick="aceptarCookies()" class="btn-chip" style="background:var(--accent-green); color:#000; border:none; font-weight:bold;">Aceptar</button>
+  </div>
 
   <footer class="footer-unified">
     <p><strong>RendimientoTech</strong> © 2026 - Diseñado para Creadores de Free Fire.</p>
     <p class="footer-email">alexanderorozcomartinez207@gmail.com</p>
   </footer>
-
-  <div id="modalContacto" class="modal-overlay">
-    <div class="modal-box">
-      <span class="cerrar-modal" onclick="cerrarModal('modalContacto')">&times;</span>
-      <h3>📩 Contacto Oficial</h3>
-      <p class="email-badge">alexanderorozcomartinez207@gmail.com</p>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
