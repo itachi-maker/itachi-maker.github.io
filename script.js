@@ -1,77 +1,122 @@
-window.onload = function() { actualizarOpciones(); };
+window.onload = function() { actualizarMenus(); };
 
 function abrirModal(id) { document.getElementById(id).style.display = "block"; }
 function cerrarModal(id) { document.getElementById(id).style.display = "none"; }
 window.onclick = function(event) { if (event.target.classList.contains('modal')) event.target.style.display = "none"; };
 
-function copiarComando(btn) {
-  var codigo = btn.previousElementSibling.innerText;
-  navigator.clipboard.writeText(codigo).then(function() {
-    var orig = btn.innerText;
-    btn.innerText = "✅ ¡Copiado!";
-    setTimeout(function() { btn.innerText = orig; }, 1500);
+// Generador de Sensibilidad
+function generarSensibilidad() {
+  let dpi = parseInt(document.getElementById('inputDpi').value) || 600;
+  let estilo = document.getElementById('selectEstilo').value;
+  
+  let general, m2x, m4x, miraAWM, camara;
+
+  if (estilo === 'camara') {
+    general = Math.min(200, Math.max(140, Math.round(195 - (dpi * 0.05))));
+    m2x = Math.min(195, Math.max(130, general - 10));
+    m4x = Math.min(190, Math.max(125, general - 15));
+    miraAWM = Math.round(general * 0.5);
+    camara = 100;
+  } else if (estilo === 'precicion') {
+    general = Math.min(185, Math.max(120, Math.round(175 - (dpi * 0.04))));
+    m2x = Math.min(180, Math.max(115, general - 5));
+    m4x = Math.min(175, Math.max(110, general - 10));
+    miraAWM = Math.round(general * 0.45);
+    camara = 85;
+  } else {
+    general = Math.min(195, Math.max(130, Math.round(185 - (dpi * 0.045))));
+    m2x = Math.min(190, Math.max(120, general - 8));
+    m4x = Math.min(185, Math.max(115, general - 12));
+    miraAWM = Math.round(general * 0.48);
+    camara = 90;
+  }
+
+  let htmlResult = `
+    <li><strong>DPI Recomendado:</strong> ${dpi} (Personalizado)</li>
+    <li><strong>General:</strong> ${general}</li>
+    <li><strong>Mira Red Dot:</strong> ${Math.round(general * 0.95)}</li>
+    <li><strong>Mira 2X:</strong> ${m2x}</li>
+    <li><strong>Mira 4X:</strong> ${m4x}</li>
+    <li><strong>Mira AWM / Francotirador:</strong> ${miraAWM}</li>
+    <li><strong>Cámara 360°:</strong> ${camara}</li>
+  `;
+
+  document.getElementById('listaSensiResultados').innerHTML = htmlResult;
+  document.getElementById('resultadoSensi').style.display = 'block';
+}
+
+function copiarSensibilidad() {
+  let items = document.querySelectorAll('#listaSensiResultados li');
+  let texto = "🎯 Configuración de Sensibilidad Free Fire (RendimientoTech):\n";
+  items.forEach(i => texto += "- " + i.innerText + "\n");
+  
+  navigator.clipboard.writeText(texto).then(() => {
+    alert("📋 ¡Sensibilidad copiada al portapapeles!");
   });
 }
 
-function actualizarOpciones() {
+// Menús de Comandos Desplegables
+function actualizarMenus() {
   const modo = document.querySelector('input[name="mode"]:checked').value;
-  const container = document.getElementById('containerOpciones');
+  const container = document.getElementById('containerMenus');
   
   if (modo === 'noroot') {
     container.innerHTML = `
-      <div class="categoria-bloque">
-        <h3>1. Fluidez & Animaciones</h3>
-        <div class="checkbox-group">
+      <details class="menu-categoria" open>
+        <summary>📱 1. Animaciones y Fluidez Visual</summary>
+        <div class="menu-contenido">
           <label><input type="checkbox" id="an1" checked> Quitar animación de ventanas (0.0x)</label>
           <label><input type="checkbox" id="an2" checked> Quitar animación de transición (0.0x)</label>
           <label><input type="checkbox" id="an3" checked> Quitar animador de duración (0.0x)</label>
           <label><input type="checkbox" id="an5"> Desactivar efectos de desenfoque visual</label>
         </div>
-      </div>
-      <div class="categoria-bloque">
-        <h3>2. Red, Ping y Wi-Fi Estable</h3>
-        <div class="checkbox-group">
+      </details>
+
+      <details class="menu-categoria">
+        <summary>🌐 2. Red, Ping y Estabilidad Wi-Fi</summary>
+        <div class="menu-contenido">
           <label><input type="checkbox" id="nw1" checked> Política avanzada de suspensión Wi-Fi (Policy 2)</label>
           <label><input type="checkbox" id="nw2" checked> Forzar datos móviles siempre activos</label>
-          <label><input type="checkbox" id="nw5" checked> Desactivar escaneo continuo de Bluetooth en fondo</label>
+          <label><input type="checkbox" id="nw5" checked> Desactivar escaneo continuo de Bluetooth</label>
           <label><input type="checkbox" id="nw7" checked> Desactivar escaneo continuo de redes Wi-Fi</label>
         </div>
-      </div>
-      <div class="categoria-bloque">
-        <h3>3. Táctil y Pantalla (Free Fire)</h3>
-        <div class="checkbox-group">
+      </details>
+
+      <details class="menu-categoria">
+        <summary>👆 3. Táctil y Sensibilidad (Free Fire)</summary>
+        <div class="menu-contenido">
           <label><input type="checkbox" id="tc1" checked> Reducir escala de presión táctil (Touch 0.001)</label>
           <label><input type="checkbox" id="tc2" checked> Forzar tasa de refresco mínima a 120Hz</label>
           <label><input type="checkbox" id="tc3" checked> Forzar tasa de refresco máxima a 120Hz (Peak)</label>
           <label><input type="checkbox" id="tc6"> Reducir retraso de pulsación larga</label>
         </div>
-      </div>
-      <div class="categoria-bloque">
-        <h3>4. Procesos en Segundo Plano (Free Fire)</h3>
-        <div class="checkbox-group">
+      </details>
+
+      <details class="menu-categoria">
+        <summary>🚀 4. Procesos en Segundo Plano (Free Fire)</summary>
+        <div class="menu-contenido">
           <label><input type="checkbox" id="bg1" checked> Desactivar modo Doze de suspensión profunda</label>
           <label><input type="checkbox" id="bg2" checked> Permitir ejecución de Free Fire sin restricciones</label>
           <label><input type="checkbox" id="bg3" checked> Conceder Wake Lock permanente a Free Fire</label>
           <label><input type="checkbox" id="bg4" checked> Marcar estado de Free Fire como activo constante</label>
         </div>
-      </div>
+      </details>
     `;
   } else {
     container.innerHTML = `
-      <div class="categoria-bloque">
-        <h3>⚡ Opciones Root Seguras</h3>
-        <div class="checkbox-group">
+      <details class="menu-categoria" open>
+        <summary>⚡ Opciones Root Seguras</summary>
+        <div class="menu-contenido">
           <label><input type="checkbox" id="rt1" checked> Limpieza profunda de caché (pm trim-caches)</label>
           <label><input type="checkbox" id="rt2" checked> Prioridad máxima al renderizador gráfico (SurfaceFlinger)</label>
           <label><input type="checkbox" id="rt3" checked> Liberar búfer de páginas de memoria RAM (Drop Caches)</label>
         </div>
-      </div>
+      </details>
     `;
   }
 }
 
 function aplicarPreset(tipo) {
-  // Primero desmarcar todo
   document.querySelectorAll('.script-builder-box input[type="checkbox"]').forEach(cb => cb.checked = false);
   
   if (tipo === 'freefire') {
@@ -79,22 +124,23 @@ function aplicarPreset(tipo) {
       let el = document.getElementById(id);
       if(el) el.checked = true;
     });
-    alert("🔥 Preset 'Free Fire Torneo' aplicado con éxito.");
+    alert("🔥 Preset 'Free Fire Torneo' aplicado.");
   } else if (tipo === 'ping') {
     ['nw1', 'nw2', 'nw5', 'nw7'].forEach(id => {
       let el = document.getElementById(id);
       if(el) el.checked = true;
     });
-    alert("🌐 Preset 'Red / Ping Estable' aplicado con éxito.");
-  } else if (tipo === 'todo') {
-    document.querySelectorAll('.script-builder-box input[type="checkbox"]').forEach(cb => cb.checked = true);
-    alert("✨ Preset 'Máximo Rendimiento' aplicado con éxito.");
+    alert("🌐 Preset 'Red / Ping' aplicado.");
   }
+}
+
+function limpiarSeleccion() {
+  document.querySelectorAll('.script-builder-box input[type="checkbox"]').forEach(cb => cb.checked = false);
+  alert("🗑️ Selección limpiada.");
 }
 
 function recopilarComandosScript() {
   let script = "";
-  // Recorrer los checkboxes marcados y extraer sus comandos directos
   if(document.getElementById('an1')?.checked) script += "settings put global window_animation_scale 0\n";
   if(document.getElementById('an2')?.checked) script += "settings put global transition_animation_scale 0\n";
   if(document.getElementById('an3')?.checked) script += "settings put global animator_duration_scale 0\n";
@@ -129,7 +175,7 @@ function copiarScriptTexto() {
     return;
   }
   navigator.clipboard.writeText(script).then(function() {
-    alert("📋 ¡Comandos copiados con éxito!\n\nPégalos directamente en Brevent o tu consola Shizuku.");
+    alert("📋 ¡Comandos copiados con éxito para Brevent!");
   });
 }
 

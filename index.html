@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Optimizador Móvil para Brevent & Shizuku</title>
-  <meta name="description" content="Generador de scripts optimizados para Android y Free Fire, diseñados para ejecutarse directamente desde Brevent o Shizuku sin PC.">
+  <title>RendimientoTech - Sensibilidad & Scripts Brevent</title>
+  <meta name="description" content="Generador de sensibilidad profesional y scripts de optimización Android para Free Fire sin PC.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="inicio">
@@ -13,77 +13,73 @@
     <div class="nav-container">
       <span class="nav-logo">⚡ RendimientoTech</span>
       <ul class="nav-links">
-        <li><a href="#scriptgen">📦 Generador Móvil</a></li>
-        <li><a href="#comandos">🛠️ Comandos Únicos</a></li>
+        <li><a href="#sensi">🎯 Sensibilidad</a></li>
+        <li><a href="#scriptgen">📦 Scripts Brevent</a></li>
         <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">📩 Contacto</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="header-principal">
-    <div class="logo-badge">MÓVIL EDITION (BREVENT / SHIZUKU)</div>
+    <div class="logo-badge">PRO EDITION v6.0</div>
     <h1>RendimientoTech</h1>
-    <p>Optimización Extrema para Android sin necesidad de PC</p>
+    <p>Sensibilidad Perfecta & Optimización Extrema para Free Fire</p>
   </header>
 
   <main class="contenedor-principal">
 
-    <!-- SECCIÓN: GENERADOR RÁPIDO MÓVIL -->
-    <section id="scriptgen" class="seccion-caja">
-      <h2>🚀 Perfiles de Juego & Generador Instantáneo</h2>
-      <p class="subtitulo">Toca un perfil preconfigurado para Free Fire o personaliza los comandos de forma limpia para pegarlos directo en Brevent.</p>
+    <!-- SECCIÓN: GENERADOR DE SENSIBILIDAD -->
+    <section id="sensi" class="seccion-caja">
+      <h2>🎯 Generador de Sensibilidad & DPI Pro</h2>
+      <p class="subtitulo">Calcula tu configuración ideal según tu estilo de juego y DPI actual.</p>
       
-      <!-- Selector de Modos de Usuario -->
-      <div class="mode-selector">
-        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarOpciones()"> 📱 Modo No-Root (Brevent / Shizuku)</label>
-        <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarOpciones()"> ⚡ Modo Root Seguro</label>
+      <div class="form-sensi">
+        <label>Tu DPI Actual:</label>
+        <input type="number" id="inputDpi" value="600" placeholder="Ej: 410, 600, 800">
+        
+        <label>Tipo de Dispositivo / Estilo:</label>
+        <select id="selectEstilo">
+          <option value="camara">Todo a la Cámara (Movimiento Rápido)</option>
+          <option value="precicion">Precisión de Headshot (Mira 2x y 4x)</option>
+          <option value="equilibrado" selected>Equilibrado (Todo Terreno)</option>
+        </select>
+
+        <button onclick="generarSensibilidad()" class="btn-calcular-sensi">✨ Calcular Mi Configuración</button>
       </div>
 
-      <!-- PRESETS RÁPIDOS DE 1 CLIC -->
-      <div class="presets-box">
-        <span class="preset-title">⚡ Perfiles Rápidos:</span>
-        <div class="preset-botones">
-          <button onclick="aplicarPreset('freefire')" class="btn-preset">🔥 Free Fire Torneo (FPS + Touch)</button>
-          <button onclick="aplicarPreset('ping')" class="btn-preset">🌐 Reducir Ping / Wi-Fi</button>
-          <button onclick="aplicarPreset('todo')" class="btn-preset">✨ Máximo Rendimiento Total</button>
-        </div>
-      </div>
-
-      <div id="containerOpciones" class="script-builder-box">
-        <!-- Contenido dinámico -->
-      </div>
-
-      <div class="acciones-script">
-        <button onclick="copiarScriptTexto()" class="btn-copiar-script">📋 Copiar Comandos para Brevent</button>
-        <button onclick="generarYDescargarScript()" class="btn-calcular">📥 Descargar .sh</button>
+      <div id="resultadoSensi" class="resultado-sensi-box" style="display:none;">
+        <h3>📊 Tu Configuración Sugerida:</h3>
+        <ul id="listaSensiResultados"></ul>
+        <button onclick="copiarSensibilidad()" class="btn-copiar-script" style="margin-top: 10px;">📋 Copiar Sensibilidad</button>
       </div>
     </section>
 
-    <!-- SECCIÓN DE COMANDOS INDIVIDUALES -->
-    <section id="comandos" class="seccion-caja">
-      <h2>🛠️ Copia Rápida para Consola</h2>
-      <p class="subtitulo">Comandos esenciales listos para copiar con un solo toque y pegar en tu shell.</p>
+    <!-- SECCIÓN: GENERADOR DE SCRIPTS CON MENÚS DESPLEGABLES -->
+    <section id="scriptgen" class="seccion-caja">
+      <h2>📦 Generador de Comandos Brevent (Menús por Categoría)</h2>
+      <p class="subtitulo">Despliega cada menú y selecciona solo lo que necesites para tu celular.</p>
+      
+      <div class="mode-selector">
+        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 No-Root (Brevent / Shizuku)</label>
+        <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Root Seguro</label>
+      </div>
 
-      <div class="lista-comandos">
-        <div class="card-comando">
-          <div class="cmd-info">
-            <h4>⚡ Sensibilidad y Táctil (Touch Pressure)</h4>
-          </div>
-          <div class="cmd-code-box">
-            <code>settings put system touch_pressure_scale 0.001</code>
-            <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
-          </div>
+      <div class="presets-box">
+        <span class="preset-title">⚡ Perfiles Rápidos:</span>
+        <div class="preset-botones">
+          <button onclick="aplicarPreset('freefire')" class="btn-preset">🔥 Free Fire Torneo</button>
+          <button onclick="aplicarPreset('ping')" class="btn-preset">🌐 Reducir Ping</button>
+          <button onclick="limpiarSeleccion()" class="btn-preset" style="background:#2a3447;">🗑️ Limpiar Todo</button>
         </div>
+      </div>
 
-        <div class="card-comando">
-          <div class="cmd-info">
-            <h4>🚀 Desactivar Animaciones del Sistema</h4>
-          </div>
-          <div class="cmd-code-box">
-            <code>settings put global window_animation_scale 0 && settings put global transition_animation_scale 0</code>
-            <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
-          </div>
-        </div>
+      <div id="containerMenus" class="script-builder-box">
+        <!-- Menús inyectados por JS -->
+      </div>
+
+      <div class="acciones-script">
+        <button onclick="copiarScriptTexto()" class="btn-copiar-script">📋 Copiar Comandos Seleccionados</button>
+        <button onclick="generarYDescargarScript()" class="btn-calcular">📥 Descargar .sh</button>
       </div>
     </section>
 
@@ -91,12 +87,11 @@
 
   <footer class="footer-principal">
     <div class="footer-contenido">
-      <p><strong>RendimientoTech</strong> © 2026 - Optimización Android sin PC.</p>
-      <p class="disclaimer">Soporte: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
+      <p><strong>RendimientoTech</strong> © 2026 - Creado para gamers de Free Fire.</p>
+      <p class="disclaimer">Contacto: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
     </div>
   </footer>
 
-  <!-- MODAL CONTACTO -->
   <div id="modalContacto" class="modal">
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
