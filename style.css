@@ -655,3 +655,59 @@ button:active {
     transform: scale(0.97);
     box-shadow: 0 2px 8px rgba(0, 242, 254, 0.6);
 }
+
+/* Estilos Buscador de Dispositivos */
+.contenedor-buscador {
+  padding: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+#inputBuscar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.grid-dispositivos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.tarjeta-telefono {
+  background: #252525;
+  border-radius: 10px;
+  padding: 15px;
+  border-left: 4px solid #00e676;
+  color: #eee;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.tarjeta-telefono h3 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 18px;
+}
+
+.tarjeta-telefono p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.badge-nivel {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 8px;
+  background: #00e676;
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 12px;
+}
