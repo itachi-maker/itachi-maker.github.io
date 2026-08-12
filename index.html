@@ -3,45 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Sensibilidad Pro & Brevent</title>
-  <meta name="description" content="Generador avanzado de sensibilidad y DPI para Free Fire, optimizado para móviles sin PC.">
+  <title>RendimientoTech - Panel Pro Free Fire</title>
+  <meta name="description" content="Centro de control de sensibilidad por hardware y optimizador Brevent para Free Fire.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="inicio">
 
   <nav class="navbar">
     <div class="nav-container">
-      <span class="nav-logo">⚡ RendimientoTech</span>
+      <div class="nav-brand">
+        <span class="nav-logo-icon">⚡</span>
+        <span class="nav-logo-text">Rendimiento<strong>Tech</strong></span>
+      </div>
       <ul class="nav-links">
-        <li><a href="#sensi">🎯 Sensibilidad Pro</a></li>
-        <li><a href="#scriptgen">📦 Comandos Brevent</a></li>
-        <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">📩 Contacto</a></li>
+        <li><a href="#dashboard">Panel Pro</a></li>
+        <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">Contacto</a></li>
       </ul>
     </div>
   </nav>
 
-  <header class="header-principal">
-    <div class="logo-badge">ULTRA PRO EDITION</div>
-    <h1>RendimientoTech</h1>
-    <p>Calculadora de Sensibilidad Maestra & Comandos para Free Fire</p>
+  <header class="hero-header">
+    <div class="hero-badge">CENTRO DE RENDIMIENTO ELITE</div>
+    <h1>RendimientoTech OS</h1>
+    <p>Ingeniería de sensibilidad por hardware y comandos de sistema para Free Fire</p>
   </header>
 
-  <main class="contenedor-principal">
+  <main class="dashboard-container" id="dashboard">
 
-    <!-- SECCIÓN: GENERADOR DE SENSIBILIDAD PRO (AISPLADO Y TÉCNICO) -->
-    <section id="sensi" class="seccion-caja seccion-sensi-isolated">
-      <div class="header-modulo-sensi">
-        <h2>🎯 Laboratorio de Sensibilidad & Hardware Táctil</h2>
-        <p class="subtitulo">Cálculo balístico basado en píxeles de pantalla, escala DPI y latencia de muestreo táctil real.</p>
-      </div>
-      
-      <div class="hardware-grid-pro">
-        <div class="input-grupo-pro">
-          <label>📱 Modelo de Celular:</label>
-          <input type="text" id="inputModelo" placeholder="Ej: Poco X3 Pro, Redmi Note 10, A52">
+    <!-- MÓDULO 1: LABORATORIO DE SENSIBILIDAD -->
+    <section class="panel-card">
+      <div class="card-header">
+        <div class="header-icon">🎯</div>
+        <div>
+          <h2>Laboratorio Balístico de Sensibilidad</h2>
+          <p>Cálculo basado en resolución de pantalla, escala DPI y tasa de muestreo táctil real.</p>
         </div>
-        <div class="input-grupo-pro">
-          <label>📺 Resolución de Pantalla (Píxeles):</label>
+      </div>
+
+      <div class="form-grid-unified">
+        <div class="campo-control">
+          <label>Modelo de Dispositivo</label>
+          <input type="text" id="inputModelo" placeholder="Ej: Poco X3 Pro, Redmi Note">
+        </div>
+        <div class="campo-control">
+          <label>Resolución de Pantalla</label>
           <select id="selectResolucion">
             <option value="1080x2400" selected>FHD+ (1080 × 2400 px)</option>
             <option value="1080x2340">FHD+ Estrecho (1080 × 2340 px)</option>
@@ -49,86 +54,81 @@
             <option value="1440x3200">QHD+ Gaming (1440 × 3200 px)</option>
           </select>
         </div>
-        <div class="input-grupo-pro">
-          <label>⚙️ DPI del Sistema:</label>
-          <input type="number" id="inputDpiReal" value="580" placeholder="Ej: 410, 580, 640, 800">
+        <div class="campo-control">
+          <label>DPI del Sistema</label>
+          <input type="number" id="inputDpiReal" value="580" placeholder="Ej: 580, 640">
         </div>
-        <div class="input-grupo-pro">
-          <label>👆 Touch Sampling Rate (Muestreo Táctil):</label>
+        <div class="campo-control">
+          <label>Touch Sampling Rate</label>
           <select id="selectSamplingRate">
-            <option value="120">120 Hz (Estándar gama baja/media)</option>
-            <option value="180">180 Hz (Fluido equilibrado)</option>
-            <option value="240" selected>240 Hz (Gaming competitivo)</option>
-            <option value="360">360 Hz (Alta respuesta táctil)</option>
-            <option value="480">480 Hz+ (Gama alta / Esports)</option>
+            <option value="120">120 Hz (Estándar)</option>
+            <option value="180">180 Hz (Equilibrado)</option>
+            <option value="240" selected>240 Hz (Competitivo)</option>
+            <option value="360">360 Hz (Alta Respuesta)</option>
+            <option value="480">480 Hz+ (Esports Pro)</option>
           </select>
         </div>
       </div>
 
-      <div class="acciones-sensi-pro">
-        <button onclick="calcularSensibilidadHardwareReal()" class="btn-calcular-hardware">⚡ Calcular con Datos de Hardware</button>
-      </div>
+      <button onclick="calcularSensibilidadHardwareReal()" class="btn-accion primary-glow">⚡ Calcular Configuración Maestra</button>
 
-      <!-- PANEL DE RESULTADOS TÉCNICOS -->
-      <div id="panelResultadosSensi" class="resultados-sensi-panel">
-        <h3>📊 Perfil Balístico Calculado</h3>
-        <div class="grid-resultados">
-          <div class="res-card"><span>General</span><strong id="resGen">188</strong></div>
-          <div class="res-card"><span>Punto Rojo</span><strong id="resRed">182</strong></div>
-          <div class="res-card"><span>Mira 2X</span><strong id="res2x">176</strong></div>
-          <div class="res-card"><span>Mira 4X</span><strong id="res4x">170</strong></div>
-          <div class="res-card"><span>Mira AWM</span><strong id="resAwm">75</strong></div>
-          <div class="res-card"><span>Cámara</span><strong id="resCam">85</strong></div>
+      <div class="resultados-display">
+        <div class="res-grid">
+          <div class="res-item"><span>General</span><strong id="resGen">188</strong></div>
+          <div class="res-item"><span>Punto Rojo</span><strong id="resRed">182</strong></div>
+          <div class="res-item"><span>Mira 2X</span><strong id="res2x">176</strong></div>
+          <div class="res-item"><span>Mira 4X</span><strong id="res4x">170</strong></div>
+          <div class="res-item"><span>Mira AWM</span><strong id="resAwm">75</strong></div>
+          <div class="res-item"><span>Cámara</span><strong id="resCam">85</strong></div>
         </div>
-        <div class="acciones-copiar-pro">
-          <button onclick="copiarConfiguracionHardware()" class="btn-copiar-hardware">📋 Copiar Configuración Completa para Video/Redes</button>
-        </div>
+        <button onclick="copiarConfiguracionHardware()" class="btn-accion secondary-action">📋 Copiar Configuración Completa</button>
       </div>
     </section>
 
-    <!-- SECCIÓN: GENERADOR DE SCRIPTS BREvent (INTACTO) -->
-    <section id="scriptgen" class="seccion-caja">
-      <h2>📦 Generador de Comandos Brevent & Shizuku</h2>
-      <p class="subtitulo">Selecciona las optimizaciones del sistema para eliminar el lag en tus partidas.</p>
-      
-      <div class="mode-selector">
-        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 No-Root (Brevent)</label>
-        <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Root Seguro</label>
-      </div>
-
-      <div class="presets-box">
-        <span class="preset-title">⚡ Perfiles Rápidos:</span>
-        <div class="preset-botones">
-          <button onclick="aplicarPreset('freefire')" class="btn-preset">🔥 Free Fire Torneo</button>
-          <button onclick="aplicarPreset('ping')" class="btn-preset">🌐 Reducir Ping</button>
-          <button onclick="limpiarSeleccion()" class="btn-preset" style="background:#2a3447;">🗑️ Limpiar</button>
+    <!-- MÓDULO 2: GENERADOR BREVENT & SHIZUKU -->
+    <section class="panel-card">
+      <div class="card-header">
+        <div class="header-icon">📦</div>
+        <div>
+          <h2>Optimizador Brevent & Shizuku</h2>
+          <p>Selecciona los parámetros de sistema para eliminar el input lag y estabilizar los FPS.</p>
         </div>
       </div>
 
-      <div id="containerMenus" class="script-builder-box"></div>
+      <div class="mode-selector-unified">
+        <label class="radio-tab"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 Modo No-Root (Brevent)</label>
+        <label class="radio-tab"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Modo Root Seguro</label>
+      </div>
 
-      <div class="acciones-script">
-        <button onclick="copiarScriptTexto()" class="btn-copiar-script">📋 Copiar Comandos Seleccionados</button>
-        <button onclick="generarYDescargarScript()" class="btn-calcular">📥 Descargar .sh</button>
+      <div class="presets-toolbar">
+        <span class="toolbar-label">Perfiles Rápidos:</span>
+        <div class="toolbar-buttons">
+          <button onclick="aplicarPreset('freefire')" class="btn-chip">🔥 Torneo FF</button>
+          <button onclick="aplicarPreset('ping')" class="btn-chip">🌐 Anti-Lag Red</button>
+          <button onclick="limpiarSeleccion()" class="btn-chip muted">🗑️ Limpiar</button>
+        </div>
+      </div>
+
+      <div id="containerMenus" class="builder-scroll-box"></div>
+
+      <div class="acciones-footer-grupo">
+        <button onclick="copiarScriptTexto()" class="btn-accion primary-glow">📋 Copiar Comandos Seleccionados</button>
+        <button onclick="generarYDescargarScript()" class="btn-accion outline-action">📥 Descargar Script .sh</button>
       </div>
     </section>
 
   </main>
 
-  <footer class="footer-principal">
-    <div class="footer-contenido">
-      <p><strong>RendimientoTech</strong> © 2026 - Herramientas de élite para Free Fire.</p>
-      <p class="disclaimer">Contacto: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
-    </div>
+  <footer class="footer-unified">
+    <p><strong>RendimientoTech</strong> © 2026 - Diseñado para Creadores de Free Fire.</p>
+    <p class="footer-email">alexanderorozcomartinez207@gmail.com</p>
   </footer>
 
-  <div id="modalContacto" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
-      <h2>📩 Contacto Oficial</h2>
-      <p style="background: #161c2b; padding: 10px; border-radius: 6px; text-align: center; color: #00e676; font-weight: bold;">
-        alexanderorozcomartinez207@gmail.com
-      </p>
+  <div id="modalContacto" class="modal-overlay">
+    <div class="modal-box">
+      <span class="cerrar-modal" onclick="cerrarModal('modalContacto')">&times;</span>
+      <h3>📩 Contacto Oficial</h3>
+      <p class="email-badge">alexanderorozcomartinez207@gmail.com</p>
     </div>
   </div>
 

@@ -2,25 +2,22 @@ window.onload = function() { actualizarMenus(); };
 
 function abrirModal(id) { document.getElementById(id).style.display = "block"; }
 function cerrarModal(id) { document.getElementById(id).style.display = "none"; }
-window.onclick = function(event) { if (event.target.classList.contains('modal')) event.target.style.display = "none"; };
+window.onclick = function(event) { if (event.target.classList.contains('modal-overlay')) event.target.style.display = "none"; };
 
-// Lógica de cálculo balístico profesional basada en Hardware Real
+// Lógica de cálculo de sensibilidad por hardware real
 function calcularSensibilidadHardwareReal() {
   let modelo = document.getElementById('inputModelo').value.trim() || "Dispositivo Android";
   let resolucion = document.getElementById('selectResolucion').value;
   let dpi = parseInt(document.getElementById('inputDpiReal').value) || 580;
   let samplingRate = parseInt(document.getElementById('selectSamplingRate').value) || 240;
 
-  // Extraer píxeles de ancho y alto de la resolución seleccionada
   let partesRes = resolucion.split('x');
   let anchoPx = parseInt(partesRes[0]);
   let altoPx = parseInt(partesRes[1]);
 
-  // Factor de densidad de píxeles y compensación de muestreo táctil
-  let factorDensidad = (anchoPx * altoPx) / 2592000; // Referencia FHD+ (1080x2400)
+  let factorDensidad = (anchoPx * altoPx) / 2592000;
   let factorSampling = samplingRate / 240;
 
-  // Algoritmo de precisión para cabeceros exactos
   let baseGen = Math.round(195 - (dpi * 0.035) + (factorSampling * 2));
   let gen = Math.min(200, Math.max(130, baseGen));
   let red = Math.min(195, Math.max(120, Math.round(gen - (factorDensidad * 4))));
@@ -29,7 +26,6 @@ function calcularSensibilidadHardwareReal() {
   let awm = Math.min(120, Math.max(50, Math.round(85 / factorSampling)));
   let cam = Math.min(130, Math.max(60, Math.round(90 / factorSampling)));
 
-  // Inyectar en el DOM
   document.getElementById('resGen').innerText = gen;
   document.getElementById('resRed').innerText = red;
   document.getElementById('res2x').innerText = x2;
@@ -69,7 +65,7 @@ function copiarConfiguracionHardware() {
   });
 }
 
-// Menús de Comandos Brevent (Intactos)
+// Menús de Comandos Brevent
 function actualizarMenus() {
   const modo = document.querySelector('input[name="mode"]:checked').value;
   const container = document.getElementById('containerMenus');
@@ -131,7 +127,7 @@ function actualizarMenus() {
 }
 
 function aplicarPreset(tipo) {
-  document.querySelectorAll('.script-builder-box input[type="checkbox"]').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.builder-scroll-box input[type="checkbox"]').forEach(cb => cb.checked = false);
   
   if (tipo === 'freefire') {
     ['an1', 'an2', 'an3', 'tc1', 'tc2', 'tc3', 'bg1', 'bg2', 'bg3', 'bg4'].forEach(id => {
@@ -149,7 +145,7 @@ function aplicarPreset(tipo) {
 }
 
 function limpiarSeleccion() {
-  document.querySelectorAll('.script-builder-box input[type="checkbox"]').forEach(cb => cb.checked = false);
+  document.querySelectorAll('.builder-scroll-box input[type="checkbox"]').forEach(cb => cb.checked = false);
   alert("🗑️ Selección limpiada.");
 }
 
