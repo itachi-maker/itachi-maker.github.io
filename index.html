@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Generador Masivo de Scripts ADB & Root</title>
-  <meta name="description" content="Portal oficial de RendimientoTech: Generador avanzado de scripts de optimización Android y comandos ADB seguros para Free Fire.">
+  <title>RendimientoTech - Optimizador Móvil para Brevent & Shizuku</title>
+  <meta name="description" content="Generador de scripts optimizados para Android y Free Fire, diseñados para ejecutarse directamente desde Brevent o Shizuku sin PC.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="inicio">
@@ -13,55 +13,61 @@
     <div class="nav-container">
       <span class="nav-logo">⚡ RendimientoTech</span>
       <ul class="nav-links">
-        <li><a href="#inicio">🏠 Inicio</a></li>
-        <li><a href="#scriptgen">📦 Generador Pro</a></li>
-        <li><a href="#comandos">🛠️ Comandos Directos</a></li>
-        <li><a href="javascript:void(0)" onclick="abrirModal('modalNosotros')">👥 Nosotros</a></li>
+        <li><a href="#scriptgen">📦 Generador Móvil</a></li>
+        <li><a href="#comandos">🛠️ Comandos Únicos</a></li>
         <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">📩 Contacto</a></li>
-        <li><a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">🔒 Privacidad</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="header-principal">
-    <div class="logo-badge">ADSENSE READY & ENGINE v5.0</div>
+    <div class="logo-badge">MÓVIL EDITION (BREVENT / SHIZUKU)</div>
     <h1>RendimientoTech</h1>
-    <p>Generador Maestro de Scripts de Optimización (Modo No-Root con +50 Ajustes y Modo Root Seguro)</p>
+    <p>Optimización Extrema para Android sin necesidad de PC</p>
   </header>
 
   <main class="contenedor-principal">
 
-    <!-- SECCIÓN: GENERADOR DE SCRIPTS MASIVO -->
+    <!-- SECCIÓN: GENERADOR RÁPIDO MÓVIL -->
     <section id="scriptgen" class="seccion-caja">
-      <h2>📦 Generador Avanzado de Scripts Personalizados (.sh)</h2>
-      <p class="subtitulo">Selecciona tu entorno y personaliza tu script con más de 50 comandos seguros para maximizar FPS y reducir ping.</p>
+      <h2>🚀 Perfiles de Juego & Generador Instantáneo</h2>
+      <p class="subtitulo">Toca un perfil preconfigurado para Free Fire o personaliza los comandos de forma limpia para pegarlos directo en Brevent.</p>
       
-      <!-- Selector de Modo -->
+      <!-- Selector de Modos de Usuario -->
       <div class="mode-selector">
-        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarOpciones()"> 🟢 Modo No-Root (ADB / Brevent / Shizuku)</label>
-        <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarOpciones()"> ⚡ Modo Root (Avanzado & Seguro)</label>
+        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarOpciones()"> 📱 Modo No-Root (Brevent / Shizuku)</label>
+        <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarOpciones()"> ⚡ Modo Root Seguro</label>
+      </div>
+
+      <!-- PRESETS RÁPIDOS DE 1 CLIC -->
+      <div class="presets-box">
+        <span class="preset-title">⚡ Perfiles Rápidos:</span>
+        <div class="preset-botones">
+          <button onclick="aplicarPreset('freefire')" class="btn-preset">🔥 Free Fire Torneo (FPS + Touch)</button>
+          <button onclick="aplicarPreset('ping')" class="btn-preset">🌐 Reducir Ping / Wi-Fi</button>
+          <button onclick="aplicarPreset('todo')" class="btn-preset">✨ Máximo Rendimiento Total</button>
+        </div>
       </div>
 
       <div id="containerOpciones" class="script-builder-box">
-        <!-- Contenido dinámico inyectado por JS -->
+        <!-- Contenido dinámico -->
       </div>
 
       <div class="acciones-script">
-        <button onclick="generarYDescargarScript()" class="btn-calcular">📥 DESCARGAR SCRIPT COMPLETO (.SH)</button>
-        <button onclick="copiarScriptTexto()" class="btn-copiar-script">📋 Copiar Script al Portapapeles</button>
+        <button onclick="copiarScriptTexto()" class="btn-copiar-script">📋 Copiar Comandos para Brevent</button>
+        <button onclick="generarYDescargarScript()" class="btn-calcular">📥 Descargar .sh</button>
       </div>
     </section>
 
-    <!-- SECCIÓN DE COMANDOS RÁPIDOS -->
+    <!-- SECCIÓN DE COMANDOS INDIVIDUALES -->
     <section id="comandos" class="seccion-caja">
-      <h2>🛠️ Comandos Esenciales de Referencia</h2>
-      <p class="subtitulo">Ejecuciones rápidas para copiado individual en tu terminal.</p>
+      <h2>🛠️ Copia Rápida para Consola</h2>
+      <p class="subtitulo">Comandos esenciales listos para copiar con un solo toque y pegar en tu shell.</p>
 
       <div class="lista-comandos">
         <div class="card-comando">
           <div class="cmd-info">
-            <h4>⚡ Reducir Latencia Táctil Global</h4>
-            <p>Optimiza la escala de presión y respuesta al deslizar el dedo.</p>
+            <h4>⚡ Sensibilidad y Táctil (Touch Pressure)</h4>
           </div>
           <div class="cmd-code-box">
             <code>settings put system touch_pressure_scale 0.001</code>
@@ -71,11 +77,10 @@
 
         <div class="card-comando">
           <div class="cmd-info">
-            <h4>🚀 Forzar Refresco de Pantalla</h4>
-            <p>Estabiliza los fotogramas por segundo en juegos competitivos.</p>
+            <h4>🚀 Desactivar Animaciones del Sistema</h4>
           </div>
           <div class="cmd-code-box">
-            <code>settings put system min_refresh_rate 120.0</code>
+            <code>settings put global window_animation_scale 0 && settings put global transition_animation_scale 0</code>
             <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
           </div>
         </div>
@@ -86,59 +91,19 @@
 
   <footer class="footer-principal">
     <div class="footer-contenido">
-      <p><strong>RendimientoTech</strong> © 2026 - Todos los derechos reservados.</p>
-      <p class="disclaimer">Soporte Técnico & Contacto: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
-      <div class="footer-links">
-        <a href="#inicio">Inicio</a> | 
-        <a href="javascript:void(0)" onclick="abrirModal('modalNosotros')">Sobre Nosotros</a> | 
-        <a href="javascript:void(0)" onclick="abrirModal('modalContacto')">Contacto</a> | 
-        <a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">Política de Privacidad</a> | 
-        <a href="javascript:void(0)" onclick="abrirModal('modalTerminos')">Términos</a>
-      </div>
+      <p><strong>RendimientoTech</strong> © 2026 - Optimización Android sin PC.</p>
+      <p class="disclaimer">Soporte: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
     </div>
   </footer>
 
-  <!-- BANNER DE COOKIES (ADSENSE OBLIGATORIO) -->
-  <div id="cookieBanner" class="cookie-banner" style="display:none;">
-    <div class="cookie-content">
-      <p>🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y mostrar publicidad relevante a través de Google AdSense. Si continuas navegando, aceptas nuestra <a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">Política de Privacidad</a>.</p>
-      <button onclick="aceptarCookies()" class="btn-cookie">Aceptar y Continuar</button>
-    </div>
-  </div>
-
-  <!-- MODALES -->
-  <div id="modalNosotros" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal('modalNosotros')">&times;</span>
-      <h2>👥 Sobre Nosotros - RendimientoTech</h2>
-      <p>Portal líder en optimización Android, configuración de sensibilidad para Free Fire y ejecución de scripts seguros vía ADB, Brevent y Shizuku.</p>
-    </div>
-  </div>
-
+  <!-- MODAL CONTACTO -->
   <div id="modalContacto" class="modal">
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
       <h2>📩 Contacto Oficial</h2>
-      <p>Para soporte o consultas sobre RendimientoTech, escríbenos directamente a:</p>
-      <p style="background: #161c2b; padding: 10px; border-radius: 6px; text-align: center; color: #00e676; font-weight: bold; font-size: 14px;">
+      <p style="background: #161c2b; padding: 10px; border-radius: 6px; text-align: center; color: #00e676; font-weight: bold;">
         alexanderorozcomartinez207@gmail.com
       </p>
-    </div>
-  </div>
-
-  <div id="modalPrivacidad" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal('modalPrivacidad')">&times;</span>
-      <h2>🔒 Política de Privacidad</h2>
-      <p>Este sitio web utiliza cookies técnicas y publicitarias para mejorar la navegación del usuario y cumplir rigurosamente con las normativas de Google AdSense.</p>
-    </div>
-  </div>
-
-  <div id="modalTerminos" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal('modalTerminos')">&times;</span>
-      <h2>📜 Términos y Condiciones</h2>
-      <p>Las herramientas y scripts ofrecidos en RendimientoTech son de carácter educativo y de optimización de software mediante comandos oficiales del sistema.</p>
     </div>
   </div>
 
