@@ -1,503 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="author" content="Itachi Martines - RendimientoTech">
-    <meta name="copyright" content="© 2026 RendimientoTech. Todos los derechos reservados.">
-    <meta name="publisher" content="RendimientoTech">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RendimientoTech - Optimización Android & Gaming Extreme</title>
-    <meta name="description" content="Guías y modificaciones ADB/Shell de alto rendimiento en Android: respuesta táctil, 120 FPS y control de CPU/RAM sin root.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-    <link rel="stylesheet" href="style.css?v=3.0">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8848206499958996" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-8848206499958996">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RendimientoTech - Sensibilidad VIP por Modelo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>⚡ RENDIMIENTOTECH</h1>
-            <div class="subtitle">Sensibilidad Free Fire 2026 & Comandos Universal Android</div>
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="contacto.html">Contacto</a>
-                <a href="privacidad.html">Privacidad</a>
-            </nav>
-        </header>
 
-        <!-- ESPACIO ADSENSE BANNER SUPERIOR -->
-        <div class="ad-slot">
-            <!-- AdSense Auto Header Banner -->
+  <header class="header-principal">
+    <h1>RendimientoTech VIP</h1>
+    <p>Calculadora Exacta de Sensibilidad Headshot por Modelo</p>
+  </header>
+
+  <main class="contenedor-principal">
+
+    <!-- CALCULADORA POR MODELO DIRECTO -->
+    <section class="seccion-caja">
+      <h2>🎯 Generador de Sensibilidad por Celular</h2>
+      <p class="subtitulo">Selecciona el modelo exacto en la lista para autocalibrar la sensibilidad headshot.</p>
+
+      <div class="form-sensibilidad">
+        <div class="grupo-input">
+          <label for="selectModelo">📱 Elige tu Modelo de Celular:</label>
+          <select id="selectModelo" onchange="autocompletarPorModelo()">
+            <!-- Se llena dinámicamente por JavaScript -->
+          </select>
         </div>
 
-        <!-- GENERADOR HD DE SENSIBILIDAD FREE FIRE -->
-        <div class="sensi-container">
-            <div class="sensi-title">🎯 GENERADOR DE SENSIBILIDAD (0 - 200)</div>
-            <p style="text-align:center; font-size:0.8em; color:#cbd5e1; margin-top:0; margin-bottom:18px;">
-                Calcula la mira ajustada al Muestreo Táctil (Hz) real de tu celular.
-            </p>
-
-            <div class="form-group">
-                <label>📱 Marca de tu Dispositivo:</label>
-                <div class="select-wrapper">
-                    <select id="deviceBrand" class="form-control" onchange="updateModels()">
-                        <option value="xiaomi">Xiaomi / POCO / Redmi / BlackShark</option>
-                        <option value="samsung">Samsung Galaxy (Serie S, A, M)</option>
-                        <option value="infinix">Infinix (Serie GT, Note, Hot)</option>
-                        <option value="tecno">Tecno Mobile (Pova, Camon, Spark)</option>
-                        <option value="motorola">Motorola (Edge, Moto G)</option>
-                        <option value="realme">Realme (Serie GT, C, Pro)</option>
-                        <option value="zte">ZTE / RedMagic / Nubia</option>
-                        <option value="huawei">Honor / Huawei</option>
-                        <option value="apple">iPhone / iPad</option>
-                        <option value="universal">Otras Marcas / Universal</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>🔥 Modelo Específico / Tasa Hz:</label>
-                <div class="select-wrapper">
-                    <select id="deviceModel" class="form-control">
-                        <!-- Cargado Dinámicamente -->
-                    </select>
-                </div>
-            </div>
-
-            <!-- TARJETAS DE SELECCIÓN GAMER: ESTILO DE SENSIBILIDAD -->
-            <div class="form-group">
-                <label for="estiloJuego" style="display:block; margin-top:12px; font-weight:bold;">⚡ Estilo de Juego / Sensibilidad:</label>
-<select id="estiloJuego">
-    <option value="alta">🔥 ALTA - Capa Roja / Rápida</option>
-    <option value="media" selected>⚡ MEDIA - Precisión + Control</option>
-    <option value="baja">🎯 BAJA - Control / Sniper</option>
-</select>
-
-<label for="ajusteDpi" style="display:block; margin-top:12px; font-weight:bold;">📐 Ajuste de DPI:</label>
-<select id="ajusteDpi">
-    <option value="con_dpi">📐 CON DPI - Respuesta Máxima</option>
-    <option value="sin_dpi" selected>📱 SIN DPI - Fábrica Original</option>
-</select>
-
-
-<button class="btn-generate" onclick="generateSensi()">🚀 CALCULAR CONFIGURACIÓN PRO</button>
-
-            <!-- LOADER PRO ESTILO IA/VIP -->
-<div id="sensiLoader" style="display:none; text-align:center; padding:20px 15px; background:rgba(0, 242, 254, 0.05); border:1px solid rgba(0, 242, 254, 0.3); border-radius:14px; margin-top:20px; box-shadow:0 0 15px rgba(0,242,254,0.1);">
-    <div style="font-size:1.6em; margin-bottom:6px;">⚡</div>
-    <div id="loaderStatus" style="font-weight:900; font-size:0.82em; color:#00f2fe; text-transform:uppercase; letter-spacing:1px;">Iniciando Engine VIP...</div>
-    <div style="width:100%; background:#070d19; height:6px; border-radius:10px; margin-top:12px; overflow:hidden; border:1px solid #1e3050;">
-        <div id="loaderBar" style="width:0%; height:100%; background:linear-gradient(90deg, #00f2fe, #ff0055); transition:width 0.3s ease;"></div>
-    </div>
-</div>
-
-<!-- RESULTADO -->
-            <div id="sensiResult" class="sensi-result">
-                <h3 style="margin:0; color:#fff; text-align:center; font-size:1.05em; letter-spacing:0.5px;">🔥 CONFIGURACIÓN CALCULADA</h3>
-                
-                <div class="touch-highlight-box">
-                    <div class="touch-title">🎯 Muestreo Táctil Real Detectado:</div>
-                    <div class="touch-val" id="valHz">480Hz (2160Hz Instantáneo)</div>
-                </div>
-
-                <div class="sensi-grid">
-                    <div class="sensi-card">
-                        <span class="label">General</span>
-                        <div class="value" id="valGen">195</div>
-                    </div>
-                    <div class="sensi-card">
-                        <span class="label">Mira Red Dot</span>
-                        <div class="value" id="valRed">188</div>
-                    </div>
-                    <div class="sensi-card">
-                        <span class="label">Mira 2X</span>
-                        <div class="value" id="val2x">192</div>
-                    </div>
-                    <div class="sensi-card">
-                        <span class="label">Mira 4X</span>
-                        <div class="value" id="val4x">185</div>
-                    </div>
-                    <div class="sensi-card">
-                        <span class="label">Mira AWM</span>
-                        <div class="value" id="valAwm">110</div>
-                    </div>
-                    <div class="sensi-card">
-                        <span class="label">Cámara 360</span>
-                        <div class="value" id="valCam">170</div>
-                    </div>
-                </div>
-
-                <div class="extra-info-box">
-                    <strong>🎯 Ajustes Recomendados de Pantalla:</strong><br>
-                    • 🔘 <strong>Botón de Disparo:</strong> <span id="valButton">42%</span><br>
-                    • 📐 <strong>DPI Sugerido:</strong> <span id="valDpi">480 DPI</span><br>
-                    • ⚡ <strong>Velocidad de Puntero:</strong> Máxima (100%)<br>
-                    • 🚀 <strong>Suavizado de Respuesta:</strong> Optimizado para la tasa táctil seleccionada.
-                </div>
-
-                <button class="copy-btn" style="width:100%; margin-top:14px; justify-content:center; padding:12px; font-size:0.85em;" onclick="copyFullSensi(this)">
-                    📋 Copiar Configuración Completa
-                </button>
-            </div>
+        <div class="grupo-input">
+          <label for="gama">Gama del Procesador:</label>
+          <select id="gama">
+            <option value="baja">Gama Baja (2GB - 4GB RAM)</option>
+            <option value="media" selected>Gama Media (6GB - 8GB RAM)</option>
+            <option value="alta">Gama Alta / Gamer (8GB+ RAM)</option>
+          </select>
         </div>
 
-        <div class="banner">
-            🔥 <strong>Optimización Android Universal:</strong> Comandos probados en Android 10 a 16 para acelerar la respuesta del táctil y evitar el lag.
+        <div class="grupo-input">
+          <label for="hz">Tasa de Refresco (Pantalla):</label>
+          <select id="hz">
+            <option value="60">60 Hz</option>
+            <option value="90">90 Hz</option>
+            <option value="120" selected>120 Hz</option>
+            <option value="144">144 Hz</option>
+          </select>
         </div>
 
-        <!-- ESPACIO ADSENSE INTERMEDIO 1 -->
-        <div class="ad-slot">
-            <!-- AdSense Auto In-Article Placement -->
+        <div class="grupo-input">
+          <label for="estilo">Estilo de Juego:</label>
+          <select id="estilo">
+            <option value="equilibrado" selected>Equilibrado (Todas las armas)</option>
+            <option value="onetap">Un Tiro / Escopetas (M1887, Desert)</option>
+            <option value="smg">Ráfaga / SMG (MP40, UMP)</option>
+          </select>
         </div>
 
-        <!-- SECCIÓN 1: UNIVERSAL SIN ROOT -->
-        <div class="section-header">
-            <h2 class="section-title title-noroot">⚡ 1. COMANDOS UNIVERSALES SIN ROOT</h2>
-            <span class="badge badge-noroot">Brevent / Shizuku / LADB</span>
+        <button onclick="calcularSensibilidad()" class="btn-calcular">⚡ CALCULAR SENSIBILIDAD HEADSHOT</button>
+      </div>
+
+      <!-- RESULTADOS -->
+      <div id="resultadoSens" class="resultado-box" style="display:none;">
+        <h3 id="tituloModeloRes">Configuración Calculada</h3>
+        <div class="grid-sens">
+          <div class="item-sens"><span>General:</span> <strong id="resGen">-</strong></div>
+          <div class="item-sens"><span>Punto Rojo:</span> <strong id="resRedDot">-</strong></div>
+          <div class="item-sens"><span>Mira 2X:</span> <strong id="res2x">-</strong></div>
+          <div class="item-sens"><span>Mira 4X:</span> <strong id="res4x">-</strong></div>
+          <div class="item-sens"><span>Mira AWM:</span> <strong id="resAwm">-</strong></div>
+          <div class="item-sens"><span>Cámara 360:</span> <strong id="resCam">-</strong></div>
         </div>
 
-        <div class="card">
-            <h3>Optimización de Touch Response (Universal)</h3>
-            <p>Reduce el retraso de entrada táctil en cualquier Android acelerando la tasa de respuesta gráfica.</p>
-            <div class="tech-info">💡 <strong>Compatibilidad:</strong> Xiaomi, Samsung, Motorola, Infinix, Tecno, Realme, ZTE, etc.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">UNIVERSAL ADB</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c1')">📋 Copiar</button>
-                </div>
-                <code id="c1">settings put secure long_press_timeout 250 && settings put system touch_blocking_period 0 && settings put global touch_pressure_scale 0.001</code>
-            </div>
+        <div class="ajustes-extra">
+          <div class="extra-card">
+            <span>DPI Recomendado</span>
+            <strong id="resDpi">-</strong>
+          </div>
+          <div class="extra-card">
+            <span>Botón de Disparo</span>
+            <strong id="resBoton">-</strong>
+          </div>
         </div>
 
-        <div class="card">
-            <h3>Forzar Rendimiento Render GPU / HW Acceleration</h3>
-            <p>Obliga a Android a procesar la interfaz y los juegos directamente mediante la tarjeta gráfica GPU.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Aumenta los FPS y elimina tirones al girar rápido la mira.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">UNIVERSAL ADB</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c2')">📋 Copiar</button>
-                </div>
-                <code id="c2">setprop debug.sf.hw 1 && setprop debug.egl.hw 1 && settings put global window_animation_scale 0.5</code>
-            </div>
+        <div class="consejo-box">
+          💡 <strong>Calibración Táctica:</strong> <span id="resConsejo">-</span>
         </div>
+      </div>
+    </section>
 
-        <div class="card">
-            <h3>Optimizador de Buffer de Red (Anti-Ping Spikes)</h3>
-            <p>Aumenta el tamaño del paquete de recepción de datos para mantener el ping estable en partidas online.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Mantiene la latencia en 30ms - 50ms sin saltos de 999ms.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">UNIVERSAL ADB</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c3')">📋 Copiar</button>
-                </div>
-                <code id="c3">settings put global wifi_scan_always_enabled 0 && settings put global tcp_default_init_rwnd 60</code>
-            </div>
-        </div>
+    <!-- BUSCADOR GENERAL -->
+    <section class="seccion-caja">
+      <h2>🔍 Buscar Especificaciones de Celulares</h2>
+      <input type="text" id="inputBuscar" onkeyup="buscarTelefono()" placeholder="Escribe tu modelo (ej. Redmi Note 14, Helio G100, Poco)...">
+      <div id="listaDispositivos" class="grid-dispositivos"></div>
+    </section>
 
-        <!-- ESPACIO ADSENSE INTERMEDIO 2 -->
-        <div class="ad-slot">
-            <!-- AdSense Auto In-Article Placement -->
-        </div>
+  </main>
 
-        <!-- SECCIÓN 2: CON ROOT -->
-        <div class="section-header">
-            <h2 class="section-title title-root">🔥 2. AJUSTES KERNEL Y CPU (CON ROOT)</h2>
-            <span class="badge badge-root">KernelSU / Magisk / Exec</span>
-        </div>
-
-        <div class="card">
-            <h3>Spoof Infinix GT 20 Pro (Desbloqueo 120 FPS)</h3>
-            <p>Engaña a los servidores del juego para desbloquear la máxima tasa de cuadros por segundo permitida en 2026.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Activa 120 FPS sin modificar la partición `/system`.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">ROOT EXEC</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c4')">📋 Copiar</button>
-                </div>
-                <code id="c4">resetprop ro.product.model 'Infinix GT 20 Pro' && resetprop ro.product.brand 'Infinix' && resetprop ro.product.manufacturer 'Infinix' && resetprop ro.product.system.model 'Infinix GT 20 Pro' && resetprop ro.product.vendor.model 'Infinix GT 20 Pro'</code>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>Fijar Frecuencia Máxima de CPU Governors</h3>
-            <p>Sostiene la velocidad máxima de reloj de todos los núcleos del SoC evitando bajas de rendimiento.</p>
-            <div class="tech-info">💡 <strong>Impacto:</strong> Evita bajones de FPS durante enfrentamientos o escuadras.</div>
-            <div class="code-box">
-                <div class="code-header">
-                    <span class="code-lang">ROOT EXEC</span>
-                    <button class="copy-btn" onclick="copyCode(this, 'c5')">📋 Copiar</button>
-                </div>
-                <code id="c5">echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor && sysctl -w vm.swappiness=10</code>
-            </div>
-        </div>
-
-        <!-- PREGUNTAS FRECUENTES (FAQ) -->
-        <div class="faq-section">
-            <h2 style="margin-top:0; color:#fff; font-size:1.1em;">❓ Preguntas Frecuentes (FAQ)</h2>
-
-            <div class="faq-item">
-                <div class="faq-title">¿Qué influye más en levantar mira: los Hertz de refresco o el Muestreo Táctil?</div>
-                <div class="faq-desc">El Muestreo Táctil (Touch Sampling Rate) es el parámetro crítico para disparar a la cabeza. Determina cuántas veces por segundo la pantalla detecta el movimiento de tu dedo. A mayor Hz táctil, más rápida es la respuesta en la escala 0-200.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-title">¿Cómo funciona la escala de sensibilidad hasta 200 en 2026?</div>
-                <div class="faq-desc">Free Fire expandió la escala de sensibilidad interna a 200. Nuestro generador calcula el ajuste exacto sincronizando la aceleración táctil del hardware de tu dispositivo.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-title">¿Es seguro modificar el DPI en Android?</div>
-                <div class="faq-desc">Sí, mientras no superes el límite seguro. Nuestro algoritmo arroja valores de DPI probados para que no sufras reinicios ni errores de interfaz.</div>
-            </div>
-        </div>
-
-        <!-- ESPACIO ADSENSE BANNER INFERIOR -->
-        <div class="ad-slot">
-            <!-- AdSense Auto Bottom Placement -->
-        </div>
-
-        <footer>
-            <p>© RendimientoTech | Optimizaciones y Sensibilidades Free Fire 2026</p>
-            <p>Contacto y Soporte: alexanderorozcomartinez207@gmail.com</p>
-        </footer>
-    </div>
-
-    <script>
-        const deviceData = {
-            xiaomi: [
-                { name: "POCO F6 Pro / F6 (Táctil: 480Hz / 2160Hz Inst.)", touchHz: "480Hz (2160Hz Instantáneo)", baseDpi: 520, factor: 0.99 },
-                { name: "POCO X6 Pro 5G (Táctil: 480Hz / 2160Hz Inst.)", touchHz: "480Hz (2160Hz Instantáneo)", baseDpi: 490, factor: 1.01 },
-                { name: "POCO X5 Pro / X4 GT (Táctil: 240Hz / 480Hz)", touchHz: "240Hz (480Hz Táctil)", baseDpi: 480, factor: 1.03 },
-                { name: "POCO X3 Pro / X3 NFC (Táctil: 240Hz)", touchHz: "240Hz Continuous Touch", baseDpi: 460, factor: 1.05 },
-                { name: "Redmi Note 13 Pro+ / 13 Pro (Táctil: 240Hz / 2160Hz)", touchHz: "240Hz (2160Hz Instantáneo)", baseDpi: 480, factor: 1.03 },
-                { name: "Redmi Note 12 / 11 / 10 Series (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 440, factor: 1.08 },
-                { name: "Redmi 13C / 12 / 10C / 9A (Táctil: 120Hz-180Hz)", touchHz: "120Hz - 180Hz Standard Touch", baseDpi: 410, factor: 1.15 },
-                { name: "Xiaomi 14 Ultra / 14 / 13T Pro (Táctil: 480Hz)", touchHz: "480Hz Gaming Touch Rate", baseDpi: 530, factor: 0.98 },
-                { name: "Black Shark 5 Pro / 5 / 4 (Táctil: 720Hz Ultra)", touchHz: "720Hz Ultra-Fast Touch", baseDpi: 540, factor: 0.94 }
-            ],
-            samsung: [
-                { name: "Samsung Galaxy S24 Ultra / S24+ / S24 (Táctil: 240Hz)", touchHz: "240Hz High Sensitivity", baseDpi: 480, factor: 1.01 },
-                { name: "Samsung Galaxy S23 Ultra / S23 FE / S22 (Táctil: 240Hz)", touchHz: "240Hz Touch Rate", baseDpi: 470, factor: 1.02 },
-                { name: "Samsung Galaxy A55 5G / A54 5G / A35 (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 450, factor: 1.06 },
-                { name: "Samsung Galaxy A25 / A15 / A14 5G (Táctil: 180Hz)", touchHz: "180Hz Touch Rate", baseDpi: 430, factor: 1.10 },
-                { name: "Samsung Galaxy A05s / A05 / A04 / A03 (Táctil: 120Hz)", touchHz: "120Hz Touch Sampling", baseDpi: 410, factor: 1.16 },
-                { name: "Samsung Galaxy M54 / M34 / M14 (Táctil: 180Hz-240Hz)", touchHz: "180Hz - 240Hz Touch Rate", baseDpi: 440, factor: 1.08 }
-            ],
-            infinix: [
-                { name: "Infinix GT 20 Pro (Táctil: 360Hz / 1500Hz Inst.)", touchHz: "360Hz (1500Hz Instantáneo)", baseDpi: 490, factor: 1.01 },
-                { name: "Infinix GT 10 Pro Gaming (Táctil: 360Hz)", touchHz: "360Hz E-Sports Touch", baseDpi: 480, factor: 1.02 },
-                { name: "Infinix Note 40 Pro+ / Note 40 / 30 VIP (Táctil: 360Hz)", touchHz: "360Hz Touch Sampling", baseDpi: 460, factor: 1.04 },
-                { name: "Infinix Hot 40 Pro / Hot 30 / Hot 20 (Táctil: 240Hz)", touchHz: "240Hz (1200Hz Instantáneo)", baseDpi: 430, factor: 1.10 },
-                { name: "Infinix Smart 8 / Smart 7 / Smart 6 (Táctil: 120Hz)", touchHz: "120Hz Standard Touch", baseDpi: 400, factor: 1.18 }
-            ],
-            tecno: [
-                { name: "Tecno Camon 30 Pro 5G / Camon 30 (Táctil: 240Hz / 1500Hz)", touchHz: "240Hz (1500Hz Instantáneo)", baseDpi: 470, factor: 1.04 },
-                { name: "Tecno Pova 6 Pro 5G / Pova 5 Pro (Táctil: 240Hz / 1000Hz)", touchHz: "240Hz (1000Hz Instantáneo)", baseDpi: 460, factor: 1.05 },
-                { name: "Tecno Spark 20 Pro+ / Spark 20 / 10 Pro (Táctil: 240Hz)", touchHz: "240Hz (720Hz Inst.)", baseDpi: 430, factor: 1.10 },
-                { name: "Tecno Pop 8 / Pop 7 / Pop 6 (Táctil: 120Hz)", touchHz: "120Hz Standard Touch", baseDpi: 400, factor: 1.18 }
-            ],
-            motorola: [
-                { name: "Moto Edge 50 Ultra / 50 Pro / 40 Ultra (Táctil: 360Hz)", touchHz: "360Hz Ultra Touch", baseDpi: 490, factor: 1.01 },
-                { name: "Moto G84 5G / G54 5G / G73 / G53 (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 440, factor: 1.07 },
-                { name: "Moto G24 Power / G14 / G04 / G23 (Táctil: 120Hz-240Hz)", touchHz: "120Hz - 240Hz Touch", baseDpi: 410, factor: 1.14 }
-            ],
-            realme: [
-                { name: "Realme GT 6 / GT 5 Pro / GT Neo 6 (Táctil: 480Hz / 2500Hz)", touchHz: "480Hz (2500Hz Instantáneo)", baseDpi: 510, factor: 0.99 },
-                { name: "Realme 12 Pro+ / 12+ / 11 Pro+ (Táctil: 360Hz / 1260Hz)", touchHz: "360Hz (1260Hz Instantáneo)", baseDpi: 470, factor: 1.03 },
-                { name: "Realme C67 / C55 / C53 / C35 (Táctil: 180Hz)", touchHz: "180Hz Touch Sampling", baseDpi: 420, factor: 1.12 }
-            ],
-            zte: [
-                { name: "RedMagic 9 Pro / 8S Pro / 8 Pro (Táctil: 960Hz / 2000Hz)", touchHz: "960Hz Multi-Touch (2000Hz)", baseDpi: 550, factor: 0.92 },
-                { name: "ZTE Nubia Z60 Ultra / Z50 (Táctil: 960Hz)", touchHz: "960Hz Gaming Touch", baseDpi: 520, factor: 0.95 },
-                { name: "ZTE Blade V50 / V40 Design / A73 (Táctil: 180Hz)", touchHz: "180Hz Touch Rate", baseDpi: 420, factor: 1.12 }
-            ],
-            huawei: [
-                { name: "Honor Magic 6 Pro / 200 Pro / 90 (Táctil: 300Hz)", touchHz: "300Hz High Precision Touch", baseDpi: 480, factor: 1.02 },
-                { name: "Honor X9b / X8b / X7b (Táctil: 240Hz)", touchHz: "240Hz Touch Sampling", baseDpi: 440, factor: 1.08 },
-                { name: "Huawei Nova 12 SE / Nova 11 / P60 Pro (Táctil: 300Hz)", touchHz: "300Hz Touch Sampling", baseDpi: 470, factor: 1.03 }
-            ],
-            apple: [
-                { name: "iPhone 15 Pro Max / 15 Pro / 14 Pro Max (Táctil: 240Hz)", touchHz: "240Hz iOS Touch Response", baseDpi: 0, factor: 0.97 },
-                { name: "iPhone 15 / 15 Plus / 14 / 13 / 12 / 11 (Táctil: 120Hz)", touchHz: "120Hz iOS Touch Response", baseDpi: 0, factor: 1.04 },
-                { name: "iPad Pro M4 / M2 / iPad Air (Táctil: 240Hz)", touchHz: "240Hz iPadOS ProMotion Touch", baseDpi: 0, factor: 0.95 }
-            ],
-            universal: [
-                { name: "Celular Gamer Gama Alta (Táctil: 960Hz - 2000Hz)", touchHz: "960Hz - 2000Hz Gaming Ultra", baseDpi: 520, factor: 0.95 },
-                { name: "Celular Gama Media Alta (Táctil: 360Hz - 480Hz)", touchHz: "360Hz - 480Hz High Response", baseDpi: 480, factor: 1.02 },
-                { name: "Celular Gama Media Estándar (Táctil: 240Hz)", touchHz: "240Hz Standard Response", baseDpi: 440, factor: 1.08 },
-                { name: "Celular Gama Económica (Táctil: 120Hz - 180Hz)", touchHz: "120Hz - 180Hz Basic Touch", baseDpi: 410, factor: 1.15 }
-            ]
-        };
-
-        function selectCard(gridId, element) {
-            const container = document.getElementById(gridId);
-            const cards = container.getElementsByClassName("option-card");
-            for (let card of cards) {
-                card.classList.remove("active");
-            }
-            element.classList.add("active");
-        }
-
-        function getSelectedVal(gridId) {
-            const container = document.getElementById(gridId);
-            const activeCard = container.querySelector(".option-card.active");
-            return activeCard ? activeCard.getAttribute("data-val") : "";
-        }
-
-        function updateModels() {
-            const brand = document.getElementById("deviceBrand").value;
-            const modelSelect = document.getElementById("deviceModel");
-            modelSelect.innerHTML = "";
-            
-            deviceData[brand].forEach((item, index) => {
-                let opt = document.createElement("option");
-                opt.value = index;
-                opt.textContent = item.name;
-                modelSelect.appendChild(opt);
-            });
-        }
-
-        function generateSensi() {
-    const resultBox = document.getElementById("sensiResult");
-    const loaderBox = document.getElementById("sensiLoader");
-    const statusText = document.getElementById("loaderStatus");
-    const bar = document.getElementById("loaderBar");
-
-    if (loaderBox) {
-        resultBox.style.display = "none";
-        loaderBox.style.display = "block";
-        bar.style.width = "15%";
-        statusText.innerText = "⚡ Analizando Muestreo Táctil (Hz)...";
-
-        setTimeout(() => {
-            bar.style.width = "50%";
-            statusText.innerText = "🧠 Procesando Algoritmo IA 2026...";
-        }, 350);
-
-        setTimeout(() => {
-            bar.style.width = "85%";
-            statusText.innerText = "🔥 Calibrando Sensibilidad Capa Roja...";
-        }, 750);
-
-        setTimeout(() => {
-            bar.style.width = "100%";
-            statusText.innerText = "✅ Perfil VIP Listo";
-            
-            calculateValues();
-            loaderBox.style.display = "none";
-            resultBox.style.display = "block";
-        }, 1200);
-    } else {
-        calculateValues();
-        resultBox.style.display = "block";
-    }
-}
-
-function calculateValues() {
-    const brand = document.getElementById("deviceBrand").value;
-    const modelIndex = document.getElementById("deviceModel").value;
-    
-    let sensiType = "media";
-    const estiloSelect = document.getElementById("estiloJuego");
-    if (estiloSelect) {
-        sensiType = estiloSelect.value;
-    }
-
-    let dpiMode = "sin_dpi";
-    const dpiSelect = document.getElementById("ajusteDpi");
-    if (dpiSelect) {
-        dpiMode = dpiSelect.value;
-    }
-
-    const selectedDev = deviceData[brand][modelIndex];
-    let factor = selectedDev.factor;
-
-    if (sensiType === "alta") factor *= 1.08;
-    if (sensiType === "media") factor *= 1.00;
-    if (sensiType === "baja") factor *= 0.90;
-
-    let gen = Math.min(200, Math.round(188 * factor));
-    let red = Math.min(200, Math.round(182 * factor));
-    let m2x = Math.min(200, Math.round(186 * factor));
-    let m4x = Math.min(200, Math.round(180 * factor));
-    let awm = Math.min(200, Math.round(105 * (factor * 0.9)));
-    let cam = Math.min(200, Math.round(165 * factor));
-
-    let btn = "42%";
-    if (sensiType === "alta") btn = "38%";
-    if (sensiType === "media") btn = "44%";
-    if (sensiType === "baja") btn = "48%";
-
-    let dpiText = "Original de Fábrica";
-    if (dpiMode === "con_dpi") {
-        dpiText = brand === "apple" ? "No requiere DPI en iOS" : selectedDev.baseDpi + " DPI";
-    }
-
-    document.getElementById("valGen").innerText = gen;
-    document.getElementById("valRed").innerText = red;
-    document.getElementById("val2x").innerText = m2x;
-    document.getElementById("val4x").innerText = m4x;
-    document.getElementById("valAwm").innerText = awm;
-    document.getElementById("valCam").innerText = cam;
-
-    document.getElementById("valButton").innerText = btn;
-    document.getElementById("valDpi").innerText = dpiText;
-    document.getElementById("valHz").innerText = selectedDev.touchHz;
-}
-
-        function copyFullSensi(btn) {
-            const brandText = document.getElementById("deviceBrand").options[document.getElementById("deviceBrand").selectedIndex].text;
-            const modelText = document.getElementById("deviceModel").options[document.getElementById("deviceModel").selectedIndex].text;
-            
-            const text = `🔥 CONFIGURACIÓN FREE FIRE 2026 - RENDIMIENTOTECH 🔥
-` +
-                         `📱 Dispositivo: ${brandText} - ${modelText}
-` +
-                         `⚡ Tasa Táctil: ${document.getElementById("valHz").innerText}
-` +
-                         `• General: ${document.getElementById("valGen").innerText}
-` +
-                         `• Mira Punto Rojo: ${document.getElementById("valRed").innerText}
-` +
-                         `• Mira 2X: ${document.getElementById("val2x").innerText}
-` +
-                         `• Mira 4X: ${document.getElementById("val4x").innerText}
-` +
-                         `• Mira AWM: ${document.getElementById("valAwm").innerText}
-` +
-                         `• Cámara 360: ${document.getElementById("valCam").innerText}
-` +
-                         `• Botón de Disparo: ${document.getElementById("valButton").innerText}
-` +
-                         `• DPI: ${document.getElementById("valDpi").innerText}
-` +
-                         `🌐 Generado en: https://itachi-maker.github.io`;
-
-            navigator.clipboard.writeText(text).then(() => {
-                const oldText = btn.innerHTML;
-                btn.innerHTML = '✅ ¡CONFIGURACIÓN COPIADA!';
-                setTimeout(() => { btn.innerHTML = oldText; }, 2500);
-            });
-        }
-
-        function copyCode(btn, id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const oldText = btn.innerHTML;
-                btn.innerHTML = '✅ ¡Copiado!';
-                btn.classList.add('copied');
-                setTimeout(() => {
-                    btn.innerHTML = oldText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
-        }
-
-        window.onload = function() {
-            updateModels();
-        };
-    </script>
+  <script src="script.js"></script>
 </body>
-</html> 
+</html>
