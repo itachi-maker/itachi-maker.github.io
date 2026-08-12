@@ -240,7 +240,7 @@ function generarSensiWoodPro() {
 
 function copiarSensiWoodPro() {
     const text = document.getElementById('woodResultList').innerText;
-    navigator.clipboard.writeText("🔥 SENSI WOOD PRO - CONFIGURACIÓN MAESTRA 🔥\n" + text).then(() => {
+    navigator.clipboard.writeText("💎 SENSI WOOD PREMIUM - CONFIGURACIÓN DE ÉLITE 💎\n" + text).then(() => {
         alert("¡Configuración copiada con éxito para reventar cabezas!");
     });
 }
