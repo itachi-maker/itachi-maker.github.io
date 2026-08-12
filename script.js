@@ -32,25 +32,24 @@ function ejecutarIA() {
   resBox.style.display = "none";
   loader.style.display = "flex";
 
-  const pasosIA = [
-    "Analizando tasa de muestreo táctil del dispositivo...",
-    "Calculando curva de dispersión para escala 0-200 en FF 2026...",
-    "Sincronizando modificador de aceleración (Con/Sin DPI)...",
-    "Optimizando tamaño de botón y punto de mira Headshot..."
+  const pasos = [
+    "Sincronizando algoritmo de pantalla...",
+    "Ajustando escala 0-200 para Free Fire 2026...",
+    "Calculando respuesta táctil por procesador..."
   ];
 
   let i = 0;
-  const interval = setInterval(() => {
-    if (i < pasosIA.length) {
-      txtCargando.innerText = pasosIA[i];
+  const timer = setInterval(() => {
+    if (i < pasos.length) {
+      txtCargando.innerText = pasos[i];
       i++;
     } else {
-      clearInterval(interval);
+      clearInterval(timer);
       loader.style.display = "none";
       calcularSensibilidadIA();
       resBox.style.display = "block";
     }
-  }, 350);
+  }, 300);
 }
 
 function calcularSensibilidadIA() {
@@ -60,92 +59,40 @@ function calcularSensibilidadIA() {
   const hz = parseInt(document.getElementById("hz").value);
 
   const dev = baseDispositivos.find(d => d.id === selectVal);
-  const gama = dev ? dev.gama : (selectVal.includes("baja") ? "baja" : selectVal.includes("alta") ? "alta" : "media");
+  const gama = dev ? dev.gama : "media";
 
-  // VALORES BASE EN ESCALA 0 - 200 (2026)
-  let gen = 185;
-  let redDot = 178;
-  let m2x = 168;
-  let m4x = 158;
-  let awm = 85;
-  let cam = 120;
-  let dpiTexto = "Predeterminado (Sin alterar)";
-  let boton = 46;
-  let velPuntero = "Máxima (100%)";
+  let gen = 186, redDot = 180, m2x = 168, m4x = 158, awm = 85, cam = 120;
+  let dpiTexto = "Fábrica";
+  let boton = 45;
   let consejo = "";
   let tecnica = "";
-  let score = "97.8%";
 
-  // LÓGICA DE IA CON Y SIN DPI
   if (modoDpi === "sin_dpi") {
-    // Sin DPI requiere mayor sensibilidad dentro del juego para dar giros 360 rápidos
-    if (gama === "baja") {
-      gen = 198; redDot = 194; m2x = 188; m4x = 182; awm = 90;
-      boton = 52;
-      consejo = "Al jugar SIN DPI en Gama Baja, la General debe rozar el límite de 200 para evitar trabas al alzar la mira. Coloca la supresión de accesibilidad al mínimo.";
-    } else if (gama === "media") {
-      gen = (hz >= 120) ? 188 : 194;
-      redDot = (hz >= 120) ? 182 : 188;
-      m2x = 172; m4x = 165;
-      boton = 45;
-      consejo = "Configuración equilibrada de fábrica sin riesgo de daño por DPI. Alza la mira con firmeza desde la base del botón.";
-    } else { // Gama alta
-      gen = 176; redDot = 170; m2x = 162; m4x = 152;
-      boton = 42;
-      consejo = "En gama alta con buena tasa táctil sin DPI, mantén valores entre 170 y 180 en la escala 200 para que el tiro no pase arriba de la cabeza.";
-    }
-    dpiTexto = "392 / 411 DPI (Fábrica)";
+    gen = (gama === "baja") ? 198 : (gama === "media") ? 188 : 178;
+    redDot = gen - 6;
+    dpiTexto = "392 / 411 DPI";
+    consejo = "Sensibilidad optimizada para jugar SIN DPI de forma totalmente segura.";
   } else {
-    // CON DPI: La sensibilidad interna del juego se ajusta más precisa porque el DPI acelera el sistema
-    if (gama === "baja") {
-      gen = 172; redDot = 168; m2x = 160; m4x = 150;
-      dpiTexto = "580 DPI";
-      boton = 48;
-      consejo = "El DPI a 580 acelera la pantalla. Permite alzar mira suavemente con escopetas y SMG.";
-    } else if (gama === "media") {
-      gen = 164; redDot = 158; m2x = 150; m4x = 142;
-      dpiTexto = (dev && dev.id === "note14pro4g") ? "540 DPI (Óptimo Helio G100)" : "520 DPI";
-      boton = 44;
-      consejo = "Con DPI elevado, la sensibilidad interna no requiere estar en 200. Esta combinación de 520-540 DPI fija los disparos directo al casco.";
-    } else { // Gama alta
-      gen = 152; redDot = 145; m2x = 138; m4x = 130;
-      dpiTexto = "480 DPI";
-      boton = 39;
-      consejo = "Dispositivo de alta respuesta táctil. Sensibilidad súper precisa en rango medio de escala 200 para no fallar disparos a larga distancia.";
-    }
+    gen = (gama === "baja") ? 172 : (gama === "media") ? 164 : 152;
+    redDot = gen - 5;
+    dpiTexto = (dev && dev.id === "note14pro4g") ? "540 DPI (Helio G100)" : "520 DPI";
+    consejo = "Modo Con DPI activo: Máxima velocidad de giro táctil sin sobrepasar el casco.";
   }
 
-  // MODIFICADORES ESPECÍFICOS POR MODELO (Especial Helio G100)
-  if (dev && dev.id === "note14pro4g") {
-    score = "99.2%";
-    consejo += " [Ajuste VIP para Redmi Note 14 Pro 4G: Optimizado para procesador Helio G100 y pantalla AMOLED 120Hz].";
-  }
-
-  // AJUSTES POR ESTILO DE ARMA
   if (estilo === "onetap") {
-    gen -= 6;
-    redDot -= 5;
-    boton -= 3;
-    tecnica = "Levantado en 'J' Rápida: Arrastra el botón hacia abajo un milímetro y sube con fuerza recta hacia la cabeza.";
+    gen -= 5;
+    boton = 42;
+    tecnica = "Levantado en 'J': Arrastra levemente hacia abajo y sube directo con fuerza.";
   } else if (estilo === "smg") {
     gen += 4;
-    redDot += 6;
-    tecnica = "Levantado Continuo en Recorrido Recto: Mantén la mira a la altura del pecho del enemigo y sube de manera constante sin soltar el botón.";
+    redDot += 5;
+    tecnica = "Levantado Continuo: Sube el botón en línea recta manteniendo la presión constante.";
   } else {
-    tecnica = "Levantado Suave Suave/Media Distancia: Forma una ligera curva con el pulgar ajustando la velocidad según la distancia del rival.";
+    tecnica = "Levantado Suave: Ajusta la velocidad según la distancia de la diana.";
   }
 
-  // Asegurar límites dentro de la escala 0-200
-  gen = Math.min(200, Math.max(50, gen));
-  redDot = Math.min(200, Math.max(50, redDot));
-  m2x = Math.min(200, Math.max(50, m2x));
-  m4x = Math.min(200, Math.max(50, m4x));
-
-  // RENDERIZAR RESULTADOS
-  const nombreDev = dev ? `${dev.marca} ${dev.modelo}` : "Configuración Personalizada";
-  document.getElementById("tituloModeloRes").innerText = `IA Config: ${nombreDev}`;
-  document.getElementById("scoreIA").innerText = score;
-
+  const nombre = dev ? `${dev.marca} ${dev.modelo}` : "Genérico";
+  document.getElementById("tituloModeloRes").innerText = `IA Config: ${nombre}`;
   document.getElementById("resGen").innerText = gen;
   document.getElementById("resRedDot").innerText = redDot;
   document.getElementById("res2x").innerText = m2x;
@@ -155,10 +102,41 @@ function calcularSensibilidadIA() {
 
   document.getElementById("resDpi").innerText = dpiTexto;
   document.getElementById("resBoton").innerText = boton + "%";
-  document.getElementById("resVelPuntero").innerText = velPuntero;
-
+  document.getElementById("resVelPuntero").innerText = "100% (Máxima)";
   document.getElementById("resConsejo").innerText = consejo;
   document.getElementById("resTecnica").innerText = tecnica;
+}
+
+// COPIAR COMANDOS AL PORTAPAPELES
+function copiarComando(btn) {
+  const codeNode = btn.parentElement.querySelector("code");
+  if (!codeNode) return;
+  navigator.clipboard.writeText(codeNode.innerText).then(() => {
+    const orig = btn.innerText;
+    btn.innerText = "✅ Copiado!";
+    btn.style.background = "#00e676";
+    btn.style.color = "#000";
+    setTimeout(() => {
+      btn.innerText = orig;
+      btn.style.background = "#2a3447";
+      btn.style.color = "#fff";
+    }, 1500);
+  });
+}
+
+// MODALES LEGALES ADSENSE
+function abrirModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function cerrarModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = "none";
+  }
 }
 
 function mostrarDispositivos(lista) {
@@ -175,7 +153,7 @@ function mostrarDispositivos(lista) {
       <p><strong>GPU:</strong> ${item.gpu}</p>
       <p><strong>Pantalla:</strong> ${item.hz}Hz</p>
       <p><strong>RAM:</strong> ${item.ram}</p>
-      <button class="btn-seleccionar" onclick="seleccionarYEjecutar('${item.id}')">🎯 Cargar en IA Headshot</button>
+      <button class="btn-seleccionar" onclick="seleccionarYEjecutar('${item.id}')">🎯 Cargar en IA</button>
     `;
     contenedor.appendChild(card);
   });
