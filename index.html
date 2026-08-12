@@ -39,66 +39,28 @@
       <div class="card-header">
         <div class="header-icon">🎯</div>
         <div>
-          <h2>Laboratorio Balístico (Estilo System Wood)</h2>
-          <p>Ajuste milimétrico de sensibilidad táctil con sliders de respuesta ultra rápida.</p>
+          <h2>Generador Pro Sensi (Estilo Xenkzone)</h2>
+          <p>Calibración inteligente basada en DPI y modelo de dispositivo para Free Fire.</p>
         </div>
       </div>
 
-      <div class="form-grid-unified">
+      <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
         <div class="campo-control">
-          <label>Modelo del Dispositivo</label>
-          <input type="text" id="inputModelo" value="Android Gaming Pro" placeholder="Ej: Poco X3, Redmi">
+          <label>Modelo de tu Dispositivo</label>
+          <input type="text" id="deviceModel" placeholder="Ej: Poco X3 Pro, Redmi Note" style="width: 100%; padding: 12px; border-radius: 8px; background: #222; border: 1px solid #444; color: #fff;">
         </div>
         <div class="campo-control">
           <label>DPI del Sistema</label>
-          <input type="number" id="inputDpiReal" value="580" oninput="actualizarSensiWood()">
+          <input type="number" id="dpiValue" placeholder="Ej: 580" style="width: 100%; padding: 12px; border-radius: 8px; background: #222; border: 1px solid #444; color: #fff;">
         </div>
+        <button onclick="generarSensiPro()" class="btn-accion primary-glow" style="padding: 12px; cursor: pointer; font-weight: bold;">🚀 Generar Configuración Pro</button>
       </div>
 
-      <!-- SLIDERS ESTILO SYSTEM WOOD -->
-      <div class="wood-sliders-container">
-        <div class="wood-slider-group">
-          <div class="slider-info">
-            <span>GENERAL (Cámara / Movimiento)</span>
-            <strong id="valGen" class="wood-value">185</strong>
-          </div>
-          <input type="range" id="rangeGen" min="100" max="200" value="185" class="wood-range" oninput="sincronizarSlider('Gen')">
-        </div>
-
-        <div class="wood-slider-group">
-          <div class="slider-info">
-            <span>MIRA PUNTO ROJO</span>
-            <strong id="valRed" class="wood-value">180</strong>
-          </div>
-          <input type="range" id="rangeRed" min="100" max="200" value="180" class="wood-range" oninput="sincronizarSlider('Red')">
-        </div>
-
-        <div class="wood-slider-group">
-          <div class="slider-info">
-            <span>MIRA 2X</span>
-            <strong id="val2x" class="wood-value">175</strong>
-          </div>
-          <input type="range" id="range2x" min="80" max="200" value="175" class="wood-range" oninput="sincronizarSlider('2x')">
-        </div>
-
-        <div class="wood-slider-group">
-          <div class="slider-info">
-            <span>MIRA 4X</span>
-            <strong id="val4x" class="wood-value">170</strong>
-          </div>
-          <input type="range" id="range4x" min="80" max="200" value="170" class="wood-range" oninput="sincronizarSlider('4x')">
-        </div>
-
-        <div class="wood-slider-group">
-          <div class="slider-info">
-            <span>MIRA AWM (Francotirador)</span>
-            <strong id="valAwm" class="wood-value">75</strong>
-          </div>
-          <input type="range" id="rangeAwm" min="30" max="150" value="75" class="wood-range" oninput="sincronizarSlider('Awm')">
-        </div>
+      <div id="resultBox" style="margin-top: 20px; padding: 20px; background: #1a1a1a; border-radius: 8px; border: 1px solid #00d4ff; display: none;">
+        <h4 style="color: #00d4ff; margin-bottom: 15px; text-align: center;">Configuración Optimizada</h4>
+        <ul id="resultList" style="list-style: none; padding: 0; margin: 0; line-height: 2.2; color: #fff;"></ul>
+        <button onclick="copiarSensiPro()" class="btn-accion" style="margin-top: 15px; width: 100%; background: #22c55e; color: #000; font-weight: bold; border: none; padding: 12px; border-radius: 6px; cursor: pointer;">📋 Copiar Configuración Completa</button>
       </div>
-
-      <button onclick="copiarConfiguracionWood()" class="btn-accion primary-glow">📋 Copiar Configuración System Wood</button>
     </section>
 
     <!-- MÓDULO 2: GENERADOR BREVENT & SHIZUKU -->

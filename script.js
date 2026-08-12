@@ -155,3 +155,39 @@ function generarYDescargarScript() {
   link.download = 'optimizacion_brevent.sh';
   link.click();
 }
+
+
+
+
+
+function generarSensiPro() {
+    const dpi = document.getElementById('dpiValue').value;
+    const model = document.getElementById('deviceModel').value;
+    if(!dpi || !model) {
+        alert("Por favor, ingresa el modelo de tu celular y tu DPI.");
+        return;
+    }
+    const factor = dpi > 500 ? 0.90 : 1.10;
+    const data = {
+        "📱 Dispositivo": model,
+        "🎛️ DPI del Sistema": dpi,
+        "🎯 General (Cámara)": Math.floor(185 * factor),
+        "🔴 Punto Rojo": Math.floor(180 * factor),
+        "🔭 Mira 2X": Math.floor(175 * factor),
+        "🔭 Mira 4X": Math.floor(170 * factor),
+        "🎯 Botón de Disparo": dpi > 500 ? "45% - 48%" : "52% - 55%"
+    };
+    const list = document.getElementById('resultList');
+    list.innerHTML = "";
+    for(let key in data) {
+        list.innerHTML += `<li style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 4px 0;"><span>${key}:</span> <strong style="color: #00d4ff;">${data[key]}</strong></li>`;
+    }
+    document.getElementById('resultBox').style.display = "block";
+}
+
+function copiarSensiPro() {
+    const text = document.getElementById('resultList').innerText;
+    navigator.clipboard.writeText("🔥 CONFIGURACIÓN FREE FIRE PRO 🔥\n" + text).then(() => {
+        alert("¡Configuración copiada al portapapeles con éxito!");
+    });
+}
