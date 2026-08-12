@@ -3,65 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Sensibilidad VIP por Modelo</title>
+  <title>RendimientoTech - IA Sensibility Headshot 2026 (0-200)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="header-principal">
+    <div class="logo-badge">IA ENGINE v4.2</div>
     <h1>RendimientoTech VIP</h1>
-    <p>Calculadora Exacta de Sensibilidad Headshot por Modelo</p>
+    <p>Algoritmo de Inteligencia Artificial para Sensibilidad "Todo Rojo" (Escala 0-200)</p>
   </header>
 
   <main class="contenedor-principal">
 
-    <!-- CALCULADORA POR MODELO DIRECTO -->
+    <!-- GENERADOR CON IA -->
     <section class="seccion-caja">
-      <h2>🎯 Generador de Sensibilidad por Celular</h2>
-      <p class="subtitulo">Selecciona el modelo exacto en la lista para autocalibrar la sensibilidad headshot.</p>
+      <h2>🤖 Generador de Sensibilidad IA (Free Fire 2026)</h2>
+      <p class="subtitulo">Calcula la física exacta de levantado de mira según tu hardware, escala de 0 a 200 y configuración de DPI.</p>
 
       <div class="form-sensibilidad">
+        
+        <!-- MODELO DE CELULAR -->
         <div class="grupo-input">
-          <label for="selectModelo">📱 Elige tu Modelo de Celular:</label>
+          <label for="selectModelo">📱 Dispositivo / Modelo:</label>
           <select id="selectModelo" onchange="autocompletarPorModelo()">
-            <!-- Se llena dinámicamente por JavaScript -->
+            <option value="note14pro4g">Xiaomi - Redmi Note 14 Pro 4G (Helio G100)</option>
+            <option value="note14pro5g">Xiaomi - Redmi Note 14 Pro+ 5G</option>
+            <option value="note13pro5g">Xiaomi - Redmi Note 13 Pro 5G</option>
+            <option value="note134g">Xiaomi - Redmi Note 13 4G</option>
+            <option value="pocox6pro">POCO - X6 Pro 5G (Dimensity 8300)</option>
+            <option value="pocof6pro">POCO - F6 Pro</option>
+            <option value="pocom6pro">POCO - M6 Pro 4G</option>
+            <option value="s24ultra">Samsung - Galaxy S24 Ultra</option>
+            <option value="a55">Samsung - Galaxy A55 5G</option>
+            <option value="a15">Samsung - Galaxy A15 4G/5G</option>
+            <option value="infinixgt20">Infinix - GT 20 Pro Gamer</option>
+            <option value="infinixnote40">Infinix - Note 40 Pro</option>
+            <option value="tecnocamon30">Tecno - Camon 30 Pro 5G</option>
+            <option value="realmegt6">Realme - GT 6 5G</option>
+            <option value="iphone15pm">Apple - iPhone 15 Pro Max</option>
+            <option value="generico_baja">Otro Celular - Gama Baja (2GB - 4GB RAM)</option>
+            <option value="generico_media" selected>Otro Celular - Gama Media (6GB - 8GB RAM)</option>
+            <option value="generico_alta">Otro Celular - Gama Alta / Gamer (12GB+ RAM)</option>
           </select>
         </div>
 
-        <div class="grupo-input">
-          <label for="gama">Gama del Procesador:</label>
-          <select id="gama">
-            <option value="baja">Gama Baja (2GB - 4GB RAM)</option>
-            <option value="media" selected>Gama Media (6GB - 8GB RAM)</option>
-            <option value="alta">Gama Alta / Gamer (8GB+ RAM)</option>
+        <!-- MODO DPI -->
+        <div class="grupo-input highlight-input">
+          <label for="modoDpi">⚙️ ¿Usarás DPI Modificado o DPI Normal?</label>
+          <select id="modoDpi">
+            <option value="sin_dpi" selected>🛡️ SIN DPI (Uso seguro / DPI Predeterminado de fábrica)</option>
+            <option value="con_dpi">⚡ CON DPI (Máxima aceleración y velocidad táctil)</option>
           </select>
         </div>
 
+        <!-- ESTILO DE JUEGO -->
         <div class="grupo-input">
-          <label for="hz">Tasa de Refresco (Pantalla):</label>
-          <select id="hz">
-            <option value="60">60 Hz</option>
-            <option value="90">90 Hz</option>
-            <option value="120" selected>120 Hz</option>
-            <option value="144">144 Hz</option>
-          </select>
-        </div>
-
-        <div class="grupo-input">
-          <label for="estilo">Estilo de Juego:</label>
+          <label for="estilo">🎯 Arma y Estilo de Disparo Principal:</label>
           <select id="estilo">
-            <option value="equilibrado" selected>Equilibrado (Todas las armas)</option>
-            <option value="onetap">Un Tiro / Escopetas (M1887, Desert)</option>
-            <option value="smg">Ráfaga / SMG (MP40, UMP)</option>
+            <option value="equilibrado" selected>⚔️ Equilibrado (Clasificatoria / Todas las Armas)</option>
+            <option value="onetap">💥 Un Tiro / One-Tap (M1887, Desert Eagle, Woodpecker)</option>
+            <option value="smg">🔥 Ráfaga / SMG (MP40, UMP, Thompson, Vector)</option>
           </select>
         </div>
 
-        <button onclick="calcularSensibilidad()" class="btn-calcular">⚡ CALCULAR SENSIBILIDAD HEADSHOT</button>
+        <!-- TASA DE REFRESCO -->
+        <div class="grupo-input">
+          <label for="hz">📺 Tasa de Refresco de Pantalla:</label>
+          <select id="hz">
+            <option value="60">60 Hz (Estándar)</option>
+            <option value="90">90 Hz (Fluido)</option>
+            <option value="120" selected>120 Hz (Ultra Fluido / Táctil Rápido)</option>
+            <option value="144">144 Hz / 165 Hz (Gamer / Top)</option>
+          </select>
+        </div>
+
+        <button onclick="ejecutarIA()" class="btn-calcular">🤖 CALCULAR CON IA HEADSHOT (ESCALA 200)</button>
       </div>
 
-      <!-- RESULTADOS -->
+      <!-- ANIMACIÓN DE PROCESAMIENTO IA -->
+      <div id="loaderIA" class="loader-box" style="display:none;">
+        <div class="spinner"></div>
+        <p id="textoCargandoIA">Analizando aceleración táctil del kernel...</p>
+      </div>
+
+      <!-- RESULTADOS DE SENSIBILIDAD -->
       <div id="resultadoSens" class="resultado-box" style="display:none;">
-        <h3 id="tituloModeloRes">Configuración Calculada</h3>
+        
+        <div class="header-res">
+          <h3 id="tituloModeloRes">Configuración IA Generada</h3>
+          <span class="ia-precision-tag">Precisión Estimada: <strong id="scoreIA">98.4%</strong></span>
+        </div>
+
+        <p class="alerta-escala">📌 Nota: Valores optimizados para la escala actual de **0 a 200** de Free Fire 2026.</p>
+
         <div class="grid-sens">
           <div class="item-sens"><span>General:</span> <strong id="resGen">-</strong></div>
           <div class="item-sens"><span>Punto Rojo:</span> <strong id="resRedDot">-</strong></div>
@@ -80,18 +115,28 @@
             <span>Botón de Disparo</span>
             <strong id="resBoton">-</strong>
           </div>
+          <div class="extra-card">
+            <span>Vel. Puntero</span>
+            <strong id="resVelPuntero">-</strong>
+          </div>
         </div>
 
         <div class="consejo-box">
-          💡 <strong>Calibración Táctica:</strong> <span id="resConsejo">-</span>
+          🧠 <strong>Análisis del Motor de IA:</strong>
+          <p id="resConsejo" style="margin: 5px 0 0; color: #ddd;"></p>
+        </div>
+
+        <div class="tecnica-box">
+          📐 <strong>Técnica de Levantado de Mira Recomendada:</strong>
+          <p id="resTecnica" style="margin: 5px 0 0; color: #00e676; font-weight: bold;"></p>
         </div>
       </div>
     </section>
 
-    <!-- BUSCADOR GENERAL -->
+    <!-- BUSCADOR DISPOSITIVOS -->
     <section class="seccion-caja">
-      <h2>🔍 Buscar Especificaciones de Celulares</h2>
-      <input type="text" id="inputBuscar" onkeyup="buscarTelefono()" placeholder="Escribe tu modelo (ej. Redmi Note 14, Helio G100, Poco)...">
+      <h2>📱 Base de Datos de Celulares</h2>
+      <input type="text" id="inputBuscar" onkeyup="buscarTelefono()" placeholder="Buscar dispositivo (ej. Redmi Note 14, Helio G100, Poco)...">
       <div id="listaDispositivos" class="grid-dispositivos"></div>
     </section>
 
