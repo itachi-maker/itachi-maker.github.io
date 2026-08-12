@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Optimización Profesional</title>
+  <title>RendimientoTech - Sensibilidad VIP, Comandos ADB y Optimización Android</title>
+  <meta name="description" content="Portal oficial de RendimientoTech: Calculadora de sensibilidad headshot escala 0-200 para Free Fire y comandos ADB/Brevent para optimizar FPS.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="inicio">
@@ -12,37 +13,252 @@
     <div class="nav-container">
       <span class="nav-logo">⚡ RendimientoTech</span>
       <ul class="nav-links">
-        <li><a href="#scriptgen">📦 Script Generador</a></li>
+        <li><a href="#inicio">🏠 Inicio</a></li>
+        <li><a href="#sensibilidad">🎯 Generador</a></li>
+        <li><a href="#comandos">🛠️ Comandos ADB</a></li>
+        <li><a href="#scriptgen">📦 Script .sh</a></li>
+        <li><a href="#guia">📖 Guía FPS</a></li>
+        <li><a href="javascript:void(0)" onclick="abrirModal('modalNosotros')">👥 Nosotros</a></li>
         <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">📩 Contacto</a></li>
+        <li><a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">🔒 Privacidad</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="header-principal">
+    <div class="logo-badge">ADSENSE READY & IA ENGINE v4.2</div>
     <h1>RendimientoTech</h1>
-    <p>Portal de Optimización Segura (Root & No-Root)</p>
+    <p>Portal de Optimización Android, Comandos Exec y Sensibilidad Headshot 2026</p>
   </header>
 
   <main class="contenedor-principal">
-    <!-- SECCIÓN DE GENERADOR -->
+
+    <!-- SECCIÓN 1: CALCULADORA DE SENSIBILIDAD -->
+    <section id="sensibilidad" class="seccion-caja">
+      <h2>🎯 Generador de Sensibilidad IA (Escala 0-200)</h2>
+      <p class="subtitulo">Calcula la configuración perfecta para fijar la mira en la cabeza en Free Fire 2026.</p>
+
+      <div class="form-sensibilidad">
+        <div class="grupo-input">
+          <label for="selectModelo">📱 Selecciona tu Dispositivo:</label>
+          <select id="selectModelo">
+            <option value="note14pro4g">Xiaomi - Redmi Note 14 Pro 4G (Helio G100)</option>
+            <option value="note14pro5g">Xiaomi - Redmi Note 14 Pro+ 5G</option>
+            <option value="note13pro5g">Xiaomi - Redmi Note 13 Pro 5G</option>
+            <option value="note134g" selected>Xiaomi - Redmi Note 13 4G</option>
+            <option value="pocox6pro">POCO - X6 Pro 5G (Dimensity 8300)</option>
+            <option value="pocof6pro">POCO - F6 Pro</option>
+            <option value="pocom6pro">POCO - M6 Pro 4G</option>
+            <option value="s24ultra">Samsung - Galaxy S24 Ultra</option>
+            <option value="a55">Samsung - Galaxy A55 5G</option>
+            <option value="a15">Samsung - Galaxy A15 4G/5G</option>
+            <option value="infinixgt20">Infinix - GT 20 Pro Gamer</option>
+            <option value="infinixnote40">Infinix - Note 40 Pro</option>
+            <option value="tecnocamon30">Tecno - Camon 30 Pro 5G</option>
+            <option value="realmegt6">Realme - GT 6 5G</option>
+            <option value="iphone15pm">Apple - iPhone 15 Pro Max</option>
+            <option value="generico_baja">Otro - Gama Baja (2GB - 4GB RAM)</option>
+            <option value="generico_media">Otro - Gama Media (6GB - 8GB RAM)</option>
+            <option value="generico_alta">Otro - Gama Alta / Gamer (12GB+ RAM)</option>
+          </select>
+        </div>
+
+        <div class="grupo-input highlight-input">
+          <label for="modoDpi">⚙️ Ajuste de DPI:</label>
+          <select id="modoDpi">
+            <option value="sin_dpi" selected>🛡️ SIN DPI (Uso seguro / DPI de Fábrica)</option>
+            <option value="con_dpi">⚡ CON DPI (Aceleración Táctil Avanzada)</option>
+          </select>
+        </div>
+
+        <div class="grupo-input">
+          <label for="estilo">🎯 Estilo de Disparo:</label>
+          <select id="estilo">
+            <option value="equilibrado" selected>⚔️ Equilibrado (Clasificatoria / Genérico)</option>
+            <option value="onetap">💥 Un Tiro / One-Tap (M1887, Desert, Woodpecker)</option>
+            <option value="smg">🔥 Ráfaga / SMG (MP40, UMP, Thompson)</option>
+          </select>
+        </div>
+
+        <div class="grupo-input">
+          <label for="hz">📺 Refresco de Pantalla:</label>
+          <select id="hz">
+            <option value="60">60 Hz</option>
+            <option value="90">90 Hz</option>
+            <option value="120" selected>120 Hz</option>
+            <option value="144">144 Hz</option>
+          </select>
+        </div>
+
+        <button onclick="ejecutarIA()" class="btn-calcular">🤖 GENERAR CONFIGURACIÓN HEADSHOT</button>
+      </div>
+
+      <div id="loaderIA" class="loader-box" style="display:none;">
+        <div class="spinner"></div>
+        <p id="textoCargandoIA">Procesando curva de aceleración táctil...</p>
+      </div>
+
+      <div id="resultadoSens" class="resultado-box" style="display:none;">
+        <div class="header-res">
+          <h3 id="tituloModeloRes">Configuración IA Generada</h3>
+          <span class="ia-precision-tag">Precisión: <strong id="scoreIA">99.1%</strong></span>
+        </div>
+
+        <p class="alerta-escala">📌 Valores optimizados para la escala **0 a 200** de Free Fire 2026.</p>
+
+        <div class="grid-sens">
+          <div class="item-sens"><span>General:</span> <strong id="resGen">-</strong></div>
+          <div class="item-sens"><span>Punto Rojo:</span> <strong id="resRedDot">-</strong></div>
+          <div class="item-sens"><span>Mira 2X:</span> <strong id="res2x">-</strong></div>
+          <div class="item-sens"><span>Mira 4X:</span> <strong id="res4x">-</strong></div>
+          <div class="item-sens"><span>Mira AWM:</span> <strong id="resAwm">-</strong></div>
+          <div class="item-sens"><span>Cámara 360:</span> <strong id="resCam">-</strong></div>
+        </div>
+
+        <div class="ajustes-extra">
+          <div class="extra-card"><span>DPI</span><strong id="resDpi">-</strong></div>
+          <div class="extra-card"><span>Botón</span><strong id="resBoton">-</strong></div>
+          <div class="extra-card"><span>Puntero</span><strong id="resVelPuntero">-</strong></div>
+        </div>
+
+        <div class="consejo-box">
+          🧠 <strong>Análisis Técnico:</strong>
+          <p id="resConsejo" style="margin: 5px 0 0; color: #ddd;"></p>
+        </div>
+
+        <div class="tecnica-box">
+          📐 <strong>Técnica de Levantado:</strong>
+          <p id="resTecnica" style="margin: 5px 0 0; color: #00e676; font-weight: bold;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: COMANDOS ADB / BREVENT -->
+    <section id="comandos" class="seccion-caja">
+      <h2>🛠️ Comandos de Optimización Android (ADB / Brevent / Exec)</h2>
+      <p class="subtitulo">Ejecuta estos comandos en Brevent, LADB, Shizuku o Termux para reducir lag, liberar RAM y estabilizar los FPS.</p>
+
+      <div class="lista-comandos">
+        <div class="card-comando">
+          <div class="cmd-info">
+            <h4>⚡ 1. Reducir Latencia Táctil</h4>
+            <p>Aumenta la velocidad de lectura de toques en la pantalla.</p>
+          </div>
+          <div class="cmd-code-box">
+            <code>settings put system touch_pressure_scale 0.001</code>
+            <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
+          </div>
+        </div>
+
+        <div class="card-comando">
+          <div class="cmd-info">
+            <h4>🚀 2. Forzar Tasa de Refresco Máxima</h4>
+            <p>Evita caídas repentinas de FPS en partidas.</p>
+          </div>
+          <div class="cmd-code-box">
+            <code>settings put system min_refresh_rate 120.0</code>
+            <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
+          </div>
+        </div>
+
+        <div class="card-comando">
+          <div class="cmd-info">
+            <h4>🧹 3. Limpieza de Memoria Caché</h4>
+            <p>Libera recursos del sistema rápidamente.</p>
+          </div>
+          <div class="cmd-code-box">
+            <code>pm trim-caches 999G</code>
+            <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN NUEVA: GENERADOR DE SCRIPTS .SH -->
     <section id="scriptgen" class="seccion-caja">
       <h2>📦 Generador de Script Personalizado (.sh)</h2>
+      <p class="subtitulo">Selecciona los ajustes que prefieras y genera tu script maestro para ejecutar con permisos de Root o Brevent.</p>
       
-      <!-- Selector de Modo -->
-      <div class="mode-selector">
-        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarOpciones()"> Modo No-Root (ADB/Brevent)</label>
-        <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarOpciones()"> Modo Root (Avanzado)</label>
-      </div>
+      <div class="script-builder-box">
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="optTouch" checked> Reducir latencia táctil (Touch Pressure)</label>
+          <label><input type="checkbox" id="optHz" checked> Forzar tasa de refresco a 120Hz</label>
+          <label><input type="checkbox" id="optCache" checked> Ejecutar limpieza profunda de caché (pm trim-caches)</label>
+          <label><input type="checkbox" id="optCpu"> Optimizar gobernador de CPU (Performance Mode)</label>
+        </div>
 
-      <div id="containerOpciones" class="script-builder-box">
-        <!-- Las opciones se cargan dinámicamente por JS -->
+        <button onclick="generarYDescargarScript()" class="btn-calcular" style="margin-top: 15px;">📥 DESCARGAR SCRIPT DE OPTIMIZACIÓN (.SH)</button>
       </div>
-
-      <button onclick="generarYDescargarScript()" class="btn-calcular" style="margin-top: 15px;">📥 DESCARGAR SCRIPT (.SH)</button>
     </section>
+
+    <!-- SECCIÓN 3: ARTÍCULO EDUCATIVO -->
+    <section id="guia" class="seccion-caja texto-articulo">
+      <h2>📖 Guía Definitiva: Cómo Optimizar Android para Jugar a 60/120 FPS</h2>
+      <p>Para lograr un rendimiento constante en juegos competitivos como Free Fire, es esencial coordinar la aceleración de hardware con los ajustes del sistema operativo.</p>
+      <h3>1. Ajuste de DPI y Tasa de Refresco</h3>
+      <p>El DPI modifica la densidad de píxeles renderizados. Al ajustarlo correctamente con la frecuencia de refresco, el registro táctil es mucho más veloz.</p>
+    </section>
+
   </main>
 
-  <!-- Modales igual que antes... -->
+  <footer class="footer-principal">
+    <div class="footer-contenido">
+      <p><strong>RendimientoTech</strong> © 2026 - Todos los derechos reservados.</p>
+      <p class="disclaimer">Soporte Técnico & Contacto: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalNosotros')">Sobre Nosotros</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalContacto')">Contacto</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">Política de Privacidad</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalTerminos')">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BANNER DE COOKIES (ADSENSE READY) -->
+  <div id="cookieBanner" class="cookie-banner" style="display:none;">
+    <div class="cookie-content">
+      <p>🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y mostrar publicidad relevante a través de Google AdSense. Si continuas navegando, aceptas nuestra <a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">Política de Privacidad</a>.</p>
+      <button onclick="aceptarCookies()" class="btn-cookie">Aceptar y Continuar</button>
+    </div>
+  </div>
+
+  <!-- MODALES -->
+  <div id="modalNosotros" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal('modalNosotros')">&times;</span>
+      <h2>👥 Sobre Nosotros - RendimientoTech</h2>
+      <p>Somos un portal especializado en optimización Android, configuración de sensibilidad para Free Fire y ejecución de comandos en entorno ADB/Brevent.</p>
+    </div>
+  </div>
+
+  <div id="modalContacto" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
+      <h2>📩 Contacto Oficial</h2>
+      <p>Para soporte, sugerencias o consultas sobre RendimientoTech, envíanos un correo directo a:</p>
+      <p style="background: #161c2b; padding: 10px; border-radius: 6px; text-align: center; color: #00e676; font-weight: bold; font-size: 14px;">
+        alexanderorozcomartinez207@gmail.com
+      </p>
+    </div>
+  </div>
+
+  <div id="modalPrivacidad" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal('modalPrivacidad')">&times;</span>
+      <h2>🔒 Política de Privacidad</h2>
+      <p>Este sitio web utiliza cookies técnicas y publicitarias para mejorar la experiencia del usuario y cumplir los lineamientos normativos de Google AdSense.</p>
+    </div>
+  </div>
+
+  <div id="modalTerminos" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal('modalTerminos')">&times;</span>
+      <h2>📜 Términos y Condiciones</h2>
+      <p>Los comandos y guías ofrecidos en RendimientoTech son de carácter informativo y educativo.</p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
