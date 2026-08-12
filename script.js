@@ -193,3 +193,33 @@ function copiarSensiPro() {
         alert("¡Configuración copiada al portapapeles con éxito!");
     });
 }
+
+
+function generarSensiPro() {
+    const dpi = parseInt(document.getElementById('dpiValue').value);
+    const cat = document.getElementById('hwCategory').value;
+    if(!dpi || dpi < 300) { alert("Ingresa un DPI válido."); return; }
+    
+    // Base de datos técnica
+    const profiles = {
+        "entry": { mult: 0.8, base: 85, msg: "Configuración Estándar" },
+        "mid":   { mult: 1.0, base: 92, msg: "Configuración Optimizada (Hz Altos)" },
+        "high":  { mult: 1.2, base: 98, msg: "Configuración Pro (Latencia Cero)" }
+    };
+    
+    const p = profiles[cat];
+    const data = {
+        "Modo": p.msg,
+        "General": Math.floor(p.base * (dpi / 600)),
+        "Punto Rojo": Math.floor((p.base - 5) * (dpi / 600)),
+        "Mira 2x": Math.floor((p.base - 10) * (dpi / 600)),
+        "Mira 4x": Math.floor((p.base - 15) * (dpi / 600))
+    };
+    
+    const res = document.getElementById('resultList');
+    res.innerHTML = "";
+    for(let k in data) {
+        res.innerHTML += `<li style="padding:5px 0; border-bottom:1px solid #333;"><b>${k}:</b> ${data[k]}</li>`;
+    }
+    document.getElementById('resultBox').style.display = "block";
+}
