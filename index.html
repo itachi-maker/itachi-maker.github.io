@@ -44,23 +44,44 @@
     <!-- MÓDULO 1: LABORATORIO SENSI ESTILO SYSTEM WOOD -->
     <div id="pane-sensi" class="app-section"><section class="panel-card" id="sensi-lab">
   <div class="card-header">
-    <div class="header-icon">⚙️</div>
+    <div class="header-icon">🔥</div>
     <div>
-      <h2>Calibrador Técnico FF</h2>
-      <p>Configuración basada en especificaciones de hardware real.</p>
+      <h2>Sensi Wood Pro - Calibrador Maestro</h2>
+      <p>Algoritmo de Ultra-Equilibrio (Cerca y Lejos) optimizado por Hardware y Hz.</p>
     </div>
   </div>
-  <div style="padding: 15px; display: grid; gap: 10px;">
-    <select id="hwCategory" style="padding:10px; background:#111; color:#fff; border:1px solid #00d4ff; border-radius:5px;">
-        <option value="entry">Gama de Entrada (60Hz / 120Hz Touch)</option>
-        <option value="mid">Gama Media (90Hz / 240Hz Touch)</option>
-        <option value="high">Gama Alta (120Hz / 480Hz Touch)</option>
-    </select>
-    <input type="number" id="dpiValue" placeholder="DPI (Ej: 600)" style="padding:10px; background:#111; color:#fff; border:1px solid #00d4ff; border-radius:5px;">
-    <button onclick="generarSensiPro()" style="padding:12px; background:#00d4ff; color:#000; font-weight:bold; border:none; border-radius:5px; cursor:pointer;">CALIBRAR HARDWARE</button>
+  <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+    <div>
+      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">📱 Dispositivo / Modelo</label>
+      <input type="text" id="woodModel" placeholder="Ej: Poco X3 Pro, Redmi, iPhone" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
+    </div>
+    <div>
+      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">⚡ Hz de tu Pantalla</label>
+      <select id="woodHz" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
+        <option value="60">60 Hz (Estándar)</option>
+        <option value="90">90 Hz (Fluido)</option>
+        <option value="120" selected>120 Hz o más (Pro Gaming)</option>
+      </select>
+    </div>
+    <div>
+      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">🎯 Estilo de Juego / Enfoque</label>
+      <select id="woodStyle" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
+        <option value="balanced">Ultra Equilibrio (Cerca y Lejos)</option>
+        <option value="rush">Rush / Exclusivo Corta Distancia</option>
+        <option value="long">Precisión / Exclusivo Tiros Lejanos</option>
+      </select>
+    </div>
+    <div>
+      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">🎛️ DPI del Sistema</label>
+      <input type="number" id="woodDpi" placeholder="Ej: 580 (Mín 300 - Máx 1200)" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
+    </div>
+    <button onclick="generarSensiWoodPro()" style="width: 100%; padding: 14px; background: linear-gradient(45deg, #00d4ff, #0055ff); color: #fff; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 5px; box-shadow: 0 0 15px rgba(0,212,255,0.4);">🚀 CALIBRAR SENSI WOOD PRO</button>
   </div>
-  <div id="resultBox" style="margin-top:15px; padding:15px; border:1px solid #00d4ff; border-radius:10px; display:none; background:#000;">
-    <ul id="resultList" style="list-style:none; padding:0; margin:0;"></ul>
+
+  <div id="woodResultBox" style="margin-top: 20px; padding: 20px; background: #0a0a0a; border-radius: 10px; border: 1px solid #00d4ff; display: none;">
+    <h4 style="color: #00d4ff; margin-bottom: 12px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">⚙️ Configuración Maestra Aplicada</h4>
+    <ul id="woodResultList" style="list-style: none; padding: 0; margin: 0; line-height: 2.3; color: #fff;"></ul>
+    <button onclick="copiarSensiWoodPro()" style="margin-top: 15px; width: 100%; background: #22c55e; color: #000; font-weight: bold; border: none; padding: 12px; border-radius: 6px; cursor: pointer;">📋 Copiar Todo para Free Fire</button>
   </div>
 </section></div>
 

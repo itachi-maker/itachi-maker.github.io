@@ -162,81 +162,85 @@ function generarYDescargarScript() {
 
 
 
-function generarSensiPro() {
-    const dpi = document.getElementById('dpiValue').value;
-    const model = document.getElementById('deviceModel').value;
-    if(!dpi || !model) {
-        alert("Por favor, ingresa el modelo de tu celular y tu DPI.");
-        return;
+function openAppTab(tabId) {
+    document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active-tab'));
+    const selected = document.getElementById(tabId);
+    if(selected) {
+        selected.classList.add('active-tab');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    const factor = dpi > 500 ? 0.90 : 1.10;
+}
+
+function openAppTab(tabId) {
+    document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active-tab'));
+    const selected = document.getElementById(tabId);
+    if(selected) {
+        selected.classList.add('active-tab');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+
+function generarSensiWoodPro() {
+    const model = document.getElementById('woodModel').value.trim();
+    const hz = parseInt(document.getElementById('woodHz').value);
+    const style = document.getElementById('woodStyle').value;
+    const dpi = parseInt(document.getElementById('woodDpi').value);
+
+    if(!model) { alert("Por favor, ingresa el modelo de tu dispositivo."); return; }
+    if(isNaN(dpi) || dpi < 300 || dpi > 1200) { alert("Ingresa un DPI válido entre 300 y 1200."); return; }
+
+    let baseGen = 90;
+    let baseRed = 88;
+    let base2x = 85;
+    let base4x = 82;
+    let btnDisparo = "46% - 49% (Ultra Equilibrio)";
+
+    const hzFactor = hz === 120 ? 0.95 : (hz === 90 ? 1.0 : 1.08);
+
+    if(style === 'rush') {
+        baseGen += 8;
+        baseRed += 5;
+        btnDisparo = "42% - 45% (Tiro rápido corta distancia)";
+    } else if(style === 'long') {
+        baseGen -= 5;
+        base2x += 5;
+        base4x += 8;
+        btnDisparo = "50% - 55% (Estabilidad lejana)";
+    }
+
+    const dpiMultiplier = 500 / dpi;
+    
+    const general = Math.min(100, Math.max(70, Math.floor((baseGen * dpiMultiplier) * hzFactor * (dpi > 600 ? 0.92 : 1.0))));
+    const puntoRojo = Math.min(100, Math.max(65, Math.floor((baseRed * dpiMultiplier) * hzFactor * (dpi > 600 ? 0.92 : 1.0))));
+    const mira2x = Math.min(100, Math.max(60, Math.floor((base2x * dpiMultiplier) * hzFactor)));
+    const mira4x = Math.min(100, Math.max(60, Math.floor((base4x * dpiMultiplier) * hzFactor)));
+    const freeLook = Math.min(100, Math.floor(80 * hzFactor));
+
     const data = {
         "📱 Dispositivo": model,
-        "🎛️ DPI del Sistema": dpi,
-        "🎯 General (Cámara)": Math.floor(185 * factor),
-        "🔴 Punto Rojo": Math.floor(180 * factor),
-        "🔭 Mira 2X": Math.floor(175 * factor),
-        "🔭 Mira 4X": Math.floor(170 * factor),
-        "🎯 Botón de Disparo": dpi > 500 ? "45% - 48%" : "52% - 55%"
+        "⚡ Tasa de Hz": hz + " Hz",
+        "🎯 Enfoque": style === 'balanced' ? 'Ultra Equilibrio' : (style === 'rush' ? 'Rush (Corta)' : 'Precisión (Larga)'),
+        "🎛️ DPI Aplicado": dpi,
+        "🔥 General": general,
+        "🔴 Punto Rojo": puntoRojo,
+        "🔭 Mira 2X": mira2x,
+        "🔭 Mira 4X": mira4x,
+        "👀 Cámara (Libre)": freeLook,
+        "🔘 Botón de Disparo": btnDisparo
     };
-    const list = document.getElementById('resultList');
+
+    const list = document.getElementById('woodResultList');
     list.innerHTML = "";
     for(let key in data) {
-        list.innerHTML += `<li style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 4px 0;"><span>${key}:</span> <strong style="color: #00d4ff;">${data[key]}</strong></li>`;
+        list.innerHTML += `<li style="display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 6px 0;"><span style="color: #aaa;">${key}:</span> <strong style="color: #00d4ff;">${data[key]}</strong></li>`;
     }
-    document.getElementById('resultBox').style.display = "block";
+    document.getElementById('woodResultBox').style.display = "block";
 }
 
-function copiarSensiPro() {
-    const text = document.getElementById('resultList').innerText;
-    navigator.clipboard.writeText("🔥 CONFIGURACIÓN FREE FIRE PRO 🔥\n" + text).then(() => {
-        alert("¡Configuración copiada al portapapeles con éxito!");
+function copiarSensiWoodPro() {
+    const text = document.getElementById('woodResultList').innerText;
+    navigator.clipboard.writeText("🔥 SENSI WOOD PRO - CONFIGURACIÓN MAESTRA 🔥\n" + text).then(() => {
+        alert("¡Configuración copiada con éxito para reventar cabezas!");
     });
-}
-
-
-function generarSensiPro() {
-    const dpi = parseInt(document.getElementById('dpiValue').value);
-    const cat = document.getElementById('hwCategory').value;
-    if(!dpi || dpi < 300) { alert("Ingresa un DPI válido."); return; }
-    
-    // Base de datos técnica
-    const profiles = {
-        "entry": { mult: 0.8, base: 85, msg: "Configuración Estándar" },
-        "mid":   { mult: 1.0, base: 92, msg: "Configuración Optimizada (Hz Altos)" },
-        "high":  { mult: 1.2, base: 98, msg: "Configuración Pro (Latencia Cero)" }
-    };
-    
-    const p = profiles[cat];
-    const data = {
-        "Modo": p.msg,
-        "General": Math.floor(p.base * (dpi / 600)),
-        "Punto Rojo": Math.floor((p.base - 5) * (dpi / 600)),
-        "Mira 2x": Math.floor((p.base - 10) * (dpi / 600)),
-        "Mira 4x": Math.floor((p.base - 15) * (dpi / 600))
-    };
-    
-    const res = document.getElementById('resultList');
-    res.innerHTML = "";
-    for(let k in data) {
-        res.innerHTML += `<li style="padding:5px 0; border-bottom:1px solid #333;"><b>${k}:</b> ${data[k]}</li>`;
-    }
-    document.getElementById('resultBox').style.display = "block";
-}
-function openAppTab(tabId) {
-    document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active-tab'));
-    const selected = document.getElementById(tabId);
-    if(selected) {
-        selected.classList.add('active-tab');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-}
-
-function openAppTab(tabId) {
-    document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active-tab'));
-    const selected = document.getElementById(tabId);
-    if(selected) {
-        selected.classList.add('active-tab');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
 }
