@@ -1,61 +1,46 @@
-// Comprobar si ya aceptó las cookies al cargar la página
-window.onload = function() {
-  if (!localStorage.getItem('cookiesAceptadas')) {
-    document.getElementById('cookieBanner').style.display = 'block';
-  }
-};
-
-function aceptarCookies() {
-  localStorage.setItem('cookiesAceptadas', 'true');
-  document.getElementById('cookieBanner').style.display = 'none';
-}
-
-function abrirModal(id) {
-  document.getElementById(id).style.display = "block";
-}
-
-function cerrarModal(id) {
-  document.getElementById(id).style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target.classList.contains('modal')) {
-    event.target.style.display = "none";
-  }
-};
-
-function copiarComando(btn) {
-  var codigo = btn.previousElementSibling.innerText;
-  navigator.clipboard.writeText(codigo).then(function() {
-    var orig = btn.innerText;
-    btn.innerText = "✅ ¡Copiado!";
-    setTimeout(function() { btn.innerText = orig; }, 1500);
-  });
-}
-
-function ejecutarIA() {
-  var loader = document.getElementById('loaderIA');
-  var resultado = document.getElementById('resultadoSens');
+function actualizarOpciones() {
+  const modo = document.querySelector('input[name="mode"]:checked').value;
+  const container = document.getElementById('containerOpciones');
   
-  loader.style.display = 'flex';
-  resultado.style.display = 'none';
-
-  setTimeout(function() {
-    loader.style.display = 'none';
-    resultado.style.display = 'block';
-
-    document.getElementById('resGen').innerText = Math.floor(Math.random() * (198 - 180 + 1)) + 180;
-    document.getElementById('resRedDot').innerText = Math.floor(Math.random() * (195 - 175 + 1)) + 175;
-    document.getElementById('res2x').innerText = Math.floor(Math.random() * (200 - 185 + 1)) + 185;
-    document.getElementById('res4x').innerText = Math.floor(Math.random() * (200 - 190 + 1)) + 190;
-    document.getElementById('resAwm').innerText = "110";
-    document.getElementById('resCam').innerText = "150";
-
-    document.getElementById('resDpi').innerText = document.getElementById('modoDpi').value === 'con_dpi' ? "580 DPI" : "411 (Fábrica)";
-    document.getElementById('resBoton').innerText = "48%";
-    document.getElementById('resVelPuntero').innerText = "Máxima";
-
-    document.getElementById('resConsejo').innerText = "Configuración ajustada a la tasa de refresco táctil de tu dispositivo.";
-    document.getElementById('resTecnica').innerText = "Levantado de mira en 'J' suave desde media distancia.";
-  }, 1200);
+  if (modo === 'noroot') {
+    container.innerHTML = `
+      <label><input type="checkbox" id="optAnim"> Eliminar animaciones (0.0x)</label>
+      <label><input type="checkbox" id="optDoze"> Desactivar Doze Mode (Mejor notificación)</label>
+      <label><input type="checkbox" id="optWifi"> Optimizar Wi-Fi (Policy 2)</label>
+      <label><input type="checkbox" id="optTouch"> Reducir latencia táctil (Touch Pressure)</label>
+    `;
+  } else {
+    container.innerHTML = `
+      <label><input type="checkbox" id="optCache"> Limpieza profunda de caché (Trimming)</label>
+      <label><input type="checkbox" id="optPriority"> Prioridad máxima a proceso gráfico (SurfaceFlinger)</label>
+      <label><input type="checkbox" id="optZram"> Optimización de Swap/ZRAM (No destructiva)</label>
+    `;
+  }
 }
+
+function generarYDescargarScript() {
+  const modo = document.querySelector('input[name="mode"]:checked').value;
+  let script = "#!/system/bin/sh\n# Generado por RendimientoTech\n\n";
+
+  if (modo === 'noroot') {
+    if(document.getElementById('optAnim').checked) script += "settings put global window_animation_scale 0\nsettings put global transition_animation_scale 0\n";
+    if(document.getElementById('optDoze').checked) script += "dumpsys deviceidle disable\n";
+    if(document.getElementById('optWifi').checked) script += "settings put global wifi_sleep_policy 2\n";
+    if(document.getElementById('optTouch').checked) script += "settings put system touch_pressure_scale 0.001\n";
+  } else {
+    if(document.getElementById('optCache').checked) script += "pm trim-caches 999G\n";
+    if(document.getElementById('optPriority').checked) script += "renice -20 $(pidof surfaceflinger)\n";
+    if(document.getElementById('optZram').checked) script += "echo 1 > /proc/sys/vm/drop_caches\n";
+  }
+
+  script += "\necho 'Optimización terminada.'";
+  
+  let blob = new Blob([script], { type: 'text/plain' });
+  let link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'optimizacion_segura.sh';
+  link.click();
+}
+
+// Iniciar al cargar
+actualizarOpciones();
