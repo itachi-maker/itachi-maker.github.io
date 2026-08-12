@@ -38,15 +38,22 @@ body {
 .seccion-caja h2 { color: #00e676; margin-top: 0; font-size: 18px; }
 .subtitulo { color: #8b9bb4; font-size: 12px; margin-bottom: 15px; }
 
-/* Estilos de Sensibilidad */
-.form-sensi { display: flex; flex-direction: column; gap: 10px; background: #0d111a; padding: 15px; border-radius: 8px; border: 1px solid #22293a; }
-.form-sensi label { font-size: 12px; color: #d1dbe8; font-weight: bold; }
-.form-sensi input, .form-sensi select { background: #161c2b; border: 1px solid #28334e; color: #fff; padding: 10px; border-radius: 6px; font-size: 13px; }
-.btn-calcular-sensi { background: #00b0ff; color: #000; font-weight: 900; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; margin-top: 5px; }
-.resultado-sensi-box { background: #0d111a; padding: 15px; border-radius: 8px; border: 1px solid #00e676; margin-top: 15px; }
-.resultado-sensi-box h3 { color: #00e676; font-size: 14px; margin-top: 0; }
-.resultado-sensi-box ul { padding-left: 20px; margin: 10px 0; font-size: 13px; color: #e0e6ed; }
-.resultado-sensi-box li { margin-bottom: 5px; }
+/* Estilos de Sensibilidad Pro */
+.form-sensi-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+@media(min-width: 500px) { .form-sensi-grid { flex-direction: row; } }
+.input-grupo { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.input-grupo label { font-size: 11px; color: #d1dbe8; font-weight: bold; }
+.input-grupo input, .input-grupo select { background: #0d111a; border: 1px solid #28334e; color: #fff; padding: 10px; border-radius: 6px; font-size: 13px; }
+
+.sliders-sensi-container { background: #0d111a; padding: 15px; border-radius: 8px; border: 1px solid #22293a; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }
+.sliders-sensi-container h3 { color: #00b0ff; font-size: 13px; margin: 0 0 5px 0; border-bottom: 1px solid #1f293d; padding-bottom: 5px; }
+.slider-row { display: flex; flex-direction: column; gap: 4px; }
+.slider-row label { display: flex; justify-content: space-between; font-size: 12px; color: #e0e6ed; font-weight: bold; }
+.slider-row label span { color: #00e676; }
+.slider-row input[type="range"] { width: 100%; accent-color: #00e676; cursor: pointer; }
+
+.acciones-sensi { display: flex; flex-direction: column; gap: 8px; }
+@media(min-width: 500px) { .acciones-sensi { flex-direction: row; } }
 
 /* Menús Desplegables (<details>) */
 .mode-selector { display: flex; gap: 8px; margin-bottom: 15px; }
@@ -55,7 +62,7 @@ body {
 .presets-box { background: #0d111a; padding: 12px; border-radius: 8px; border: 1px solid #22293a; margin-bottom: 15px; }
 .preset-title { font-size: 12px; color: #00b0ff; font-weight: bold; display: block; margin-bottom: 8px; }
 .preset-botones { display: flex; gap: 8px; flex-wrap: wrap; }
-.btn-preset { background: #1f293d; color: #fff; border: 1px solid #334155; padding: 8px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; flex: 1; min-width: 100px; text-align: center; }
+.btn-preset { background: #1f293d; color: #fff; border: 1px solid #334155; padding: 8px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; flex: 1; min-width: 90px; text-align: center; }
 .btn-preset:hover { background: #00e676; color: #000; border-color: #00e676; }
 
 .script-builder-box { background: #0d111a; padding: 15px; border-radius: 8px; border: 1px solid #22293a; max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
@@ -68,8 +75,9 @@ body {
 
 .acciones-script { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
 @media(min-width: 500px) { .acciones-script { flex-direction: row; } }
-.btn-calcular { background: #2a3447; color: #fff; font-size: 13px; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; flex: 1; }
+.btn-calcular { background: #2a3447; color: #fff; font-size: 13px; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; flex: 1; text-align: center; }
 .btn-copiar-script { background: linear-gradient(90deg, #00e676, #00c853); color: #000; font-size: 13px; font-weight: 900; padding: 12px; border: none; border-radius: 8px; cursor: pointer; flex: 1; text-align: center; }
+.btn-calcular-sensi { background: #00b0ff; color: #000; font-weight: 900; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; flex: 1; text-align: center; }
 
 .footer-principal { background: #07090d; border-top: 1px solid #1a2336; padding: 15px; text-align: center; font-size: 11px; color: #8b9bb4; }
 .disclaimer { margin: 5px 0 0; color: #00e676; }

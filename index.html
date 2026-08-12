@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Sensibilidad & Scripts Brevent</title>
-  <meta name="description" content="Generador de sensibilidad profesional y scripts de optimización Android para Free Fire sin PC.">
+  <title>RendimientoTech - Sensibilidad Pro & Brevent</title>
+  <meta name="description" content="Generador avanzado de sensibilidad y DPI para Free Fire, optimizado para móviles sin PC.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="inicio">
@@ -13,54 +13,84 @@
     <div class="nav-container">
       <span class="nav-logo">⚡ RendimientoTech</span>
       <ul class="nav-links">
-        <li><a href="#sensi">🎯 Sensibilidad</a></li>
-        <li><a href="#scriptgen">📦 Scripts Brevent</a></li>
+        <li><a href="#sensi">🎯 Sensibilidad Pro</a></li>
+        <li><a href="#scriptgen">📦 Comandos Brevent</a></li>
         <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">📩 Contacto</a></li>
       </ul>
     </div>
   </nav>
 
   <header class="header-principal">
-    <div class="logo-badge">PRO EDITION v6.0</div>
+    <div class="logo-badge">ULTRA PRO EDITION</div>
     <h1>RendimientoTech</h1>
-    <p>Sensibilidad Perfecta & Optimización Extrema para Free Fire</p>
+    <p>Calculadora de Sensibilidad Maestra & Comandos para Free Fire</p>
   </header>
 
   <main class="contenedor-principal">
 
-    <!-- SECCIÓN: GENERADOR DE SENSIBILIDAD -->
+    <!-- SECCIÓN: GENERADOR DE SENSIBILIDAD AVANZADO -->
     <section id="sensi" class="seccion-caja">
-      <h2>🎯 Generador de Sensibilidad & DPI Pro</h2>
-      <p class="subtitulo">Calcula tu configuración ideal según tu estilo de juego y DPI actual.</p>
+      <h2>🎯 Generador de Sensibilidad Pro (Headshot Master)</h2>
+      <p class="subtitulo">Configura tus valores exactos o calcula una base optimizada según tu DPI y tipo de teléfono.</p>
       
-      <div class="form-sensi">
-        <label>Tu DPI Actual:</label>
-        <input type="number" id="inputDpi" value="600" placeholder="Ej: 410, 600, 800">
-        
-        <label>Tipo de Dispositivo / Estilo:</label>
-        <select id="selectEstilo">
-          <option value="camara">Todo a la Cámara (Movimiento Rápido)</option>
-          <option value="precicion">Precisión de Headshot (Mira 2x y 4x)</option>
-          <option value="equilibrado" selected>Equilibrado (Todo Terreno)</option>
-        </select>
-
-        <button onclick="generarSensibilidad()" class="btn-calcular-sensi">✨ Calcular Mi Configuración</button>
+      <div class="form-sensi-grid">
+        <div class="input-grupo">
+          <label>DPI de tu Celular:</label>
+          <input type="number" id="inputDpi" value="600" placeholder="Ej: 410, 580, 640, 800">
+        </div>
+        <div class="input-grupo">
+          <label>Estilo de Juego:</label>
+          <select id="selectEstilo" onchange="sugerirValoresBase()">
+            <option value="exagerado">🚀 Movimiento Exagerado (Paredes Gloo Rápidas)</option>
+            <option value="preciso" selected>🎯 Precisión Letal (Todo a la Cabeza)</option>
+            <option value="fluido">⚖️ Equilibrado (Control Total)</option>
+          </select>
+        </div>
       </div>
 
-      <div id="resultadoSensi" class="resultado-sensi-box" style="display:none;">
-        <h3>📊 Tu Configuración Sugerida:</h3>
-        <ul id="listaSensiResultados"></ul>
-        <button onclick="copiarSensibilidad()" class="btn-copiar-script" style="margin-top: 10px;">📋 Copiar Sensibilidad</button>
+      <!-- SLIDERS DE CONTROL INDIVIDUAL -->
+      <div class="sliders-sensi-container">
+        <h3>🎛️ Ajuste Fino de Mis Mira</h3>
+        
+        <div class="slider-row">
+          <label>General: <span id="valGen">195</span></label>
+          <input type="range" id="rangeGen" min="50" max="200" value="195" oninput="actualizarSliderTexto('Gen')">
+        </div>
+        <div class="slider-row">
+          <label>Mira Punto Rojo: <span id="valRed">190</span></label>
+          <input type="range" id="rangeRed" min="50" max="200" value="190" oninput="actualizarSliderTexto('Red')">
+        </div>
+        <div class="slider-row">
+          <label>Mira 2X: <span id="val2x">185</span></label>
+          <input type="range" id="range2x" min="50" max="200" value="185" oninput="actualizarSliderTexto('2x')">
+        </div>
+        <div class="slider-row">
+          <label>Mira 4X: <span id="val4x">180</span></label>
+          <input type="range" id="range4x" min="50" max="200" value="180" oninput="actualizarSliderTexto('4x')">
+        </div>
+        <div class="slider-row">
+          <label>Mira AWM (Sniper): <span id="valAwm">85</span></label>
+          <input type="range" id="rangeAwm" min="10" max="150" value="85" oninput="actualizarSliderTexto('Awm')">
+        </div>
+        <div class="slider-row">
+          <label>Cámara (Libre): <span id="valCam">90</span></label>
+          <input type="range" id="rangeCam" min="10" max="150" value="90" oninput="actualizarSliderTexto('Cam')">
+        </div>
+      </div>
+
+      <div class="acciones-sensi">
+        <button onclick="calcularSensibilidadPro()" class="btn-calcular-sensi">⚡ Auto-Optimizar con mi DPI</button>
+        <button onclick="copiarSensibilidadPro()" class="btn-copiar-script">📋 Copiar Configuración Pro</button>
       </div>
     </section>
 
-    <!-- SECCIÓN: GENERADOR DE SCRIPTS CON MENÚS DESPLEGABLES -->
+    <!-- SECCIÓN: GENERADOR DE SCRIPTS BREVENT -->
     <section id="scriptgen" class="seccion-caja">
-      <h2>📦 Generador de Comandos Brevent (Menús por Categoría)</h2>
-      <p class="subtitulo">Despliega cada menú y selecciona solo lo que necesites para tu celular.</p>
+      <h2>📦 Generador de Comandos Brevent & Shizuku</h2>
+      <p class="subtitulo">Selecciona las optimizaciones del sistema para eliminar el lag en tus partidas.</p>
       
       <div class="mode-selector">
-        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 No-Root (Brevent / Shizuku)</label>
+        <label class="mode-btn"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 No-Root (Brevent)</label>
         <label class="mode-btn"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Root Seguro</label>
       </div>
 
@@ -69,13 +99,11 @@
         <div class="preset-botones">
           <button onclick="aplicarPreset('freefire')" class="btn-preset">🔥 Free Fire Torneo</button>
           <button onclick="aplicarPreset('ping')" class="btn-preset">🌐 Reducir Ping</button>
-          <button onclick="limpiarSeleccion()" class="btn-preset" style="background:#2a3447;">🗑️ Limpiar Todo</button>
+          <button onclick="limpiarSeleccion()" class="btn-preset" style="background:#2a3447;">🗑️ Limpiar</button>
         </div>
       </div>
 
-      <div id="containerMenus" class="script-builder-box">
-        <!-- Menús inyectados por JS -->
-      </div>
+      <div id="containerMenus" class="script-builder-box"></div>
 
       <div class="acciones-script">
         <button onclick="copiarScriptTexto()" class="btn-copiar-script">📋 Copiar Comandos Seleccionados</button>
@@ -87,7 +115,7 @@
 
   <footer class="footer-principal">
     <div class="footer-contenido">
-      <p><strong>RendimientoTech</strong> © 2026 - Creado para gamers de Free Fire.</p>
+      <p><strong>RendimientoTech</strong> © 2026 - Herramientas de élite para Free Fire.</p>
       <p class="disclaimer">Contacto: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
     </div>
   </footer>

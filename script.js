@@ -4,58 +4,80 @@ function abrirModal(id) { document.getElementById(id).style.display = "block"; }
 function cerrarModal(id) { document.getElementById(id).style.display = "none"; }
 window.onclick = function(event) { if (event.target.classList.contains('modal')) event.target.style.display = "none"; };
 
-// Generador de Sensibilidad
-function generarSensibilidad() {
+// Lógica de Sliders de Sensibilidad Pro
+function actualizarSliderTexto(tipo) {
+  let val = document.getElementById('range' + tipo).value;
+  document.getElementById('val' + tipo).innerText = val;
+}
+
+function sugerirValoresBase() {
+  calcularSensibilidadPro();
+}
+
+function calcularSensibilidadPro() {
   let dpi = parseInt(document.getElementById('inputDpi').value) || 600;
   let estilo = document.getElementById('selectEstilo').value;
   
-  let general, m2x, m4x, miraAWM, camara;
+  let gen, red, x2, x4, awm, cam;
 
-  if (estilo === 'camara') {
-    general = Math.min(200, Math.max(140, Math.round(195 - (dpi * 0.05))));
-    m2x = Math.min(195, Math.max(130, general - 10));
-    m4x = Math.min(190, Math.max(125, general - 15));
-    miraAWM = Math.round(general * 0.5);
-    camara = 100;
-  } else if (estilo === 'precicion') {
-    general = Math.min(185, Math.max(120, Math.round(175 - (dpi * 0.04))));
-    m2x = Math.min(180, Math.max(115, general - 5));
-    m4x = Math.min(175, Math.max(110, general - 10));
-    miraAWM = Math.round(general * 0.45);
-    camara = 85;
+  if (estilo === 'exagerado') {
+    gen = Math.min(200, Math.max(150, Math.round(200 - (dpi * 0.03))));
+    red = Math.min(198, Math.max(145, gen - 2));
+    x2 = Math.min(195, Math.max(140, gen - 5));
+    x4 = Math.min(190, Math.max(135, gen - 10));
+    awm = 95;
+    cam = 100;
+  } else if (estilo === 'preciso') {
+    gen = Math.min(190, Math.max(120, Math.round(185 - (dpi * 0.05))));
+    red = Math.min(185, Math.max(115, gen - 5));
+    x2 = Math.min(180, Math.max(110, gen - 10));
+    x4 = Math.min(175, Math.max(105, gen - 15));
+    awm = 75;
+    cam = 80;
   } else {
-    general = Math.min(195, Math.max(130, Math.round(185 - (dpi * 0.045))));
-    m2x = Math.min(190, Math.max(120, general - 8));
-    m4x = Math.min(185, Math.max(115, general - 12));
-    miraAWM = Math.round(general * 0.48);
-    camara = 90;
+    gen = Math.min(195, Math.max(130, Math.round(190 - (dpi * 0.04))));
+    red = Math.min(190, Math.max(125, gen - 4));
+    x2 = Math.min(185, Math.max(120, gen - 8));
+    x4 = Math.min(180, Math.max(115, gen - 12));
+    awm = 85;
+    cam = 90;
   }
 
-  let htmlResult = `
-    <li><strong>DPI Recomendado:</strong> ${dpi} (Personalizado)</li>
-    <li><strong>General:</strong> ${general}</li>
-    <li><strong>Mira Red Dot:</strong> ${Math.round(general * 0.95)}</li>
-    <li><strong>Mira 2X:</strong> ${m2x}</li>
-    <li><strong>Mira 4X:</strong> ${m4x}</li>
-    <li><strong>Mira AWM / Francotirador:</strong> ${miraAWM}</li>
-    <li><strong>Cámara 360°:</strong> ${camara}</li>
-  `;
+  // Asignar a sliders e interfaz
+  document.getElementById('rangeGen').value = gen; document.getElementById('valGen').innerText = gen;
+  document.getElementById('rangeRed').value = red; document.getElementById('valRed').innerText = red;
+  document.getElementById('range2x').value = x2; document.getElementById('val2x').innerText = x2;
+  document.getElementById('range4x').value = x4; document.getElementById('val4x').innerText = x4;
+  document.getElementById('rangeAwm').value = awm; document.getElementById('valAwm').innerText = awm;
+  document.getElementById('rangeCam').value = cam; document.getElementById('valCam').innerText = cam;
 
-  document.getElementById('listaSensiResultados').innerHTML = htmlResult;
-  document.getElementById('resultadoSensi').style.display = 'block';
+  alert("⚡ ¡Sensibilidad auto-optimizada para tu DPI " + dpi + "!");
 }
 
-function copiarSensibilidad() {
-  let items = document.querySelectorAll('#listaSensiResultados li');
-  let texto = "🎯 Configuración de Sensibilidad Free Fire (RendimientoTech):\n";
-  items.forEach(i => texto += "- " + i.innerText + "\n");
-  
+function copiarSensibilidadPro() {
+  let dpi = document.getElementById('inputDpi').value;
+  let gen = document.getElementById('rangeGen').value;
+  let red = document.getElementById('rangeRed').value;
+  let x2 = document.getElementById('range2x').value;
+  let x4 = document.getElementById('range4x').value;
+  let awm = document.getElementById('rangeAwm').value;
+  let cam = document.getElementById('rangeCam').value;
+
+  let texto = `🎯 CONFIGURACIÓN FREE FIRE (RendimientoTech)\n`;
+  texto += `📌 DPI Óptimo: ${dpi}\n`;
+  texto += `• General: ${gen}\n`;
+  texto += `• Mira Punto Rojo: ${red}\n`;
+  texto += `• Mira 2X: ${x2}\n`;
+  texto += `• Mira 4X: ${x4}\n`;
+  texto += `• Mira AWM: ${awm}\n`;
+  texto += `• Cámara: ${cam}\n`;
+
   navigator.clipboard.writeText(texto).then(() => {
-    alert("📋 ¡Sensibilidad copiada al portapapeles!");
+    alert("📋 ¡Configuración Pro copiada al portapapeles!");
   });
 }
 
-// Menús de Comandos Desplegables
+// Menús de Comandos Brevent
 function actualizarMenus() {
   const modo = document.querySelector('input[name="mode"]:checked').value;
   const container = document.getElementById('containerMenus');
@@ -83,7 +105,7 @@ function actualizarMenus() {
       </details>
 
       <details class="menu-categoria">
-        <summary>👆 3. Táctil y Sensibilidad (Free Fire)</summary>
+        <summary>👆 3. Táctil y Sensibilidad Sistema (Free Fire)</summary>
         <div class="menu-contenido">
           <label><input type="checkbox" id="tc1" checked> Reducir escala de presión táctil (Touch 0.001)</label>
           <label><input type="checkbox" id="tc2" checked> Forzar tasa de refresco mínima a 120Hz</label>
