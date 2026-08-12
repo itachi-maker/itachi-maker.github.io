@@ -4,67 +4,59 @@ function abrirModal(id) { document.getElementById(id).style.display = "block"; }
 function cerrarModal(id) { document.getElementById(id).style.display = "none"; }
 window.onclick = function(event) { if (event.target.classList.contains('modal')) event.target.style.display = "none"; };
 
-// Lógica de Sliders de Sensibilidad Pro
-function actualizarSliderTexto(tipo) {
-  let val = document.getElementById('range' + tipo).value;
-  document.getElementById('val' + tipo).innerText = val;
+// Lógica de cálculo balístico profesional basada en Hardware Real
+function calcularSensibilidadHardwareReal() {
+  let modelo = document.getElementById('inputModelo').value.trim() || "Dispositivo Android";
+  let resolucion = document.getElementById('selectResolucion').value;
+  let dpi = parseInt(document.getElementById('inputDpiReal').value) || 580;
+  let samplingRate = parseInt(document.getElementById('selectSamplingRate').value) || 240;
+
+  // Extraer píxeles de ancho y alto de la resolución seleccionada
+  let partesRes = resolucion.split('x');
+  let anchoPx = parseInt(partesRes[0]);
+  let altoPx = parseInt(partesRes[1]);
+
+  // Factor de densidad de píxeles y compensación de muestreo táctil
+  let factorDensidad = (anchoPx * altoPx) / 2592000; // Referencia FHD+ (1080x2400)
+  let factorSampling = samplingRate / 240;
+
+  // Algoritmo de precisión para cabeceros exactos
+  let baseGen = Math.round(195 - (dpi * 0.035) + (factorSampling * 2));
+  let gen = Math.min(200, Math.max(130, baseGen));
+  let red = Math.min(195, Math.max(120, Math.round(gen - (factorDensidad * 4))));
+  let x2 = Math.min(190, Math.max(115, Math.round(red - 6)));
+  let x4 = Math.min(185, Math.max(110, Math.round(x2 - 6)));
+  let awm = Math.min(120, Math.max(50, Math.round(85 / factorSampling)));
+  let cam = Math.min(130, Math.max(60, Math.round(90 / factorSampling)));
+
+  // Inyectar en el DOM
+  document.getElementById('resGen').innerText = gen;
+  document.getElementById('resRed').innerText = red;
+  document.getElementById('res2x').innerText = x2;
+  document.getElementById('res4x').innerText = x4;
+  document.getElementById('resAwm').innerText = awm;
+  document.getElementById('resCam').innerText = cam;
+
+  alert("⚡ Hardware analizado para [" + modelo + "] con éxito.");
 }
 
-function sugerirValoresBase() {
-  calcularSensibilidadPro();
-}
+function copiarConfiguracionHardware() {
+  let modelo = document.getElementById('inputModelo').value.trim() || "Dispositivo Personalizado";
+  let resolucion = document.getElementById('selectResolucion').value;
+  let dpi = document.getElementById('inputDpiReal').value;
+  let sampling = document.getElementById('selectSamplingRate').value;
 
-function calcularSensibilidadPro() {
-  let dpi = parseInt(document.getElementById('inputDpi').value) || 600;
-  let estilo = document.getElementById('selectEstilo').value;
-  
-  let gen, red, x2, x4, awm, cam;
+  let gen = document.getElementById('resGen').innerText;
+  let red = document.getElementById('resRed').innerText;
+  let x2 = document.getElementById('res2x').innerText;
+  let x4 = document.getElementById('res4x').innerText;
+  let awm = document.getElementById('resAwm').innerText;
+  let cam = document.getElementById('resCam').innerText;
 
-  if (estilo === 'exagerado') {
-    gen = Math.min(200, Math.max(150, Math.round(200 - (dpi * 0.03))));
-    red = Math.min(198, Math.max(145, gen - 2));
-    x2 = Math.min(195, Math.max(140, gen - 5));
-    x4 = Math.min(190, Math.max(135, gen - 10));
-    awm = 95;
-    cam = 100;
-  } else if (estilo === 'preciso') {
-    gen = Math.min(190, Math.max(120, Math.round(185 - (dpi * 0.05))));
-    red = Math.min(185, Math.max(115, gen - 5));
-    x2 = Math.min(180, Math.max(110, gen - 10));
-    x4 = Math.min(175, Math.max(105, gen - 15));
-    awm = 75;
-    cam = 80;
-  } else {
-    gen = Math.min(195, Math.max(130, Math.round(190 - (dpi * 0.04))));
-    red = Math.min(190, Math.max(125, gen - 4));
-    x2 = Math.min(185, Math.max(120, gen - 8));
-    x4 = Math.min(180, Math.max(115, gen - 12));
-    awm = 85;
-    cam = 90;
-  }
-
-  // Asignar a sliders e interfaz
-  document.getElementById('rangeGen').value = gen; document.getElementById('valGen').innerText = gen;
-  document.getElementById('rangeRed').value = red; document.getElementById('valRed').innerText = red;
-  document.getElementById('range2x').value = x2; document.getElementById('val2x').innerText = x2;
-  document.getElementById('range4x').value = x4; document.getElementById('val4x').innerText = x4;
-  document.getElementById('rangeAwm').value = awm; document.getElementById('valAwm').innerText = awm;
-  document.getElementById('rangeCam').value = cam; document.getElementById('valCam').innerText = cam;
-
-  alert("⚡ ¡Sensibilidad auto-optimizada para tu DPI " + dpi + "!");
-}
-
-function copiarSensibilidadPro() {
-  let dpi = document.getElementById('inputDpi').value;
-  let gen = document.getElementById('rangeGen').value;
-  let red = document.getElementById('rangeRed').value;
-  let x2 = document.getElementById('range2x').value;
-  let x4 = document.getElementById('range4x').value;
-  let awm = document.getElementById('rangeAwm').value;
-  let cam = document.getElementById('rangeCam').value;
-
-  let texto = `🎯 CONFIGURACIÓN FREE FIRE (RendimientoTech)\n`;
-  texto += `📌 DPI Óptimo: ${dpi}\n`;
+  let texto = `🎯 CONFIGURACIÓN PRO DE HARDWARE (RendimientoTech)\n`;
+  texto += `📱 Dispositivo: ${modelo}\n`;
+  texto += `📺 Resolución: ${resolucion} px | DPI: ${dpi} | Touch Rate: ${sampling}Hz\n`;
+  texto += `------------------------------------\n`;
   texto += `• General: ${gen}\n`;
   texto += `• Mira Punto Rojo: ${red}\n`;
   texto += `• Mira 2X: ${x2}\n`;
@@ -73,11 +65,11 @@ function copiarSensibilidadPro() {
   texto += `• Cámara: ${cam}\n`;
 
   navigator.clipboard.writeText(texto).then(() => {
-    alert("📋 ¡Configuración Pro copiada al portapapeles!");
+    alert("📋 ¡Configuración de hardware copiada al portapapeles!");
   });
 }
 
-// Menús de Comandos Brevent
+// Menús de Comandos Brevent (Intactos)
 function actualizarMenus() {
   const modo = document.querySelector('input[name="mode"]:checked').value;
   const container = document.getElementById('containerMenus');

@@ -28,63 +28,65 @@
 
   <main class="contenedor-principal">
 
-    <!-- SECCIÓN: GENERADOR DE SENSIBILIDAD AVANZADO -->
-    <section id="sensi" class="seccion-caja">
-      <h2>🎯 Generador de Sensibilidad Pro (Headshot Master)</h2>
-      <p class="subtitulo">Configura tus valores exactos o calcula una base optimizada según tu DPI y tipo de teléfono.</p>
+    <!-- SECCIÓN: GENERADOR DE SENSIBILIDAD PRO (AISPLADO Y TÉCNICO) -->
+    <section id="sensi" class="seccion-caja seccion-sensi-isolated">
+      <div class="header-modulo-sensi">
+        <h2>🎯 Laboratorio de Sensibilidad & Hardware Táctil</h2>
+        <p class="subtitulo">Cálculo balístico basado en píxeles de pantalla, escala DPI y latencia de muestreo táctil real.</p>
+      </div>
       
-      <div class="form-sensi-grid">
-        <div class="input-grupo">
-          <label>DPI de tu Celular:</label>
-          <input type="number" id="inputDpi" value="600" placeholder="Ej: 410, 580, 640, 800">
+      <div class="hardware-grid-pro">
+        <div class="input-grupo-pro">
+          <label>📱 Modelo de Celular:</label>
+          <input type="text" id="inputModelo" placeholder="Ej: Poco X3 Pro, Redmi Note 10, A52">
         </div>
-        <div class="input-grupo">
-          <label>Estilo de Juego:</label>
-          <select id="selectEstilo" onchange="sugerirValoresBase()">
-            <option value="exagerado">🚀 Movimiento Exagerado (Paredes Gloo Rápidas)</option>
-            <option value="preciso" selected>🎯 Precisión Letal (Todo a la Cabeza)</option>
-            <option value="fluido">⚖️ Equilibrado (Control Total)</option>
+        <div class="input-grupo-pro">
+          <label>📺 Resolución de Pantalla (Píxeles):</label>
+          <select id="selectResolucion">
+            <option value="1080x2400" selected>FHD+ (1080 × 2400 px)</option>
+            <option value="1080x2340">FHD+ Estrecho (1080 × 2340 px)</option>
+            <option value="720x1600">HD+ Estándar (720 × 1600 px)</option>
+            <option value="1440x3200">QHD+ Gaming (1440 × 3200 px)</option>
+          </select>
+        </div>
+        <div class="input-grupo-pro">
+          <label>⚙️ DPI del Sistema:</label>
+          <input type="number" id="inputDpiReal" value="580" placeholder="Ej: 410, 580, 640, 800">
+        </div>
+        <div class="input-grupo-pro">
+          <label>👆 Touch Sampling Rate (Muestreo Táctil):</label>
+          <select id="selectSamplingRate">
+            <option value="120">120 Hz (Estándar gama baja/media)</option>
+            <option value="180">180 Hz (Fluido equilibrado)</option>
+            <option value="240" selected>240 Hz (Gaming competitivo)</option>
+            <option value="360">360 Hz (Alta respuesta táctil)</option>
+            <option value="480">480 Hz+ (Gama alta / Esports)</option>
           </select>
         </div>
       </div>
 
-      <!-- SLIDERS DE CONTROL INDIVIDUAL -->
-      <div class="sliders-sensi-container">
-        <h3>🎛️ Ajuste Fino de Mis Mira</h3>
-        
-        <div class="slider-row">
-          <label>General: <span id="valGen">195</span></label>
-          <input type="range" id="rangeGen" min="50" max="200" value="195" oninput="actualizarSliderTexto('Gen')">
-        </div>
-        <div class="slider-row">
-          <label>Mira Punto Rojo: <span id="valRed">190</span></label>
-          <input type="range" id="rangeRed" min="50" max="200" value="190" oninput="actualizarSliderTexto('Red')">
-        </div>
-        <div class="slider-row">
-          <label>Mira 2X: <span id="val2x">185</span></label>
-          <input type="range" id="range2x" min="50" max="200" value="185" oninput="actualizarSliderTexto('2x')">
-        </div>
-        <div class="slider-row">
-          <label>Mira 4X: <span id="val4x">180</span></label>
-          <input type="range" id="range4x" min="50" max="200" value="180" oninput="actualizarSliderTexto('4x')">
-        </div>
-        <div class="slider-row">
-          <label>Mira AWM (Sniper): <span id="valAwm">85</span></label>
-          <input type="range" id="rangeAwm" min="10" max="150" value="85" oninput="actualizarSliderTexto('Awm')">
-        </div>
-        <div class="slider-row">
-          <label>Cámara (Libre): <span id="valCam">90</span></label>
-          <input type="range" id="rangeCam" min="10" max="150" value="90" oninput="actualizarSliderTexto('Cam')">
-        </div>
+      <div class="acciones-sensi-pro">
+        <button onclick="calcularSensibilidadHardwareReal()" class="btn-calcular-hardware">⚡ Calcular con Datos de Hardware</button>
       </div>
 
-      <div class="acciones-sensi">
-        <button onclick="calcularSensibilidadPro()" class="btn-calcular-sensi">⚡ Auto-Optimizar con mi DPI</button>
-        <button onclick="copiarSensibilidadPro()" class="btn-copiar-script">📋 Copiar Configuración Pro</button>
+      <!-- PANEL DE RESULTADOS TÉCNICOS -->
+      <div id="panelResultadosSensi" class="resultados-sensi-panel">
+        <h3>📊 Perfil Balístico Calculado</h3>
+        <div class="grid-resultados">
+          <div class="res-card"><span>General</span><strong id="resGen">188</strong></div>
+          <div class="res-card"><span>Punto Rojo</span><strong id="resRed">182</strong></div>
+          <div class="res-card"><span>Mira 2X</span><strong id="res2x">176</strong></div>
+          <div class="res-card"><span>Mira 4X</span><strong id="res4x">170</strong></div>
+          <div class="res-card"><span>Mira AWM</span><strong id="resAwm">75</strong></div>
+          <div class="res-card"><span>Cámara</span><strong id="resCam">85</strong></div>
+        </div>
+        <div class="acciones-copiar-pro">
+          <button onclick="copiarConfiguracionHardware()" class="btn-copiar-hardware">📋 Copiar Configuración Completa para Video/Redes</button>
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN: GENERADOR DE SCRIPTS BREVENT -->
+    <!-- SECCIÓN: GENERADOR DE SCRIPTS BREvent (INTACTO) -->
     <section id="scriptgen" class="seccion-caja">
       <h2>📦 Generador de Comandos Brevent & Shizuku</h2>
       <p class="subtitulo">Selecciona las optimizaciones del sistema para eliminar el lag en tus partidas.</p>

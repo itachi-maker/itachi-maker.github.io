@@ -38,24 +38,29 @@ body {
 .seccion-caja h2 { color: #00e676; margin-top: 0; font-size: 18px; }
 .subtitulo { color: #8b9bb4; font-size: 12px; margin-bottom: 15px; }
 
-/* Estilos de Sensibilidad Pro */
-.form-sensi-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
-@media(min-width: 500px) { .form-sensi-grid { flex-direction: row; } }
-.input-grupo { flex: 1; display: flex; flex-direction: column; gap: 5px; }
-.input-grupo label { font-size: 11px; color: #d1dbe8; font-weight: bold; }
-.input-grupo input, .input-grupo select { background: #0d111a; border: 1px solid #28334e; color: #fff; padding: 10px; border-radius: 6px; font-size: 13px; }
+/* Estilos Laboratorio de Sensibilidad Pro (Aislado y Técnico) */
+.seccion-sensi-isolated { border: 1px solid #00b0ff44; background: #101522; }
+.header-modulo-sensi h2 { color: #00b0ff; }
+.hardware-grid-pro { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 15px; }
+@media(min-width: 600px) { .hardware-grid-pro { grid-template-columns: 1fr 1fr; } }
+.input-grupo-pro { display: flex; flex-direction: column; gap: 5px; }
+.input-grupo-pro label { font-size: 11px; color: #d1dbe8; font-weight: bold; }
+.input-grupo-pro input, .input-grupo-pro select { background: #0a0d14; border: 1px solid #28334e; color: #fff; padding: 10px; border-radius: 6px; font-size: 13px; }
+.acciones-sensi-pro { margin-bottom: 15px; }
+.btn-calcular-hardware { background: linear-gradient(90deg, #00b0ff, #00e676); color: #000; font-size: 13px; font-weight: 900; padding: 12px; border: none; border-radius: 8px; cursor: pointer; width: 100%; text-align: center; }
 
-.sliders-sensi-container { background: #0d111a; padding: 15px; border-radius: 8px; border: 1px solid #22293a; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }
-.sliders-sensi-container h3 { color: #00b0ff; font-size: 13px; margin: 0 0 5px 0; border-bottom: 1px solid #1f293d; padding-bottom: 5px; }
-.slider-row { display: flex; flex-direction: column; gap: 4px; }
-.slider-row label { display: flex; justify-content: space-between; font-size: 12px; color: #e0e6ed; font-weight: bold; }
-.slider-row label span { color: #00e676; }
-.slider-row input[type="range"] { width: 100%; accent-color: #00e676; cursor: pointer; }
+.resultados-sensi-panel { background: #0d111a; border: 1px solid #22293a; padding: 15px; border-radius: 8px; }
+.resultados-sensi-panel h3 { color: #00e676; font-size: 13px; margin: 0 0 12px 0; border-bottom: 1px solid #1f293d; padding-bottom: 6px; }
+.grid-resultados { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px; }
+@media(min-width: 500px) { .grid-resultados { grid-template-columns: repeat(3, 1fr); } }
+.res-card { background: #161c2b; border: 1px solid #28334e; padding: 10px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.res-card span { font-size: 10px; color: #8b9bb4; font-weight: bold; text-transform: uppercase; }
+.res-card strong { font-size: 18px; color: #00e676; font-weight: 900; }
+.acciones-copiar-pro { display: flex; }
+.btn-copiar-hardware { background: #1f293d; color: #fff; border: 1px solid #00e676; padding: 10px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; width: 100%; text-align: center; }
+.btn-copiar-hardware:hover { background: #00e676; color: #000; }
 
-.acciones-sensi { display: flex; flex-direction: column; gap: 8px; }
-@media(min-width: 500px) { .acciones-sensi { flex-direction: row; } }
-
-/* Menús Desplegables (<details>) */
+/* Menús Desplegables (<details>) y Brevent */
 .mode-selector { display: flex; gap: 8px; margin-bottom: 15px; }
 .mode-btn { background: #161c2b; padding: 10px; border-radius: 8px; flex: 1; text-align: center; cursor: pointer; border: 1px solid #28334e; font-size: 12px; font-weight: bold; color: #fff; }
 .mode-btn input { accent-color: #00e676; margin-right: 5px; }
@@ -77,7 +82,6 @@ body {
 @media(min-width: 500px) { .acciones-script { flex-direction: row; } }
 .btn-calcular { background: #2a3447; color: #fff; font-size: 13px; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; flex: 1; text-align: center; }
 .btn-copiar-script { background: linear-gradient(90deg, #00e676, #00c853); color: #000; font-size: 13px; font-weight: 900; padding: 12px; border: none; border-radius: 8px; cursor: pointer; flex: 1; text-align: center; }
-.btn-calcular-sensi { background: #00b0ff; color: #000; font-weight: 900; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; flex: 1; text-align: center; }
 
 .footer-principal { background: #07090d; border-top: 1px solid #1a2336; padding: 15px; text-align: center; font-size: 11px; color: #8b9bb4; }
 .disclaimer { margin: 5px 0 0; color: #00e676; }
