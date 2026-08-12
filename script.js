@@ -160,6 +160,8 @@ function generarYDescargarScript() {
 
 
 
+
+
 function generarSensiPro() {
     const dpi = document.getElementById('dpiValue').value;
     const model = document.getElementById('deviceModel').value;
