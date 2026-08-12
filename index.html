@@ -9,7 +9,6 @@
 </head>
 <body id="inicio">
 
-  <!-- BARRA DE NAVEGACIÓN COMPLETA PARA ADSENSE -->
   <nav class="navbar">
     <div class="nav-container">
       <span class="nav-logo">⚡ RendimientoTech</span>
@@ -18,9 +17,9 @@
         <li><a href="#sensibilidad">🎯 Generador</a></li>
         <li><a href="#comandos">🛠️ Comandos ADB</a></li>
         <li><a href="#guia">📖 Guía FPS</a></li>
-        <li><a href="#nosotros" onclick="abrirModal('modalNosotros'); return false;">👥 Nosotros</a></li>
-        <li><a href="#contacto" onclick="abrirModal('modalContacto'); return false;">📩 Contacto</a></li>
-        <li><a href="#legal" onclick="abrirModal('modalPrivacidad'); return false;">🔒 Privacidad</a></li>
+        <li><a href="javascript:void(0)" onclick="abrirModal('modalNosotros')">👥 Nosotros</a></li>
+        <li><a href="javascript:void(0)" onclick="abrirModal('modalContacto')">📩 Contacto</a></li>
+        <li><a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">🔒 Privacidad</a></li>
       </ul>
     </div>
   </nav>
@@ -41,11 +40,11 @@
       <div class="form-sensibilidad">
         <div class="grupo-input">
           <label for="selectModelo">📱 Selecciona tu Dispositivo:</label>
-          <select id="selectModelo" onchange="autocompletarPorModelo()">
+          <select id="selectModelo">
             <option value="note14pro4g">Xiaomi - Redmi Note 14 Pro 4G (Helio G100)</option>
             <option value="note14pro5g">Xiaomi - Redmi Note 14 Pro+ 5G</option>
             <option value="note13pro5g">Xiaomi - Redmi Note 13 Pro 5G</option>
-            <option value="note134g">Xiaomi - Redmi Note 13 4G</option>
+            <option value="note134g" selected>Xiaomi - Redmi Note 13 4G</option>
             <option value="pocox6pro">POCO - X6 Pro 5G (Dimensity 8300)</option>
             <option value="pocof6pro">POCO - F6 Pro</option>
             <option value="pocom6pro">POCO - M6 Pro 4G</option>
@@ -58,7 +57,7 @@
             <option value="realmegt6">Realme - GT 6 5G</option>
             <option value="iphone15pm">Apple - iPhone 15 Pro Max</option>
             <option value="generico_baja">Otro - Gama Baja (2GB - 4GB RAM)</option>
-            <option value="generico_media" selected>Otro - Gama Media (6GB - 8GB RAM)</option>
+            <option value="generico_media">Otro - Gama Media (6GB - 8GB RAM)</option>
             <option value="generico_alta">Otro - Gama Alta / Gamer (12GB+ RAM)</option>
           </select>
         </div>
@@ -133,17 +132,16 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 2: COMANDOS DE OPTIMIZACIÓN (BREVENT / ADB SHELL / SHIZUKU / ROOT) -->
+    <!-- SECCIÓN 2: COMANDOS ADB / BREVENT -->
     <section id="comandos" class="seccion-caja">
       <h2>🛠️ Comandos de Optimización Android (ADB / Brevent / Exec)</h2>
       <p class="subtitulo">Ejecuta estos comandos en Brevent, LADB, Shizuku o Termux para reducir lag, liberar RAM y estabilizar los FPS.</p>
 
       <div class="lista-comandos">
-
         <div class="card-comando">
           <div class="cmd-info">
-            <h4>⚡ 1. Reducir Latencia Táctil y Respuesta de Pantalla</h4>
-            <p>Aumenta la velocidad de lectura de toques en la pantalla para alzar mira más rápido.</p>
+            <h4>⚡ 1. Reducir Latencia Táctil</h4>
+            <p>Aumenta la velocidad de lectura de toques en la pantalla.</p>
           </div>
           <div class="cmd-code-box">
             <code>settings put system touch_pressure_scale 0.001</code>
@@ -153,8 +151,8 @@
 
         <div class="card-comando">
           <div class="cmd-info">
-            <h4>🚀 2. Forzar Máxima Tasa de Refresco (FPS Estables)</h4>
-            <p>Evita que la pantalla baje de 120Hz/90Hz mientras juegas Free Fire.</p>
+            <h4>🚀 2. Forzar Tasa de Refresco Máxima</h4>
+            <p>Evita caídas repentinas de FPS en partidas.</p>
           </div>
           <div class="cmd-code-box">
             <code>settings put system min_refresh_rate 120.0</code>
@@ -164,71 +162,47 @@
 
         <div class="card-comando">
           <div class="cmd-info">
-            <h4>🧹 3. Limpieza Máxima de Memoria RAM y Caché</h4>
-            <p>Libera recursos en segundo plano antes de abrir el juego.</p>
+            <h4>🧹 3. Limpieza de Memoria Caché</h4>
+            <p>Libera recursos del sistema rápidamente.</p>
           </div>
           <div class="cmd-code-box">
             <code>pm trim-caches 999G</code>
             <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
           </div>
         </div>
-
-        <div class="card-comando">
-          <div class="cmd-info">
-            <h4>🔥 4. Desactivar Limitador Térmico de CPU (Doze Mode Off)</h4>
-            <p>Previene tirones de FPS cuando el procesador se calienta.</p>
-          </div>
-          <div class="cmd-code-box">
-            <code>dumpsys deviceidle disable</code>
-            <button onclick="copiarComando(this)" class="btn-copiar">📋 Copiar</button>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- SECCIÓN 3: ARTÍCULO EDUCATIVO (CLAVE PARA ADSENSE) -->
+    <!-- SECCIÓN 3: ARTÍCULO EDUCATIVO -->
     <section id="guia" class="seccion-caja texto-articulo">
       <h2>📖 Guía Definitiva: Cómo Optimizar Android para Jugar a 60/120 FPS</h2>
       <p>Para lograr un rendimiento constante en juegos competitivos como Free Fire, es esencial coordinar la aceleración de hardware con los ajustes del sistema operativo.</p>
-      
-      <h3>1. ¿Por qué es importante ajustar el DPI y la tasa de refresco?</h3>
-      <p>El DPI (puntos por pulgada) modifica la densidad de píxeles renderizados en pantalla. Al aumentar este valor de forma equilibrada, la pantalla registra movimientos más cortos del pulgar, lo que facilita el movimiento de 'alzar mira'. Sin embargo, sobrepasar el límite de tu procesador puede provocar saltos de fotogramas.</p>
-
-      <h3>2. Aplicación de Comandos ADB mediante Brevent y Shizuku</h3>
-      <p>Los comandos Shell permiten modificar parámetros ocultos del Kernel de Android sin necesidad de modificar archivos del sistema permanentemente. Usar permisos de nivel ejecutor mediante Shizuku o Brevent optimiza la asignación de memoria RAM y evita que los procesos en segundo plano consuman ciclos del procesador durante la partida.</p>
-    </section>
-
-    <!-- SECCIÓN 4: BASE DE DATOS DE CELULARES -->
-    <section id="dispositivos" class="seccion-caja">
-      <h2>📱 Base de Datos de Procesadores y Celulares</h2>
-      <input type="text" id="inputBuscar" onkeyup="buscarTelefono()" placeholder="Buscar dispositivo (ej. Redmi Note 14, Helio G100, POCO)...">
-      <div id="listaDispositivos" class="grid-dispositivos"></div>
+      <h3>1. Ajuste de DPI y Tasa de Refresco</h3>
+      <p>El DPI modifica la densidad de píxeles renderizados. Al ajustarlo correctamente con la frecuencia de refresco, el registro táctil es mucho más veloz.</p>
     </section>
 
   </main>
 
-  <!-- PIE DE PÁGINA CON TODOS LOS ENLACES REQUERIDOS -->
   <footer class="footer-principal">
     <div class="footer-contenido">
       <p><strong>RendimientoTech</strong> © 2026 - Todos los derechos reservados.</p>
-      <p class="disclaimer">Descargo de responsabilidad: RendimientoTech es un portal informativo e independiente. No está afiliado ni respaldado por Garena ni por marcas de dispositivos móviles.</p>
+      <p class="disclaimer">Soporte Técnico & Contacto: <strong>alexanderorozcomartinez207@gmail.com</strong></p>
       <div class="footer-links">
         <a href="#inicio">Inicio</a> | 
-        <a href="#" onclick="abrirModal('modalNosotros'); return false;">Sobre Nosotros</a> | 
-        <a href="#" onclick="abrirModal('modalContacto'); return false;">Contacto</a> | 
-        <a href="#" onclick="abrirModal('modalPrivacidad'); return false;">Política de Privacidad</a> | 
-        <a href="#" onclick="abrirModal('modalTerminos'); return false;">Términos</a>
+        <a href="javascript:void(0)" onclick="abrirModal('modalNosotros')">Sobre Nosotros</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalContacto')">Contacto</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalPrivacidad')">Política de Privacidad</a> | 
+        <a href="javascript:void(0)" onclick="abrirModal('modalTerminos')">Términos</a>
       </div>
     </div>
   </footer>
 
-  <!-- MODALES DE SECCIONES LEGALES Y DE INFORMACIÓN -->
+  <!-- MODALES -->
   <div id="modalNosotros" class="modal">
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalNosotros')">&times;</span>
       <h2>👥 Sobre Nosotros - RendimientoTech</h2>
-      <p>Somos un equipo enfocado en la investigación técnica de rendimiento en dispositivos móviles Android, desarrollo de algoritmos de sensibilidad para eSports y guías de optimización mediante entornos ejecutor (ADB, Brevent, Shizuku y KernelSU).</p>
+      <p>Somos un portal especializado en optimización Android, configuración de sensibilidad para Free Fire y ejecución de comandos en entorno ADB/Brevent.</p>
     </div>
   </div>
 
@@ -236,7 +210,10 @@
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
       <h2>📩 Contacto Oficial</h2>
-      <p>¿Tienes preguntas o deseas sugerir nuevos dispositivos para el algoritmo? Puedes ponerte en contacto con el equipo de soporte técnico a través del repositorio oficial de GitHub de <strong>RendimientoTech</strong>.</p>
+      <p>Para soporte, sugerencias o consultas sobre RendimientoTech, envíanos un correo directo a:</p>
+      <p style="background: #161c2b; padding: 10px; border-radius: 6px; text-align: center; color: #00e676; font-weight: bold; font-size: 14px;">
+        alexanderorozcomartinez207@gmail.com
+      </p>
     </div>
   </div>
 
@@ -244,7 +221,7 @@
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalPrivacidad')">&times;</span>
       <h2>🔒 Política de Privacidad</h2>
-      <p>En RendimientoTech nos tomamos muy en serio la privacidad de nuestros usuarios. Este sitio web utiliza cookies analíticas y de publicidad para mejorar la experiencia de navegación. Google AdSense utiliza cookies para mostrar anuncios relevantes basados en las visitas previas del usuario.</p>
+      <p>Este sitio web utiliza cookies técnicas para mejorar la experiencia del usuario y cumplir los lineamientos de publicidad de Google AdSense.</p>
     </div>
   </div>
 
@@ -252,7 +229,7 @@
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalTerminos')">&times;</span>
       <h2>📜 Términos y Condiciones</h2>
-      <p>La información y comandos proporcionados en este sitio web tienen fines meramente educativos e informativos. El usuario es responsable de la ejecución de comandos ADB en su dispositivo.</p>
+      <p>Los comandos y guías ofrecidos en RendimientoTech son de carácter informativo y educativo.</p>
     </div>
   </div>
 
