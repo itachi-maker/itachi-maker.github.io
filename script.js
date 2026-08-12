@@ -181,11 +181,23 @@ function openAppTab(tabId) {
 }
 
 
+
+
 function generarSensiWoodPro() {
-    const model = document.getElementById('woodModel').value.trim();
-    const hz = parseInt(document.getElementById('woodHz').value);
-    const style = document.getElementById('woodStyle').value;
-    const dpi = parseInt(document.getElementById('woodDpi').value);
+    const modelInput = document.getElementById('woodModel');
+    const hzInput = document.getElementById('woodHz');
+    const styleInput = document.getElementById('woodStyle');
+    const dpiInput = document.getElementById('woodDpi');
+
+    if(!modelInput || !dpiInput) {
+        alert("Error de carga en los elementos.");
+        return;
+    }
+
+    const model = modelInput.value.trim();
+    const hz = parseInt(hzInput.value);
+    const style = styleInput.value;
+    const dpi = parseInt(dpiInput.value);
 
     if(!model) { alert("Por favor, ingresa el modelo de tu dispositivo."); return; }
     if(isNaN(dpi) || dpi < 300 || dpi > 1200) { alert("Ingresa un DPI válido entre 300 y 1200."); return; }
@@ -222,7 +234,7 @@ function generarSensiWoodPro() {
         "⚡ Tasa de Hz": hz + " Hz",
         "🎯 Enfoque": style === 'balanced' ? 'Ultra Equilibrio' : (style === 'rush' ? 'Rush (Corta)' : 'Precisión (Larga)'),
         "🎛️ DPI Aplicado": dpi,
-        "🔥 General": general,
+        "💎 General": general,
         "🔴 Punto Rojo": puntoRojo,
         "🔭 Mira 2X": mira2x,
         "🔭 Mira 4X": mira4x,
@@ -239,8 +251,14 @@ function generarSensiWoodPro() {
 }
 
 function copiarSensiWoodPro() {
-    const text = document.getElementById('woodResultList').innerText;
-    navigator.clipboard.writeText("💎 SENSI WOOD PREMIUM - CONFIGURACIÓN DE ÉLITE 💎\n" + text).then(() => {
-        alert("¡Configuración copiada con éxito para reventar cabezas!");
+    const listItems = document.querySelectorAll('#woodResultList li');
+    let text = "💎 SENSI WOOD PREMIUM - CONFIGURACIÓN DE ÉLITE 💎\n";
+    listItems.forEach(li => {
+        text += li.innerText + "\n";
+    });
+    navigator.clipboard.writeText(text).then(() => {
+        alert("¡Configuración copiada con éxito!");
+    }).catch(err => {
+        alert("Error al copiar automáticamente.");
     });
 }
