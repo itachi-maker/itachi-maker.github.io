@@ -1,3 +1,15 @@
+// Comprobar si ya aceptó las cookies al cargar la página
+window.onload = function() {
+  if (!localStorage.getItem('cookiesAceptadas')) {
+    document.getElementById('cookieBanner').style.display = 'block';
+  }
+};
+
+function aceptarCookies() {
+  localStorage.setItem('cookiesAceptadas', 'true');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
 function abrirModal(id) {
   document.getElementById(id).style.display = "block";
 }
