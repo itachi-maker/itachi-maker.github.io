@@ -1,8 +1,9 @@
 window.onload = function() { 
-  actualizarMenus(); 
-  if(localStorage.getItem('cookiesAceptadas')) {
+  // Verificar si ya aceptó cookies
+  if(localStorage.getItem('cookiesAceptadas') === 'true') {
     document.getElementById('cookieBanner').style.display = 'none';
   }
+  actualizarMenus(); 
 };
 
 function aceptarCookies() {
@@ -18,7 +19,6 @@ function sincronizarSlider(tipo) {
 
 function actualizarSensiWood() {
   let dpi = parseInt(document.getElementById('inputDpiReal').value) || 580;
-  // Ajuste inteligente dinámico basado en DPI tipo System Wood
   let ajuste = Math.round((dpi - 580) * 0.05);
   
   let g = Math.min(200, Math.max(120, 185 + ajuste));
@@ -53,11 +53,10 @@ function copiarConfiguracionWood() {
   texto += `• Mira AWM: ${awm}\n`;
 
   navigator.clipboard.writeText(texto).then(() => {
-    alert("📋 ¡Configuración System Wood copiada al portapapeles!");
+    alert("📋 ¡Configuración System Wood copiada!");
   });
 }
 
-// Menús de Comandos Brevent
 function actualizarMenus() {
   const modo = document.querySelector('input[name="mode"]:checked').value;
   const container = document.getElementById('containerMenus');
@@ -114,18 +113,15 @@ function aplicarPreset(tipo) {
     ['an1', 'an2', 'an3', 'tc1', 'tc2', 'bg1', 'bg2'].forEach(id => {
       let el = document.getElementById(id); if(el) el.checked = true;
     });
-    alert("🔥 Preset 'Free Fire Torneo' aplicado.");
   } else if (tipo === 'ping') {
     ['nw1', 'nw2'].forEach(id => {
       let el = document.getElementById(id); if(el) el.checked = true;
     });
-    alert("🌐 Preset 'Red / Ping' aplicado.");
   }
 }
 
 function limpiarSeleccion() {
   document.querySelectorAll('.builder-scroll-box input[type="checkbox"]').forEach(cb => cb.checked = false);
-  alert("🗑️ Selección limpiada.");
 }
 
 function recopilarComandosScript() {
@@ -147,10 +143,8 @@ function recopilarComandosScript() {
 
 function copiarScriptTexto() {
   let script = recopilarComandosScript();
-  if(!script.trim()) { alert("Selecciona al menos una opción."); return; }
-  navigator.clipboard.writeText(script).then(() => {
-    alert("📋 ¡Comandos copiados con éxito para Brevent!");
-  });
+  if(!script.trim()) { alert("Selecciona algo."); return; }
+  navigator.clipboard.writeText(script).then(() => { alert("¡Comandos copiados!"); });
 }
 
 function generarYDescargarScript() {
