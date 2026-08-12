@@ -223,3 +223,11 @@ function generarSensiPro() {
     }
     document.getElementById('resultBox').style.display = "block";
 }
+function openAppTab(tabId) {
+    document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active-tab'));
+    const selected = document.getElementById(tabId);
+    if(selected) {
+        selected.classList.add('active-tab');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}

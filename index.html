@@ -8,6 +8,13 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8848200499958396" crossorigin="anonymous"></script>
   <meta name="description" content="Laboratorio de sensibilidad táctica estilo System Wood y optimizador Brevent para Free Fire.">
   <link rel="stylesheet" href="style.css">
+
+<style>
+/* Sistema de pestañas estilo App */
+.app-section { display: none !important; }
+.app-section.active-tab { display: block !important; }
+</style>
+
 </head>
 <body id="inicio">
 
@@ -18,9 +25,9 @@
         <span class="nav-logo-text">Rendimiento<strong>Tech</strong></span>
       </div>
       <ul class="nav-links">
-        <li><a href="#sensi-lab">Sensi Wood</a></li>
-        <li><a href="#optimizador">Optimizador</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a onclick="openAppTab('pane-sensi')" style="cursor:pointer;">Sensi Wood</a></li>
+        <li><a onclick="openAppTab('pane-optimizador')" style="cursor:pointer;">Optimizador</a></li>
+        <li><a onclick="openAppTab('pane-faq')" style="cursor:pointer;">FAQ</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
       </ul>
     </div>
@@ -35,7 +42,7 @@
   <main class="dashboard-container">
 
     <!-- MÓDULO 1: LABORATORIO SENSI ESTILO SYSTEM WOOD -->
-    <section class="panel-card" id="sensi-lab">
+    <div id="pane-sensi" class="app-section"><section class="panel-card" id="sensi-lab">
   <div class="card-header">
     <div class="header-icon">⚙️</div>
     <div>
@@ -55,10 +62,10 @@
   <div id="resultBox" style="margin-top:15px; padding:15px; border:1px solid #00d4ff; border-radius:10px; display:none; background:#000;">
     <ul id="resultList" style="list-style:none; padding:0; margin:0;"></ul>
   </div>
-</section>
+</section></div>
 
     <!-- MÓDULO 2: GENERADOR BREVENT & SHIZUKU -->
-    <section class="panel-card" id="optimizador">
+    <div id="pane-optimizador" class="app-section active-tab"><section class="panel-card" id="optimizador">
       <div class="card-header">
         <div class="header-icon">📦</div>
         <div>
@@ -87,10 +94,10 @@
         <button onclick="copiarScriptTexto()" class="btn-accion primary-glow">📋 Copiar Comandos Seleccionados</button>
         <button onclick="generarYDescargarScript()" class="btn-accion outline-action">📥 Descargar Script .sh</button>
       </div>
-    </section>
+    </section></div>
 
     <!-- MÓDULO 3: PREGUNTAS FRECUENTES (FAQ) -->
-    <section class="panel-card" id="faq">
+    <div id="pane-faq" class="app-section"><section class="panel-card" id="faq">
       <div class="card-header">
         <div class="header-icon">❓</div>
         <div>
@@ -112,7 +119,7 @@
           <p>No, el 90% de las funciones están diseñadas para ejecutarse mediante Brevent y comandos ADB sin necesidad de abrir bootloader.</p>
         </details>
       </div>
-    </section>
+    </section></div>
 
     <!-- MÓDULO 4: SOBRE NOSOTROS -->
     <section class="panel-card" id="nosotros">
