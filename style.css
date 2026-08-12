@@ -7,48 +7,68 @@ body {
   scroll-behavior: smooth;
 }
 
-/* NAVBAR ADSENSE */
+/* NAVBAR RESPONSIVA CON SCROLL HORIZONTAL */
 .navbar {
   background: #10141f;
   border-bottom: 1px solid #1f293d;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
 .nav-container {
-  max-width: 900px;
+  max-width: 950px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 12px;
+  flex-wrap: wrap;
 }
 
 .nav-logo {
   font-weight: 900;
   color: #00e676;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 0;
+  gap: 12px;
+  margin: 5px 0 0 0;
+  padding: 5px 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+}
+
+@media(min-width: 600px) {
+  .nav-links {
+    width: auto;
+    margin: 0;
+  }
+}
+
+.nav-links li {
+  display: inline-block;
 }
 
 .nav-links a {
   color: #c0cdf0;
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
+  background: #161c2b;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #22293a;
 }
 
 .nav-links a:hover {
   color: #00e676;
+  border-color: #00e676;
 }
 
 /* HEADER */
@@ -108,7 +128,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* FORMULARIO */
+/* FORMULARIO SENSIBILIDAD */
 .form-sensibilidad {
   display: flex;
   flex-direction: column;
@@ -211,7 +231,7 @@ select, input[type="text"] {
   white-space: nowrap;
 }
 
-/* ARTICULO ADSENSE */
+/* ARTÍCULO GUÍA */
 .texto-articulo h3 {
   color: #00e676;
   font-size: 16px;
@@ -224,7 +244,7 @@ select, input[type="text"] {
   color: #c0cdf0;
 }
 
-/* LOADER & RESULTADOS */
+/* RESULTADOS Y LOADER */
 .loader-box {
   display: flex;
   flex-direction: column;

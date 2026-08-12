@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Sensibilidad VIP y Comandos de Optimización Free Fire</title>
-  <meta name="description" content="Calculadora de sensibilidad headshot escala 0-200 para Free Fire y comandos ADB/Brevent para optimizar FPS y reducir el lag en Android.">
+  <title>RendimientoTech - Sensibilidad VIP, Comandos ADB y Optimización Android</title>
+  <meta name="description" content="Portal oficial de RendimientoTech: Calculadora de sensibilidad headshot escala 0-200 para Free Fire y comandos ADB/Brevent para optimizar FPS.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="inicio">
 
-  <!-- BARRA DE NAVEGACIÓN (INDISPENSABLE PARA ADSENSE) -->
+  <!-- BARRA DE NAVEGACIÓN COMPLETA PARA ADSENSE -->
   <nav class="navbar">
     <div class="nav-container">
       <span class="nav-logo">⚡ RendimientoTech</span>
       <ul class="nav-links">
-        <li><a href="#sensibilidad">Sensibilidad IA</a></li>
-        <li><a href="#comandos">Comandos ADB</a></li>
-        <li><a href="#dispositivos">Celulares</a></li>
-        <li><a href="#guia">Guía FPS</a></li>
-        <li><a href="#legal" onclick="abrirModal('modalPrivacidad')">Privacidad</a></li>
+        <li><a href="#inicio">🏠 Inicio</a></li>
+        <li><a href="#sensibilidad">🎯 Generador</a></li>
+        <li><a href="#comandos">🛠️ Comandos ADB</a></li>
+        <li><a href="#guia">📖 Guía FPS</a></li>
+        <li><a href="#nosotros" onclick="abrirModal('modalNosotros'); return false;">👥 Nosotros</a></li>
+        <li><a href="#contacto" onclick="abrirModal('modalContacto'); return false;">📩 Contacto</a></li>
+        <li><a href="#legal" onclick="abrirModal('modalPrivacidad'); return false;">🔒 Privacidad</a></li>
       </ul>
     </div>
   </nav>
@@ -185,7 +187,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: ARTÍCULO EDUCATIVO (CLAVE PARA APROBACIÓN DE GOOGLE ADSENSE) -->
+    <!-- SECCIÓN 3: ARTÍCULO EDUCATIVO (CLAVE PARA ADSENSE) -->
     <section id="guia" class="seccion-caja texto-articulo">
       <h2>📖 Guía Definitiva: Cómo Optimizar Android para Jugar a 60/120 FPS</h2>
       <p>Para lograr un rendimiento constante en juegos competitivos como Free Fire, es esencial coordinar la aceleración de hardware con los ajustes del sistema operativo.</p>
@@ -206,41 +208,51 @@
 
   </main>
 
-  <!-- PIE DE PÁGINA PROFESIONAL (REQUISITO GOOGLE ADSENSE) -->
+  <!-- PIE DE PÁGINA CON TODOS LOS ENLACES REQUERIDOS -->
   <footer class="footer-principal">
     <div class="footer-contenido">
       <p><strong>RendimientoTech</strong> © 2026 - Todos los derechos reservados.</p>
       <p class="disclaimer">Descargo de responsabilidad: RendimientoTech es un portal informativo e independiente. No está afiliado ni respaldado por Garena ni por marcas de dispositivos móviles.</p>
       <div class="footer-links">
+        <a href="#inicio">Inicio</a> | 
+        <a href="#" onclick="abrirModal('modalNosotros'); return false;">Sobre Nosotros</a> | 
+        <a href="#" onclick="abrirModal('modalContacto'); return false;">Contacto</a> | 
         <a href="#" onclick="abrirModal('modalPrivacidad'); return false;">Política de Privacidad</a> | 
-        <a href="#" onclick="abrirModal('modalTerminos'); return false;">Términos y Condiciones</a> | 
-        <a href="#" onclick="abrirModal('modalContacto'); return false;">Contacto</a>
+        <a href="#" onclick="abrirModal('modalTerminos'); return false;">Términos</a>
       </div>
     </div>
   </footer>
 
-  <!-- MODALES DE POLITICAS Y CONTACTO PARA ADSENSE -->
-  <div id="modalPrivacidad" class="modal">
+  <!-- MODALES DE SECCIONES LEGALES Y DE INFORMACIÓN -->
+  <div id="modalNosotros" class="modal">
     <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal('modalPrivacidad')">&times;</span>
-      <h2>Política de Privacidad</h2>
-      <p>En RendimientoTech nos tomamos muy en serio la privacidad de nuestros usuarios. Este sitio web utiliza cookies analíticas y de publicidad para mejorar la experiencia de navegación. Google AdSense y sus socios utilizan cookies para mostrar anuncios basados en las visitas previas de los usuarios a este u otros sitios web.</p>
-    </div>
-  </div>
-
-  <div id="modalTerminos" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal('modalTerminos')">&times;</span>
-      <h2>Términos y Condiciones</h2>
-      <p>La información y comandos proporcionados en este sitio web tienen fines meramente educativos e informativos. El usuario es responsable de la ejecución de comandos ADB en su dispositivo.</p>
+      <span class="cerrar" onclick="cerrarModal('modalNosotros')">&times;</span>
+      <h2>👥 Sobre Nosotros - RendimientoTech</h2>
+      <p>Somos un equipo enfocado en la investigación técnica de rendimiento en dispositivos móviles Android, desarrollo de algoritmos de sensibilidad para eSports y guías de optimización mediante entornos ejecutor (ADB, Brevent, Shizuku y KernelSU).</p>
     </div>
   </div>
 
   <div id="modalContacto" class="modal">
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
-      <h2>Contacto</h2>
-      <p>¿Tienes dudas o sugerencias para mejorar el algoritmo? Contáctanos a través de nuestro soporte oficial de RendimientoTech en GitHub.</p>
+      <h2>📩 Contacto Oficial</h2>
+      <p>¿Tienes preguntas o deseas sugerir nuevos dispositivos para el algoritmo? Puedes ponerte en contacto con el equipo de soporte técnico a través del repositorio oficial de GitHub de <strong>RendimientoTech</strong>.</p>
+    </div>
+  </div>
+
+  <div id="modalPrivacidad" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal('modalPrivacidad')">&times;</span>
+      <h2>🔒 Política de Privacidad</h2>
+      <p>En RendimientoTech nos tomamos muy en serio la privacidad de nuestros usuarios. Este sitio web utiliza cookies analíticas y de publicidad para mejorar la experiencia de navegación. Google AdSense utiliza cookies para mostrar anuncios relevantes basados en las visitas previas del usuario.</p>
+    </div>
+  </div>
+
+  <div id="modalTerminos" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal('modalTerminos')">&times;</span>
+      <h2>📜 Términos y Condiciones</h2>
+      <p>La información y comandos proporcionados en este sitio web tienen fines meramente educativos e informativos. El usuario es responsable de la ejecución de comandos ADB en su dispositivo.</p>
     </div>
   </div>
 
