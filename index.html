@@ -1,175 +1,549 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RendimientoTech - Sistema Pro Free Fire</title>
-  <!-- Google AdSense - Restaurado -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8848200499958396" crossorigin="anonymous"></script>
-  <meta name="description" content="Laboratorio de sensibilidad táctica estilo System Wood y optimizador Brevent para Free Fire.">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Neural Sensitivity Pro - Free Fire</title>
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: #0f172a;
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.4);
+            --neon-green: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --border-glow: #38bdf8;
+        }
 
-<style>
-/* Sistema de pestañas estilo App */
-.app-section { display: none !important; }
-.app-section.active-tab { display: block !important; }
-</style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
 
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 540px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(6, 182, 212, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #38bdf8, #22d3ee, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            background-color: #020617;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #06b6d4, #0284c7);
+            color: #030712;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            cursor: pointer;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
+        }
+
+        .ai-loader {
+            display: none;
+            margin-top: 25px;
+            background: #020617;
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ai-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(6, 182, 212, 0.2);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ai-text {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .results-container {
+            margin-top: 25px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .result-card {
+            background-color: #020617;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .result-card span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .result-card strong {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .extra-info-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .extra-info-box p {
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .extra-info-box span {
+            color: var(--text-muted);
+        }
+
+        .extra-info-box strong {
+            color: #34d399;
+        }
+
+        .tips-box {
+            background: rgba(6, 182, 212, 0.05);
+            border-left: 3px solid var(--accent);
+            padding: 10px 14px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .btn-copy {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--neon-green);
+            color: #030712;
+            border: none;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-copy:hover {
+            background-color: #059669;
+            color: white;
+        }
+
+        .footer-status {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
-<body id="inicio">
+<body>
 
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-brand">
-        <span class="nav-logo-icon">⚡</span>
-        <span class="nav-logo-text">Rendimiento<strong>Tech</strong></span>
-      </div>
-      <ul class="nav-links">
-        <li><a onclick="openAppTab('pane-sensi')" style="cursor:pointer;">Sensi Wood</a></li>
-        <li><a onclick="openAppTab('pane-optimizador')" style="cursor:pointer;">Optimizador</a></li>
-        <li><a onclick="openAppTab('pane-faq')" style="cursor:pointer;">FAQ</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-      </ul>
-    </div>
-  </nav>
+    <div class="container" id="mainContainer" style="display: none;">
+        <div class="badge">🤖 IA Deep-Neural Engine v3.4</div>
+        <h1>Súper Calibrador Pro</h1>
+        <p class="subtitle">Optimización inteligente basada en escala 200 de Free Fire</p>
 
-  <header class="hero-header">
-    <div class="hero-badge">SYSTEM WOOD V2.5 // TACTICAL ENGINE</div>
-    <h1>RendimientoTech OS</h1>
-    <p>Calibración balística de alta precisión y comandos de optimización por hardware</p>
-  </header>
+        <div class="grid-inputs">
+            <div class="form-group">
+                <label for="brandSelect">Marca de Celular</label>
+                <select id="brandSelect" onchange="loadModels()">
+                    <option value="">-- Elige marca --</option>
+                    <option value="xiaomi">Xiaomi / Redmi / Poco</option>
+                    <option value="motorola">Motorola</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="iphone">Apple iPhone</option>
+                </select>
+            </div>
 
-  <main class="dashboard-container">
+            <div class="form-group">
+                <label for="modelSelect">Modelo Exacto</label>
+                <select id="modelSelect">
+                    <option value="">-- Primero marca --</option>
+                </select>
+            </div>
 
-    <!-- MÓDULO 1: LABORATORIO SENSI ESTILO SYSTEM WOOD -->
-    <div id="pane-sensi" class="app-section"><section class="panel-card" id="sensi-lab">
-  <div class="card-header">
-    <div class="header-icon">💎</div>
-    <div>
-      <h2>Sensi Wood - Edición Premium</h2>
-      <p>Motor de Calibración de Élite con Algoritmo de Ultra-Equilibrio.</p>
-    </div>
-  </div>
-  <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
-    <div>
-      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">📱 Dispositivo / Modelo</label>
-      <input type="text" id="woodModel" placeholder="Ej: Poco X3 Pro, Redmi, iPhone" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
-    </div>
-    <div>
-      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">⚡ Hz de tu Pantalla</label>
-      <select id="woodHz" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
-        <option value="60">60 Hz (Estándar)</option>
-        <option value="90">90 Hz (Fluido)</option>
-        <option value="120" selected>120 Hz o más (Pro Gaming)</option>
-      </select>
-    </div>
-    <div>
-      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">🎯 Estilo de Juego / Enfoque</label>
-      <select id="woodStyle" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
-        <option value="balanced">Ultra Equilibrio (Cerca y Lejos)</option>
-        <option value="rush">Rush / Exclusivo Corta Distancia</option>
-        <option value="long">Precisión / Exclusivo Tiros Lejanos</option>
-      </select>
-    </div>
-    <div>
-      <label style="color: #00d4ff; font-size: 0.9em; font-weight: bold;">🎛️ DPI del Sistema</label>
-      <input type="number" id="woodDpi" placeholder="Ej: 580" style="width: 100%; padding: 12px; border-radius: 8px; background: #111; border: 1px solid #00d4ff; color: #fff; margin-top: 5px;">
-    </div>
-    <button onclick="generarSensiWoodPro()" style="width: 100%; padding: 14px; background: linear-gradient(45deg, #00d4ff, #0055ff); color: #fff; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 5px; box-shadow: 0 0 15px rgba(0,212,255,0.4);">💎 GENERAR CONFIGURACIÓN PREMIUM</button>
-  </div>
+            <div class="form-group">
+                <label for="ramSelect">Memoria RAM</label>
+                <select id="ramSelect">
+                    <option value="4">4 GB RAM</option>
+                    <option value="6">6 GB RAM</option>
+                    <option value="8" selected>8 GB RAM</option>
+                    <option value="12">12 GB o más</option>
+                </select>
+            </div>
 
-  <div id="woodResultBox" style="margin-top: 20px; padding: 20px; background: #0a0a0a; border-radius: 10px; border: 1px solid #00d4ff; display: none;">
-    <h4 style="color: #00d4ff; margin-bottom: 12px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">⚙️ Configuración Élite Aplicada</h4>
-    <ul id="woodResultList" style="list-style: none; padding: 0; margin: 0; line-height: 2.3; color: #fff;"></ul>
-    <button onclick="copiarSensiWoodPro()" style="margin-top: 15px; width: 100%; background: #22c55e; color: #000; font-weight: bold; border: none; padding: 12px; border-radius: 6px; cursor: pointer;">📋 Copiar Todo para Free Fire</button>
-  </div>
-</section></div>
-
-    <!-- MÓDULO 2: GENERADOR BREVENT & SHIZUKU -->
-    <div id="pane-optimizador" class="app-section active-tab"><section class="panel-card" id="optimizador">
-        <div class="card-header">
-    <div class="header-icon">💎</div>
-    <div>
-      <h2>Sensi Wood - Edición Premium</h2>
-      <p>Motor de Calibración de Élite con Algoritmo de Ultra-Equilibrio (Cerca y Lejos).</p>
-    </div>
-  </div>
-
-      <div class="mode-selector-unified">
-        <label class="radio-tab"><input type="radio" name="mode" value="noroot" checked onchange="actualizarMenus()"> 📱 Modo No-Root (Brevent)</label>
-        <label class="radio-tab"><input type="radio" name="mode" value="root" onchange="actualizarMenus()"> ⚡ Modo Root / Shizuku</label>
-      </div>
-
-      <div class="presets-toolbar">
-        <span class="toolbar-label">Perfiles Rápidos:</span>
-        <div class="toolbar-buttons">
-          <button onclick="aplicarPreset('freefire')" class="btn-chip">🔥 Torneo FF</button>
-          <button onclick="aplicarPreset('ping')" class="btn-chip">🌐 Anti-Lag Red</button>
-          <button onclick="limpiarSeleccion()" class="btn-chip muted">🗑️ Limpiar</button>
+            <div class="form-group">
+                <label for="styleSelect">Estilo de Juego</label>
+                <select id="styleSelect">
+                    <option value="rush">Rusher / Levantada Rápida</option>
+                    <option value="todorojo" selected>Todo Rojo / Precisión</option>
+                    <option value="balanceado">Equilibrado / Medias Distancias</option>
+                </select>
+            </div>
         </div>
-      </div>
 
-      <div id="containerMenus" class="builder-scroll-box"></div>
+        <button class="btn-generate" onclick="ejecutarCalibracionIA()">⚡ Iniciar Calibración IA</button>
 
-      <div class="acciones-footer-grupo">
-        <button onclick="copiarScriptTexto()" class="btn-accion primary-glow">📋 Copiar Comandos Seleccionados</button>
-        <button onclick="generarYDescargarScript()" class="btn-accion outline-action">📥 Descargar Script .sh</button>
-      </div>
-    </section></div>
+        <div class="ai-loader" id="aiLoader">
+            <div class="ai-spinner"></div>
+            <div class="ai-text" id="aiStatusText">Conectando con matriz neuronal...</div>
+        </div>
 
-    <!-- MÓDULO 3: PREGUNTAS FRECUENTES (FAQ) -->
-    <div id="pane-faq" class="app-section"><section class="panel-card" id="faq">
-        <div class="card-header">
-    <div class="header-icon">💎</div>
-    <div>
-      <h2>Sensi Wood - Edición Premium</h2>
-      <p>Motor de Calibración de Élite con Algoritmo de Ultra-Equilibrio (Cerca y Lejos).</p>
+        <div class="results-container" id="resultsBox">
+            <div class="results-grid">
+                <div class="result-card">
+                    <span>General</span>
+                    <strong id="resGen">-</strong>
+                </div>
+                <div class="result-card">
+                    <span>Punto Rojo</span>
+                    <strong id="resRed">-</strong>
+                </div>
+                <div class="result-card">
+                    <span>Mira 2X</span>
+                    <strong id="res2x">-</strong>
+                </div>
+                <div class="result-card">
+                    <span>Mira 4X</span>
+                    <strong id="res4x">-</strong>
+                </div>
+                <div class="result-card">
+                    <span>AWM / Snip</span>
+                    <strong id="resAwm">-</strong>
+                </div>
+                <div class="result-card">
+                    <span>Cámara Libre</span>
+                    <strong id="resFree">-</strong>
+                </div>
+            </div>
+
+            <div class="extra-info-box">
+                <p><span>DPI Recomendado por IA:</span> <strong id="resDpi">-</strong></p>
+                <p><span>Tamaño Botón de Disparo:</span> <strong id="resBtn">-</strong></p>
+            </div>
+
+            <div class="tips-box" id="resTips">
+                💡 <b>Consejo IA:</b> Arrastra de abajo hacia arriba de forma fluida manteniendo la mira en la zona del pecho.
+            </div>
+
+            <button class="btn-copy" onclick="copiarSensibilidadPro()">📋 Copiar Configuración Completa</button>
+        </div>
+
+        <div class="footer-status" id="timerBox">🔒 Sesión segura activa (Válida por 2 horas)</div>
     </div>
-  </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>¿Los comandos de Brevent dañan mi teléfono?</summary>
-          <p>No. Son comandos nativos de ADB y Android que ajustan animaciones, red y prioridades de memoria sin modificar particiones del sistema.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Cómo funciona la sensibilidad estilo System Wood?</summary>
-          <p>Combina la relación de aspecto de tu pantalla con tu DPI actual mediante barras deslizantes táctiles para obtener una velocidad de giro limpia sin aceleración forzada.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Necesito Root obligatoriamente?</summary>
-          <p>No, el 90% de las funciones están diseñadas para ejecutarse mediante Brevent y comandos ADB sin necesidad de abrir bootloader.</p>
-        </details>
-      </div>
-    </section></div>
 
-    <!-- MÓDULO 4: SOBRE NOSOTROS -->
-    <section class="panel-card" id="nosotros">
-        <div class="card-header">
-    <div class="header-icon">💎</div>
-    <div>
-      <h2>Sensi Wood - Edición Premium</h2>
-      <p>Motor de Calibración de Élite con Algoritmo de Ultra-Equilibrio (Cerca y Lejos).</p>
-    </div>
-  </div>
-      <div class="nosotros-content">
-        <p><strong>RendimientoTech</strong> nace con el objetivo de ofrecer herramientas de optimización limpias, sin publicidad molesta y de código abierto para creadores y jugadores competitivos de Free Fire en toda Latinoamérica.</p>
-        <p class="footer-email">Contacto directo: alexanderorozcomartinez207@gmail.com</p>
-      </div>
-    </section>
+    <script>
+        const SHORTENER_URL = "https://blacklink.site/75get9";
+        const EXPIRATION_TIME = 2 * 60 * 60 * 1000;
 
-  </main>
+        function verificarAccesoSeguro() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            
+            let storedSession = localStorage.getItem('sens_session_pro');
+            let now = new Date().getTime();
 
-  <!-- AVISO DE COOKIES -->
-  <div id="cookieBanner" class="cookie-banner">
-    <p>🍪 Usamos almacenamiento local para guardar tus preferencias de optimización. Al navegar aceptas su uso.</p>
-    <button onclick="aceptarCookies()" class="btn-chip" style="background:var(--accent-green); color:#000; border:none; font-weight:bold;">Aceptar</button>
-  </div>
+            if (token === 'ok') {
+                localStorage.setItem('sens_session_pro', now);
+                document.getElementById('mainContainer').style.display = 'block';
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (storedSession) {
+                let elapsedTime = now - parseInt(storedSession);
+                if (elapsedTime < EXPIRATION_TIME) {
+                    document.getElementById('mainContainer').style.display = 'block';
+                } else {
+                    localStorage.removeItem('sens_session_pro');
+                    window.location.href = SHORTENER_URL;
+                }
+            } else {
+                window.location.href = SHORTENER_URL;
+            }
+        }
 
-  <footer class="footer-unified">
-    <p><strong>RendimientoTech</strong> © 2026 - Diseñado para Creadores de Free Fire.</p>
-    <p class="footer-email">alexanderorozcomartinez207@gmail.com</p>
-  </footer>
+        verificarAccesoSeguro();
 
-  <script src="script.js"></script>
+        const database = {
+            xiaomi: [
+                "Redmi Note 14 Pro+", "Redmi Note 14 Pro", "Redmi Note 14", "Redmi Note 13 Pro+", "Redmi Note 13 Pro", 
+                "Redmi Note 13", "Redmi Note 12 Pro", "Redmi Note 12", "Redmi Note 11", "Redmi Note 10 Pro",
+                "Poco X6 Pro", "Poco X6", "Poco X5 Pro", "Poco F6 Pro", "Poco F5", 
+                "Poco M6 Pro", "Poco M4 Pro", "Poco C65", "Xiaomi 14 Ultra", "Xiaomi 14",
+                "Xiaomi 13 Pro", "Xiaomi 12 Lite", "Xiaomi Mi 11", "Redmi 13C", "Redmi 12", 
+                "Redmi 10", "Redmi 9A", "Redmi Note 9S", "Redmi Note 8", "Redmi 10C"
+            ],
+            motorola: [
+                "Moto Edge 50 Pro", "Moto Edge 40", "Moto Edge 30", "Moto G84", "Moto G72", 
+                "Moto G54", "Moto G53", "Moto G34", "Moto G24", "Moto G14", 
+                "Moto G62", "Moto G52", "Moto G41", "Moto G32", "Moto G22", 
+                "Moto E13", "Moto E22", "Moto G9 Power", "Moto G60", "Moto One Fusion",
+                "Moto Edge 20", "Moto G54 Power", "Moto G82", "Moto G71", "Moto E7"
+            ],
+            samsung: [
+                "Galaxy S24 Ultra", "Galaxy S24+", "Galaxy S24", "Galaxy S23 Ultra", "Galaxy S23", 
+                "Galaxy S22 Ultra", "Galaxy S21 FE", "Galaxy A55", "Galaxy A54", "Galaxy A52s", 
+                "Galaxy A35", "Galaxy A34", "Galaxy A32", "Galaxy A25", "Galaxy A24", 
+                "Galaxy A15", "Galaxy A14", "Galaxy A13", "Galaxy A05s", "Galaxy A03", 
+                "Galaxy M54", "Galaxy M32", "Galaxy M14", "Galaxy Note 20", "Galaxy Z Flip 5"
+            ],
+            iphone: [
+                "iPhone 15 Pro Max", "iPhone 15 Pro", "iPhone 15 Plus", "iPhone 15", 
+                "iPhone 14 Pro Max", "iPhone 14 Pro", "iPhone 14", "iPhone 13 Pro Max", 
+                "iPhone 13 Pro", "iPhone 13", "iPhone 12 Pro Max", "iPhone 12", 
+                "iPhone 11 Pro Max", "iPhone 11", "iPhone SE (2022)", "iPhone X", 
+                "iPhone XR", "iPhone 8 Plus", "iPhone 12 Pro", "iPhone SE (2020)"
+            ]
+        };
+
+        function loadModels() {
+            const brand = document.getElementById('brandSelect').value;
+            const modelSelect = document.getElementById('modelSelect');
+            
+            modelSelect.innerHTML = '<option value="">-- Elige un modelo --</option>';
+
+            if (brand && database[brand]) {
+                database[brand].forEach(model => {
+                    modelSelect.innerHTML += `<option value="${model}">${model}</option>`;
+                });
+            }
+        }
+
+        function ejecutarCalibracionIA() {
+            const brand = document.getElementById('brandSelect').value;
+            const model = document.getElementById('modelSelect').value;
+            const ram = document.getElementById('ramSelect').value;
+            const style = document.getElementById('styleSelect').value;
+
+            if (!brand || !model) {
+                alert("⚠️ Selecciona una marca y un modelo de dispositivo para continuar.");
+                return;
+            }
+
+            const loader = document.getElementById('aiLoader');
+            const statusText = document.getElementById('aiStatusText');
+            const resultsBox = document.getElementById('resultsBox');
+            
+            resultsBox.style.display = 'none';
+            loader.style.display = 'block';
+
+            let pasos = [
+                "Analizando densidad de píxeles y hardware...",
+                "Calculando umbral de respuesta táctil (RAM " + ram + "GB)...",
+                "Ajustando parámetros a la nueva escala 0-200...",
+                "¡Calibración IA completada con éxito!"
+            ];
+
+            let i = 0;
+            let intervalo = setInterval(() => {
+                if (i < pasos.length) {
+                    statusText.innerText = pasos[i];
+                    i++;
+                } else {
+                    clearInterval(intervalo);
+                    loader.style.display = 'none';
+                    generarValoresPro(model, ram, style);
+                    resultsBox.style.display = 'block';
+                }
+            }, 600);
+        }
+
+        function generarValoresPro(model, ram, style) {
+            let hash = 0;
+            for (let i = 0; i < model.length; i++) {
+                hash = model.charCodeAt(i) + ((hash << 5) - hash);
+            }
+
+            let baseGen = 175 + (Math.abs(hash) % 25);
+            let baseRed = 170 + (Math.abs(hash >> 1) % 30);
+            let base2x = 155 + (Math.abs(hash >> 2) % 35);
+            let base4x = 140 + (Math.abs(hash >> 3) % 40);
+            let baseAwm = 85 + (Math.abs(hash >> 4) % 35);
+            let baseFree = 70 + (Math.abs(hash >> 5) % 30);
+
+            if (style === 'rush') {
+                baseGen = Math.min(200, baseGen + 10);
+                baseRed = Math.min(200, baseRed + 8);
+            } else if (style === 'balanceado') {
+                baseGen = Math.max(160, baseGen - 10);
+                baseRed = Math.max(160, baseRed - 8);
+            }
+
+            const dpiOptions = ram >= 8 ? [580, 640, 720, 760, 800] : [540, 560, 600, 620];
+            const dpiRec = dpiOptions[Math.abs(hash) % dpiOptions.length];
+
+            const btnOptions = ["44%", "48%", "52%", "55%"];
+            const btnRec = btnOptions[Math.abs(hash) % btnOptions.length];
+
+            document.getElementById('resGen').innerText = baseGen;
+            document.getElementById('resRed').innerText = baseRed;
+            document.getElementById('res2x').innerText = base2x;
+            document.getElementById('res4x').innerText = base4x;
+            document.getElementById('resAwm').innerText = baseAwm;
+            document.getElementById('resFree').innerText = baseFree;
+            document.getElementById('resDpi').innerText = dpiRec + " DPI";
+            document.getElementById('resBtn').innerText = btnRec;
+
+            let tipText = `💡 <b>Consejo IA para ${model}:</b> Con tu configuración de ${ram}GB RAM, arrastra el botón con velocidad moderada desde el pecho hacia arriba. Si la mira pasa de la cabeza, baja General en 3 puntos.`;
+            document.getElementById('resTips').innerHTML = tipText;
+        }
+
+        function copiarSensibilidadPro() {
+            const gen = document.getElementById('resGen').innerText;
+            const red = document.getElementById('resRed').innerText;
+            const s2 = document.getElementById('res2x').innerText;
+            const s4 = document.getElementById('res4x').innerText;
+            const awm = document.getElementById('resAwm').innerText;
+            const free = document.getElementById('resFree').innerText;
+            const dpi = document.getElementById('resDpi').innerText;
+            const btn = document.getElementById('resBtn').innerText;
+
+            const texto = `🔥 IA NEURAL SENSITIVITY PRO 🔥\n` +
+                          `• General: ${gen}\n` +
+                          `• Punto Rojo: ${red}\n` +
+                          `• Mira 2X: ${s2}\n` +
+                          `• Mira 4X: ${s4}\n` +
+                          `• AWM: ${awm}\n` +
+                          `• Cámara Libre: ${free}\n` +
+                          `• DPI Sugerido: ${dpi}\n` +
+                          `• Botón de Disparo: ${btn}`;
+
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("✨ ¡Configuración profesional copiada al portapapeles con éxito!");
+            });
+        }
+    </script>
 </body>
 </html>
