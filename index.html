@@ -545,5 +545,15 @@
             });
         }
     </script>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get("token");
+if (token === "ok") {
+    localStorage.setItem("acceso_web", "permitido");
+}
+if (localStorage.getItem("acceso_web") !== "permitido") {
+    window.location.href = "https://blacklink.site/TU_NUEVO_ENLACE";
+}
+</script>
 </body>
 </html>
