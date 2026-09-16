@@ -3,120 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POETA-505 DOMINA - Neural Sens AI Pro</title>
+    <title>POETA-505 DOMINA - Ultimate Cinematic Sens AI 200</title>
     <style>
         :root {
-            --bg-deep: #020408;
-            --bg-card: #080d19;
-            --border-glow: #1e3a8a;
-            --accent-gold: #f59e0b;
-            --accent-red: #ef4444;
-            --accent-cyan: #06b6d4;
-            --text-main: #f8fafc;
-            --text-muted: #64748b;
-            --success: #10b981;
+            --bg-deep: #010204;
+            --bg-card: #060a12;
+            --border-gold: #f59e0b;
+            --accent-red: #ff1e42;
+            --accent-cyan: #00f0ff;
+            --gold: #f1c40f;
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+            --success: #00ff66;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 15px; overflow-x: hidden; }
+        body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 12px; overflow-x: hidden; }
 
         /* Gatekeeper Overlay */
         #miBloreo {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 4, 8, 0.98); backdrop-filter: blur(20px);
+            background: rgba(1, 2, 4, 0.99); backdrop-filter: blur(25px);
             display: flex; justify-content: center; align-items: center; z-index: 99999;
         }
         .lock-card {
-            background: var(--bg-card); border: 2px solid var(--accent-gold); padding: 40px 30px;
-            border-radius: 24px; text-align: center; max-width: 420px; width: 90%;
-            box-shadow: 0 0 60px rgba(245, 158, 11, 0.25);
+            background: var(--bg-card); border: 2px solid var(--gold); padding: 40px 30px;
+            border-radius: 24px; text-align: center; max-width: 440px; width: 90%;
+            box-shadow: 0 0 70px rgba(241, 196, 15, 0.35);
         }
-        .lock-card h2 { color: var(--accent-gold); margin-bottom: 12px; font-size: 26px; font-weight: 900; text-shadow: 0 0 15px rgba(245,158,11,0.5); letter-spacing: 1px; }
+        .lock-card h2 { color: var(--gold); margin-bottom: 12px; font-size: 26px; font-weight: 900; text-shadow: 0 0 15px rgba(241,196,15,0.6); }
         .lock-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
         .btn-unlock {
-            background: linear-gradient(135deg, var(--accent-gold), #d97706); color: #000;
-            border: none; padding: 15px 25px; font-size: 16px; font-weight: 900;
-            border-radius: 14px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 25px rgba(245, 158, 11, 0.4); text-transform: uppercase; letter-spacing: 1.5px;
+            background: linear-gradient(135deg, var(--gold), #d35400); color: #000;
+            border: none; padding: 16px 24px; font-size: 16px; font-weight: 900;
+            border-radius: 14px; cursor: pointer; width: 100%; transition: transform 0.2s;
+            box-shadow: 0 4px 25px rgba(241, 196, 15, 0.5); text-transform: uppercase; letter-spacing: 1.5px;
         }
-        .btn-unlock:active { transform: scale(0.97); }
+        .btn-unlock:active { transform: scale(0.96); }
 
         /* App Container */
-        .app-container { max-width: 750px; width: 100%; position: relative; z-index: 2; }
+        .app-container { max-width: 800px; width: 100%; position: relative; z-index: 2; }
         
-        /* Elite Cyber Banner */
-        .cyber-banner {
-            position: relative; background: linear-gradient(135deg, #080d19 0%, #040711 100%);
-            border: 2px solid var(--accent-cyan); border-radius: 20px; padding: 25px 20px; text-align: center;
-            margin-bottom: 20px; box-shadow: 0 0 40px rgba(6, 182, 212, 0.2); overflow: hidden;
+        /* Master Cinematic 3D Video & Throne Arena */
+        .cinematic-masterpiece {
+            position: relative; background: #000; border: 3px solid var(--gold); border-radius: 20px;
+            overflow: hidden; margin-bottom: 20px; box-shadow: 0 0 50px rgba(241, 196, 15, 0.3);
         }
-        .cyber-banner::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%); pointer-events: none;
+        .video-container {
+            position: relative; width: 100%; height: 320px; background: #020305; display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
-        .cyber-banner h1 {
-            font-size: 28px; font-weight: 900; color: #fff; text-transform: uppercase;
-            text-shadow: 0 0 12px var(--accent-cyan), 0 0 25px rgba(6,182,212,0.5);
-            letter-spacing: 3px; margin-bottom: 5px;
+        .video-container video {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: contrast(1.2) saturate(1.3);
         }
-        .cyber-banner .tagline {
-            font-size: 14px; font-weight: 900; color: var(--accent-gold);
-            text-shadow: 0 0 10px rgba(245,158,11,0.6); text-transform: uppercase; letter-spacing: 4px;
+        /* Fallback 3D Canvas / Animated Simulation if video loads or acts as overlay */
+        .video-overlay-hud {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 40%, rgba(0,0,0,0.85) 100%);
+            display: flex; flex-direction: column; justify-content: space-between; padding: 15px; pointer-events: none;
         }
-
-        .ai-status-bar {
-            background: rgba(0,0,0,0.6); border-left: 3px solid var(--accent-cyan);
-            padding: 8px 12px; margin-top: 15px; font-family: monospace; font-size: 12px;
-            color: var(--success); text-align: left; border-radius: 6px; display: flex; justify-content: space-between;
-            align-items: center; border: 1px solid rgba(6,182,212,0.2);
+        .hud-top { text-align: center; }
+        .hud-top h1 {
+            font-size: 26px; font-weight: 900; color: var(--gold); text-transform: uppercase;
+            text-shadow: 0 0 15px var(--gold), 0 0 30px rgba(0,0,0,0.9); letter-spacing: 3px;
+        }
+        .hud-top .sub-domina {
+            font-size: 14px; font-weight: 900; color: var(--accent-red);
+            text-shadow: 0 0 10px rgba(255,30,66,0.9); text-transform: uppercase; letter-spacing: 4px; margin-top: 4px;
+        }
+        .hud-bottom {
+            background: rgba(0,0,0,0.8); border-left: 4px solid var(--accent-red);
+            padding: 8px 12px; font-family: monospace; font-size: 12px; color: var(--success);
+            border-radius: 6px; display: flex; justify-content: space-between; align-items: center;
         }
 
         /* Panels */
-        .panel { background: var(--bg-card); border: 1px solid #1e293b; border-radius: 20px; padding: 22px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
-        .panel h3 { font-size: 16px; margin-bottom: 15px; color: var(--text-main); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; letter-spacing: 0.5px; }
+        .panel { background: var(--bg-card); border: 1px solid #1c2838; border-radius: 20px; padding: 25px; margin-bottom: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.7); }
+        .panel h3 { font-size: 17px; margin-bottom: 18px; color: var(--text-main); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #1c2838; padding-bottom: 12px; }
 
-        .input-group { margin-bottom: 18px; }
-        label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        select, input { width: 100%; padding: 14px; background: #020408; border: 1px solid #1e293b; color: var(--text-main); border-radius: 12px; font-size: 14px; outline: none; transition: all 0.3s; }
-        select:focus, input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 15px rgba(6,182,212,0.3); }
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 15px; }
+        .full-col { grid-column: span 2; }
+        
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        select, input { width: 100%; padding: 14px; background: var(--bg-deep); border: 1px solid #1c2838; color: var(--text-main); border-radius: 12px; font-size: 14px; outline: none; transition: all 0.3s; }
+        select:focus, input:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(241,196,15,0.3); }
 
         .btn-generate {
-            background: linear-gradient(135deg, var(--accent-cyan), #2563eb); color: #020408; border: none; padding: 16px;
+            background: linear-gradient(135deg, var(--gold), #e67e22); color: #000; border: none; padding: 16px;
             font-size: 16px; font-weight: 900; border-radius: 12px; cursor: pointer; width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s; box-shadow: c0 4px 25px rgba(6, 182, 212, 0.4);
-            text-transform: uppercase; letter-spacing: 1.5px;
+            transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 25px rgba(241, 196, 15, 0.4);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-top: 10px;
         }
         .btn-generate:active { transform: scale(0.98); }
 
-        /* Scanner Loader Effect */
-        #scannerLoader {
-            display: none; text-align: center; padding: 25px; font-family: monospace; color: var(--accent-cyan);
-        }
-        .spinner {
-            width: 40px; height: 40px; border: 4px solid rgba(6,182,212,0.2); border-top: 4px solid var(--accent-cyan);
-            border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px auto;
-        }
+        /* Loader */
+        #aiLoader { display: none; text-align: center; padding: 30px; font-family: monospace; color: var(--gold); }
+        .spinner { width: 45px; height: 45px; border: 4px solid rgba(241,196,15,0.2); border-top: 4px solid var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 15px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Results Display */
-        .results-container { display: none; margin-top: 20px; animation: fadeIn 0.4s ease-out; }
+        /* Results 200 Scale */
+        .results-section { display: none; margin-top: 25px; animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px; }
-        .result-card { background: #020408; border: 1px solid #1e293b; padding: 14px; border-radius: 12px; text-align: center; }
+        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 15px; }
+        .result-card { background: var(--bg-deep); border: 1px solid #1c2838; padding: 14px; border-radius: 12px; text-align: center; }
         .result-card span { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; font-weight: 700; }
-        .result-card strong { font-size: 20px; color: var(--success); font-family: monospace; text-shadow: 0 0 10px rgba(16,185,129,0.3); }
-        .full-width { grid-column: span 2; }
+        .result-card strong { font-size: 22px; color: var(--success); font-family: monospace; text-shadow: 0 0 10px rgba(0,255,102,0.4); }
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
 
-        /* Weapon Meta Section */
-        .weapon-meta {
-            background: #020408; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; margin-top: 12px;
-        }
-        .weapon-meta h4 { font-size: 13px; color: var(--accent-gold); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .weapon-list { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; font-family: monospace; color: var(--text-main); }
-        .weapon-badge { background: #080d19; border: 1px solid #1e293b; padding: 8px; border-radius: 8px; flex: 1; text-align: center; }
-        .weapon-badge b { display: block; color: var(--accent-cyan); font-size: 13px; margin-top: 2px; }
+        .weapon-meta { background: var(--bg-deep); border: 1px solid #1c2838; border-radius: 12px; padding: 16px; margin-top: 15px; }
+        .weapon-meta h4 { font-size: 13px; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .weapon-list { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; font-family: monospace; }
+        .weapon-badge { background: var(--bg-card); border: 1px solid #1c2838; padding: 10px; border-radius: 10px; flex: 1; text-align: center; }
+        .weapon-badge b { display: block; color: var(--accent-cyan); font-size: 14px; margin-top: 4px; }
 
-        .extra-info { background: #020408; border: 1px solid #1e293b; padding: 16px; border-radius: 12px; margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
+        .extra-info { background: var(--bg-deep); border: 1px solid #1c2838; padding: 18px; border-radius: 12px; margin-top: 15px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
         .extra-info b { color: var(--text-main); }
     </style>
 </head>
@@ -125,117 +126,171 @@
     <!-- Gatekeeper Overlay -->
     <div id="miBloreo">
         <div class="lock-card">
-            <h2>🔒 NÚCLEO PROTEGIDO</h2>
-            <p>Completa el acceso rápido para activar la Inteligencia Artificial Neural de POETA-505.</p>
-            <button class="btn-unlock" onclick="desbloquear()">Sincronizar Acceso Pro</button>
+            <h2>👑 TRONO IMPERIAL PROTEGIDO</h2>
+            <p>Paso rápido obligatorio para activar la Inteligencia Artificial Cuántica de POETA-505.</p>
+            <button class="btn-unlock" onclick="desbloquear()">Desbloquear Acceso Total</button>
         </div>
     </div>
 
-    <!-- Main Interface -->
+    <!-- Main Container -->
     <div class="app-container">
-        <!-- Cyber Banner -->
-        <div class="cyber-banner">
-            <h1>NEURAL SENS AI</h1>
-            <div class="tagline">👑 F7.POETA-505 DOMINACIÓN SUPREMA 👑</div>
-            <div class="ai-status-bar">
-                <span>⚡ IA Status: Calibración Cuántica Activa</span>
-                <span style="color: var(--accent-gold);">MODO: 100% HEADSHOT</span>
+        <!-- Cinematic Video & Throne Masterpiece -->
+        <div class="cinematic-masterpiece">
+            <div class="video-container">
+                <!-- High-End Cinematic Free Fire Video Loop (Trrone & Domination) -->
+                <video autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-lights-31932-large.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+                <div class="video-overlay-hud">
+                    <div class="hud-top">
+                        <h1>F7.POETA-505</h1>
+                        <div class="sub-domina">👑 REY ABSOLUTO - 200% SENSIBILIDAD 👑</div>
+                    </div>
+                    <div class="hud-bottom">
+                        <span>⚡ Estado: Trono Imperial | Enemigos Abatidos: 999+</span>
+                        <span style="color: var(--gold);">MVP GLOBAL</span>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="panel">
-            <h3>⚙️ Motor Neural de Hardware y Sensibilidad</h3>
+            <h3>⚙️ Configuración Cuántica de Hardware y Estilo (Escala hasta 200)</h3>
             
-            <div class="input-group">
-                <label for="deviceSelect">Selecciona tu Dispositivo Base:</label>
-                <select id="deviceSelect">
-                    <optgroup label="--- MOTOROLA ---">
-                        <option value="moto_g72">Motorola Moto G72 (Android 13)</option>
-                        <option value="moto_g82">Motorola Moto G82 5G</option>
-                        <option value="moto_g54">Motorola Moto G54 5G</option>
-                    </optgroup>
-                    <optgroup label="--- XIAOMI / REDMI / POCO ---">
-                        <option value="redmi_note_14_pro">Xiaomi Redmi Note 14 Pro 4G / 5G</option>
-                        <option value="redmi_note_13">Xiaomi Redmi Note 13 / Pro</option>
-                        <option value="poco_x3_pro">Poco X3 Pro / NFC</option>
-                        <option value="poco_x6">Poco X6 / X6 Pro</option>
-                    </optgroup>
-                    <optgroup label="--- SAMSUNG GALAXY ---">
-                        <option value="samsung_s24">Samsung Galaxy S24 / Ultra</option>
-                        <option value="samsung_a54">Samsung Galaxy A54 5G</option>
-                    </optgroup>
-                    <optgroup label="--- APPLE IPHONE ---">
-                        <option value="iphone_15">Apple iPhone 15 / Pro / Max</option>
-                        <option value="iphone_13">Apple iPhone 13 / Pro</option>
-                    </optgroup>
-                </select>
+            <div class="form-grid">
+                <!-- Brand & Model Exact Selection -->
+                <div class="input-group full-col">
+                    <label for="deviceSelect">Selecciona tu Marca y Modelo Exacto:</label>
+                    <select id="deviceSelect">
+                        <optgroup label="--- MOTOROLA ---">
+                            <option value="moto_g72">Motorola Moto G72 (Android 13)</option>
+                            <option value="moto_g82">Motorola Moto G82 5G</option>
+                            <option value="moto_g54">Motorola Moto G54 5G</option>
+                            <option value="moto_g60">Motorola Moto G60 / G60S</option>
+                            <option value="moto_edge_40">Motorola Edge 40 / Pro</option>
+                        </optgroup>
+                        <optgroup label="--- XIAOMI / REDMI / POCO ---">
+                            <option value="redmi_note_14_pro">Xiaomi Redmi Note 14 Pro 4G / 5G</option>
+                            <option value="redmi_note_13">Xiaomi Redmi Note 13 / Pro / Pro+</option>
+                            <option value="redmi_note_12">Xiaomi Redmi Note 12 / Pro</option>
+                            <option value="poco_x6">Poco X6 / X6 Pro</option>
+                            <option value="poco_x3_pro">Poco X3 Pro / NFC</option>
+                            <option value="poco_f5">Poco F5 / F5 Pro</option>
+                        </optgroup>
+                        <optgroup label="--- SAMSUNG GALAXY ---">
+                            <option value="samsung_s24">Samsung Galaxy S24 / Ultra / Plus</option>
+                            <option value="samsung_s23">Samsung Galaxy S23 / Ultra</option>
+                            <option value="samsung_a54">Samsung Galaxy A54 5G</option>
+                            <option value="samsung_a34">Samsung Galaxy A34 5G</option>
+                            <option value="samsung_a14">Samsung Galaxy A14 / 5G</option>
+                        </optgroup>
+                        <optgroup label="--- APPLE IPHONE ---">
+                            <option value="iphone_15">Apple iPhone 15 / Plus / Pro / Max</option>
+                            <option value="iphone_14">Apple iPhone 14 / Pro / Max</option>
+                            <option value="iphone_13">Apple iPhone 13 / Pro / Max</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- RAM Memory Selection -->
+                <div class="input-group">
+                    <label for="ramSelect">Memoria RAM del Dispositivo:</label>
+                    <select id="ramSelect">
+                        <option value="4gb">4 GB RAM (Optimización Alta)</option>
+                        <option value="6gb">6 GB RAM (Estándar Pro)</option>
+                        <option value="8gb" selected>8 GB RAM (Nivel Competitivo)</option>
+                        <option value="12gb">12 GB RAM (Ultra Fluido)</option>
+                        <option value="16gb">16 GB RAM (Máxima Potencia)</option>
+                    </select>
+                </div>
+
+                <!-- Play Style Selection -->
+                <div class="input-group">
+                    <label for="styleSelect">Estilo de Juego:</label>
+                    <select id="styleSelect">
+                        <option value="rusher" selected>⚡ Rusher Insano (Agresivo)</option>
+                        <option value="escopetero">🔥 Escopetero de Cerca (M590 / Deagle)</option>
+                        <option value="precicion">🎯 Precisión de 1 Tiro (Woodpecker)</option>
+                        <option value="hibrido">👑 Híbrido Total (Todo Terreno)</option>
+                    </select>
+                </div>
+
+                <!-- DPI Option Selection -->
+                <div class="input-group full-col">
+                    <label for="dpiSelect">Preferencia de DPI:</label>
+                    <select id="dpiSelect">
+                        <option value="con_dpi" selected>Con DPI Personalizado (Recomendado para levantar mira)</option>
+                        <option value="sin_dpi">Sin DPI / DPI de Fábrica (Nativo del sistema)</option>
+                    </select>
+                </div>
             </div>
 
-            <button class="btn-generate" onclick="ejecutarAnalisisIA()">⚡ Iniciar Motor de IA Neural</button>
+            <button class="btn-generate" onclick="calcularSensibilidad200()">⚡ Generar Configuración Suprema (Escala 200)</button>
 
-            <!-- Scanner Loader -->
-            <div id="scannerLoader">
+            <!-- Loader -->
+            <div id="aiLoader">
                 <div class="spinner"></div>
-                <p>Analizando latencia táctil, refresco de pantalla y coeficientes balísticos...</p>
+                <p>Sincronizando IA Cuántica, coeficientes de RAM y mapa balístico 200...</p>
             </div>
 
             <!-- Results Section -->
-            <div id="resultsContainer" class="results-container">
+            <div id="resultsContainer" class="results-section">
                 <div class="results-grid">
                     <div class="result-card">
                         <span>GENERAL</span>
-                        <strong id="resGen">99%</strong>
+                        <strong id="resGen">196</strong>
                     </div>
                     <div class="result-card">
                         <span>PUNTO ROJO</span>
-                        <strong id="resRed">98%</strong>
+                        <strong id="resRed">192</strong>
                     </div>
                     <div class="result-card">
                         <span>MIRA 2X</span>
-                        <strong id="res2x">97%</strong>
+                        <strong id="res2x">188</strong>
                     </div>
                     <div class="result-card">
                         <span>MIRA 4X</span>
-                        <strong id="res100">100%</strong>
+                        <strong id="res4x">200</strong>
                     </div>
                     <div class="result-card">
                         <span>MIRA AWM</span>
-                        <strong id="resAwm">85%</strong>
+                        <strong id="resAwm">145</strong>
                     </div>
                     <div class="result-card">
                         <span>CÁMARA</span>
-                        <strong id="resCam">92%</strong>
+                        <strong id="resCam">175</strong>
                     </div>
-                    <div class="result-card full-width">
-                        <span>DPI DEL SISTEMA & BOTÓN LETAL</span>
-                        <strong id="resDpi" style="font-size: 16px; color: var(--accent-cyan);">DPI: 620 | Botón: 42%</strong>
+                    <div class="result-card span-3">
+                        <span>DPI CONFIGURADO & BOTÓN LETAL</span>
+                        <strong id="resDpiFinal" style="font-size: 16px; color: var(--gold);">DPI: 680 | Botón de Disparo: 39%</strong>
                     </div>
                 </div>
 
                 <!-- Weapon Specialization Meta -->
                 <div class="weapon-meta">
-                    <h4>🎯 Coeficiente Balístico por Arma (Estándar POETA-505)</h4>
+                    <h4>🎯 Coeficiente Balístico de Armas (Estándar POETA-505)</h4>
                     <div class="weapon-list">
                         <div class="weapon-badge">
                             M590 (Escopeta)
-                            <b id="metaM590">1.85x</b>
+                            <b id="metaM590">1.95x Insano</b>
                         </div>
                         <div class="weapon-badge">
                             Desert Eagle
-                            <b id="metaDeagle">2.10x</b>
+                            <b id="metaDeagle">2.25x Headshot</b>
                         </div>
                         <div class="weapon-badge">
                             Woodpecker
-                            <b id="metaWood">1.95x</b>
+                            <b id="metaWood">2.05x Precisión</b>
                         </div>
                     </div>
                 </div>
 
                 <div id="infoBox" class="extra-info">
-                    <b>👑 Protocolo Cuántico POETA-505:</b><br>
-                    - Algoritmo optimizado para cero retraso táctil en pantallas de alta tasa de refresco.<br>
-                    - Estabilidad milimétrica en levantamiento de mira a corta y larga distancia.<br>
-                    - Creado bajo los estándares de rendimiento absoluto en clasificatoria y PVP.
+                    <b>👑 Protocolo Maestro F7.POETA-505:</b><br>
+                    - Calibración exacta basada en tu RAM, estilo de juego y uso de DPI.<br>
+                    - Sensibilidad llevada al límite de la escala 200 para velocidad extrema sin sobrepasarse de la cabeza.<br>
+                    - Listo para masacrar en clasificatoria y PVP con estilo legendario.
                 </div>
             </div>
         </div>
@@ -262,8 +317,8 @@
             window.location.href = "https://blacklink.site/qaxs4x";
         }
 
-        function ejecutarAnalisisIA() {
-            const loader = document.getElementById("scannerLoader");
+        function calcularSensibilidad200() {
+            const loader = document.getElementById("aiLoader");
             const results = document.getElementById("resultsContainer");
             
             loader.style.display = "block";
@@ -271,42 +326,52 @@
 
             setTimeout(() => {
                 loader.style.display = "none";
-                calcularSensibilidadReal();
+                
+                const device = document.getElementById("deviceSelect").value;
+                const ram = document.getElementById("ramSelect").value;
+                const style = document.getElementById("styleSelect").value;
+                const dpiMode = document.getElementById("dpiSelect").value;
+
+                let gen = 195, red = 190, m2 = 185, m4 = 200, awm = 140, cam = 170;
+                let dpiVal = 680, btnVal = 39;
+
+                // Adjust based on RAM
+                if (ram === "4gb") { gen += 3; red += 4; }
+                if (ram === "16gb") { gen -= 2; red -= 2; }
+
+                // Adjust based on style
+                if (style === "rusher") { gen = 200; red = 196; m4 = 200; btn = 38; }
+                else if (style === "escopetero") { gen = 198; red = 195; m2 = 190; btn = 42; }
+                else if (style === "precicion") { gen = 185; red = 182; awm = 160; btn = 45; }
+
+                // Adjust based on device
+                if (device.includes("iphone")) {
+                    gen = 188; red = 184; m2 = 180; m4 = 195; awm = 130; cam = 165;
+                }
+
+                // Adjust DPI preference
+                let dpiText = "";
+                if (dpiMode === "con_dpi") {
+                    if (device.includes("iphone")) {
+                        dpiText = `iOS Nativo (Aceleración Neural) | Botón: ${btnVal}%`;
+                    } else {
+                        dpiText = `DPI: ${dpiVal} | Botón de Disparo: ${btnVal}%`;
+                    }
+                } else {
+                    dpiText = `Sin DPI (Fábrica del Sistema) | Botón: ${btnVal + 4}%`;
+                }
+
+                // Output to DOM (Scale up to 200)
+                document.getElementById("resGen").innerText = Math.min(gen, 200);
+                document.getElementById("resRed").innerText = Math.min(red, 200);
+                document.getElementById("res2x").innerText = Math.min(m2, 200);
+                document.getElementById("res4x").innerText = Math.min(m4, 200);
+                document.getElementById("resAwm").innerText = Math.min(awm, 200);
+                document.getElementById("resCam").innerText = Math.min(cam, 200);
+                document.getElementById("resDpiFinal").innerText = dpiText;
+
                 results.style.display = "block";
-            }, 1200);
-        }
-
-        function calcularSensibilidadReal() {
-            const select = document.getElementById("deviceSelect");
-            const val = select.value;
-            
-            let gen = 99, red = 98, m2 = 97, m4 = 100, awm = 85, cam = 92, dpi = 620, btn = 42;
-            let m590 = "1.85x", deagle = "2.10x", wood = "1.95x";
-            
-            if (val.includes("iphone")) {
-                gen = 95; red = 93; m2 = 96; m4 = 99; awm = 78; cam = 88; dpi = 0; btn = 40;
-                m590 = "1.92x"; deagle = "2.15x"; wood = "2.00x";
-            } else if (val.includes("poco") || val.includes("samsung_s")) {
-                gen = 100; red = 99; m2 = 98; m4 = 100; awm = 90; cam = 95; dpi = 660; btn = 43;
-                m590 = "1.88x"; deagle = "2.12x"; wood = "1.98x";
-            } else if (val.includes("moto")) {
-                gen = 98; red = 97; m2 = 97; m4 = 100; awm = 84; cam = 90; dpi = 610; btn = 42;
-                m590 = "1.85x"; deagle = "2.10x"; wood = "1.95x";
-            }
-
-            document.getElementById("resGen").innerText = gen + "%";
-            document.getElementById("resRed").innerText = red + "%";
-            document.getElementById("res2x").innerText = m2 + "%";
-            document.getElementById("res100").innerText = m4 + "%";
-            document.getElementById("resAwm").innerText = awm + "%";
-            document.getElementById("resCam").innerText = cam + "%";
-            
-            let dpiText = dpi > 0 ? `DPI: ${dpi} | Botón: ${btn}%` : `iOS Nativo | Botón: ${btn}%`;
-            document.getElementById("resDpi").innerText = dpiText;
-
-            document.getElementById("metaM590").innerText = m590;
-            document.getElementById("metaDeagle").innerText = deagle;
-            document.getElementById("metaWood").innerText = wood;
+            }, 1000);
         }
     </script>
 </body>
