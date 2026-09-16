@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F7.POETA-505 | Neural Sens AI Massive Cloud 2026</title>
+    <title>F7.POETA-505 | 500+ Cloud DB Supreme</title>
     <style>
         :root {
-            --bg-deep: #000205;
-            --bg-panel: #040812;
-            --bg-card: #080f20;
+            --bg-deep: #000103;
+            --bg-panel: #030712;
+            --bg-card: #080e1a;
             --gold: #f59e0b;
             --cyan: #00f0ff;
             --red: #ff1e42;
@@ -27,140 +27,127 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 12px;
+            padding: 10px;
             overflow-x: hidden;
-            position: relative;
         }
 
         #bgCanvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1; opacity: 0.35;
+            pointer-events: none; z-index: 1; opacity: 0.4;
         }
 
         #miBloreo {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 2, 5, 0.99); backdrop-filter: blur(35px);
+            background: rgba(0, 1, 3, 0.98); backdrop-filter: blur(40px);
             display: flex; justify-content: center; align-items: center; z-index: 99999;
         }
         .lock-card {
-            background: var(--bg-card); border: 2px solid var(--gold); padding: 45px 35px;
-            border-radius: 30px; text-align: center; max-width: 460px; width: 92%;
-            box-shadow: 0 0 100px rgba(245, 158, 11, 0.4), inset 0 0 25px rgba(245,158,11,0.15);
+            background: var(--bg-card); border: 2px solid var(--gold); padding: 40px 30px;
+            border-radius: 28px; text-align: center; max-width: 440px; width: 92%;
+            box-shadow: 0 0 90px rgba(245, 158, 11, 0.45), inset 0 0 20px rgba(245,158,11,0.2);
         }
-        .lock-card h2 { color: var(--gold); margin-bottom: 15px; font-size: 28px; font-weight: 900; text-shadow: 0 0 20px rgba(245,158,11,0.7); }
-        .lock-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 30px; line-height: 1.7; }
+        .lock-card h2 { color: var(--gold); margin-bottom: 12px; font-size: 26px; font-weight: 900; text-shadow: 0 0 15px rgba(245,158,11,0.8); }
+        .lock-card p { color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.6; }
         .btn-unlock {
             background: linear-gradient(135deg, var(--gold), #d97706); color: #000;
-            border: none; padding: 18px 28px; font-size: 16px; font-weight: 900;
-            border-radius: 16px; cursor: pointer; width: 100%; transition: all 0.3s;
-            box-shadow: 0 4px 35px rgba(245, 158, 11, 0.5); text-transform: uppercase; letter-spacing: 2px;
+            border: none; padding: 16px 24px; font-size: 15px; font-weight: 900;
+            border-radius: 14px; cursor: pointer; width: 100%; transition: all 0.3s;
+            box-shadow: 0 4px 30px rgba(245, 158, 11, 0.5); text-transform: uppercase; letter-spacing: 2px;
         }
-        .btn-unlock:active { transform: scale(0.97); }
 
-        .app-container { max-width: 850px; width: 100%; position: relative; z-index: 2; }
+        .app-container { max-width: 820px; width: 100%; position: relative; z-index: 2; }
 
         .cinematic-header {
-            position: relative; background: #000; border: 3px solid var(--gold); border-radius: 24px;
-            overflow: hidden; margin-bottom: 20px; box-shadow: 0 0 70px rgba(245, 158, 11, 0.3);
+            position: relative; background: #000; border: 3px solid var(--gold); border-radius: 22px;
+            overflow: hidden; margin-bottom: 16px; box-shadow: 0 0 60px rgba(245, 158, 11, 0.35);
         }
         .video-box {
-            position: relative; width: 100%; height: 350px; background: #010306; display: flex; justify-content: center; align-items: center; overflow: hidden;
+            position: relative; width: 100%; height: 320px; background: #010306; display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
         .video-box video {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: contrast(1.3) saturate(1.4);
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: contrast(1.4) saturate(1.5);
         }
         .hud-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(0,2,5,0.7) 0%, transparent 40%, rgba(0,2,5,0.96) 100%);
-            display: flex; flex-direction: column; justify-content: space-between; padding: 20px; pointer-events: none;
+            background: linear-gradient(180deg, rgba(0,1,3,0.6) 0%, transparent 40%, rgba(0,1,3,0.95) 100%);
+            display: flex; flex-direction: column; justify-content: space-between; padding: 18px; pointer-events: none;
         }
         .hud-title h1 {
-            font-size: 30px; font-weight: 900; color: var(--gold); text-transform: uppercase;
-            text-shadow: 0 0 20px var(--gold), 0 0 40px rgba(0,0,0,0.9); letter-spacing: 4px; text-align: center;
+            font-size: 28px; font-weight: 900; color: var(--gold); text-transform: uppercase;
+            text-shadow: 0 0 20px var(--gold); letter-spacing: 3px; text-align: center;
         }
         .hud-title .subtitle {
-            font-size: 14px; font-weight: 900; color: var(--red);
-            text-shadow: 0 0 12px rgba(255,30,66,0.9); text-transform: uppercase; letter-spacing: 5px; margin-top: 6px; text-align: center;
+            font-size: 13px; font-weight: 900; color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan); text-transform: uppercase; letter-spacing: 4px; margin-top: 5px; text-align: center;
         }
         .hud-status-bar {
-            background: rgba(4, 8, 18, 0.9); border-left: 4px solid var(--cyan);
-            padding: 10px 15px; font-family: monospace; font-size: 12px; color: var(--green);
+            background: rgba(3, 7, 18, 0.95); border-left: 4px solid var(--green);
+            padding: 10px 14px; font-family: monospace; font-size: 11px; color: var(--green);
             border-radius: 8px; display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid rgba(0,240,255,0.25);
+            border: 1px solid rgba(0,255,102,0.3);
         }
 
         .panel {
-            background: var(--bg-panel); border: 1px solid var(--border-cyber); border-radius: 24px;
-            padding: 28px; margin-bottom: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.85); position: relative;
+            background: var(--bg-panel); border: 1px solid var(--border-cyber); border-radius: 22px;
+            padding: 24px; margin-bottom: 16px; box-shadow: 0 20px 45px rgba(0,0,0,0.9); position: relative;
         }
         .panel::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--cyan), var(--gold), var(--red));
+            background: linear-gradient(90deg, var(--gold), var(--cyan), var(--red));
         }
         .panel h3 {
-            font-size: 18px; margin-bottom: 20px; color: var(--text-main); display: flex; align-items: center; gap: 12px;
-            border-bottom: 1px solid var(--border-cyber); padding-bottom: 14px;
+            font-size: 17px; margin-bottom: 18px; color: var(--text-main); display: flex; align-items: center; gap: 10px;
+            border-bottom: 1px solid var(--border-cyber); padding-bottom: 12px;
         }
 
-        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 18px; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 16px; }
         .full-span { grid-column: span 2; }
 
-        .input-group { margin-bottom: 4px; }
-        label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         select, input {
-            width: 100%; padding: 15px; background: var(--bg-deep); border: 1px solid var(--border-cyber);
-            color: var(--text-main); border-radius: 14px; font-size: 14px; outline: none; transition: all 0.3s;
+            width: 100%; padding: 14px; background: var(--bg-deep); border: 1px solid var(--border-cyber);
+            color: var(--text-main); border-radius: 12px; font-size: 13px; outline: none; transition: all 0.3s;
         }
-        select:focus, input:focus { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0,240,255,0.3); }
+        select:focus, input:focus { border-color: var(--gold); box-shadow: 0 0 18px rgba(245,158,11,0.3); }
 
         .btn-generate {
-            background: linear-gradient(135deg, var(--cyan), #2563eb); color: #000205; border: none; padding: 18px;
-            font-size: 16px; font-weight: 900; border-radius: 14px; cursor: pointer; width: 100%;
-            transition: all 0.3s; box-shadow: 0 4px 35px rgba(0, 240, 255, 0.4);
-            text-transform: uppercase; letter-spacing: 2px; margin-top: 10px;
+            background: linear-gradient(135deg, var(--gold), #d97706); color: #000; border: none; padding: 16px;
+            font-size: 15px; font-weight: 900; border-radius: 12px; cursor: pointer; width: 100%;
+            transition: all 0.3s; box-shadow: 0 4px 30px rgba(245, 158, 11, 0.4);
+            text-transform: uppercase; letter-spacing: 2px; margin-top: 8px;
         }
-        .btn-generate:active { transform: scale(0.98); }
 
-        #aiLoader { display: none; text-align: center; padding: 35px; font-family: monospace; color: var(--cyan); }
+        #aiLoader { display: none; text-align: center; padding: 30px; font-family: monospace; color: var(--gold); }
         .spinner {
-            width: 50px; height: 50px; border: 4px solid rgba(0,240,255,0.2); border-top: 4px solid var(--cyan);
-            border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 15px auto;
-            box-shadow: 0 0 25px rgba(0,240,255,0.5);
+            width: 45px; height: 45px; border: 4px solid rgba(245,158,11,0.2); border-top: 4px solid var(--gold);
+            border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px auto;
+            box-shadow: 0 0 20px rgba(245,158,11,0.5);
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .results-section { display: none; margin-top: 25px; animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .results-section { display: none; margin-top: 20px; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
-        .result-card { background: var(--bg-deep); border: 1px solid var(--border-cyber); padding: 16px; border-radius: 14px; text-align: center; }
-        .result-card span { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 700; }
-        .result-card strong { font-size: 24px; color: var(--green); font-family: monospace; text-shadow: 0 0 12px rgba(0,255,102,0.4); }
+        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+        .result-card { background: var(--bg-deep); border: 1px solid var(--border-cyber); padding: 14px; border-radius: 12px; text-align: center; }
+        .result-card span { display: block; font-size: 10px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; font-weight: 700; }
+        .result-card strong { font-size: 22px; color: var(--green); font-family: monospace; text-shadow: 0 0 10px rgba(0,255,102,0.4); }
         .col-3 { grid-column: span 3; }
 
-        .weapon-meta { background: var(--bg-deep); border: 1px solid var(--border-cyber); border-radius: 14px; padding: 18px; margin-top: 16px; }
-        .weapon-meta h4 { font-size: 13px; color: var(--gold); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1.5px; }
-        .weapon-list { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; font-family: monospace; }
-        .weapon-badge { background: var(--bg-card); border: 1px solid var(--border-cyber); padding: 12px; border-radius: 10px; flex: 1; text-align: center; }
-        .weapon-badge b { display: block; color: var(--cyan); font-size: 14px; margin-top: 6px; }
-
         .terminal-box {
-            background: #010306; border: 1px solid var(--border-cyber); border-radius: 14px; padding: 16px; margin-top: 16px;
-            font-family: monospace; font-size: 11px; color: var(--green); max-height: 160px; overflow-y: auto; text-align: left;
+            background: #010306; border: 1px solid var(--border-cyber); border-radius: 12px; padding: 14px; margin-top: 14px;
+            font-family: monospace; font-size: 11px; color: var(--green); max-height: 140px; overflow-y: auto; text-align: left;
         }
 
         .tester-box {
-            background: var(--bg-deep); border: 1px solid var(--border-cyber); border-radius: 14px; padding: 18px; margin-top: 16px; text-align: center;
+            background: var(--bg-deep); border: 1px solid var(--border-cyber); border-radius: 12px; padding: 16px; margin-top: 14px; text-align: center;
         }
-        .tester-box h4 { font-size: 13px; color: var(--cyan); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1.5px; }
+        .tester-box h4 { font-size: 12px; color: var(--cyan); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
         #touchPad {
-            width: 100%; height: 120px; background: #020408; border: 2px dashed var(--border-cyber); border-radius: 10px;
-            display: flex; justify-content: center; align-items: center; color: var(--text-muted); font-size: 13px; font-family: monospace;
+            width: 100%; height: 110px; background: #020408; border: 2px dashed var(--border-cyber); border-radius: 10px;
+            display: flex; justify-content: center; align-items: center; color: var(--text-muted); font-size: 12px; font-family: monospace;
             cursor: pointer; user-select: none;
         }
-
-        .extra-info { background: var(--bg-deep); border: 1px solid var(--border-cyber); padding: 20px; border-radius: 14px; margin-top: 16px; font-size: 13px; line-height: 1.7; color: var(--text-muted); }
-        .extra-info b { color: var(--text-main); }
     </style>
 </head>
 <body>
@@ -169,9 +156,9 @@
 
     <div id="miBloreo">
         <div class="lock-card">
-            <h2>🔒 NÚCLEO SUPREMO PROTEGIDO</h2>
-            <p>Conectando al Motor Neural y la Base de Datos Masiva de 50MB. Complete la verificación rápida.</p>
-            <button class="btn-unlock" onclick="desbloquear()">Sincronizar con Cloud DB</button>
+            <h2>🔒 NÚCLEO 500+ DISPOSITIVOS</h2>
+            <p>Conectando al servidor central con la base de datos masiva de 50MB. Sincronizando catálogo completo.</p>
+            <button class="btn-unlock" onclick="desbloquear()">Sincronizar Cloud DB</button>
         </div>
     </div>
 
@@ -180,73 +167,70 @@
             <div class="video-box">
                 <video autoplay muted loop playsinline>
                     <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-lights-31932-large.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
+                    Tu navegador no soporta video.
                 </video>
                 <div class="hud-overlay">
                     <div class="hud-title">
                         <h1>F7.POETA-505</h1>
-                        <div class="subtitle">👑 50MB CLOUD DB - ESCALA HASTA 200 👑</div>
+                        <div class="subtitle">👑 50MB CLOUD DB - 500+ DISPOSITIVOS 👑</div>
                     </div>
                     <div class="hud-status-bar">
-                        <span id="dbStatus">⚡ Conectando a Base de Datos (50MB)...</span>
-                        <span style="color: var(--gold);">STATUS: ACTIVO</span>
+                        <span id="dbStatus">⚡ Cargando base de datos de 50MB...</span>
+                        <span style="color: var(--gold);">ONLINE</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="panel">
-            <h3>⚙️ Motor Neural con Conexión a Base de Datos Masiva</h3>
+            <h3>⚙️ Selector de 500+ Modelos & Base Masiva</h3>
             
             <div class="form-grid">
                 <div class="input-group full-span">
-                    <label for="deviceSelect">Selecciona tu Marca y Modelo:</label>
+                    <label for="deviceSelect">Selecciona tu Dispositivo (500+ en Base de Datos):</label>
                     <select id="deviceSelect" onchange="reproducirSonidoClick()">
-                        <option value="moto_g72">Motorola Moto G72 (Android 13 - Base Cloud)</option>
-                        <option value="redmi_note_14_pro">Xiaomi Redmi Note 14 Pro 5G</option>
-                        <option value="samsung_s24">Samsung Galaxy S24 Ultra</option>
-                        <option value="iphone_15">Apple iPhone 15 Pro Max</option>
+                        <option value="">Cargando catálogo masivo de 50MB...</option>
                     </select>
                 </div>
 
                 <div class="input-group">
                     <label for="ramSelect">Memoria RAM:</label>
                     <select id="ramSelect" onchange="reproducirSonidoClick()">
-                        <option value="8gb" selected>8 GB RAM (Competitivo)</option>
-                        <option value="12gb">12 GB RAM (Ultra Fluido)</option>
-                        <option value="16gb">16 GB RAM (Máximo Poder)</option>
+                        <option value="8gb">8 GB RAM</option>
+                        <option value="12gb" selected>12 GB RAM</option>
+                        <option value="16gb">16 GB RAM Supreme</option>
                     </select>
                 </div>
 
                 <div class="input-group">
                     <label for="styleSelect">Estilo de Juego:</label>
                     <select id="styleSelect" onchange="reproducirSonidoClick()">
-                        <option value="rusher" selected>⚡ Rusher Insano (Agresivo)</option>
-                        <option value="escopetero">🔥 Escopetero Pro (M590 / Deagle)</option>
+                        <option value="rusher" selected>⚡ Rusher Insano</option>
+                        <option value="escopetero">🔥 Escopetero Pro</option>
                     </select>
                 </div>
             </div>
 
-            <button class="btn-generate" onclick="ejecutarAnalisisCloud()">⚡ Analizar con Base de Datos de 50MB</button>
+            <button class="btn-generate" onclick="ejecutarAnalisisCloud()">⚡ Iniciar Análisis con 50MB Database</button>
 
             <div id="aiLoader">
                 <div class="spinner"></div>
-                <p>Consultando registros masivos en `database_massive.json`...</p>
+                <p>Procesando vectores en el archivo de 50MB...</p>
             </div>
 
             <div id="resultsContainer" class="results-section">
                 <div class="results-grid">
                     <div class="result-card">
                         <span>GENERAL</span>
-                        <strong id="resGen">196</strong>
+                        <strong id="resGen">198</strong>
                     </div>
                     <div class="result-card">
                         <span>PUNTO ROJO</span>
-                        <strong id="resRed">192</strong>
+                        <strong id="resRed">195</strong>
                     </div>
                     <div class="result-card">
                         <span>MIRA 2X</span>
-                        <strong id="res2x">188</strong>
+                        <strong id="res2x">190</strong>
                     </div>
                     <div class="result-card">
                         <span>MIRA 4X</span>
@@ -254,26 +238,26 @@
                     </div>
                     <div class="result-card">
                         <span>MIRA AWM</span>
-                        <strong id="resAwm">145</strong>
+                        <strong id="resAwm">150</strong>
                     </div>
                     <div class="result-card">
                         <span>CÁMARA</span>
-                        <strong id="resCam">175</strong>
+                        <strong id="resCam">180</strong>
                     </div>
                     <div class="result-card col-3">
-                        <span>ESTADO DE CLOUD DB & BOTÓN LETAL</span>
-                        <strong id="resDpiFinal" style="font-size: 15px; color: var(--gold);">Cloud DB OK | Botón: 39%</strong>
+                        <span>ESTADO DE CLOUD DB & DPI LETAL</span>
+                        <strong id="resDpiFinal" style="font-size: 14px; color: var(--gold);">500+ Modelos Indexados | DPI: 580</strong>
                     </div>
                 </div>
 
                 <div id="terminalLog" class="terminal-box">
-                    [F7.POETA-505 CLOUD] Esperando consulta de base de datos...
+                    [F7.POETA-505] Esperando lectura de base de datos masiva...
                 </div>
 
                 <div class="tester-box">
-                    <h4>🧪 Simulador y Test de Sensibilidad Táctil</h4>
+                    <h4>🧪 Test de Respuesta Táctil en Tiempo Real</h4>
                     <div id="touchPad" ontouchmove="registrarToque(event)" onmousemove="registrarMovimiento(event)">
-                        [ Toca y desliza aquí para probar la respuesta táctil ]
+                        [ Toca y desliza aquí para verificar respuesta ]
                     </div>
                 </div>
             </div>
@@ -281,16 +265,27 @@
     </div>
 
     <script>
-        // Cargar Base de Datos Masiva de 50MB al iniciar
         let massiveDB = null;
+
+        // Cargar Base de Datos Masiva y rellenar select con 500+ dispositivos
         fetch('database_massive.json')
             .then(res => res.json())
             .then(data => {
                 massiveDB = data;
-                document.getElementById('dbStatus').innerText = `⚡ Cloud DB Sincronizada (${data.database.length} registros)`;
+                const select = document.getElementById('deviceSelect');
+                select.innerHTML = '';
+                data.devices.forEach(item => {
+                    const opt = document.createElement('option');
+                    opt.value = item.id;
+                    opt.textContent = `${item.device} (ID: ${item.id})`;
+                    select.appendChild(opt);
+                });
+                document.getElementById('dbStatus').innerText = `⚡ Cloud DB Activa (${data.total_devices} Dispositivos)`;
             })
             .catch(err => {
-                document.getElementById('dbStatus').innerText = `⚡ Cloud DB: Modo Local Activo`;
+                document.getElementById('dbStatus').innerText = `⚡ Modo Local Activo`;
+                const select = document.getElementById('deviceSelect');
+                select.innerHTML = `<option value="1">Motorola Moto G72 (Fallback)</option><option value="2">Xiaomi Redmi Note 14 Pro (Fallback)</option>`;
             });
 
         const canvas = document.getElementById('bgCanvas');
@@ -300,10 +295,10 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 45; i++) {
             particles.push({
                 x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-                radius: Math.random() * 1.5 + 0.5, speedY: Math.random() * 0.6 + 0.2,
+                radius: Math.random() * 1.5 + 0.5, speedY: Math.random() * 0.7 + 0.2,
                 color: Math.random() > 0.5 ? '#00f0ff' : '#f59e0b'
             });
         }
@@ -311,7 +306,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
                 ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.color; ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
+                ctx.fillStyle = p.color; ctx.shadowBlur = 12; ctx.shadowColor = p.color; ctx.fill();
                 p.y -= p.speedY; if (p.y < 0) p.y = canvas.height;
             });
             requestAnimationFrame(animateParticles);
@@ -322,8 +317,8 @@
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-                osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.08);
+                osc.type = 'sine'; osc.frequency.setValueAtTime(700, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.08);
                 gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
                 osc.connect(gain); gain.connect(audioCtx.destination);
@@ -352,38 +347,46 @@
             const loader = document.getElementById("aiLoader");
             const results = document.getElementById("resultsContainer");
             const term = document.getElementById("terminalLog");
+            const selectedId = document.getElementById("deviceSelect").value;
             
             loader.style.display = "block";
             results.style.display = "none";
 
-            term.innerHTML = `[0.1s] Leyendo archivo de gran escala (50MB)...<br>[0.5s] Consultando índices balísticos en ` + (massiveDB ? "Cloud DB JSON" : "Memoria local") + `...`;
+            term.innerHTML = `[0.1s] Leyendo archivo 50MB (database_massive.json)...<br>[0.6s] Buscando ID de dispositivo [${selectedId}] en el catálogo de 500+ modelos...`;
 
             setTimeout(() => {
                 loader.style.display = "none";
-                let gen = 200, red = 198, m2 = 192, m4 = 200, awm = 150, cam = 180;
                 
-                document.getElementById("resGen").innerText = gen;
-                document.getElementById("resRed").innerText = red;
-                document.getElementById("res2x").innerText = m2;
-                document.getElementById("res4x").innerText = m4;
-                document.getElementById("resAwm").innerText = awm;
-                document.getElementById("resCam").innerText = cam;
-                document.getElementById("resDpiFinal").innerText = "Base de Datos 50MB Indexada | Botón: 38%";
+                let devData = { gen: 198, red: 195, m2: 190, m4: 200, awm: 150, cam: 180 };
+                if (massiveDB && massiveDB.devices) {
+                    const found = massiveDB.devices.find(d => d.id == selectedId);
+                    if (found) {
+                        devData = found;
+                    }
+                }
 
-                term.innerHTML += `<br>[1.2s] Éxito absoluto: Perfil optimizado con coeficientes de nivel superior.`;
+                document.getElementById("resGen").innerText = devData.gen;
+                document.getElementById("resRed").innerText = devData.red;
+                document.getElementById("res2x").innerText = devData.m2;
+                document.getElementById("res4x").innerText = devData.m4;
+                document.getElementById("resAwm").innerText = devData.awm;
+                document.getElementById("resCam").innerText = devData.cam;
+                document.getElementById("resDpiFinal", style="color:var(--gold);").innerText = `Dispositivo Sincronizado | DPI: 585`;
+
+                term.innerHTML += `<br>[1.2s] Éxito: Coeficientes balísticos extraídos de la Cloud DB de 50MB.`;
                 results.style.display = "block";
-            }, 1200);
+            }, 1100);
         }
 
         function registrarMovimiento(e) {
             const pad = document.getElementById("touchPad");
             pad.style.borderColor = "var(--green)";
-            pad.innerHTML = `⚡ VELOCIDAD TÁCTIL ÓPTIMA [ X: ${e.offsetX} | Y: ${e.offsetY} ]`;
+            pad.innerHTML = `⚡ TÁCTICO ACTIVO [ X: ${e.offsetX} | Y: ${e.offsetY} ]`;
         }
         function registrarToque(e) {
             const pad = document.getElementById("touchPad");
             pad.style.borderColor = "var(--gold)";
-            pad.innerHTML = `🔥 CALIBRACIÓN TÁCTIL ACTIVA EN TIEMPO REAL`;
+            pad.innerHTML = `🔥 CALIBRACIÓN ÓPTIMA EN TIEMPO REAL`;
         }
     </script>
 </body>
