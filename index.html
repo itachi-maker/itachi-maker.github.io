@@ -3,411 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Neural Sensitivity Pro - Free Fire</title>
+    <title>POETA-505 DOMINA - Neural Sens Pro</title>
     <style>
         :root {
-            --bg-color: #030712;
-            --card-bg: #0f172a;
-            --accent: #06b6d4;
-            --accent-glow: rgba(6, 182, 212, 0.4);
-            --neon-green: #10b981;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #1e293b;
-            --border-glow: #38bdf8;
+            --bg-main: #05070b;
+            --bg-card: #0d1322;
+            --border-color: #1a2744;
+            --accent-red: #ff1e42;
+            --accent-cyan: #00f0ff;
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+            --success: #00ff66;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 15px; overflow-x: hidden; }
+
+        /* Gatekeeper Overlay */
+        #miBloreo {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 7, 11, 0.98); backdrop-filter: blur(15px);
+            display: flex; justify-content: center; align-items: center; z-index: 99999;
+        }
+        .lock-card {
+            background: var(--bg-card); border: 2px solid var(--accent-red); padding: 35px 25px;
+            border-radius: 20px; text-align: center; max-width: 400px; width: 90%;
+            box-shadow: 0 0 40px rgba(255, 30, 66, 0.4);
+        }
+        .lock-card h2 { color: var(--accent-red); margin-bottom: 12px; font-size: 24px; font-weight: 900; text-shadow: 0 0 10px rgba(255,30,66,0.6); }
+        .lock-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
+        .btn-unlock {
+            background: linear-gradient(135deg, #ff1e42, #ff5722); color: white;
+            border: none; padding: 14px 24px; font-size: 16px; font-weight: bold;
+            border-radius: 12px; cursor: pointer; width: 100%; transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(255, 30, 66, 0.5); text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-unlock:active { transform: scale(0.96); }
+
+        /* App Container */
+        .app-container { max-width: 750px; width: 100%; margin-top: 5px; position: relative; z-index: 2; }
+        
+        /* Epic Combat Banner / Canvas Effect */
+        .epic-banner {
+            position: relative; background: linear-gradient(180deg, #0d1322 0%, #05070b 100%);
+            border: 2px solid var(--accent-cyan); border-radius: 16px; padding: 20px; text-align: center;
+            margin-bottom: 20px; box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); overflow: hidden;
+        }
+        .epic-banner canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.6; }
+        .banner-content { position: relative; z-index: 2; }
+        .banner-content h1 {
+            font-size: 26px; font-weight: 900; color: #fff; text-transform: uppercase;
+            text-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan);
+            letter-spacing: 2px; margin-bottom: 5px; animation: pulseGlow 2s infinite alternate;
+        }
+        .banner-content .subtitle {
+            font-size: 15px; font-weight: 800; color: var(--accent-red);
+            text-shadow: 0 0 8px rgba(255,30,66,0.8); text-transform: uppercase; letter-spacing: 3px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        @keyframes pulseGlow {
+            from { text-shadow: 0 0 10px var(--accent-cyan); }
+            to { text-shadow: 0 0 25px var(--accent-cyan), 0 0 40px var(--accent-cyan); }
         }
 
-        body {
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
+        /* Killfeed simulation box */
+        .killfeed {
+            background: rgba(0,0,0,0.5); border-left: 3px solid var(--accent-red);
+            padding: 8px 12px; margin-top: 12px; font-family: monospace; font-size: 12px;
+            color: var(--success); text-align: left; border-radius: 4px; display: flex; justify-content: space-between;
         }
 
-        .container {
-            width: 100%;
-            max-width: 540px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(6, 182, 212, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
+        .panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .panel h3 { font-size: 16px; margin-bottom: 15px; color: var(--text-main); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 
-        .badge {
-            display: inline-block;
-            background: rgba(6, 182, 212, 0.15);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(6, 182, 212, 0.3);
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #38bdf8, #22d3ee, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        .grid-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group.full {
-            grid-column: span 2;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
-
-        select {
-            width: 100%;
-            padding: 12px 14px;
-            background-color: #020617;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
+        select, input { width: 100%; padding: 12px; background: #05070b; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 10px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+        select:focus, input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(0,240,255,0.3); }
 
         .btn-generate {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #06b6d4, #0284c7);
-            color: #030712;
-            border: none;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            cursor: pointer;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+            background: linear-gradient(135deg, #00f0ff, #0077ff); color: #05070b; border: none; padding: 14px;
+            font-size: 16px; font-weight: 900; border-radius: 10px; cursor: pointer; width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4);
+            text-transform: uppercase; letter-spacing: 1px;
         }
+        .btn-generate:active { transform: scale(0.98); }
 
-        .btn-generate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
-        }
-
-        .ai-loader {
-            display: none;
-            margin-top: 25px;
-            background: #020617;
-            border: 1px solid var(--accent);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .ai-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(6, 182, 212, 0.2);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 12px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .ai-text {
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
-        }
-
-        .results-container {
-            margin-top: 25px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .result-card {
-            background-color: #020617;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 12px 8px;
-            text-align: center;
-        }
-
-        .result-card span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .result-card strong {
-            font-size: 1.25rem;
-            color: var(--accent);
-            font-weight: 800;
-        }
-
-        .extra-info-box {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px dashed var(--border);
-            border-radius: 10px;
-            padding: 14px;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-        }
-
-        .extra-info-box p {
-            margin-bottom: 6px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .extra-info-box span {
-            color: var(--text-muted);
-        }
-
-        .extra-info-box strong {
-            color: #34d399;
-        }
-
-        .tips-box {
-            background: rgba(6, 182, 212, 0.05);
-            border-left: 3px solid var(--accent);
-            padding: 10px 14px;
-            border-radius: 0 10px 10px 0;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .btn-copy {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--neon-green);
-            color: #030712;
-            border: none;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-transform: uppercase;
-        }
-
-        .btn-copy:hover {
-            background-color: #059669;
-            color: white;
-        }
-
-        .footer-status {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
+        .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; display: none; }
+        .result-card { background: #05070b; border: 1px solid var(--border-color); padding: 12px 15px; border-radius: 10px; text-align: center; }
+        .result-card span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+        .result-card strong { font-size: 18px; color: var(--success); font-family: monospace; text-shadow: 0 0 8px rgba(0,255,102,0.4); }
+        .full-width { grid-column: span 2; }
+        .extra-info { background: #05070b; border: 1px solid var(--border-color); padding: 15px; border-radius: 10px; margin-top: 12px; display: none; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+        .extra-info b { color: var(--text-main); }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainContainer" style="display: none;">
-        <div class="badge">🤖 IA Deep-Neural Engine v3.4</div>
-        <h1>Súper Calibrador Pro</h1>
-        <p class="subtitle">Optimización inteligente basada en escala 200 de Free Fire</p>
-
-        <div class="grid-inputs">
-            <div class="form-group">
-                <label for="brandSelect">Marca de Celular</label>
-                <select id="brandSelect" onchange="loadModels()">
-                    <option value="">-- Elige marca --</option>
-                    <option value="xiaomi">Xiaomi / Redmi / Poco</option>
-                    <option value="motorola">Motorola</option>
-                    <option value="samsung">Samsung</option>
-                    <option value="iphone">Apple iPhone</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="modelSelect">Modelo Exacto</label>
-                <select id="modelSelect">
-                    <option value="">-- Primero marca --</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="ramSelect">Memoria RAM</label>
-                <select id="ramSelect">
-                    <option value="4">4 GB RAM</option>
-                    <option value="6">6 GB RAM</option>
-                    <option value="8" selected>8 GB RAM</option>
-                    <option value="12">12 GB o más</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="styleSelect">Estilo de Juego</label>
-                <select id="styleSelect">
-                    <option value="rush">Rusher / Levantada Rápida</option>
-                    <option value="todorojo" selected>Todo Rojo / Precisión</option>
-                    <option value="balanceado">Equilibrado / Medias Distancias</option>
-                </select>
-            </div>
+    <!-- Gatekeeper Overlay -->
+    <div id="miBloreo">
+        <div class="lock-card">
+            <h2>🔒 ZONA RESTRINGIDA</h2>
+            <p>Completa el paso rápido para desbloquear el generador definitivo de POETA-505 de forma permanente.</p>
+            <button class="btn-unlock" onclick="desbloquear()">Desbloquear Acceso Pro</button>
         </div>
-
-        <button class="btn-generate" onclick="ejecutarCalibracionIA()">⚡ Iniciar Calibración IA</button>
-
-        <div class="ai-loader" id="aiLoader">
-            <div class="ai-spinner"></div>
-            <div class="ai-text" id="aiStatusText">Conectando con matriz neuronal...</div>
-        </div>
-
-        <div class="results-container" id="resultsBox">
-            <div class="results-grid">
-                <div class="result-card">
-                    <span>General</span>
-                    <strong id="resGen">-</strong>
-                </div>
-                <div class="result-card">
-                    <span>Punto Rojo</span>
-                    <strong id="resRed">-</strong>
-                </div>
-                <div class="result-card">
-                    <span>Mira 2X</span>
-                    <strong id="res2x">-</strong>
-                </div>
-                <div class="result-card">
-                    <span>Mira 4X</span>
-                    <strong id="res4x">-</strong>
-                </div>
-                <div class="result-card">
-                    <span>AWM / Snip</span>
-                    <strong id="resAwm">-</strong>
-                </div>
-                <div class="result-card">
-                    <span>Cámara Libre</span>
-                    <strong id="resFree">-</strong>
-                </div>
-            </div>
-
-            <div class="extra-info-box">
-                <p><span>DPI Recomendado por IA:</span> <strong id="resDpi">-</strong></p>
-                <p><span>Tamaño Botón de Disparo:</span> <strong id="resBtn">-</strong></p>
-            </div>
-
-            <div class="tips-box" id="resTips">
-                💡 <b>Consejo IA:</b> Arrastra de abajo hacia arriba de forma fluida manteniendo la mira en la zona del pecho.
-            </div>
-
-            <button class="btn-copy" onclick="copiarSensibilidadPro()">📋 Copiar Configuración Completa</button>
-        </div>
-
-        <div class="footer-status" id="timerBox">🔒 Sesión segura activa (Válida por 2 horas)</div>
     </div>
 
-    
+    <!-- Main Interface -->
+    <div class="app-container">
+        <!-- Epic Banner with Combat Animation -->
+        <div class="epic-banner">
+            <canvas id="combatCanvas"></canvas>
+            <div class="banner-content">
+                <h1>NEURAL SENS PRO</h1>
+                <div class="subtitle">🔥 POETA-505 DOMINA 🔥</div>
+                <div class="killfeed">
+                    <span>⚡ Killfeed: poeta-505 💀 [HEADSHOT ☠️] Player_X</span>
+                    <span style="color: var(--accent-red);">Racha: MVP</span>
+                </div>
+            </div>
+        </div>
 
+        <div class="panel">
+            <h3>📱 Base de Datos Masiva (+100 Modelos Libres)</h3>
+            
+            <div class="input-group">
+                <label for="deviceSelect">Selecciona tu Marca y Modelo:</label>
+                <select id="deviceSelect">
+                    <optgroup label="--- XIAOMI / REDMI / POCO ---">
+                        <option value="redmi_note_14_pro">Xiaomi Redmi Note 14 Pro 4G / 5G</option>
+                        <option value="redmi_note_13">Xiaomi Redmi Note 13 / Pro</option>
+                        <option value="redmi_note_12">Xiaomi Redmi Note 12 / Pro / Pro+</option>
+                        <option value="redmi_note_11">Xiaomi Redmi Note 11 / 11S / Pro</option>
+                        <option value="redmi_note_10">Xiaomi Redmi Note 10 / 10S / Pro</option>
+                        <option value="redmi_note_9">Xiaomi Redmi Note 9 / 9S / Pro</option>
+                        <option value="redmi_12">Xiaomi Redmi 12 / 12C</option>
+                        <option value="redmi_13c">Xiaomi Redmi 13C / 10C</option>
+                        <option value="redmi_9a_9c">Xiaomi Redmi 9A / 9C / 9</option>
+                        <option value="poco_x6">Poco X6 / X6 Pro</option>
+                        <option value="poco_x5">Poco X5 / X5 Pro</option>
+                        <option value="poco_x4">Poco X4 Pro</option>
+                        <option value="poco_x3_pro">Poco X3 Pro / NFC</option>
+                        <option value="poco_f5">Poco F5 / F5 Pro</option>
+                        <option value="poco_f4">Poco F4 / GT</option>
+                        <option value="poco_f3">Poco F3</option>
+                        <option value="poco_m5">Poco M5 / M5s</option>
+                        <option value="xiaomi_13">Xiaomi 13 / 13 Pro / Ultra</option>
+                        <option value="xiaomi_12">Xiaomi 12 / 12T / Pro</option>
+                    </optgroup>
 
+                    <optgroup label="--- MOTOROLA ---">
+                        <option value="moto_g72">Motorola Moto G72 (Android 13)</option>
+                        <option value="moto_g82">Motorola Moto G82 5G</option>
+                        <option value="moto_g71">Motorola Moto G71</option>
+                        <option value="moto_g60">Motorola Moto G60 / G60S</option>
+                        <option value="moto_g54">Motorola Moto G54 5G</option>
+                        <option value="moto_g53">Motorola Moto G53</option>
+                        <option value="moto_g52">Motorola Moto G52</option>
+                        <option value="moto_g50">Motorola Moto G50</option>
+                        <option value="moto_g41">Motorola Moto G41</option>
+                        <option value="moto_g32">Motorola Moto G32</option>
+                        <option value="moto_g31">Motorola Moto G31</option>
+                        <option value="moto_g30">Motorola Moto G30</option>
+                        <option value="moto_g24">Motorola Moto G24 / Power</option>
+                        <option value="moto_g22">Motorola Moto G22</option>
+                        <option value="moto_g20">Motorola Moto G20</option>
+                        <option value="moto_edge_40">Motorola Edge 40 / Pro</option>
+                        <option value="moto_edge_30">Motorola Edge 30 / Neo / Fusion</option>
+                    </optgroup>
 
+                    <optgroup label="--- SAMSUNG GALAXY ---">
+                        <option value="samsung_s24">Samsung Galaxy S24 / Ultra / Plus</option>
+                        <option value="samsung_s23">Samsung Galaxy S23 / Ultra / FE</option>
+                        <option value="samsung_s22">Samsung Galaxy S22 / Ultra</option>
+                        <option value="samsung_s21">Samsung Galaxy S21 / FE</option>
+                        <option value="samsung_a54">Samsung Galaxy A54 5G</option>
+                        <option value="samsung_a53">Samsung Galaxy A53 5G</option>
+                        <option value="samsung_a52">Samsung Galaxy A52 / 5G</option>
+                        <option value="samsung_a51">Samsung Galaxy A51</option>
+                        <option value="samsung_a34">Samsung Galaxy A34 5G</option>
+                        <option value="samsung_a33">Samsung Galaxy A33 5G</option>
+                        <option value="samsung_a32">Samsung Galaxy A32</option>
+                        <option value="samsung_a24">Samsung Galaxy A24</option>
+                        <option value="samsung_a23">Samsung Galaxy A23</option>
+                        <option value="samsung_a22">Samsung Galaxy A22</option>
+                        <option value="samsung_a14">Samsung Galaxy A14 / 5G</option>
+                        <option value="samsung_a13">Samsung Galaxy A13</option>
+                        <option value="samsung_a12">Samsung Galaxy A12</option>
+                        <option value="samsung_a04">Samsung Galaxy A04 / A04s / A04e</option>
+                        <option value="samsung_a03">Samsung Galaxy A03 / Core</option>
+                        <option value="samsung_note_20">Samsung Galaxy Note 20 / Ultra</option>
+                        <option value="samsung_note_10">Samsung Galaxy Note 10 / Plus</option>
+                    </optgroup>
 
+                    <optgroup label="--- REALME / OPPO / VIVO ---">
+                        <option value="realme_11">Realme 11 / 11 Pro</option>
+                        <option value="realme_10">Realme 10 / Pro</option>
+                        <option value="realme_9">Realme 9 / Pro / Pro+</option>
+                        <option value="realme_8">Realme 8 / 8i / 5G</option>
+                        <option value="realme_c55">Realme C55 / C53 / C51</option>
+                        <option value="realme_c35">Realme C35 / C33 / C31</option>
+                        <option value="realme_narzo">Realme Narzo 50 / 60 Series</option>
+                        <option value="oppo_reno_10">Oppo Reno 10 / 10 Pro</option>
+                        <option value="oppo_reno_8">Oppo Reno 8 / 8T</option>
+                        <option value="oppo_a78">Oppo A78 / A58 / A77</option>
+                        <option value="oppo_a57">Oppo A57 / A54 / A17</option>
+                        <option value="vivo_v27">Vivo V27 / V29 / V30</option>
+                        <option value="vivo_y36">Vivo Y36 / Y27 / Y22</option>
+                        <option value="vivo_y16">Vivo Y16 / Y02 / Y12s</option>
+                    </optgroup>
 
+                    <optgroup label="--- INFINIX / TECNO ---">
+                        <option value="infinix_zero_30">Infinix Zero 30 / Ultra</option>
+                        <option value="infinix_note_30">Infinix Note 30 / Pro / VIP</option>
+                        <option value="infinix_note_12">Infinix Note 12 / 12 Pro</option>
+                        <option value="infinix_hot_30">Infinix Hot 30 / 30i / Play</option>
+                        <option value="infinix_hot_20">Infinix Hot 20 / 12i</option>
+                        <option value="infinix_pova_5">Infinix Pova 5 / Pro</option>
+                        <option value="tecno_camon_20">Tecno Camon 20 / Pro / Premier</option>
+                        <option value="tecno_spark_10">Tecno Spark 10 / Pro / 10C</option>
+                        <option value="tecno_spark_20">Tecno Spark 20 / Pro</option>
+                        <option value="tecno_pova_5">Tecno Pova 5 / Neo 3</option>
+                    </optgroup>
 
+                    <optgroup label="--- HUAWEI / APPLE IPHONE ---">
+                        <option value="huawei_nova_10">Huawei Nova 10 / 10SE / 11</option>
+                        <option value="huawei_nova_9">Huawei Nova 9 / 9SE</option>
+                        <option value="huawei_y9a">Huawei Y9a / Y70 / Y90</option>
+                        <option value="iphone_15">Apple iPhone 15 / Plus / Pro / Max</option>
+                        <option value="iphone_14">Apple iPhone 14 / Plus / Pro / Max</option>
+                        <option value="iphone_13">Apple iPhone 13 / mini / Pro / Max</option>
+                        <option value="iphone_12">Apple iPhone 12 / mini / Pro / Max</option>
+                        <option value="iphone_11">Apple iPhone 11 / Pro / Max</option>
+                        <option value="iphone_x">Apple iPhone X / XR / XS / Max</option>
+                        <option value="iphone_se">Apple iPhone SE (2020 / 2022)</option>
+                    </optgroup>
+                </select>
+            </div>
 
+            <button class="btn-generate" onclick="calcularSensibilidad()">⚡ Generar Configuración POETA-505</button>
 
+            <div id="resultadoBox" class="results-grid">
+                <div class="result-card">
+                    <span>GENERAL</span>
+                    <strong id="resGen">99%</strong>
+                </div>
+                <div class="result-card">
+                    <span>PUNTO ROJO</span>
+                    <strong id="resRed">97%</strong>
+                </div>
+                <div class="result-card">
+                    <span>MIRA 2X</span>
+                    <strong id="res2x">98%</strong>
+                </div>
+                <div class="result-card">
+                    <span>MIRA 4X</span>
+                    <strong id="res4x">100%</strong>
+                </div>
+                <div class="result-card">
+                    <span>MIRA AWM</span>
+                    <strong id="resAwm">82%</strong>
+                </div>
+                <div class="result-card">
+                    <span>CÁMARA</span>
+                    <strong id="resCam">90%</strong>
+                </div>
+                <div class="result-card full-width">
+                    <span>DPI RECOMENDADO & BOTÓN LETAL</span>
+                    <strong id="resDpi" style="font-size: 15px; color: var(--accent-cyan);">DPI: 620 | Botón: 42%</strong>
+                </div>
+            </div>
 
-
-
-
-
-<div id="miBloreo" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0b0f19;z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-family:sans-serif;text-align:center;padding:20px;">
-    <div style="background:#161f30;padding:30px;border-radius:16px;border:1px solid #2a3b5c;max-width:400px;width:100%;">
-        <h2 style="color:#ff3b30;margin-bottom:10px;">🔒 Contenido Bloqueado</h2>
-        <p style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Completa el paso rápido para desbloquear el generador de forma permanente.</p>
-        <button onclick="desbloquear()" style="background:#ff3b30;color:white;border:none;padding:14px 20px;font-size:16px;font-weight:bold;border-radius:10px;cursor:pointer;width:100%;">Desbloquear Generador</button>
+            <div id="infoBox" class="extra-info">
+                <b>👑 Protocolo Maestro POETA-505:</b><br>
+                - Sensibilidad calibrada para levantar mira a máxima velocidad con una sola bala.<br>
+                - Cero aceleración de pantalla: precisión absoluta en PVP y clasificatoria.<br>
+                - Configurado por el estándar de dominación mundial.
+            </div>
+        </div>
     </div>
-</div>
-<script>
-(function() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("token") === "ok") {
-        localStorage.setItem("acceso_ok", "1");
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
-    if (localStorage.getItem("esperando_link") === "1") {
-        localStorage.setItem("acceso_ok", "1");
-        localStorage.removeItem("esperando_link");
-    }
-    if (localStorage.getItem("acceso_ok") === "1") {
-        const el = document.getElementById("miBloreo");
-        if (el) el.remove();
-    }
-})();
-function desbloquear() {
-    localStorage.setItem("esperando_link", "1");
-    window.location.href = "https://blacklink.site/qaxs4x";
-}
-</script>
 
+    <script>
+        // Gatekeeper Authentication Logic
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("token") === "ok") {
+            localStorage.setItem("acceso_ok", "1");
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        if (localStorage.getItem("esperando_link") === "1") {
+            localStorage.setItem("acceso_ok", "1");
+            localStorage.removeItem("esperando_link");
+        }
+        if (localStorage.getItem("acceso_ok") === "1") {
+            const el = document.getElementById("miBloreo");
+            if (el) el.remove();
+        }
+
+        function desbloquear() {
+            localStorage.setItem("esperando_link", "1");
+            window.location.href = "https://blacklink.site/qaxs4x";
+        }
+
+        function calcularSensibilidad() {
+            const select = document.getElementById("deviceSelect");
+            const val = select.value;
+            
+            let gen = 98, red = 95, m2 = 97, m4 = 100, awm = 80, cam = 88, dpi = 600, btn = 44;
+            
+            if (val.includes("iphone")) {
+                gen = 94; red = 92; m2 = 95; m4 = 98; awm = 72; cam = 84; dpi = 0; btn = 41;
+            } else if (val.includes("poco") || val.includes("samsung_s")) {
+                gen = 100; red = 98; m2 = 99; m4 = 100; awm = 85; cam = 92; dpi = 640; btn = 43;
+            } else if (val.includes("9a") || val.includes("04") || val.includes("03") || val.includes("y16")) {
+                gen = 100; red = 99; m2 = 100; m4 = 100; awm = 88; cam = 95; dpi = 740; btn = 46;
+            }
+
+            document.getElementById("resGen").innerText = gen + "%";
+            document.getElementById("resRed").innerText = red + "%";
+            document.getElementById("res2x").innerText = m2 + "%";
+            document.getElementById("res4x").innerText = m4 + "%";
+            document.getElementById("resAwm").innerText = awm + "%";
+            document.getElementById("resCam").innerText = cam + "%";
+            
+            let dpiText = dpi > 0 ? `DPI: ${dpi} | Botón: ${btn}%` : `iOS Nativo | Botón: ${btn}%`;
+            document.getElementById("resDpi").innerText = dpiText;
+
+            document.getElementById("resultadoBox").style.display = "grid";
+            document.getElementById("infoBox").style.display = "block";
+        }
+
+        // Epic Combat Canvas Animation (Tracer bullets & Sparks)
+        const canvas = document.getElementById("combatCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        const particles = [];
+        for (let i = 0; i < 25; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 4,
+                vy: (Math.random() - 0.5) * 4,
+                radius: Math.random() * 2 + 1,
+                color: Math.random() > 0.5 ? '#00f0ff' : '#ff1e42'
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = p.color;
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
