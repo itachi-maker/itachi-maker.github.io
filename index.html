@@ -3,95 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POETA-505 DOMINA - Trono Imperial Free Fire</title>
+    <title>POETA-505 DOMINA - Neural Sens AI Pro</title>
     <style>
         :root {
-            --bg-main: #030508;
-            --bg-card: #0a0f1d;
-            --border-color: #1a2c50;
-            --accent-red: #ff1e42;
-            --accent-cyan: #00f0ff;
-            --accent-green: #2ecc71;
-            --gold: #f1c40f;
-            --text-main: #ffffff;
-            --text-muted: #8b9bb4;
+            --bg-deep: #020408;
+            --bg-card: #080d19;
+            --border-glow: #1e3a8a;
+            --accent-gold: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-cyan: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --success: #10b981;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-main); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 12px; overflow-x: hidden; }
+        body { background-color: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 15px; overflow-x: hidden; }
 
         /* Gatekeeper Overlay */
         #miBloreo {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 5, 8, 0.98); backdrop-filter: blur(15px);
+            background: rgba(2, 4, 8, 0.98); backdrop-filter: blur(20px);
             display: flex; justify-content: center; align-items: center; z-index: 99999;
         }
         .lock-card {
-            background: var(--bg-card); border: 2px solid var(--gold); padding: 35px 25px;
-            border-radius: 20px; text-align: center; max-width: 400px; width: 90%;
-            box-shadow: 0 0 50px rgba(241, 196, 15, 0.3);
+            background: var(--bg-card); border: 2px solid var(--accent-gold); padding: 40px 30px;
+            border-radius: 24px; text-align: center; max-width: 420px; width: 90%;
+            box-shadow: 0 0 60px rgba(245, 158, 11, 0.25);
         }
-        .lock-card h2 { color: var(--gold); margin-bottom: 12px; font-size: 24px; font-weight: 900; text-shadow: 0 0 15px rgba(241,196,15,0.6); }
+        .lock-card h2 { color: var(--accent-gold); margin-bottom: 12px; font-size: 26px; font-weight: 900; text-shadow: 0 0 15px rgba(245,158,11,0.5); letter-spacing: 1px; }
         .lock-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
         .btn-unlock {
-            background: linear-gradient(135deg, var(--gold), #e67e22); color: #000;
-            border: none; padding: 14px 24px; font-size: 16px; font-weight: 900;
-            border-radius: 12px; cursor: pointer; width: 100%; transition: transform 0.2s;
-            box-shadow: 0 4px 20px rgba(241, 196, 15, 0.4); text-transform: uppercase; letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--accent-gold), #d97706); color: #000;
+            border: none; padding: 15px 25px; font-size: 16px; font-weight: 900;
+            border-radius: 14px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 25px rgba(245, 158, 11, 0.4); text-transform: uppercase; letter-spacing: 1.5px;
         }
-        .btn-unlock:active { transform: scale(0.96); }
+        .btn-unlock:active { transform: scale(0.97); }
 
         /* App Container */
         .app-container { max-width: 750px; width: 100%; position: relative; z-index: 2; }
         
-        /* Cinematic Throne Arena Box */
-        .cinematic-arena {
-            position: relative; background: radial-gradient(circle at center, #111e38 0%, #030508 85%);
-            border: 2px solid var(--gold); border-radius: 16px; padding: 15px; text-align: center;
-            margin-bottom: 20px; box-shadow: 0 0 35px rgba(241, 196, 15, 0.25); overflow: hidden;
+        /* Elite Cyber Banner */
+        .cyber-banner {
+            position: relative; background: linear-gradient(135deg, #080d19 0%, #040711 100%);
+            border: 2px solid var(--accent-cyan); border-radius: 20px; padding: 25px 20px; text-align: center;
+            margin-bottom: 20px; box-shadow: 0 0 40px rgba(6, 182, 212, 0.2); overflow: hidden;
         }
-        canvas { display: block; width: 100%; height: 260px; border-radius: 10px; background: #020305; }
-        
-        .arena-overlay-text {
-            position: absolute; top: 20px; left: 0; width: 100%; text-align: center; pointer-events: none;
+        .cyber-banner::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%); pointer-events: none;
         }
-        .arena-overlay-text h1 {
-            font-size: 24px; font-weight: 900; color: var(--gold); text-transform: uppercase;
-            text-shadow: 0 0 10px var(--gold), 0 0 20px rgba(0,0,0,0.8);
-            letter-spacing: 2px; margin-bottom: 3px;
+        .cyber-banner h1 {
+            font-size: 28px; font-weight: 900; color: #fff; text-transform: uppercase;
+            text-shadow: 0 0 12px var(--accent-cyan), 0 0 25px rgba(6,182,212,0.5);
+            letter-spacing: 3px; margin-bottom: 5px;
         }
-        .arena-overlay-text .sub-domina {
-            font-size: 14px; font-weight: 900; color: var(--accent-red);
-            text-shadow: 0 0 8px rgba(255,30,66,0.8); text-transform: uppercase; letter-spacing: 3px;
-        }
-
-        .killfeed-bar {
-            background: rgba(0,0,0,0.7); border-left: 3px solid var(--accent-red);
-            padding: 6px 10px; margin-top: 10px; font-family: monospace; font-size: 11px;
-            color: var(--accent-green); text-align: left; border-radius: 4px; display: flex; justify-content: space-between;
+        .cyber-banner .tagline {
+            font-size: 14px; font-weight: 900; color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(245,158,11,0.6); text-transform: uppercase; letter-spacing: 4px;
         }
 
-        .panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .panel h3 { font-size: 15px; margin-bottom: 15px; color: var(--text-main); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .ai-status-bar {
+            background: rgba(0,0,0,0.6); border-left: 3px solid var(--accent-cyan);
+            padding: 8px 12px; margin-top: 15px; font-family: monospace; font-size: 12px;
+            color: var(--success); text-align: left; border-radius: 6px; display: flex; justify-content: space-between;
+            align-items: center; border: 1px solid rgba(6,182,212,0.2);
+        }
 
-        .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
-        select, input { width: 100%; padding: 12px; background: #030508; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 10px; font-size: 14px; outline: none; transition: border-color 0.2s; }
-        select:focus, input:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(241,196,15,0.3); }
+        /* Panels */
+        .panel { background: var(--bg-card); border: 1px solid #1e293b; border-radius: 20px; padding: 22px; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        .panel h3 { font-size: 16px; margin-bottom: 15px; color: var(--text-main); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; letter-spacing: 0.5px; }
+
+        .input-group { margin-bottom: 18px; }
+        label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        select, input { width: 100%; padding: 14px; background: #020408; border: 1px solid #1e293b; color: var(--text-main); border-radius: 12px; font-size: 14px; outline: none; transition: all 0.3s; }
+        select:focus, input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 15px rgba(6,182,212,0.3); }
 
         .btn-generate {
-            background: linear-gradient(135deg, var(--gold), #d35400); color: #000; border: none; padding: 14px;
-            font-size: 15px; font-weight: 900; border-radius: 10px; cursor: pointer; width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(241, 196, 15, 0.4);
-            text-transform: uppercase; letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--accent-cyan), #2563eb); color: #020408; border: none; padding: 16px;
+            font-size: 16px; font-weight: 900; border-radius: 12px; cursor: pointer; width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s; box-shadow: c0 4px 25px rgba(6, 182, 212, 0.4);
+            text-transform: uppercase; letter-spacing: 1.5px;
         }
         .btn-generate:active { transform: scale(0.98); }
 
-        .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; display: none; }
-        .result-card { background: #030508; border: 1px solid var(--border-color); padding: 12px 15px; border-radius: 10px; text-align: center; }
-        .result-card span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
-        .result-card strong { font-size: 18px; color: var(--accent-green); font-family: monospace; text-shadow: 0 0 8px rgba(46,204,113,0.4); }
+        /* Scanner Loader Effect */
+        #scannerLoader {
+            display: none; text-align: center; padding: 25px; font-family: monospace; color: var(--accent-cyan);
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 4px solid rgba(6,182,212,0.2); border-top: 4px solid var(--accent-cyan);
+            border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 12px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Results Display */
+        .results-container { display: none; margin-top: 20px; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px; }
+        .result-card { background: #020408; border: 1px solid #1e293b; padding: 14px; border-radius: 12px; text-align: center; }
+        .result-card span { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; font-weight: 700; }
+        .result-card strong { font-size: 20px; color: var(--success); font-family: monospace; text-shadow: 0 0 10px rgba(16,185,129,0.3); }
         .full-width { grid-column: span 2; }
-        .extra-info { background: #030508; border: 1px solid var(--border-color); padding: 15px; border-radius: 10px; margin-top: 12px; display: none; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+
+        /* Weapon Meta Section */
+        .weapon-meta {
+            background: #020408; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; margin-top: 12px;
+        }
+        .weapon-meta h4 { font-size: 13px; color: var(--accent-gold); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .weapon-list { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; font-family: monospace; color: var(--text-main); }
+        .weapon-badge { background: #080d19; border: 1px solid #1e293b; padding: 8px; border-radius: 8px; flex: 1; text-align: center; }
+        .weapon-badge b { display: block; color: var(--accent-cyan); font-size: 13px; margin-top: 2px; }
+
+        .extra-info { background: #020408; border: 1px solid #1e293b; padding: 16px; border-radius: 12px; margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
         .extra-info b { color: var(--text-main); }
     </style>
 </head>
@@ -100,49 +125,44 @@
     <!-- Gatekeeper Overlay -->
     <div id="miBloreo">
         <div class="lock-card">
-            <h2>👑 TRONO IMPERIAL</h2>
-            <p>Paso rápido para desbloquear el poder absoluto de POETA-505 en tu dispositivo.</p>
-            <button class="btn-unlock" onclick="desbloquear()">Reclamar Trono Pro</button>
+            <h2>🔒 NÚCLEO PROTEGIDO</h2>
+            <p>Completa el acceso rápido para activar la Inteligencia Artificial Neural de POETA-505.</p>
+            <button class="btn-unlock" onclick="desbloquear()">Sincronizar Acceso Pro</button>
         </div>
     </div>
 
     <!-- Main Interface -->
     <div class="app-container">
-        <!-- Cinematic Throne Arena -->
-        <div class="cinematic-arena">
-            <div class="arena-overlay-text">
-                <h1>F7.POETA-505</h1>
-                <div class="sub-domina">👑 EL REY DOMINA EL MAPA 👑</div>
-            </div>
-            <canvas id="throneCanvas"></canvas>
-            <div class="killfeed-bar">
-                <span>⚡ Kill: F7.POETA-505 💀 [HEADSHOT ☠️] Insane_Pro</span>
-                <span style="color: var(--gold);">ESTADO: REY SUPREMO</span>
+        <!-- Cyber Banner -->
+        <div class="cyber-banner">
+            <h1>NEURAL SENS AI</h1>
+            <div class="tagline">👑 F7.POETA-505 DOMINACIÓN SUPREMA 👑</div>
+            <div class="ai-status-bar">
+                <span>⚡ IA Status: Calibración Cuántica Activa</span>
+                <span style="color: var(--accent-gold);">MODO: 100% HEADSHOT</span>
             </div>
         </div>
 
         <div class="panel">
-            <h3>📱 Calibración Oficial para Dispositivos</h3>
+            <h3>⚙️ Motor Neural de Hardware y Sensibilidad</h3>
             
             <div class="input-group">
-                <label for="deviceSelect">Selecciona tu Modelo:</label>
+                <label for="deviceSelect">Selecciona tu Dispositivo Base:</label>
                 <select id="deviceSelect">
-                    <optgroup label="--- XIAOMI / REDMI / POCO ---">
-                        <option value="redmi_note_14_pro">Xiaomi Redmi Note 14 Pro 4G / 5G</option>
-                        <option value="redmi_note_13">Xiaomi Redmi Note 13 / Pro</option>
-                        <option value="redmi_note_12">Xiaomi Redmi Note 12 / Pro</option>
-                        <option value="poco_x6">Poco X6 / X6 Pro</option>
-                        <option value="poco_x3_pro">Poco X3 Pro / NFC</option>
-                    </optgroup>
                     <optgroup label="--- MOTOROLA ---">
                         <option value="moto_g72">Motorola Moto G72 (Android 13)</option>
                         <option value="moto_g82">Motorola Moto G82 5G</option>
                         <option value="moto_g54">Motorola Moto G54 5G</option>
                     </optgroup>
+                    <optgroup label="--- XIAOMI / REDMI / POCO ---">
+                        <option value="redmi_note_14_pro">Xiaomi Redmi Note 14 Pro 4G / 5G</option>
+                        <option value="redmi_note_13">Xiaomi Redmi Note 13 / Pro</option>
+                        <option value="poco_x3_pro">Poco X3 Pro / NFC</option>
+                        <option value="poco_x6">Poco X6 / X6 Pro</option>
+                    </optgroup>
                     <optgroup label="--- SAMSUNG GALAXY ---">
                         <option value="samsung_s24">Samsung Galaxy S24 / Ultra</option>
                         <option value="samsung_a54">Samsung Galaxy A54 5G</option>
-                        <option value="samsung_a14">Samsung Galaxy A14</option>
                     </optgroup>
                     <optgroup label="--- APPLE IPHONE ---">
                         <option value="iphone_15">Apple iPhone 15 / Pro / Max</option>
@@ -151,44 +171,72 @@
                 </select>
             </div>
 
-            <button class="btn-generate" onclick="calcularSensibilidad()">⚡ Activar Sensibilidad Imperial</button>
+            <button class="btn-generate" onclick="ejecutarAnalisisIA()">⚡ Iniciar Motor de IA Neural</button>
 
-            <div id="resultadoBox" class="results-grid">
-                <div class="result-card">
-                    <span>GENERAL</span>
-                    <strong id="resGen">99%</strong>
-                </div>
-                <div class="result-card">
-                    <span>PUNTO ROJO</span>
-                    <strong id="resRed">98%</strong>
-                </div>
-                <div class="result-card">
-                    <span>MIRA 2X</span>
-                    <strong id="res2x">97%</strong>
-                </div>
-                <div class="result-card">
-                    <span>MIRA 4X</span>
-                    <strong id="res4x">100%</strong>
-                </div>
-                <div class="result-card">
-                    <span>MIRA AWM</span>
-                    <strong id="resAwm">85%</strong>
-                </div>
-                <div class="result-card">
-                    <span>CÁMARA</span>
-                    <strong id="resCam">92%</strong>
-                </div>
-                <div class="result-card full-width">
-                    <span>DPI RECOMENDADO & BOTÓN LETAL</span>
-                    <strong id="resDpi" style="font-size: 15px; color: var(--gold);">DPI: 620 | Botón: 42%</strong>
-                </div>
+            <!-- Scanner Loader -->
+            <div id="scannerLoader">
+                <div class="spinner"></div>
+                <p>Analizando latencia táctil, refresco de pantalla y coeficientes balísticos...</p>
             </div>
 
-            <div id="infoBox" class="extra-info">
-                <b>👑 Protocolo Supremo POETA-505:</b><br>
-                - Configuración exacta para levantar mira con estilo insano y traje táctico verde.<br>
-                - Cero margen de fallo en PVP y salas de escuadra.<br>
-                - Dominación mundial garantizada.
+            <!-- Results Section -->
+            <div id="resultsContainer" class="results-container">
+                <div class="results-grid">
+                    <div class="result-card">
+                        <span>GENERAL</span>
+                        <strong id="resGen">99%</strong>
+                    </div>
+                    <div class="result-card">
+                        <span>PUNTO ROJO</span>
+                        <strong id="resRed">98%</strong>
+                    </div>
+                    <div class="result-card">
+                        <span>MIRA 2X</span>
+                        <strong id="res2x">97%</strong>
+                    </div>
+                    <div class="result-card">
+                        <span>MIRA 4X</span>
+                        <strong id="res100">100%</strong>
+                    </div>
+                    <div class="result-card">
+                        <span>MIRA AWM</span>
+                        <strong id="resAwm">85%</strong>
+                    </div>
+                    <div class="result-card">
+                        <span>CÁMARA</span>
+                        <strong id="resCam">92%</strong>
+                    </div>
+                    <div class="result-card full-width">
+                        <span>DPI DEL SISTEMA & BOTÓN LETAL</span>
+                        <strong id="resDpi" style="font-size: 16px; color: var(--accent-cyan);">DPI: 620 | Botón: 42%</strong>
+                    </div>
+                </div>
+
+                <!-- Weapon Specialization Meta -->
+                <div class="weapon-meta">
+                    <h4>🎯 Coeficiente Balístico por Arma (Estándar POETA-505)</h4>
+                    <div class="weapon-list">
+                        <div class="weapon-badge">
+                            M590 (Escopeta)
+                            <b id="metaM590">1.85x</b>
+                        </div>
+                        <div class="weapon-badge">
+                            Desert Eagle
+                            <b id="metaDeagle">2.10x</b>
+                        </div>
+                        <div class="weapon-badge">
+                            Woodpecker
+                            <b id="metaWood">1.95x</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="infoBox" class="extra-info">
+                    <b>👑 Protocolo Cuántico POETA-505:</b><br>
+                    - Algoritmo optimizado para cero retraso táctil en pantallas de alta tasa de refresco.<br>
+                    - Estabilidad milimétrica en levantamiento de mira a corta y larga distancia.<br>
+                    - Creado bajo los estándares de rendimiento absoluto en clasificatoria y PVP.
+                </div>
             </div>
         </div>
     </div>
@@ -214,143 +262,52 @@
             window.location.href = "https://blacklink.site/qaxs4x";
         }
 
-        function calcularSensibilidad() {
+        function ejecutarAnalisisIA() {
+            const loader = document.getElementById("scannerLoader");
+            const results = document.getElementById("resultsContainer");
+            
+            loader.style.display = "block";
+            results.style.display = "none";
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                calcularSensibilidadReal();
+                results.style.display = "block";
+            }, 1200);
+        }
+
+        function calcularSensibilidadReal() {
             const select = document.getElementById("deviceSelect");
             const val = select.value;
             
             let gen = 99, red = 98, m2 = 97, m4 = 100, awm = 85, cam = 92, dpi = 620, btn = 42;
+            let m590 = "1.85x", deagle = "2.10x", wood = "1.95x";
             
             if (val.includes("iphone")) {
-                gen = 95; red = 93; m2 = 96; m4 = 99; awm = 75; cam = 88; dpi = 0; btn = 40;
+                gen = 95; red = 93; m2 = 96; m4 = 99; awm = 78; cam = 88; dpi = 0; btn = 40;
+                m590 = "1.92x"; deagle = "2.15x"; wood = "2.00x";
             } else if (val.includes("poco") || val.includes("samsung_s")) {
                 gen = 100; red = 99; m2 = 98; m4 = 100; awm = 90; cam = 95; dpi = 660; btn = 43;
+                m590 = "1.88x"; deagle = "2.12x"; wood = "1.98x";
+            } else if (val.includes("moto")) {
+                gen = 98; red = 97; m2 = 97; m4 = 100; awm = 84; cam = 90; dpi = 610; btn = 42;
+                m590 = "1.85x"; deagle = "2.10x"; wood = "1.95x";
             }
 
             document.getElementById("resGen").innerText = gen + "%";
             document.getElementById("resRed").innerText = red + "%";
             document.getElementById("res2x").innerText = m2 + "%";
-            document.getElementById("res4x").innerText = m4 + "%";
+            document.getElementById("res100").innerText = m4 + "%";
             document.getElementById("resAwm").innerText = awm + "%";
             document.getElementById("resCam").innerText = cam + "%";
             
             let dpiText = dpi > 0 ? `DPI: ${dpi} | Botón: ${btn}%` : `iOS Nativo | Botón: ${btn}%`;
             document.getElementById("resDpi").innerText = dpiText;
 
-            document.getElementById("resultadoBox").style.display = "grid";
-            document.getElementById("infoBox").style.display = "block";
+            document.getElementById("metaM590").innerText = m590;
+            document.getElementById("metaDeagle").innerText = deagle;
+            document.getElementById("metaWood").innerText = wood;
         }
-
-        // Cinematic Throne & Combat Scene Canvas Animation
-        const canvas = document.getElementById("throneCanvas");
-        const ctx = canvas.getContext("2d");
-
-        function resizeCanvas() {
-            canvas.width = canvas.parentElement.offsetWidth - 30;
-            canvas.height = 240;
-        }
-        resizeCanvas();
-        window.addEventListener("resize", resizeCanvas);
-
-        let frame = 0;
-        function drawScene() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            let cx = canvas.width / 2;
-            let cy = canvas.height;
-
-            // Background glow & grid
-            ctx.fillStyle = "#05080e";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Draw Throne
-            ctx.fillStyle = "#111827";
-            ctx.strokeStyle = "#f1c40f";
-            ctx.lineWidth = 2;
-            // Backrest
-            ctx.beginPath();
-            ctx.moveTo(cx - 45, cy - 30);
-            ctx.lineTo(cx - 30, cy - 140);
-            ctx.lineTo(cx + 30, cy - 140);
-            ctx.lineTo(cx + 45, cy - 30);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
-
-            // Throne Crown Top
-            ctx.fillStyle = "#f1c40f";
-            ctx.beginPath();
-            ctx.moveTo(cx, cy - 160);
-            ctx.lineTo(cx - 15, cy - 140);
-            ctx.lineTo(cx + 15, cy - 140);
-            ctx.closePath();
-            ctx.fill();
-
-            // Seat base
-            ctx.fillRect(cx - 55, cy - 35, 110, 15);
-
-            // Fallen & Kneeling Enemies (around the throne)
-            // Left kneeling enemy
-            ctx.fillStyle = "#e74c3c";
-            ctx.fillRect(cx - 90, cy - 45, 16, 25); // body
-            ctx.fillStyle = "#fff";
-            ctx.beginPath(); ctx.arc(cx - 82, cy - 52, 6, 0, Math.PI * 2); ctx.fill(); // head
-            // Right dead enemy flat
-            ctx.fillStyle = "#95a5a6";
-            ctx.fillRect(cx + 60, cy - 25, 30, 12);
-            ctx.fillStyle = "#fff";
-            ctx.beginPath(); ctx.arc(cx + 95, cy - 20, 5, 0, Math.PI * 2); ctx.fill();
-            ctx.fillStyle = "#ff1e42";
-            ctx.font = "bold 10px monospace";
-            ctx.fillText("💀", cx + 75, cy - 35);
-
-            // Character (POETA-505 sitting on throne - Green outfit style)
-            // Torso (Green Shirt)
-            ctx.fillStyle = "#2ecc71";
-            ctx.fillRect(cx - 22, cy - 75, 44, 45);
-            // White collar detail
-            ctx.fillStyle = "#ffffff";
-            ctx.beginPath();
-            ctx.moveTo(cx - 8, cy - 75);
-            ctx.lineTo(cx, cy - 62);
-            ctx.lineTo(cx + 8, cy - 75);
-            ctx.fill();
-
-            // Head & Beanie/Cap (Red/Orange cap vibe)
-            ctx.fillStyle = "#e67e22";
-            ctx.fillRect(cx - 9, cy - 95, 18, 18); // cap
-            ctx.fillStyle = "#f5cd79";
-            ctx.beginPath(); ctx.arc(cx, cy - 82, 8, 0, Math.PI * 2); ctx.fill(); // face
-
-            // Gun firing animation (Tracer bullets flying out)
-            if (Math.floor(frame / 20) % 2 === 0) {
-                ctx.strokeStyle = "#00f0ff";
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(cx + 15, cy - 60);
-                ctx.lineTo(cx + 120 + Math.sin(frame)*20, cy - 90);
-                ctx.stroke();
-
-                // Muzzle flash
-                ctx.fillStyle = "#ff1e42";
-                ctx.beginPath();
-                ctx.arc(cx + 25, cy - 62, 7 + Math.random()*5, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            // Floating Headshot text effect
-            if (Math.floor(frame / 40) % 2 === 0) {
-                ctx.fillStyle = "#ff1e42";
-                ctx.font = "bold 14px monospace";
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = "#ff1e42";
-                ctx.fillText("HEADSHOT! ☠️", cx - 45, cy - 110);
-                ctx.shadowBlur = 0;
-            }
-
-            frame++;
-            requestAnimationFrame(drawScene);
-        }
-        drawScene();
     </script>
 </body>
 </html>
