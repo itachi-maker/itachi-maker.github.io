@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F7.POETA-505 | Supreme Cinematic Edition</title>
+    <title>F7.POETA-505 | Código Cinemático Autónomo</title>
     <style>
         :root {
             --bg-deep: #030712;
@@ -33,7 +33,7 @@
 
         #bgCanvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1; opacity: 0.2;
+            pointer-events: none; z-index: 1; opacity: 0.15;
         }
 
         #miBloreo {
@@ -46,7 +46,7 @@
             border-radius: 24px; text-align: center; max-width: 420px; width: 92%;
             box-shadow: 0 0 70px rgba(245, 158, 11, 0.4);
         }
-        .lock-card h2 { color: var(--gold); margin-bottom: 10px; font-size: 24px; font-weight: 800; letter-spacing: 0.5px; }
+        .lock-card h2 { color: var(--gold); margin-bottom: 10px; font-size: 24px; font-weight: 800; }
         .lock-card p { color: var(--text-muted); font-size: 13px; margin-bottom: 22px; line-height: 1.5; }
         .btn-unlock {
             background: linear-gradient(135deg, var(--gold), #d97706); color: #000;
@@ -57,32 +57,30 @@
 
         .app-container { max-width: 800px; width: 100%; position: relative; z-index: 2; }
 
-        /* SECCIÓN CINEMATOGRÁFICA 4K / HERO VIDEO */
+        /* CABECERA CINEMATOGRÁFICA GENERADA POR CÓDIGO */
         .cinematic-header {
-            position: relative; background: #000; border: 2px solid rgba(245, 158, 11, 0.6); border-radius: 22px;
+            position: relative; background: #010306; border: 2px solid rgba(245, 158, 11, 0.6); border-radius: 22px;
             overflow: hidden; margin-bottom: 16px; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(245, 158, 11, 0.15);
         }
-        .video-box {
-            position: relative; width: 100%; height: 310px; background: #010306; display: flex; justify-content: center; align-items: center; overflow: hidden;
+        .canvas-box {
+            position: relative; width: 100%; height: 310px; display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
-        .video-box video {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: contrast(1.35) saturate(1.4);
+        #cineCanvas {
+            width: 100%; height: 100%; display: block; background: radial-gradient(circle at center, #09132c 0%, #010306 100%);
         }
         .hud-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(3,7,18,0.5) 0%, transparent 45%, rgba(3,7,18,0.96) 100%);
             display: flex; flex-direction: column; justify-content: space-between; padding: 16px; pointer-events: none;
         }
         .hud-title h1 {
-            font-size: 28px; font-weight: 900; color: var(--gold); text-transform: uppercase;
-            letter-spacing: 2.5px; text-align: center; text-shadow: 0 0 20px rgba(245,158,11,0.6);
+            font-size: 26px; font-weight: 900; color: var(--gold); text-transform: uppercase;
+            letter-spacing: 2px; text-align: center; text-shadow: 0 0 20px rgba(245,158,11,0.7);
         }
         .hud-title .subtitle {
             font-size: 11px; font-weight: 700; color: var(--cyan);
             text-transform: uppercase; letter-spacing: 3px; margin-top: 4px; text-align: center;
         }
-        
-        /* Botón flotante dentro del video para alternar pantalla completa o sonido */
+
         .cinematic-controls {
             position: absolute; bottom: 12px; right: 12px; pointer-events: auto; display: flex; gap: 8px; z-index: 5;
         }
@@ -112,7 +110,7 @@
         .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 14px; }
         .full-span { grid-column: span 2; }
 
-        label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; }
         
         .search-box-wrapper { position: relative; margin-bottom: 8px; }
         .search-box-wrapper input { padding-left: 38px; }
@@ -146,7 +144,7 @@
 
         .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
         .result-card { background: var(--bg-deep); border: 1px solid var(--border-cyber); padding: 12px; border-radius: 10px; text-align: center; }
-        .result-card span { display: block; font-size: 9px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+        .result-card span { display: block; font-size: 9px; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; font-weight: 700; }
         .result-card strong { font-size: 20px; color: var(--green); font-family: monospace; }
         .col-3 { grid-column: span 3; }
 
@@ -158,7 +156,7 @@
         .tester-box {
             background: var(--bg-deep); border: 1px solid var(--border-cyber); border-radius: 10px; padding: 14px; margin-top: 12px; text-align: center;
         }
-        .tester-box h4 { font-size: 11px; color: var(--cyan); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tester-box h4 { font-size: 11px; color: var(--cyan); margin-bottom: 6px; text-transform: uppercase; }
         #touchPad {
             width: 100%; height: 95px; background: #010306; border: 2px dashed var(--border-cyber); border-radius: 8px;
             display: flex; justify-content: center; align-items: center; color: var(--text-muted); font-size: 11px; font-family: monospace;
@@ -173,35 +171,31 @@
     <div id="miBloreo">
         <div class="lock-card">
             <h2>👑 F7.POETA-505 👑</h2>
-            <p>Sistema Supreme con Intro Cinematográfica y Buscador Inteligente 500+ Modelos.</p>
+            <p>Sistema Supreme con Motor Cinemático Autónomo de 14 Segundos y Buscador Pro.</p>
             <button class="btn-unlock" onclick="desbloquear()">Ingresar al Sistema</button>
         </div>
     </div>
 
     <div class="app-container">
-        <!-- HERO VIDEO / CINEMATOGRAPHIC INTRO PLAYER -->
+        <!-- MOTOR CINEMATOGRÁFICO AUTÓNOMO POR CÓDIGO -->
         <div class="cinematic-header">
-            <div class="video-box">
-                <!-- Video de fondo épico: Aquí puedes reemplazar el link de 'src' cuando subas tu video personalizado de 14s -->
-                <video id="epicVideo" autoplay muted loop playsinline>
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-lights-31932-large.mp4" type="video/mp4">
-                    Tu navegador no soporta video.
-                </video>
+            <div class="canvas-box">
+                <canvas id="cineCanvas" width="800" height="310"></canvas>
                 
                 <div class="hud-overlay">
                     <div class="hud-title">
                         <h1>F7.POETA-505</h1>
-                        <div class="subtitle">⚡ Dominación Total & Batalla Táctica ⚡</div>
+                        <div class="subtitle" id="cineStatusText">⚡ Fase 1: Corriendo en el Campo de Batalla ⚡</div>
                     </div>
                     
                     <div class="cinematic-controls">
-                        <button class="btn-cine-action" onclick="toggleAudioVideo()">🔊 Audio</button>
+                        <button class="btn-cine-action" onclick="reiniciarCinematica()">🔄 Repetir Intro</button>
                         <button class="btn-cine-action" onclick="toggleFullScreenVideo()">📺 FullScreen</button>
                     </div>
 
                     <div class="hud-status-bar">
                         <span id="dbStatus">⚡ 500+ Modelos Indexados</span>
-                        <span style="color: var(--gold);">CINEMATIC 4K READY</span>
+                        <span style="color: var(--gold);" id="timerCounter">00:00 / 00:14</span>
                     </div>
                 </div>
             </div>
@@ -284,7 +278,7 @@
                 </div>
 
                 <div id="terminalLog" class="terminal-box">
-                    [F7.POETA-505] Núcleo cinemático y base de datos sincronizados.
+                    [F7.POETA-505] Núcleo cinemático autónomo y base de datos sincronizados.
                 </div>
 
                 <div class="tester-box">
@@ -298,6 +292,7 @@
     </div>
 
     <script>
+        // --- BASE DE DATOS DE DISPOSITIVOS ---
         const brands = ["Xiaomi Redmi", "POCO", "Samsung Galaxy", "Motorola Moto", "Apple iPhone", "OnePlus", "Realme", "OPPO", "Vivo", "ASUS ROG", "Nubia RedMagic", "Infinix", "Tecno Phantom"];
         const suffixes = ["Pro", "Ultra", "Max", "Supreme", "Gaming Edition", "Insane X", "Master", "Elite", "Prime", "Turbo 5G"];
         
@@ -327,7 +322,7 @@
             if (filtrados.length === 0) {
                 const opt = document.createElement('option');
                 opt.value = "";
-                opt.textContent = "❌ No se encontró ningún dispositivo con ese nombre";
+                opt.textContent = "❌ No se encontró ningún dispositivo";
                 select.appendChild(opt);
                 return;
             }
@@ -348,6 +343,144 @@
             poblarSelect(query);
         }
 
+        // --- MOTOR CINEMÁTICO CANVAS DE 14 SEGUNDOS ---
+        const cineCanvas = document.getElementById('cineCanvas');
+        const cineCtx = cineCanvas.getContext('2d');
+        let cineTime = 0; // en segundos
+        let cineInterval = null;
+
+        function iniciarMotorCinematico() {
+            if (cineInterval) clearInterval(cineInterval);
+            cineTime = 0;
+            
+            cineInterval = setInterval(() => {
+                cineTime += 0.1;
+                if (cineTime > 14) cineTime = 0; // Bucle de 14 segundos
+
+                renderizarEscenaCinematica(cineTime);
+                
+                // Actualizar texto del hud y contador
+                let segStr = Math.floor(cineTime).toString().padStart(2, '0');
+                document.getElementById('timerCounter').innerText = `00:${segStr} / 00:14`;
+
+                const statusText = document.getElementById('cineStatusText');
+                if (cineTime < 4.5) {
+                    statusText.innerText = "⚡ Fase 1: Corriendo y Dominando el Campo de Batalla ⚡";
+                } else if (cineTime < 9.5) {
+                    statusText.innerText = "🔥 Fase 2: Combate a Puños, Disparos y Derribo Total 🔥";
+                } else {
+                    statusText.innerText = "👑 Fase 3: Victoria Suprema - Sentado en el Trono 👑";
+                }
+
+            }, 100);
+        }
+
+        function renderizarEscenaCinematica(t) {
+            cineCtx.clearRect(0, 0, cineCanvas.width, cineCanvas.height);
+
+            // Fondo dinámico (Estrellas / cenizas de batalla)
+            cineCtx.fillStyle = "#010306";
+            cineCtx.fillRect(0, 0, cineCanvas.width, cineCanvas.height);
+
+            // Dibujar suelo táctico
+            cineCtx.strokeStyle = "#1e293b";
+            cineCtx.lineWidth = 2;
+            cineCtx.beginPath();
+            cineCtx.moveTo(0, 250); cineCtx.lineTo(800, 250);
+            cineCtx.stroke();
+
+            if (t < 4.5) {
+                // --- FASE 1: CORRIENDO (0s - 4.5s) ---
+                let posX = 100 + (t * 120); // se mueve de izq a der
+
+                // Efecto de velocidad (líneas de viento)
+                cineCtx.strokeStyle = "rgba(6, 182, 212, 0.4)";
+                for(let i=0; i<5; i++) {
+                    cineCtx.beginPath();
+                    cineCtx.moveTo(posX - 40 - (i*20), 180 + (i*10));
+                    cineCtx.lineTo(posX - 10 - (i*10), 180 + (i*10));
+                    cineCtx.stroke();
+                }
+
+                // Dibujar personaje corriendo (Avatar F7.POETA-505)
+                cineCtx.fillStyle = "#f59e0b";
+                // Cuerpo
+                cineCtx.fillRect(posX, 170, 24, 45);
+                // Cabeza con gorra/neón
+                cineCtx.beginPath(); cineCtx.arc(posX + 12, 155, 12, 0, Math.PI*2); cineCtx.fill();
+                // Arma en mano
+                cineCtx.fillStyle = "#06b6d4";
+                cineCtx.fillRect(posX + 18, 185, 30, 8);
+
+                // Texto flotante de acción
+                cineCtx.font = "bold 14px monospace";
+                cineCtx.fillStyle = "#06b6d4";
+                cineCtx.fillText("[ RUSHER INSANO EN MOVIMIENTO ]", 50, 50);
+
+            } else if (t < 9.5) {
+                // --- FASE 2: COMBATE A PUÑOS Y ARMAS (4.5s - 9.5s) ---
+                let centerX = 400 + Math.sin(t * 10) * 15; // vibración de combate
+
+                // Enemigos cayendo derrotados a los lados
+                cineCtx.fillStyle = "#f43f5e";
+                cineCtx.fillRect(centerX - 150, 200, 30, 50); // enemigo 1 derribado
+                cineCtx.fillRect(centerX + 120, 190, 35, 60); // enemigo 2 derribado
+
+                // Personaje principal disparando / golpeando
+                cineCtx.fillStyle = "#f59e0b";
+                cineCtx.fillRect(centerX, 160, 28, 55); // cuerpo
+                cineCtx.beginPath(); cineCtx.arc(centerX + 14, 145, 12, 0, Math.PI*2); cineCtx.fill(); // cabeza
+
+                // Explosión / fogonazo de arma (Muzzle flash)
+                cineCtx.fillStyle = "#ffffff";
+                cineCtx.beginPath(); cineCtx.arc(centerX + 45, 175, 15 + Math.random()*10, 0, Math.PI*2); cineCtx.fill();
+
+                cineCtx.font = "bold 16px monospace";
+                cineCtx.fillStyle = "#f43f5e";
+                cineCtx.fillText("💥 ¡ELIMINACIONES MÚLTIPLES & PUÑOS LETALES! 💥", 180, 50);
+
+            } else {
+                // --- FASE 3: SENTADO EN EL TRONO (9.5s - 14s) ---
+                let throneX = 400;
+                let throneY = 170;
+
+                // Dibujar Trono Épico Dorado
+                cineCtx.fillStyle = "#b45309";
+                cineCtx.fillRect(throneX - 45, throneY - 40, 90, 120); // respaldo alto
+                cineCtx.fillStyle = "#f59e0b";
+                cineCtx.fillRect(throneX - 35, throneY - 30, 70, 100); // interior trono
+                cineCtx.fillRect(throneX - 50, throneY + 70, 100, 20); // base
+
+                // Personaje sentado cómodamente
+                cineCtx.fillStyle = "#06b6d4";
+                cineCtx.fillRect(throneX - 14, throneY + 10, 28, 45); // torso
+                cineCtx.beginPath(); cineCtx.arc(throneX, throneY - 2, 12, 0, Math.PI*2); cineCtx.fill(); // cabeza
+
+                // Corona brillante flotando
+                cineCtx.fillStyle = "#fef08a";
+                cineCtx.beginPath();
+                cineCtx.moveTo(throneX - 12, throneY - 22);
+                cineCtx.lineTo(throneX - 15, throneY - 38);
+                cineCtx.lineTo(throneX, throneY - 28);
+                cineCtx.lineTo(throneX + 15, throneY - 38);
+                cineCtx.lineTo(throneX + 12, throneY - 22);
+                cineCtx.closePath();
+                cineCtx.fill();
+
+                cineCtx.font = "bold 18px monospace";
+                cineCtx.fillStyle = "#f59e0b";
+                cineCtx.fillText("👑 F7.POETA-505 | REY DEL CAMPO DE BATALLA 👑", 160, 50);
+            }
+        }
+
+        iniciarMotorCinematico();
+
+        function reiniciarCinematica() {
+            reproducirSonidoClick();
+            iniciarMotorCinematico();
+        }
+
+        // --- PARTÍCULAS DE FONDO GENERAL ---
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -384,12 +517,6 @@
                 osc.connect(gain); gain.connect(audioCtx.destination);
                 osc.start(); osc.stop(audioCtx.currentTime + 0.08);
             } catch(e) {}
-        }
-
-        function toggleAudioVideo() {
-            const vid = document.getElementById('epicVideo');
-            vid.muted = !vid.muted;
-            event.target.innerText = vid.muted ? "🔊 Audio" : "🔇 Silenciar";
         }
 
         function toggleFullScreenVideo() {
@@ -432,7 +559,7 @@
             loader.style.display = "block";
             results.style.display = "none";
 
-            term.innerHTML = `[0.1s] Sincronizando cinemática con el modelo seleccionado...<br>[0.5s] Aplicando perfiles balísticos de combate...`;
+            term.innerHTML = `[0.1s] Sincronizando motor cinemático autónomo con el modelo...<br>[0.5s] Aplicando perfiles balísticos de combate...`;
 
             setTimeout(() => {
                 loader.style.display = "none";
